@@ -25,6 +25,9 @@ public class Order {
     @Column(name = "ORDER_ADDRESS")
     private String address;
 
+    @Column(name = "ORDER_DONE")
+    private boolean done;
+
     public Order() {
 
     }
@@ -59,5 +62,13 @@ public class Order {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }
