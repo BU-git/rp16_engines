@@ -1,6 +1,7 @@
 package com.bionic.domain;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.sql.Date;
 
 @Entity
@@ -12,7 +13,6 @@ public class Order {
     /*@Column(name = "ORDER_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence")
     private Long id;*/
-
     @Column(name = "ORDER_NUMBER")
     private Integer orderNumber;
 
@@ -25,8 +25,15 @@ public class Order {
     @Column(name = "ORDER_ADDRESS")
     private String address;
 
+    @Column(name = "ORDER_INSTALLATION")
+    private String installation;
+
     @Column(name = "ORDER_DONE")
     private boolean done;
+
+    @Lob
+    @Column(name = "BOOK_PDF")
+    private Blob pdf;
 
     public Order() {
 
@@ -70,5 +77,21 @@ public class Order {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public String getInstallation() {
+        return installation;
+    }
+
+    public void setInstallation(String installation) {
+        this.installation = installation;
+    }
+
+    public Blob getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(Blob pdf) {
+        this.pdf = pdf;
     }
 }
