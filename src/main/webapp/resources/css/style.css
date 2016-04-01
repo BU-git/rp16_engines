@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 html {  
+background-color:grey;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -81,8 +82,8 @@ body {
 	border-radius: 3px 3px 0px 0px;
 	-moz-border-radius: 0px 0px 3px 3px;
 	-webkit-border-radius: 0px 0px 3px 3px;
-	padding: 12px 10px;
-	width: 238px;
+	padding: 4px 10px;
+	width: 245px;
   -webkit-appearance:none;
 }
 
