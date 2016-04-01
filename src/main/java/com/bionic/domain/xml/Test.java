@@ -16,7 +16,7 @@ public class Test {
     private XmlFileReader xmlFileReader;
 
     public static void main(String[] args) throws IOException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("marshaller.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         Test test = (Test) context.getBean("test");
         String name = "valid.xml";
         OrderXml order = test.xmlFileReader.convertFromXMLToObject(name);
