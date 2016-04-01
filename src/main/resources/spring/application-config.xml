@@ -22,6 +22,20 @@
         <property name="password" value="1234"/>
     </bean>
 
+    <bean id="XMLConverter" class="com.bionic.domain.xml.XmlFileReader">
+        <property name="marshaller" ref="jaxb2Marshaller" />
+        <property name="unmarshaller" ref="jaxb2Marshaller" />
+    </bean>
+
+    <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="classesToBeBound">
+            <list>
+                <value>com.bionic.domain.xml.OrderXml</value>
+            </list>
+        </property>
+        <property name="schema" value="classpath:test.xsd" />
+    </bean>
+
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
