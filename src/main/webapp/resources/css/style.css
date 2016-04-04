@@ -1,19 +1,48 @@
 @charset "utf-8";
 
-html {  
-background-color:grey;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
+
+/*html {
+	background-color:grey;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}*/
 
 body {
-	color: #ff8b3d;
-  font-family: 'Open Sans', sans-serif;
+	/*color: #ff8b3d;*/
+    font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
-
 }
+
+#header {
+	color: #FFFFFF;
+	width: 100%;
+	height: 50px;
+	background: linear-gradient(to top, #000000, #3A393B);
+	z-index: 0;
+}
+
+#content-wrapper {
+	height: calc(100% - 100px);
+	background: linear-gradient(to bottom, #3A393B, #696969 10%, #B7B6B8 100%, #B7B6B8 100%);
+	padding: 50px 50px 0px 50px;
+	z-index: 0;
+}
+
+#content {
+	height: 90%;
+	background: #FFFFFF;
+	padding: 10px;
+	margin: 10px;
+}
+
 
 #login-form {
 	background-color: #363636;
@@ -22,10 +51,10 @@ body {
 	-webkit-border-radius: 5px;		
 	margin: 150px auto;
 	width: 300px;
-  font-family: 'Open Sans', sans-serif;
+  	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
-  -webkit-box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-   box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+  	-webkit-box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+   	box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
   
 }
 
@@ -38,7 +67,7 @@ body {
 	padding: 20px;
 	text-align: center;
 	text-transform: uppercase;
-  font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 }
 
@@ -58,12 +87,10 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	outline: none;
-  -webkit-appearance:none;
-  width: 260px;
-  align: center;
-  position: center;
-  
-
+  	-webkit-appearance:none;
+  	width: 260px;
+  	align: center;
+  	position: center;
 }
 
 #login-form fieldset form input[type="email"] {
@@ -73,7 +100,7 @@ body {
 	-webkit-border-radius: 3px 3px 0px 0px;
 	padding: 12px 10px;
 	width: 238px;
-  -webkit-appearance:none;
+  	-webkit-appearance:none;
 }
 
 #login-form fieldset form input[type="password"] {
@@ -84,7 +111,7 @@ body {
 	-webkit-border-radius: 0px 0px 3px 3px;
 	padding: 4px 10px;
 	width: 245px;
-  -webkit-appearance:none;
+  	-webkit-appearance:none;
 }
 
 #login-form fieldset form input[type="submit"] {
@@ -99,7 +126,7 @@ body {
 	font-weight: bold;
 	margin-top: 20px;
 	padding: 12px 12px;
-  -webkit-appearance: none;
+  	-webkit-appearance: none;
 }
 
 #login-form fieldset form input[type="submit"]:hover {
@@ -122,5 +149,5 @@ body {
 
 p {
     color: white;
-   }
+}
 
