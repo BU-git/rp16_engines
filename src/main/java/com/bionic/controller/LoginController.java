@@ -51,7 +51,7 @@ public class LoginController {
     }
 
     @RequestMapping("/logout")
-    public String logOut (SessionStatus sessionStatus){
+    public String logOut (SessionStatus sessionStatus) {
         sessionStatus.setComplete();
         return "redirect:login.html";
     }

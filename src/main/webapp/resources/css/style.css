@@ -21,28 +21,49 @@ body {
 	font-size: 16px;
 }
 
+a:link, a:visited {
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}
+
+a:hover, a:active {
+	cursor: pointer;
+}
+
+a div {
+	color: white;
+}
+
+fieldset p {
+	color: white;
+}
+
 #header {
 	color: #FFFFFF;
 	width: 100%;
-	height: 50px;
 	background: linear-gradient(to top, #000000, #3A393B);
 	z-index: 0;
 }
 
+#header span {
+	margin: 20px;
+}
+
 #content-wrapper {
-	height: calc(100% - 100px);
+	/*min-height: calc(100% - 100px);*/
 	background: linear-gradient(to bottom, #3A393B, #696969 10%, #B7B6B8 100%, #B7B6B8 100%);
-	padding: 50px 50px 0px 50px;
+	padding: 50px;
 	z-index: 0;
 }
 
 #content {
-	height: 90%;
+	min-height: 90%;
 	background: #FFFFFF;
 	padding: 10px;
 	margin: 10px;
 }
-
 
 #login-form {
 	background-color: #363636;
@@ -147,7 +168,19 @@ body {
 	width: 20px;
 }
 
-p {
-    color: white;
+.button {
+	cursor: pointer;
+	background: linear-gradient(to top, #000000, #3A393B);
+	padding: 10px;
+	color: #FFFFFF;
+	max-width: 150px;
+	margin: 20px;
 }
 
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}

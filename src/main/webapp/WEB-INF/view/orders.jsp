@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">
     <script>
@@ -21,7 +22,18 @@
     </script>
 </head>
 <body>
-    <div id="header"></div>
+    <div id="header">
+        <a href="/dashboard">
+            <span>Dashboard</span>
+        </a>
+        <a href="/templates">
+            <span>Template</span>
+        </a>
+        <span>Welkom ${loggedInUser}</span>
+        <a href="/logout">
+            <span>Ultlogen</span>
+        </a>
+    </div>
     <div id="content-wrapper">
         <div id="content">
             <table align="center" id="table" class="display" cellspacing="0">
