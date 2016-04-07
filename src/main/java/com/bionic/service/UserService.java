@@ -1,5 +1,7 @@
 package com.bionic.service;
 
+import com.bionic.domain.User;
+
 public interface UserService {
-	public boolean isValidUser(String mail, String password);
+	public User getUser(String mail, String password);
 }

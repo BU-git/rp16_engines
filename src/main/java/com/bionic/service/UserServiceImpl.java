@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bionic.dao.UserDao;
+import com.bionic.domain.User;
 
 
 @Named
@@ -11,7 +12,7 @@ public class UserServiceImpl implements UserService {
 	@Inject
 	UserDao userDao;
 	
-	public boolean isValidUser(String mail, String password) {
-		return userDao.isValidUser(mail, password);
+	public User getUser(String mail, String password) {
+		return userDao.getUser(mail, password);
 	}
 }
