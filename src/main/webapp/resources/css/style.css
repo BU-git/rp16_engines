@@ -41,49 +41,47 @@ body {
   font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 }
-
-#login-form fieldset {
+#login-form fieldset input, #login-form fieldset{
 	border: none;
-	padding: 20px;
-	position: relative;
+}
+#login-form fieldset input{
+	padding: 6px 10px;
 }
 
+#login-form fieldset input, #login-form fieldset form {
+	margin-left: auto;
+	margin-right: auto;
+	width: 235px;
+}
 
-#login-form fieldset form {
-	overflow: hidden;
-	width: 270px;
+#login-form fieldset {
+	padding: 20px;
 }
 
 #login-form fieldset form input {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
-	outline: none;
+	/*outline: none;*/
   -webkit-appearance:none;
-  width: 260px;
   align: center;
   position: center;
-  
-
 }
 
-#login-form fieldset form input[type="email"] {
+.protip {
 	border: 1px solid #292829;
-	border-radius: 3px 3px 0px 0px;
-	-moz-border-radius: 3px 3px 0px 0px;
-	-webkit-border-radius: 3px 3px 0px 0px;
-	padding: 12px 10px;
-	width: 238px;
-  -webkit-appearance:none;
+	border-radius: 3px;
+	border-top: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+    -webkit-appearance:none;
 }
 
 #login-form fieldset form input[type="password"] {
 	border: 1px solid #292829;
 	border-top: none;
-	border-radius: 3px 3px 0px 0px;
-	-moz-border-radius: 0px 0px 3px 3px;
-	-webkit-border-radius: 0px 0px 3px 3px;
-	padding: 4px 10px;
-	width: 245px;
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px 3px 3px 3px;
+	-webkit-border-radius: 3px 3px 3px 3px;
   -webkit-appearance:none;
 }
 
@@ -100,24 +98,11 @@ body {
 	margin-top: 20px;
 	padding: 12px 12px;
   -webkit-appearance: none;
+	width: 235px;
 }
 
 #login-form fieldset form input[type="submit"]:hover {
 	background-color: #e0e0e0;
-}
-
-#login-form fieldset form span:before {
-	background-color: #c9c9c9;
-	border-radius: 50%;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	content: "?";
-	display: inline-block;
-	height: 20px;
-	line-height: 20px;
-	margin-right: 10px;
-	text-align: center;
-	width: 20px;
 }
 
 p {
