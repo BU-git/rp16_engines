@@ -10,11 +10,19 @@
 
 <body>
 <div id="header">
-    <span>Orderoverzicht</span>
-    <span>Maak template</span>
-    <span>Template overzicht</span>
-    <span>Welkom Bob van Holland</span>
-    <span>logout</span>
+    <a href="/orders" class="left">
+        <span>Orderoverzicht</span>
+    </a>
+    <a href="/templates" class="left">
+        <span>Maak template</span>
+    </a>
+    <a href="/404 error" class="left">
+        <span>Template overzicht</span>
+    </a>
+    <span style="text-align: center;">Welkom ${loggedInUser}</span>
+    <a href="/logout.html" class="right">
+        <span>logout</span>
+    </a>
 </div>
 <div id="content-wrapper">
     <div id="content">

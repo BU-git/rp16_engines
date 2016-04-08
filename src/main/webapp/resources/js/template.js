@@ -35,16 +35,18 @@ jQuery(function(){
         delete_click();
         console.log("count = " + count);
         selector = '#add_new' + count;
+        if(count > 1){
+            $(selector).click(function(){
+                console.log(count);
+                var selector = '#fantom'+count;
+                $(selector).empty();
+                count++;
+                drawContent();
+                enable_add_new(true);
+                accept_click();
+            });
+        }
 
-        $(selector).click(function(){
-            console.log(count);
-            var selector = '#fantom'+count;
-            $(selector).empty();
-            count++;
-            drawContent();
-            enable_add_new(true);
-            accept_click();
-        });
         selector = '#save' + count;
         $(selector).click(function(){
             var fields = [];

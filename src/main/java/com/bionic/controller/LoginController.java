@@ -7,11 +7,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.bionic.domain.User;
 import com.bionic.service.UserService;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("loggedInUser")
@@ -59,12 +59,5 @@ public class LoginController {
         sessionStatus.setComplete();
         return "login";
     }
-    @RequestMapping(value = "/templates", method = RequestMethod.GET)
-    public String templatesPage(ModelMap model) {
-	if (!model.containsAttribute("loggedInUser")) {
-		//model.addAttribute("message", "You need to be logged!");
-		return "redirect:login.html";
-	}
-		return "templates";
-    }
+
 }

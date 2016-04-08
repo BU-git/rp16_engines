@@ -178,3 +178,32 @@ body {
     font-family: 'Helvetica Neue', sans-serif;
     text-rendering: optimizeLegibility;
 }
+a:link, a:visited {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    cursor: pointer;
+}
+
+a div {
+    color: white;
+}
+
+fieldset p {
+    color: white;
+}
+
+#header {
+    color: #FFFFFF;
+    width: 100%;
+    background: linear-gradient(to top, #000000, #3A393B);
+    z-index: 0;
+}
+
+#header span {
+    margin: 20px;
+}
