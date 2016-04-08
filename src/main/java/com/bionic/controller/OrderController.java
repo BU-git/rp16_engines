@@ -8,12 +8,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 import java.sql.Blob;
 
 @Controller
+@SessionAttributes("loggedInUser")
 public class OrderController {
 
     @Inject
@@ -21,12 +24,18 @@ public class OrderController {
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAllOrders(ModelMap model) {
+        if (!model.containsAttribute("loggedInUser")) {
+            return "redirect:login.html";
+        }
         model.addAttribute("allOrders", service.findAllOrders());
         return "orders";
     }
 
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
     public String showOrder(@PathVariable("id") int id, ModelMap model) {
+        if (!model.containsAttribute("loggedInUser")) {
+            return "redirect:login.html";
+        }
         Order order = service.findById(id);
         model.addAttribute("order",order);
         return "order";
@@ -34,6 +43,9 @@ public class OrderController {
 
     @RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
     public String downloadOrder(@PathVariable int id, HttpServletResponse response, ModelMap model) {
+        if (!model.containsAttribute("loggedInUser")) {
+            return "redirect:login.html";
+        }
         Order order = service.findById(id);
         if (order != null) {
             try {
