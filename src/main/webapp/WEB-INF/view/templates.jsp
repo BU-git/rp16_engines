@@ -21,7 +21,7 @@
         <div id="container">
             <table class="middle" id="title"><tr><td><input id="template_name" placeholder="Template name" type="text"></td></tr></table>
             <div id="main_screen">
-                <table class="middle" id="table_header"><tr><th colspan="2">Added fields</th><th id="prev">Preview</th></tr></table>
+                <table class="middle" id="table_header"><tr><th colspan="2">Form Controls</th><th id="prev">Form Preview</th></tr></table>
                 <div id="battlefield"></div>
 
             </div>
