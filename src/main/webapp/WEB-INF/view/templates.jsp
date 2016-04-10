@@ -19,7 +19,7 @@
   <a href="/404 error" class="left">
     <span>Template overzicht</span>
   </a>
-  <span style="text-align: center;">Welkom ${loggedInUser}</span>
+  <span style="text-align: center;">Welkom ${loggedInUser.mail}</span>
   <a href="/logout.html" class="right">
     <span>logout</span>
   </a>
