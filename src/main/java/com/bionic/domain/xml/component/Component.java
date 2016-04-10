@@ -11,7 +11,7 @@ public final class Component {
     private int equnr;
     private String herst = "";
     private String typbz = "";
-    private int sernr;
+    private String sernr;
 
     @XmlElement(name = "EQART")
     public String getEqart() {
@@ -33,7 +33,7 @@ public final class Component {
         return typbz;
     }
     @XmlElement(name = "SERNR")
-    public int getSernr() {
+    public String getSernr() {
         return sernr;
     }
 
@@ -53,7 +53,7 @@ public final class Component {
         this.typbz = typbz;
     }
 
-    public void setSernr(int sernr) {
+    public void setSernr(String sernr) {
         this.sernr = sernr;
     }
 }

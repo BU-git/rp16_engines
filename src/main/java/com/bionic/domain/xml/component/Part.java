@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public final class Part {
 
-    private int bdmng;
+    private String bdmng;
     private String matnr;
     private String mattx;
 
     @XmlElement(name = "BDMNG")
-    public int getBdmng() {
+    public String getBdmng() {
         return bdmng;
     }
 
@@ -26,7 +26,7 @@ public final class Part {
         return mattx;
     }
 
-    public void setBdmng(int bdmng) {
+    public void setBdmng(String bdmng) {
         this.bdmng = bdmng;
     }
 

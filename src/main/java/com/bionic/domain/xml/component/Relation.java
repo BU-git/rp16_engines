@@ -12,10 +12,10 @@ public final class Relation {
     private String town;
     private String contactPerson;
     private String telephone;
-    private String number;
+    private int number;
 
     @XmlAttribute(name = "nummer")
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
@@ -52,7 +52,7 @@ public final class Relation {
         this.name = name;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 }
