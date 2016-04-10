@@ -1,174 +1,166 @@
-jQuery(function(){
+$(function(){
+    var field_to_be_inserted = "";
+    var edit_opened = 0;
     var removed = [];
-
     var count = 1;
-    var delete_click = function(){
-        var c = count;
-        var selector = "#delete"+c;
+    var text_field = $('#text_field');
+    var check_box = $('#check_box');
+    var text_area = $('#text_area');
+    var popup = $('#my_popup');
+    var edit_popup = $('#edit_popup');
+    edit_popup.popup({
+        onopen: function(){
+            $('.popup_area').val("");
+        },
+        closeelement: '.edit_popup_close',
+        openelement: '.edit_popup_open',
+        blur : false,
+        transition: 'all 0.3s'
+    });
+    // Initialize the plugin
+    popup.popup({
+        onopen: function(){
+            $('.popup_area').val("");
+            $('#add_to_form').prop("disabled", true);
+        },
+        blur : false,
+        transition: 'all 0.3s'
+    });
+    var hd = $('.hd');
+    text_field.click(function(){
+        hd.text("Add New Text Field");
+        field_to_be_inserted = "text field";
+        edit_delete_feature(777);
+    });
+    check_box.click(function(){
+        hd.text("Add New CheckBox");
+        field_to_be_inserted = "check box";
+        edit_delete_feature(777);
+    });
+    text_area.click(function(){
+        hd.text("Add New Text Area");
+        field_to_be_inserted = "text area";
+        edit_delete_feature(777);
+    });
+    // check for field description is not empty
+    var popup_area = $('#popup_area');
+    popup_area.bind('input propertychange',function(){
+        var add_to_form =  $('#add_to_form');
+        if(popup_area.val().length < 1) add_to_form.prop("disabled", true);
+        else add_to_form.prop("disabled", false);
+    });
+    //check for template name is not empty
+    var template_name = $('#template_name');
+    var save_button = $('#save_button');
+    var accept_button = $('#accept');
+    var edit_area = $('#edit_area');
+    var edit_button = $('#edit_button');
+    template_name.bind('input propertychange', function(){
+        check_template_is_not_empty();
+        check_for_fields_alive();
+    });
+    var check_template_is_not_empty = function(){
+        if(template_name.val().length < 1) save_button.prop("disabled", true);
+        else save_button.prop("disabled", false);
+    };
+    edit_area.bind('input propertychange',function(){
+        if(edit_area.val().length < 1)accept_button.prop("disabled", true);
+        else accept_button.prop("disabled", false);
+    });
+    $('#add_to_form').click(function(){
+        $('.prev').append('<tr class="row" id="row'+count+'" class="prev_element"><td>' +
+            '<button class="delete" id="delete'+count+'"></button><button class="edit_popup_open" id="edit'+count+'"></button></td>' +
+            '<td>'+getFieldType(field_to_be_inserted)+'<span hidden id="fieldType'+count+'">'+field_to_be_inserted+'</span></td></tr>');
+        $('.prev_element').fadeIn();
+        var selector = '#edit' +count;
+        edit_on_click(count, selector);
+        selector = '#delete' + count;
+        delete_on_click(count, selector);
+        count++;
+        check_for_fields_alive();
+    });
+    accept_button.click(function(){
+        var selector = '#fieldDescription' + edit_opened;
+        $(selector).text(edit_area.val());
+    });
+    var delete_on_click = function(number, selector){
         $(selector).click(function(){
-            if(removed.length + 1 < count){
-                console.log("removed.length" + removed.length);
-                selector = "#show" + c;
-                $(selector).fadeOut("slow");
-                removed.push(c);
-            }
+            selector = '#row' + number;
+            removed.push(number);
+            $(selector).remove();
+            check_for_fields_alive();
         });
     };
-    var ssave = function(){
-
-    };
-    var save = function(id){
-        var selector = 'button#save' + id;
-        return $(selector);
-    };
-    var drawContent = function(){
-        var selector = "#show" +count;
-        $('#battlefield').append('<div style="display: none" id="show'+count+'"><table id="element'+count+'"><tr><td><label>Field Type<select id="fieldType'+count+'">' +
-            '<option value="Text Field">Text Field</option><option value="CheckBox">CheckBox</option>' +
-            '<option value="Text Area">Text Area</option></select></label></td><td><button class="delete" disabled="disabled" id="delete'+count+'">Delete</button></td>' +
-            '<td><button class="accept" id="accept'+count+'">Accept</button></td><td class="preview" style="display: none" id="preview'+count+'" rowspan="2"></td></tr>' +
-            '<tr><td colspan="3"><label>Field description<textarea id="field_description'+count+'" rows="5" cols="35" class="label_description"></textarea></label></td></tr>' +
-            '<span id="sp' + count + '"hidden="hidden">enabled</span></table></div><div id="fantom'+count+'"><table class="middle"><tr>' +
-            '<td><button class="add_new" disabled = "disabled" id="add_new'+count+'">+</button></td></tr></table>' +
-            '<div class="save_form"><button disabled = "disabled" class="save" id="save'+count+'">Save</button></div></div> ');
-        $(selector).fadeIn("slow");
-        delete_click();
-        console.log("count = " + count);
-        selector = '#add_new' + count;
-        if(count > 1){
-            $(selector).click(function(){
-                console.log(count);
-                var selector = '#fantom'+count;
-                $(selector).empty();
-                count++;
-                drawContent();
-                enable_add_new(true);
-                accept_click();
-            });
+    var check_for_fields_alive = function(){
+        console.log("removed: " + removed.length + ', count: ' + (count-1));
+        if(removed.length == (count - 1)) {
+            save_button.prop("disabled", true);
+            edit_button.prop("disabled", true);
         }
-
-        selector = '#save' + count;
+        else {
+            check_template_is_not_empty();
+            edit_button.prop("disabled", false);
+        }
+    };
+    var edit_on_click = function(number, selector){
         $(selector).click(function(){
-            var fields = [];
-            var persons = [];
-            var p1 = {"name":"jde"};
-            persons.push(p1);
-            for(var i = 1; i<= count; i++){
-                var rm = false;
-                for(var k = 0; k< removed.length; k++){
-                    rm = (i== removed[k]);
-                }
-                if(!rm){
-                    var fieldType = '#fieldType' +i;
-                    fieldType = $(fieldType).val();
-                    var fieldValue = "#field_description" +i;
-                    fieldValue = $(fieldValue).val();
+            hd.text("Edit Element");
+            selector = '#fieldDescription' + number;
+            edit_opened = number;
+            edit_area.val($(selector).text());
+        });
+    };
+    var getFieldType = function(type){
+        var popup_area = $('#popup_area');
+        switch (type){
+            case "text field": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><input placeholder="Text Field" readonly class="textField" type="text">';
+            case "check box": return '<input checked class="checkBoxField" type="checkbox"><label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
+            case "text area": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><textarea rows="3" cols="45" readonly class="textArea" placeholder="Text Area"></textarea>';
+        }
+    };
+    var edit_delete_feature = function(fadeOut){
+        var delete_buttons = $('.delete');
+        var edit_popup_open_buttons = $('.edit_popup_open');
+        if(fadeOut == 777){
+            delete_buttons.fadeOut();
+            edit_popup_open_buttons.fadeOut();
+        }else{
+            delete_buttons.fadeToggle();
+            edit_popup_open_buttons.fadeToggle();
+        }
+    };
+    save_button.click(function(){
+        var fields = [];
+        for(var i=1; i <= count; i++){
+            var rm = false;
+            for(var k=0; k < removed.length; k++){
+                rm = (i== removed[k]);
+            }
+            if(!rm) {
+                var fieldType = '#fieldType' + i;
+                var fieldValue = '#fieldDescription' + i;
+                fieldType = $(fieldType).text();
+                fieldValue = $(fieldValue).text();
+                if (fieldType != undefined && fieldType.length > 0 && fieldValue != undefined) {
                     var field = {'fieldType': fieldType, 'fieldValue': fieldValue};
                     fields.push(field);
                 }
             }
-            fields = JSON.stringify({
-                'fields' : fields
-
-            });
-            $.ajax({
-                dataType: "html",
-                contentType: 'application/json',
-                mimeType: 'application/json',
-                type: "POST",
-                url:"/templates/save",
-                data: fields
-            });
-        });
-    };
-    var accept_click = function(){
-        var c = count;
-        var button = "#accept" + c;
-        $(button).click(function(){
-            var field_description = "#field_description" + c;
-            if($(field_description).val().length < 1) {
-                alert("Field description cannot be empty!!!");
-                return;
-            }
-            if(count == 1) $('#prev').fadeIn("slow");
-            var  selector = "#sp"+c;
-            var enabled = $(selector).text();
-            enabled = enabled != "disabled";
-            disableFormFields(c, enabled);
-            if(!enabled) {
-                $(selector).text("enabled");
-                $(button).text("Accept");
-            }
-            else{
-                $(button).text("Edit");
-                $(selector).text("disabled");
-            }
-            /*var field_description_last = "#field_description" + count;*/
-            enable_add_new(!enabled);
-            selector = "#fieldType" + c;
-            if(enabled) show_preview($(selector).val(), c);
-        });
-    };
-    var add_new = function(id){
-        var selector = 'button#add_new' + id;
-        return ($(selector));
-    };
-    drawContent();
-    accept_click();
-
-
-    add_new(count).click(function(){
-        var selector = '#fantom'+count;
-        $(selector).empty();
-        count++;
-        drawContent();
-        enable_add_new(true);
-        accept_click();
-    });
-
-
-    var show_preview = function(type, number){
-        var selectorPreview = "#preview" + number;
-        var fieldDescription = "#field_description" + number;
-        var preview_description= "#preview_description" + number;
-        fieldDescription = $(fieldDescription);
-        selectorPreview = $(selectorPreview);
-        preview_description =  $(preview_description);
-        switch (type){
-            case "Text Field":{
-                draw_preview('<input readonly class="text" type="text"/>',selectorPreview,preview_description,fieldDescription, number);
-                break;
-            }
-            case "CheckBox":{
-                draw_preview('<input readonly type="checkbox"/>', selectorPreview,preview_description,fieldDescription, number);
-                break;
-            }
-            case "Text Area":{
-                draw_preview('<textarea readonly rows="2" cols="25"></textarea>', selectorPreview,preview_description,fieldDescription, number);
-                break;
-            }
         }
-    };
-    var draw_preview = function (text, selectorPreview, preview_description, fieldDescription, number) {
-        selectorPreview.empty();
-        selectorPreview.append('<label><span id="preview_description'+number+'">'+fieldDescription.val()+'</span>'+text+'</<label>');
-        selectorPreview.fadeIn("slow");
-    };
-
-    var enable_add_new = function(enable){
-       /* console.log(count);*/
-        save(count).prop("disabled", enable);
-        add_new(count).prop("disabled", enable);
-    };
-    var disableFormFields = function(number, enabled){
-        var selector = "#fieldType" + number;
-        $(selector).prop("disabled", enabled);
-        selector = "#delete" + number;
-        $(selector).prop("disabled", !enabled);
-        selector = "#field_description" + number;
-        $(selector).prop("disabled", enabled);
-    };
-
-
-
+        fields = JSON.stringify({
+            'fields' : fields,
+            'templateName': template_name.val()
+        });
+        $.ajax({
+            dataType: "html",
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            type: "POST",
+            url:"/templates/save",
+            data: fields
+        });
+    });
+    edit_button.click(function(){
+        edit_delete_feature(111);
+    });
 });
