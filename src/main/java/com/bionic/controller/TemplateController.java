@@ -20,9 +20,8 @@ public class TemplateController {
 
     @RequestMapping(path = "/templates/save", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public String receiveTemplate(@RequestBody TemplateFieldList fields){
-        /*System.out.println("Template name: " + templateName);*/
         for(TemplateField f: fields.getFields()){
-            System.out.println("Field type: " + f.getFieldType() + ", field description: " + f.getFieldValue());
+            System.out.println("template name: "+fields.getTemplateName() + ", Field type: " + f.getFieldType() + ", field description: " + f.getFieldValue());
         }
         return "ok";
     }
