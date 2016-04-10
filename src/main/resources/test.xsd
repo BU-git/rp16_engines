@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Order">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="OrderType" type="xs:string"/>
+				<xs:element name="Relatie">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Naam" type="xs:string"/>
+							<xs:element name="Plaats" type="xs:string"/>
+							<xs:element name="ContactPersoon" type="xs:string"/>
+							<xs:element name="Telefoon">
+								<xs:complexType/>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="nummer" use="required" type="xs:short"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Medewerker">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Naam" type="xs:string"/>
+							<xs:element name="Email" type="xs:string"/>
+						</xs:sequence>
+						<xs:attribute name="nummer" use="required" type="xs:int"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Datum" type="xs:date"/>
+				<xs:element name="Referentie" type="xs:string"/>
+				<xs:element name="Installatie">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Naam" type="xs:string"/>
+							<xs:element name="Adres" type="xs:string"/>
+							<xs:element name="PostCode" type="xs:string"/>
+							<xs:element name="Plaats" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Taken">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Taak">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VORNR" type="xs:byte"/>
+										<xs:element name="LTXA1" type="xs:string"/>
+										<xs:element name="STEUS" type="xs:string"/>
+										<xs:element name="KTSCH" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Componenten">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Component" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="EQART" type="xs:string"/>
+										<xs:element name="EQUNR" type="xs:int"/>
+										<xs:element name="HERST" type="xs:string"/>
+										<xs:element name="TYPBZ" type="xs:string"/>
+										<xs:element name="SERNR" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Onderdelen">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Onderdeel" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BDMNG" type="xs:byte"/>
+										<xs:element name="MATNR" type="xs:string"/>
+										<xs:element name="MATTX" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Notitie" type="xs:string"/>
+				<xs:element name="ExtraInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Info" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SoortRegel" type="xs:string"/>
+										<xs:element name="PrePost" type="xs:string"/>
+										<xs:element name="Sleutel" type="xs:string"/>
+										<xs:element name="Regel" type="xs:byte"/>
+										<xs:element name="Omschrijving" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="nummer" use="required" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
