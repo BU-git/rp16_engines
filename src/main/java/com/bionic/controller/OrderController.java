@@ -25,7 +25,7 @@ public class OrderController {
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAllOrders(ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) {
-            return "redirect:login.html";
+            return "redirect:login";
         }
         model.addAttribute("allOrders", service.findAllOrders());
         return "orders";
@@ -34,7 +34,7 @@ public class OrderController {
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
     public String showOrder(@PathVariable("id") int id, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) {
-            return "redirect:login.html";
+            return "redirect:login";
         }
         Order order = service.findById(id);
         model.addAttribute("order",order);
@@ -44,7 +44,7 @@ public class OrderController {
     @RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
     public String downloadOrder(@PathVariable int id, HttpServletResponse response, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) {
-            return "redirect:login.html";
+            return "redirect:login";
         }
         Order order = service.findById(id);
         if (order != null) {

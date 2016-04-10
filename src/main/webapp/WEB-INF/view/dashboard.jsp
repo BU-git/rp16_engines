@@ -20,14 +20,14 @@
         <a href="/404 error" class="left">
             <span>Template overzicht</span>
         </a>
-        <span style="text-align: center;">Welkom ${loggedInUser}</span>
+        <span style="text-align: center;">Welkom ${loggedInUser.mail}</span>
         <a href="/logout.html" class="right">
             <span>logout</span>
         </a>
     </div>
     <div id="content-wrapper" style="height: calc(100% - 120px); text-align: center; align-content: center">
         <div id="content" style="text-align: center">
-            <p style="text-align: center">Welkom ${loggedInUser}</p>
+            <p style="text-align: center">Welkom ${loggedInUser.mail}</p>
 
             <a href="/orders" style="text-align: center; display: block">
                 <div class="button">Orderoverzicht</div>

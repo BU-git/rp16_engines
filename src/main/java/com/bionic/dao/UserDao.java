@@ -2,6 +2,8 @@ package com.bionic.dao;
 
 import com.bionic.domain.User;
 
+import java.util.List;
+
 public interface UserDao {
-	public User getUser(String mail, String password);
+	List<User> getUser(String mail, String password);
 }
