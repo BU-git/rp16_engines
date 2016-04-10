@@ -25,7 +25,10 @@ public class TemplateController {
     }
 
     @RequestMapping(path = "/templates/save", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public String receiveTemplate(@RequestBody TemplateFieldList fields){
+    public String receiveTemplate(@RequestBody TemplateFieldList fields, ModelMap model){
+        if (!model.containsAttribute("loggedInUser")) {
+            return "redirect:login";
+        }
         for(TemplateField f: fields.getFields()){
             System.out.println("template name: "+fields.getTemplateName() + ", Field type: " + f.getFieldType() + ", field description: " + f.getFieldValue());
         }
