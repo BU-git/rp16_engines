@@ -4,7 +4,7 @@
 <head>
   <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
   <script src="<c:url value="/resources/js/template.js"/>"></script>
-  <script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
   <link href="<c:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
   <title>Make template</title>
 </head>
