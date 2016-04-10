@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class TemplateController {
 
     @RequestMapping(value = "/templates", method = RequestMethod.GET)
-    public String makeTemplate(ModelMap model){
+    public String templatesPage(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) {
             return "redirect:login";
         }

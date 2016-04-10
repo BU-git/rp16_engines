@@ -1,7 +1,6 @@
 package com.bionic.controller;
 
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,29 +22,32 @@ public class LoginController {
 	private UserService userService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String displayLogin(@ModelAttribute User user, ModelMap model) {
-		model.addAttribute("user", user);
+	public String displayLogin(ModelMap model) {
+		if (model.containsAttribute("loggedInUser")) {
+			return "dashboard";
+		}
+		model.addAttribute("user", new User());
 		return "login";
 	}
-	
+
 	@ModelAttribute
 	public User createUser() {
 		return new User();
 	}
 	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
-	public String login(@ModelAttribute("user")User user, ModelMap model) {
+	public String authorization(@ModelAttribute("user")User user, ModelMap model) {
 		List<User> list = userService.getUser(user.getMail(), user.getPassword());
-		if(!list.isEmpty()){
+		if (!list.isEmpty()) {
 			model.addAttribute("loggedInUser", list.get(0));
 			return "dashboard";
-		}
-		else {
+		} else {
 			String message = "Invalid credentials!";
 			model.addAttribute("message", message);
 			return "login";
 		}
 	}
+
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public String dashboardPage(ModelMap model) {
@@ -56,7 +58,8 @@ public class LoginController {
     }
 
     @RequestMapping("/logout")
-    public String logOut (SessionStatus sessionStatus){
+    public String logOut (SessionStatus sessionStatus, ModelMap model) {
+		model.clear();
         sessionStatus.setComplete();
         return "redirect:login";
     }

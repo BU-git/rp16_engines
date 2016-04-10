@@ -265,7 +265,7 @@
           <version>2.4</version>
           <configuration>
             <warSourceDirectory>src/main/webapp</warSourceDirectory>
-            <warName>KVT Serviceapp</warName>
+            <warName>KVT</warName>
             <failOnMissingWebXml>false</failOnMissingWebXml>
           </configuration>
         </plugin>
