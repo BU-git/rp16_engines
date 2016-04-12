@@ -31,7 +31,7 @@ public final class Relation {
     public String getContactPerson() {
         return contactPerson;
     }
-    @XmlElement(name = "Telephone")
+    @XmlElement(name = "Telephone", defaultValue = "")
     public String getTelephone() {
         return telephone;
     }

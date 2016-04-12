@@ -10,8 +10,8 @@
 							<xs:element name="Naam" type="xs:string"/>
 							<xs:element name="Plaats" type="xs:string"/>
 							<xs:element name="ContactPersoon" type="xs:string"/>
-							<xs:element name="Telefoon">
-								<xs:complexType/>
+							<xs:element name="Telefoon" type="xs:string">
+
 							</xs:element>
 						</xs:sequence>
 						<xs:attribute name="nummer" use="required" type="xs:short"/>
@@ -22,6 +22,7 @@
 						<xs:sequence>
 							<xs:element name="Naam" type="xs:string"/>
 							<xs:element name="Email" type="xs:string"/>
+							<xs:element name="Kenteken" type="xs:string" minOccurs="0" maxOccurs="1"/>
 						</xs:sequence>
 						<xs:attribute name="nummer" use="required" type="xs:int"/>
 					</xs:complexType>
@@ -41,7 +42,7 @@
 				<xs:element name="Taken">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="Taak">
+							<xs:element name="Taak" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="VORNR" type="xs:byte"/>
@@ -61,10 +62,17 @@
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="EQART" type="xs:string"/>
-										<xs:element name="EQUNR" type="xs:int"/>
+										<xs:element name="EQUNR" type="xs:int" default="0"/>
 										<xs:element name="HERST" type="xs:string"/>
 										<xs:element name="TYPBZ" type="xs:string"/>
 										<xs:element name="SERNR" type="xs:string"/>
+										<xs:element name="BAUJJ"  minOccurs="0" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="0"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -74,7 +82,7 @@
 				<xs:element name="Onderdelen">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="Onderdeel" maxOccurs="unbounded">
+							<xs:element name="Onderdeel" maxOccurs="unbounded" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="BDMNG" type="xs:byte"/>
@@ -90,7 +98,7 @@
 				<xs:element name="ExtraInfo">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="Info" maxOccurs="unbounded">
+							<xs:element name="Info" maxOccurs="unbounded" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="SoortRegel" type="xs:string"/>

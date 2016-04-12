@@ -45,7 +45,7 @@ public class OrderXml {
     public String getNote() {
         return note;
     }
-
+    final Part p = new Part();
     @XmlElementWrapper(name = "Onderdelen")
     @XmlElement(name = "Onderdeel", type = Part.class)
     public List<Part> getParts() {

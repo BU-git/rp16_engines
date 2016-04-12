@@ -18,8 +18,8 @@ public class Test {
     public static void main(String[] args) throws IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         Test test = (Test) context.getBean("test");
-        String name = "valid.xml";
+        String name = "src/main/resources/xml/4014521.xml";
         OrderXml order = test.xmlFileReader.convertFromXMLToObject(name);
-        if(order != null) System.out.println(order.getExtraInfo().get(0).getDescription());
+        if(order != null) /*System.out.println(order.getParts());*/;
     }
 }

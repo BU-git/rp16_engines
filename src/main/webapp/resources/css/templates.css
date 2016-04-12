@@ -12,8 +12,9 @@
 label{
     word-wrap: break-word;
 }
-#footer{
-    padding: 0px;
+textarea{
+    border-radius: 4px;
+    border: solid 1px #A8A8A8;
 }
 #main_table button, #text_area_form_controls, .prev textarea{
     outline: none;
@@ -22,7 +23,7 @@ label{
     margin-left: 30px;
 }
 .textField, input.form_controls[type = "text"]{
-    height: 25px;
+    height: 32px;
     padding: 10px;
 }
 
@@ -47,7 +48,7 @@ button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open
     height: 32px;
 }
 .prev td{
-    text-align: justify;
+    text-align: left;
     max-width: 400px;
 }
 .edit_popup_open, .delete{
@@ -181,12 +182,12 @@ ul li{
     height: 55px;
 }
 .hd_main, .hd{
+    padding-bottom: 10px;
     border-radius: 2px 2px 0px 0px;
     text-transform: uppercase;
     text-align: center;
     color: white;
     width: 100%;
-
     background-color: #35343B;
 }
 #main_screen{
@@ -197,7 +198,7 @@ ul li{
 }
 #main_table{
     width: 80%;
-    height: 100%;
+    max-height: calc(100% - 200px);
 }
 #main_table td {
    /* border: solid 1px black;*/
@@ -214,8 +215,12 @@ ul li{
 }
 #first_th{
     width: 20%;
+    height: 20px;
+    max-height: 50px;
 }
 #second_th{
+    height: 20px;
+    max-height: 50px;
     width: 60%;
     min-width: 600px;
 }
@@ -229,9 +234,6 @@ ul{
     margin-top: 10%;
 }
 
-textarea{
-    border-radius: 4px;
-}
 input[type='text']{
     border-radius: 4px;
     border: 1px solid #AAAAB3;
@@ -244,7 +246,7 @@ input#template_name[type='text']:focus{
 }
 
 #content {
-    height: 90%;
+    height: 95%;
     background: #FFFFFF
 }
 body {
@@ -269,18 +271,18 @@ button#add_to_form, button#accept{
 #header {
     color: #FFFFFF;
     width: 100%;
-
     height: 50px;
     background: linear-gradient(to top, #000000, #3A393B);
     z-index: 0;
 }
 
 #content-wrapper {
-    height: calc(100% - 50px);
+    height: calc(100% - 20px);
+    max-height: 613px;
+    min-width: 890px;
     background: linear-gradient(to bottom, #3A393B, #696969 10%, #B7B6B8 100%, #B7B6B8 100%);
-    overflow: auto;
     padding: 50px 50px 0 50px;
-    z-index: 0;
+    /*z-index: 0;*/
 }
 
 #content {
@@ -315,6 +317,7 @@ fieldset p {
 #header {
     color: #FFFFFF;
     width: 100%;
+    min-width: 890px;
     background: linear-gradient(to top, #000000, #3A393B);
     z-index: 0;
 }
@@ -324,11 +327,12 @@ fieldset p {
 }
 input#template_name{
     margin-top: 0;
+    margin-bottom: 15px;
     font-family: 'Calibri', serif;
     letter-spacing: 2px;
     color: #414252;
     width: 500px;
-    height: 30px;
+    height: 40px;
     font-size: 19px;
     padding: 6px;
 }

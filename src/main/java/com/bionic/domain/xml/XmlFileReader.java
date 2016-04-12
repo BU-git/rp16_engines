@@ -4,6 +4,7 @@ package com.bionic.domain.xml;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -47,7 +48,7 @@ public class XmlFileReader {
 
     public OrderXml convertFromXMLToObject(String xmlfile) throws IOException {
         Jaxb2Marshaller unmarshaller = (Jaxb2Marshaller) getUnmarshaller();
-        try (FileInputStream fis = new FileInputStream(xmlfile)) {
+        try (InputStream fis = new FileInputStream(xmlfile)) {
             unmarshaller.afterPropertiesSet();
             return (OrderXml) getUnmarshaller().unmarshal(new StreamSource(fis));
         } catch (Exception e) {
