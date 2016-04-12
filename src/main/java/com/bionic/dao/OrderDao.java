@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface OrderDao {
 
-    Order findById(int id);
+    Order findById(long id);
     List<Order> findAllOrders();
     Blob createBlob(MultipartFile file);
+
+    void createOrder(Order order);
 }

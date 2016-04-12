@@ -34,7 +34,7 @@
     <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="classesToBeBound">
             <list>
-                <value>com.bionic.domain.xml.OrderXml</value>
+                <value>com.bionic.domain.Order</value>
             </list>
         </property>
         <property name="schema" value="classpath:test.xsd" />
@@ -43,7 +43,6 @@
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-
         <property name="packagesToScan" value="com.bionic" />
         <property name="jpaProperties">
             <props>
@@ -65,7 +64,6 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 

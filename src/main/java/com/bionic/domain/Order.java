@@ -1,75 +1,236 @@
 package com.bionic.domain;
 
-import javax.persistence.*;
 import java.sql.Blob;
-import java.sql.Date;
+import java.util.Date;
+import java.util.List;
+import java.sql.Timestamp;
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import com.bionic.domain.component.Component;
+import com.bionic.domain.component.Employee;
+import com.bionic.domain.component.Info;
+import com.bionic.domain.component.Installation;
+import com.bionic.domain.component.Part;
+import com.bionic.domain.component.Relation;
+import com.bionic.domain.component.Task;
 
 @Entity
 @Table(name = "ORDERS")
-@SequenceGenerator(name = "sequence", sequenceName = "ORDER_SEQ", allocationSize = 1, initialValue = 1)
+@XmlRootElement(name = "Order")
 public class Order {
 
     @Id
-    /*@Column(name = "ORDER_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence")
-    private Long id;*/
-    @Column(name = "ORDER_NUMBER")
-    private Integer orderNumber;
+    private long number;
+    private String orderType;
+    private Date date;
+    private String reference;
+    private String note;
 
-    @Column(name = "SERVICE_DATE")
-    private Date serviceDate;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Relation relation;
 
-    @Column(name = "ORDER_TASK")
-    private String task;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Employee employee;
 
-    @Column(name = "ORDER_ADDRESS")
-    private String address;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Installation installation;
 
-    @Column(name = "ORDER_INSTALLATION")
-    private String installation;
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Task> tasks;
 
-    @Column(name = "ORDER_DONE")
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Component> components;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Part> parts;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Info> extraInfo;
+
+    // Service fields
+
+    /**
+     * This is time when this order was imported to BO Server.
+     * After import it never changed.
+     * NotNull
+     */
+    private Timestamp importTimestamp;
+
+    /**
+     * This is time when this order was changed in BO Server.
+     * If order changed in BO this field has to be updated.
+     * This field will be used by Android App to check if order has to be updated from server.
+     * When order is imported to BO Server this time is set the same value as lastServerChangeTimestamp
+     * This field will NOT changed in Android App.
+     * NotNull
+     */
+    private Timestamp lastServerChangeTimestamp;
+
+    /**
+     * This is time when this order was changed in Android.
+     * If order changed in Android App this field has to be updated.
+     * This field will be used by Android App to check if order need to be updated to server.
+     * This field will NOT changed in BO Server.
+     * When order is imported to BO Server this time is set the same value as lastServerChangeTimestamp
+     * NotNull
+     */
+    private Timestamp lastAndroidChangeTimestamp;
+
+    /**
+     * boolean flag is needed for showing a red cross or a green check mark. true - if order is done.
+     */
     private boolean done;
 
-    @Lob
-    @Column(name = "BOOK_PDF")
-    private Blob pdf;
+    /*@Lob
+    private Blob pdf;*/
 
-    public Order() {
 
+    @XmlElementWrapper(name = "ExtraInfo")
+    @XmlElement(name = "Info", type = Info.class)
+    public List<Info> getExtraInfo() {
+        return extraInfo;
     }
 
-    public Integer getOrderNumber() {
-        return orderNumber;
+    @XmlElement(name = "Notitie")
+    public String getNote() {
+        return note;
     }
 
-    public void setOrderNumber(Integer orderNumber) {
-        this.orderNumber = orderNumber;
+    @XmlElementWrapper(name = "Onderdelen")
+    @XmlElement(name = "Onderdeel", type = Part.class)
+    public List<Part> getParts() {
+        return parts;
     }
 
-    public Date getServiceDate() {
-        return serviceDate;
+    @XmlElementWrapper(name = "Componenten")
+    @XmlElement(name = "Component", type = Component.class)
+    public List<Component> getComponents() {
+        return components;
     }
 
-    public void setServiceDate(Date serviceDate) {
-        this.serviceDate = serviceDate;
+    @XmlElementWrapper(name = "Taken")
+    @XmlElement(name = "Taak", type = Task.class)
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public String getTask() {
-        return task;
+    @XmlElement(name = "Installatie", type = Installation.class)
+    public Installation getInstallation() {
+        return installation;
     }
 
-    public void setTask(String task) {
-        this.task = task;
+    @XmlElement(name = "Referentie")
+    public String getReference() {
+        return reference;
     }
 
-    public String getAddress() {
-        return address;
+    @XmlElement(name = "Datum")
+    public Date getDate() {
+        return date;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    @XmlElement(name = "Medewerker", type = Employee.class)
+    public Employee getEmployee() {
+        return employee;
     }
+
+    @XmlElement(name = "Relatie", type = Relation.class)
+    public Relation getRelation() {
+        return relation;
+    }
+
+    @XmlAttribute(name = "nummer")
+    public long getNumber() {
+        return number;
+    }
+
+    @XmlElement(name = "OrderType")
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setNumber(long number) {
+        this.number = number;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
+    }
+
+    public void setRelation(Relation relation) {
+        this.relation = relation;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public void setInstallation(Installation installation) {
+        this.installation = installation;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public void setComponents(List<Component> components) {
+        this.components = components;
+    }
+
+    public void setParts(List<Part> parts) {
+        this.parts = parts;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public void setExtraInfo(List<Info> extraInfo) {
+        this.extraInfo = extraInfo;
+    }
+
+    public Timestamp getImportTimestamp() {
+        return importTimestamp;
+    }
+
+    public void setImportTimestamp(Timestamp importTimestamp) {
+        this.importTimestamp = importTimestamp;
+    }
+
+    public Timestamp getLastServerChangeTimestamp() {
+        return lastServerChangeTimestamp;
+    }
+
+    public void setLastServerChangeTimestamp(Timestamp lastServerChangeTimestamp) {
+        this.lastServerChangeTimestamp = lastServerChangeTimestamp;
+    }
+
+    public Timestamp getLastAndroidChangeTimestamp() {
+        return lastAndroidChangeTimestamp;
+    }
+
+    public void setLastAndroidChangeTimestamp(Timestamp lastAndroidChangeTimestamp) {
+        this.lastAndroidChangeTimestamp = lastAndroidChangeTimestamp;
+    }
+
+   /* public Blob getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(Blob pdf) {
+        this.pdf = pdf;
+    }*/
 
     public boolean isDone() {
         return done;
@@ -78,20 +239,6 @@ public class Order {
     public void setDone(boolean done) {
         this.done = done;
     }
-
-    public String getInstallation() {
-        return installation;
-    }
-
-    public void setInstallation(String installation) {
-        this.installation = installation;
-    }
-
-    public Blob getPdf() {
-        return pdf;
-    }
-
-    public void setPdf(Blob pdf) {
-        this.pdf = pdf;
-    }
 }
+
+

@@ -1,6 +1,8 @@
 package com.bionic.controller;
 
 import javax.inject.Inject;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;

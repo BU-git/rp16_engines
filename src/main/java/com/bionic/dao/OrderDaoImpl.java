@@ -4,6 +4,7 @@ import com.bionic.domain.Order;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityManager;
@@ -16,12 +17,11 @@ import java.util.List;
 @Repository
 public class OrderDaoImpl implements OrderDao {
 
-
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public Order findById(int id) {
+    public Order findById(long id) {
         return em.find(Order.class, id);
     }
 
@@ -41,5 +41,12 @@ public class OrderDaoImpl implements OrderDao {
             e.printStackTrace();
         }
         return blob;
+    }
+
+    @Override
+    @Transactional
+    public void createOrder(Order order) {
+        em.merge(order);
+       // em.persist(order);
     }
 }

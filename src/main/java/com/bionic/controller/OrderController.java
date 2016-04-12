@@ -1,8 +1,9 @@
 package com.bionic.controller;
 
 import com.bionic.domain.Order;
+import com.bionic.domain.xml.XmlFileReader;
 import com.bionic.service.OrderService;
-import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,15 +13,17 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
-import java.io.OutputStream;
-import java.sql.Blob;
+import java.io.IOException;
 
 @Controller
 @SessionAttributes("loggedInUser")
 public class OrderController {
 
-    @Inject
+    @Autowired
     private OrderService service;
+
+    @Autowired
+    private XmlFileReader xmlFileReader;
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAllOrders(ModelMap model) {
@@ -32,7 +35,7 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
-    public String showOrder(@PathVariable("id") int id, ModelMap model) {
+    public String showOrder(@PathVariable("id") long id, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) {
             return "redirect:login";
         }
@@ -42,14 +45,14 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
-    public String downloadOrder(@PathVariable int id, HttpServletResponse response, ModelMap model) {
-        if (!model.containsAttribute("loggedInUser")) {
+    public String downloadOrder(@PathVariable long id, HttpServletResponse response, ModelMap model) {
+       /* if (!model.containsAttribute("loggedInUser")) {
             return "redirect:login";
         }
         Order order = service.findById(id);
         if (order != null) {
             try {
-                response.setHeader("Content-Disposition", "inline;filename=\"" + order.getOrderNumber() + "\"");
+                response.setHeader("Content-Disposition", "inline;filename=\"" + order.getNumber() + "\"");
                 OutputStream out = response.getOutputStream();
                 Blob pdf = order.getPdf();
                 if (pdf != null) {
@@ -62,8 +65,21 @@ public class OrderController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         return null;
         //return "orders";
     }
+/*
+    @RequestMapping(value = "/new")
+    public String newOrder(){
+        try {
+            Order order = xmlFileReader.convertFromXMLToObject("C:\\Users\\fan\\Desktop\\BionicProjectDocs\\xml\\4013299.xml");
+            System.out.println(order.getDate());
+            System.out.println(order.getEmployee().getName());
+            service.createOrder(order);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }*/
 }
