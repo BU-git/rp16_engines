@@ -41,6 +41,13 @@ public class OrderBrief {
     public OrderBrief() {
     }
 
+    public OrderBrief(long number, Timestamp importTimestamp, Timestamp lastServerChangeTimestamp, Timestamp lastAndroidChangeTimestamp) {
+        this.number = number;
+        this.importTimestamp = importTimestamp;
+        this.lastServerChangeTimestamp = lastServerChangeTimestamp;
+        this.lastAndroidChangeTimestamp = lastAndroidChangeTimestamp;
+    }
+
     public Timestamp getLastAndroidChangeTimestamp() {
         return lastAndroidChangeTimestamp;
     }

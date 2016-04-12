@@ -1,6 +1,7 @@
 package com.bionic.service;
 
 import com.bionic.dao.UserDao;
+import com.bionic.domain.Order;
 import com.bionic.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

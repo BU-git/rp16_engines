@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.inject.Named;
 
+import com.bionic.domain.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,7 +20,7 @@ public class Test {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         Test test = (Test) context.getBean("test");
         String name = "src/main/resources/xml/4014521.xml";
-        OrderXml order = test.xmlFileReader.convertFromXMLToObject(name);
+        Order order = test.xmlFileReader.convertFromXMLToObject(name);
         if(order != null) /*System.out.println(order.getParts());*/;
     }
 }
