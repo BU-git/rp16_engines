@@ -58,19 +58,19 @@
                                 <c:if test="${order.done == false}">
                                     <img src="../../resources/images/no.png">
                                 </c:if>
-                                <c:out value="${order.orderNumber}"/>
+                                <c:out value="${order.number}"/>
                             </td>
-                            <td><c:out value="${order.serviceDate}"/></td>
-                            <td><c:out value="${order.installation}"/></td>
-                            <td><c:out value="${order.task}"/></td>
-                            <td><c:out value="${order.address}"/></td>
+                            <td><c:out value="${order.date}"/></td>
+                            <td><c:out value="${order.installation.name}"/></td>
+                            <td><c:out value="${order.tasks}"/></td>
+                            <td><c:out value="${order.relation.town}"/></td>
                             <td>
-                                <a href="/orders/${order.orderNumber}">
+                                <a href="/orders/${order.number}">
                                     <img src="../../resources/images/info.png">
                                 </a>
                             </td>
                             <td>
-                                <a href="/orders/download/${order.orderNumber}">
+                                <a href="/orders/download/${order.number}">
                                     <img src="../../resources/images/pdf.png">
                                 </a>
                             </td>

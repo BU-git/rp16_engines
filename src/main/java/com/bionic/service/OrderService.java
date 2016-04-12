@@ -7,7 +7,8 @@ import java.sql.Blob;
 import java.util.List;
 
 public interface OrderService {
-    Order findById(int id);
+    Order findById(long id);
     List<Order> findAllOrders();
     Blob createBlob(MultipartFile file);
+    void createOrder(Order order);
 }

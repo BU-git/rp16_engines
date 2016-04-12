@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Order ${order.orderNumber}</title>
+    <title>Order ${order.number}</title>
     <link href="<c:url value="/resources/css/order.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -17,7 +17,7 @@
     </div>
     <div id="content-wrapper">
       <div id="content">
-			<p>Order №${order.orderNumber} information</p>
+			<p>Order №${order.number} information</p>
 			 <table align="center" id="table" class="display" cellspacing="0">
                 <thead>
                     <tr>
@@ -38,11 +38,11 @@
                                     <img src="../../resources/images/no.png">
                                 </c:if>
                             </td>
-                            <td><c:out value="${order.orderNumber}"/></td>
-                            <td><c:out value="${order.serviceDate}"/></td>
-                            <td><c:out value="${order.installation}"/></td>
-                            <td><c:out value="${order.task}"/></td>
-                            <td><c:out value="${order.address}"/></td>
+                            <td><c:out value="${order.number}"/></td>
+                            <td><c:out value="${order.date}"/></td>
+                            <td><c:out value="${order.installation.name}"/></td>
+                            <td><c:out value="${order.tasks}"/></td>
+                            <td><c:out value="${order.relation.town}"/></td>
                         </tr>
                 </tbody>
             </table>

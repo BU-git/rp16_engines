@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Order nummer="4008692">
+    <OrderType>SM04</OrderType>
+    <Relatie nummer="28869">
+        <Naam>SPORTLED NEDERLAND B.V.</Naam>
+        <Plaats>AMSTERDAM</Plaats>
+        <ContactPersoon>F. Aerts</ContactPersoon>
+        <Telefoon></Telefoon>
+    </Relatie>
+    <Medewerker nummer="10000046">
+        <Naam>Rooij R. van</Naam>
+        <Email>rvrooy@kvt.nl</Email>
+    </Medewerker>
+    <Datum>2015-03-13</Datum>
+    <Referentie>getekend contract</Referentie>
+    <Installatie>
+        <Naam>SportLed Trailer 26</Naam>
+        <Adres>Joop Geesinkweg 126</Adres>
+        <PostCode>1096 AT</PostCode>
+        <Plaats>Amsterdam</Plaats>
+    </Installatie>
+    <Taken>
+        <Taak>
+            <VORNR>0010</VORNR>
+            <LTXA1>Serviceonderhoud noodstroominstallatie</LTXA1>
+            <STEUS>SM01</STEUS>
+            <KTSCH>SP01</KTSCH>
+        </Taak>
+    </Taken>
+    <Componenten>
+        <Component>
+            <EQART>SET</EQART>
+            <EQUNR>10003702</EQUNR>
+            <HERST>Himoinsa</HERST>
+            <TYPBZ>HWF-200 T5</TYPBZ>
+            <SERNR>10003702</SERNR>
+        </Component>
+        <Component>
+            <EQART>DMTR</EQART>
+            <EQUNR>10003700</EQUNR>
+            <HERST>Iveco</HERST>
+            <TYPBZ>NEF67 TE 2A</TYPBZ>
+            <SERNR></SERNR>
+        </Component>
+        <Component>
+            <EQART>GEN</EQART>
+            <EQUNR>10003701</EQUNR>
+            <HERST>Divers</HERST>
+            <TYPBZ></TYPBZ>
+            <SERNR></SERNR>
+        </Component>
+    </Componenten>
+    <Onderdelen>
+        <Onderdeel>
+            <BDMNG>1</BDMNG>
+            <MATNR>AO-1C8500</MATNR>
+            <MATTX>MOBIL DELVAC  MX 15W40 20 LITER CAN</MATTX>
+        </Onderdeel>
+        <Onderdeel>
+            <BDMNG>1</BDMNG>
+            <MATNR>AO-12AFS19821</MATNR>
+            <MATTX>WATERSEPARATOR</MATTX>
+        </Onderdeel>
+        <Onderdeel>
+            <BDMNG>1</BDMNG>
+            <MATNR>AO-12ALF16015</MATNR>
+            <MATTX>OLIEFILTER</MATTX>
+        </Onderdeel>
+        <Onderdeel>
+            <BDMNG>1</BDMNG>
+            <MATNR>AO-12AFF5485</MATNR>
+            <MATTX>BRANDSTOFFILTER</MATTX>
+        </Onderdeel>
+    </Onderdelen>
+    <Notitie>graag gegevens aanvullen
+
+        voor code cijfersloten Lex van der Kade 065138 6097</Notitie>
+    <ExtraInfo>
+        <Info>
+            <SoortRegel>D</SoortRegel>
+            <PrePost>PR</PrePost>
+            <Sleutel>28869</Sleutel>
+            <Regel>1</Regel>
+            <Omschrijving>Extra debiteur info</Omschrijving>
+        </Info>
+        <Info>
+            <SoortRegel>C</SoortRegel>
+            <PrePost>PR</PrePost>
+            <Sleutel>40001353</Sleutel>
+            <Regel>1</Regel>
+            <Omschrijving>extra contractinfo</Omschrijving>
+        </Info>
+        <Info>
+            <SoortRegel>A</SoortRegel>
+            <PrePost>PO</PrePost>
+            <Sleutel>GENERATOR</Sleutel>
+            <Regel>1</Regel>
+            <Omschrijving>extra artikel info generator</Omschrijving>
+        </Info>
+        <Info>
+            <SoortRegel>A</SoortRegel>
+            <PrePost>PR</PrePost>
+            <Sleutel>GENERATORSET</Sleutel>
+            <Regel>1</Regel>
+            <Omschrijving>extra artikel info GENERATORSET</Omschrijving>
+        </Info>
+        <Info>
+            <SoortRegel>A</SoortRegel>
+            <PrePost>PR</PrePost>
+            <Sleutel>DIESELMOTOR</Sleutel>
+            <Regel>1</Regel>
+            <Omschrijving>extra infor DIESELMOTOR</Omschrijving>
+        </Info>
+        <Info>
+            <SoortRegel>E</SoortRegel>
+            <PrePost>PO</PrePost>
+            <Sleutel>10003702</Sleutel>
+            <Regel>1</Regel>
+            <Omschrijving>extra equipment info</Omschrijving>
+        </Info>
+    </ExtraInfo>
+</Order>
+

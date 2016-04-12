@@ -2,6 +2,7 @@ package com.bionic.service;
 
 import com.bionic.dao.OrderDao;
 import com.bionic.domain.Order;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,14 +12,13 @@ import java.sql.Blob;
 import java.util.List;
 
 @Service
-@Transactional
 public class OrderServiceImpl implements OrderService{
 
-    @Inject
+    @Autowired
     private OrderDao orderDao;
 
     @Override
-    public Order findById(int id) {
+    public Order findById(long id) {
         return orderDao.findById(id);
     }
 
@@ -30,5 +30,11 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Blob createBlob(MultipartFile file) {
         return orderDao.createBlob(file);
+    }
+
+    @Transactional
+    @Override
+    public void createOrder(Order order) {
+        orderDao.createOrder(order);
     }
 }

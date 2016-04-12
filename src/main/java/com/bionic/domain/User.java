@@ -7,31 +7,46 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
+@Table(name="USERS")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String mail;
+	private long id;
+	private String name;
+	private String email;
 	private String password;
 	
 	public User() { }
 
-	public int getId() {
+	public User(String name, String mail, String password) {
+		this.name = name;
+		this.email = mail;
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
 	public String getMail() {
-		return mail;
+		return email;
 	}
 
 	public void setMail(String mail) {
-		this.mail = mail;
+		this.email = mail;
 	}
 
 	public String getPassword() {
@@ -41,6 +56,4 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 }

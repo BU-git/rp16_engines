@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import com.bionic.domain.Order;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.Unmarshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -45,11 +46,11 @@ public class XmlFileReader {
         }
     }
 
-    public OrderXml convertFromXMLToObject(String xmlfile) throws IOException {
+    public Order convertFromXMLToObject(String xmlfile) throws IOException {
         Jaxb2Marshaller unmarshaller = (Jaxb2Marshaller) getUnmarshaller();
         try (FileInputStream fis = new FileInputStream(xmlfile)) {
             unmarshaller.afterPropertiesSet();
-            return (OrderXml) getUnmarshaller().unmarshal(new StreamSource(fis));
+            return (Order) getUnmarshaller().unmarshal(new StreamSource(fis));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
