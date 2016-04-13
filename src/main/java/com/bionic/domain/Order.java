@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.sql.Timestamp;
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -16,8 +19,7 @@ import com.bionic.domain.component.Installation;
 import com.bionic.domain.component.Part;
 import com.bionic.domain.component.Relation;
 import com.bionic.domain.component.Task;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.*;
 
 @Entity
 @Table(name = "ORDERS")
@@ -34,7 +36,7 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL)
     private Relation relation;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Employee employee;
 
     @OneToOne(cascade = CascadeType.ALL)
