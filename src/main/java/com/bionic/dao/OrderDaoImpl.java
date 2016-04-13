@@ -2,6 +2,7 @@ package com.bionic.dao;
 
 import com.bionic.domain.Order;
 import com.bionic.domain.OrderBrief;
+import com.bionic.domain.component.Employee;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -55,7 +56,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<OrderBrief> getBriefOrdersForUser(String email) {
-        TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o WHERE LOWER(o.employee.email) = :email ", Order.class);
+        TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o WHERE LOWER(o.employee.email) LIKE :email", Order.class);
         query.setParameter("email", email.toLowerCase());
         List<Order> orders = query.getResultList();
         return orders.stream().map(o -> new OrderBrief(o.getNumber(),
@@ -65,12 +66,20 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public Order getOrderForUser(long number, String email) {
-        TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o " +
-                "WHERE o.number=:number AND o.employee.email=:email", Order.class);
-        query.setParameter("number", number);
-        query.setParameter("email", email.toLowerCase());
-        return query.getSingleResult();
-        //return em.find(Order.class, number);
+    public Order getOrderForUser(Long number, String email) {
+        Order order = em.find(Order.class, number);
+        String emailTemp = order.getEmployee().getEmail();
+        if (emailTemp.equalsIgnoreCase(email + "@kvt.nl")) {
+            return order;
+        }
+        return null;
+
+        /*TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o " +
+                "WHERE LOWER(o.employee.email) LIKE :email " +
+                "AND o.number = :num", Order.class);
+        query.setParameter("email", email.toLowerCase()+"@kvt.nl");
+        query.setParameter("num", number);
+        return query.getSingleResult();*/
     }
+
 }

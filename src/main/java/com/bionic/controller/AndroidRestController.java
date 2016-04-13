@@ -24,17 +24,17 @@ public class AndroidRestController {
         return userService.getAllUsers();
     }
 
-   /* @RequestMapping(value="/orders/brief",
+    @RequestMapping(value="/orders/brief/{email}",
             method = {RequestMethod.POST, RequestMethod.GET},
             produces = "application/json")
-    public @ResponseBody List<OrderBrief> getBriefOrders(@QueryParam("email") String email) {
+    public List<OrderBrief> getBriefOrders(@PathVariable("email") String email) {
         return orderService.getBriefOrdersForUser(email);
-    }*/
+    }
 
     @RequestMapping(value = "/orders/{number}/{email}",
             method = {RequestMethod.GET, RequestMethod.POST},
             produces = "application/json")
-    public @ResponseBody Order getOrderForUser(@PathVariable("number") long number,
+    public Order getOrderForUser(@PathVariable("number") long number,
                                  @PathVariable("email") String email) {
         return orderService.getOrderForUser(number, email);
     }

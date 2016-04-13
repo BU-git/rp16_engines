@@ -34,7 +34,7 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL)
     private Relation relation;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Employee employee;
 
     @OneToOne(cascade = CascadeType.ALL)
