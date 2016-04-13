@@ -49,4 +49,27 @@ public class Employee {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+
+        Employee employee = (Employee) o;
+
+        if (number != employee.number) return false;
+        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
+        if (email != null ? !email.equals(employee.email) : employee.email != null) return false;
+        return order != null ? order.equals(employee.order) : employee.order == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = number;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (order != null ? order.hashCode() : 0);
+        return result;
+    }
 }

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Controller
 @SessionAttributes("loggedInUser")
@@ -22,8 +24,8 @@ public class OrderController {
     @Autowired
     private OrderService service;
 
-    @Autowired
-    private XmlFileReader xmlFileReader;
+ /*   @Autowired
+    private XmlFileReader xmlFileReader;*/
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAllOrders(ModelMap model) {
@@ -69,13 +71,14 @@ public class OrderController {
         return null;
         //return "orders";
     }
-/*
-    @RequestMapping(value = "/new")
+
+   /* @RequestMapping(value = "/new")
     public String newOrder(){
         try {
-            Order order = xmlFileReader.convertFromXMLToObject("C:\\Users\\fan\\Desktop\\BionicProjectDocs\\xml\\4013299.xml");
+            Order order = xmlFileReader.convertFromXMLToObject("C:\\Users\\fan\\Desktop\\BionicProjectDocs\\xml\\4014521.xml");
             System.out.println(order.getDate());
             System.out.println(order.getEmployee().getName());
+            order.setLastServerChangeTimestamp(new Timestamp(new Date().getTime()));
             service.createOrder(order);
         } catch (IOException e) {
             e.printStackTrace();

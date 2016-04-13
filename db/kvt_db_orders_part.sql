@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `kvt_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `kvt_db`;
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: kvt_db
@@ -16,28 +18,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `orders_part`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `orders_part`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mail` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE `orders_part` (
+  `Order_number` bigint(20) NOT NULL,
+  `parts_id` bigint(20) NOT NULL,
+  UNIQUE KEY `UK_93bgu4ddlrdvn9yqjnv5wipn4` (`parts_id`),
+  KEY `FKd9vnd91un2spguf2qf1nlmctq` (`Order_number`),
+  CONSTRAINT `FKcd2l1vfg4hacr28hcfx8uek0g` FOREIGN KEY (`parts_id`) REFERENCES `part` (`id`),
+  CONSTRAINT `FKd9vnd91un2spguf2qf1nlmctq` FOREIGN KEY (`Order_number`) REFERENCES `orders` (`number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `orders_part`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `orders_part` WRITE;
+/*!40000 ALTER TABLE `orders_part` DISABLE KEYS */;
+INSERT INTO `orders_part` VALUES (4008692,1),(4008692,2),(4008692,3),(4008692,4);
+/*!40000 ALTER TABLE `orders_part` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-10 19:03:00
+-- Dump completed on 2016-04-13 18:38:09

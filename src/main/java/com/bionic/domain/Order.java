@@ -16,6 +16,8 @@ import com.bionic.domain.component.Installation;
 import com.bionic.domain.component.Part;
 import com.bionic.domain.component.Relation;
 import com.bionic.domain.component.Task;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "ORDERS")
@@ -32,22 +34,26 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL)
     private Relation relation;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Employee employee;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Installation installation;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Task> tasks;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Component> components;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Part> parts;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Info> extraInfo;
 
     // Service fields

@@ -2,6 +2,7 @@ package com.bionic.service;
 
 import com.bionic.dao.OrderDao;
 import com.bionic.domain.Order;
+import com.bionic.domain.OrderBrief;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,5 +37,15 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void createOrder(Order order) {
         orderDao.createOrder(order);
+    }
+
+    @Override
+    public List<OrderBrief> getBriefOrdersForUser(String email) {
+        return orderDao.getBriefOrdersForUser(email);
+    }
+
+    @Override
+    public Order getOrderForUser(long number, String email) {
+        return orderDao.getOrderForUser(number, email);
     }
 }
