@@ -42,7 +42,14 @@
         <li class="right_li"><button class="edit_popup_close" id="accept">Accept</button></li>
       </ul>
     </div>
-
+    <div id="popup_ok">
+      <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
+      <div id="right_side"><p>Template added!!!</p></div>
+    </div>
+    <div id="popup_error">
+      <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
+      <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
+    </div>
     <div id="container">
       <div class="hd_main">
         <table class="middle" id="title">

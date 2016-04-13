@@ -9,10 +9,11 @@ import java.io.InputStream;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import com.bionic.domain.Order;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.Unmarshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+
+import com.bionic.domain.Order;
 
 public class XmlFileReader {
 

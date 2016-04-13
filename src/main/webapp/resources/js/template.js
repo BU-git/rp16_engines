@@ -8,6 +8,33 @@ $(function(){
     var text_area = $('#text_area');
     var popup = $('#my_popup');
     var edit_popup = $('#edit_popup');
+    var popup_ok = $('#popup_ok');
+    var popup_error = $('#popup_error');
+    popup_error.popup({
+        opentransitionend: function(){
+            console.log("hello");
+            setTimeout(
+                function()
+                {
+                    popup_error.popup('hide');
+                }, 2500);
+        },
+        blur : false,
+        transition: 'all 0.3s'
+    });
+    popup_ok.popup({
+        opentransitionend: function(){
+            console.log("hello");
+            setTimeout(
+                function()
+                {
+                    popup_ok.popup('hide');
+                    window.location.replace("/templates");
+                }, 1500);
+        },
+        blur : false,
+        transition: 'all 0.3s'
+    });
     edit_popup.popup({
         onopen: function(){
             $('.popup_area').val("");
@@ -92,7 +119,6 @@ $(function(){
         });
     };
     var check_for_fields_alive = function(){
-        console.log("removed: " + removed.length + ', count: ' + (count-1));
         if(removed.length == (count - 1)) {
             save_button.prop("disabled", true);
             edit_button.prop("disabled", true);
@@ -157,7 +183,13 @@ $(function(){
             mimeType: 'application/json',
             type: "POST",
             url:"/templates/save",
-            data: fields
+            data: fields,
+            error: function(result){
+                popup_error.popup('show')
+            },
+            success: function(result){
+                popup_ok.popup('show')
+            }
         });
     });
     edit_button.click(function(){
