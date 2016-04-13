@@ -55,7 +55,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<OrderBrief> getBriefOrdersForUser(String email) {
-        TypedQuery<Order> query = em.createQuery("SELECT order FROM Order order WHERE LOWER(order.employee.email) = :email ", Order.class);
+        TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o WHERE LOWER(o.employee.email) = :email ", Order.class);
         query.setParameter("email", email.toLowerCase());
         List<Order> orders = query.getResultList();
         return orders.stream().map(o -> new OrderBrief(o.getNumber(),

@@ -26,15 +26,9 @@ public class AndroidRestController {
     @RequestMapping(value="/users", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
-        /*return new ArrayList<User>() {
-            {
-                add(new User("Admin", "Admin", "admin@kvt.com"));
-                add(new User("Admin2", "Admin2", "admin2@kvt.com"));
-            }
-        };*/
     }
 
-    @RequestMapping(value="/orders/brief?user={email}",
+    @RequestMapping(value="/orders/brief/user/{email}",
             method = {RequestMethod.POST, RequestMethod.GET},
             produces = "application/json")
     public List<OrderBrief> getBriefOrders(@PathVariable("email") String email) {
