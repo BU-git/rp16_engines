@@ -28,6 +28,12 @@ body {
 	background: linear-gradient(to top, #000000, #3A393B);
 	z-index: 0;
 }
+#header a{
+	margin-top: 15px;
+}
+#header span {
+	margin: 20px;
+}
 
 #content-wrapper {
 	height: calc(100% - 100px);
@@ -89,7 +95,7 @@ body {
 	outline: none;
   	-webkit-appearance:none;
   	width: 260px;
-  	align: center;
+  	text-align: center;
   	position: center;
 }
 
@@ -183,5 +189,4 @@ border-right: none;
 }
 td:nth-child(2){
 text-align: left;
-}
 }

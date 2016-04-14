@@ -1,8 +1,11 @@
 package com.bionic.controller;
 
-import com.bionic.domain.Order;
-import com.bionic.domain.xml.XmlFileReader;
-import com.bionic.service.OrderService;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.Date;
+import com.bionic.domain.Order;
+import com.bionic.domain.xml.XmlFileReader;
+import com.bionic.service.OrderService;
 
 @Controller
 @SessionAttributes("loggedInUser")
@@ -39,7 +40,7 @@ public class OrderController {
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
     public String showOrder(@PathVariable("id") long id, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) {
-            return "redirect:login";
+            return "redirect:/login";
         }
         Order order = service.findById(id);
         model.addAttribute("order",order);

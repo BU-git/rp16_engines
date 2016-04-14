@@ -30,7 +30,7 @@ $(function(){
                 {
                     popup_ok.popup('hide');
                     window.location.replace("/templates");
-                }, 1500);
+                }, 2500);
         },
         blur : false,
         transition: 'all 0.3s'

@@ -14,7 +14,7 @@
 	<div id="login-form">
 		<h1>Authorization form</h1>
 		<fieldset>
-			<c:if test = "${message != null}"><font color="red">${message}</font><br> </c:if>
+			<c:if test = "${message != null}"><p id="message">${message}</p><br> </c:if>
 			<cf:form id="loginForm" method="post" action="/dashboard" modelAttribute="user">
 			<cf:label path="mail"><p>Please enter your email</p></cf:label>
 			<cf:input id="mail" name="mail" path="mail" /><br>

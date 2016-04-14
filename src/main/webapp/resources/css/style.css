@@ -46,7 +46,13 @@ fieldset p {
 	background: linear-gradient(to top, #000000, #3A393B);
 	z-index: 0;
 }
-
+#header{
+	height: 50px;
+}
+#header a{
+	margin-top: 15px;
+	padding-bottom: 10px;
+}
 #header span {
 	margin: 20px;
 }
@@ -74,16 +80,15 @@ fieldset p {
 	width: 300px;
   	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
-  	-webkit-box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-   	box-shadow:  0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-  
+  	-webkit-box-shadow:  0 10px 20px 0 rgba(0, 0, 0, 0.3);
+   	box-shadow:  0 10px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 #login-form h1 {
 	background-color: #292829;
-	border-radius: 5px 5px 0px 0px;
-	-moz-border-radius: 5px 5px 0px 0px;
-	-webkit-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
 	color: #fff;
 	padding: 20px;
 	text-align: center;
@@ -91,67 +96,44 @@ fieldset p {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 }
-
 #login-form fieldset {
 	border: none;
 	padding: 20px;
 	position: relative;
 }
-
-
-#login-form fieldset form {
-	overflow: hidden;
-	width: 270px;
+#login-form fieldset label, #login-form fieldset p#message{
+	float: left;
 }
-
-#login-form fieldset form input {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
+#login-form fieldset{
+	text-align: center;
+}
+#login-form fieldset p#message{
+	color: red;
+	margin: 0;
+}
+#login-form fieldset input{
 	outline: none;
-  	-webkit-appearance:none;
-  	width: 260px;
-  	align: center;
-  	position: center;
-}
-
-#login-form fieldset form input[type="email"] {
-	border: 1px solid #292829;
-	border-radius: 3px 3px 0px 0px;
-	-moz-border-radius: 3px 3px 0px 0px;
-	-webkit-border-radius: 3px 3px 0px 0px;
-	padding: 12px 10px;
-	width: 238px;
-  	-webkit-appearance:none;
-}
-
-#login-form fieldset form input[type="password"] {
-	border: 1px solid #292829;
-	border-top: none;
-	border-radius: 3px 3px 0px 0px;
-	-moz-border-radius: 0px 0px 3px 3px;
-	-webkit-border-radius: 0px 0px 3px 3px;
-	padding: 4px 10px;
+	padding: 6px 5px;
 	width: 245px;
-  	-webkit-appearance:none;
-}
-
-#login-form fieldset form input[type="submit"] {
-	background-color: #ebebeb;
 	border: none;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	color: #404040;
-	cursor: pointer;
-	float: none;
-	font-weight: bold;
+}
+#login-form fieldset input, #login-form fieldset form input[type="submit"]{
+	border-radius: 2px;
+}
+#login-form fieldset form input[type="submit"]{
+	margin-left: 0;
+	padding-top: 12px;
+	padding-bottom: 12px;
 	margin-top: 20px;
-	padding: 12px 12px;
-  	-webkit-appearance: none;
+	width: 255px;
+	background-color: #ebebeb;
+	color: #404040;
+	font-weight: bold;
 }
 
 #login-form fieldset form input[type="submit"]:hover {
 	background-color: #e0e0e0;
+	cursor: pointer;
 }
 
 #login-form fieldset form span:before {
@@ -163,9 +145,7 @@ fieldset p {
 	display: inline-block;
 	height: 20px;
 	line-height: 20px;
-	margin-right: 10px;
 	text-align: center;
-	width: 20px;
 }
 
 .button {
