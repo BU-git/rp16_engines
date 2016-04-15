@@ -47,4 +47,15 @@ public class Part {
     public void setMattx(String mattx) {
         this.mattx = mattx;
     }
+
+    @Override
+    public String toString() {
+        return "Part{" +
+                "id=" + id +
+                ", bdmng='" + bdmng + '\'' +
+                ", matnr='" + matnr + '\'' +
+                ", mattx='" + mattx + '\'' +
+                ", order=" + order +
+                '}';
+    }
 }

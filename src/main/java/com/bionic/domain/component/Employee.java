@@ -72,4 +72,14 @@ public class Employee {
         result = 31 * result + (order != null ? order.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "number=" + number +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", order=" + order +
+                '}';
+    }
 }

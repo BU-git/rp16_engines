@@ -56,4 +56,16 @@ public class Installation {
     public void setTown(String town) {
         this.town = town;
     }
+
+    @Override
+    public String toString() {
+        return "Installation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", town='" + town + '\'' +
+                ", order=" + order +
+                '}';
+    }
 }

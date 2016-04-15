@@ -247,6 +247,29 @@ public class Order {
     public void setDone(boolean done) {
         this.done = done;
     }
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "number=" + number +
+                ", orderType='" + orderType + '\'' +
+                ", date=" + date +
+                ", reference='" + reference + '\'' +
+                ", note='" + note + '\'' +
+                ", relation=" + relation +
+                ", employee=" + employee +
+                ", installation=" + installation +
+                ", tasks=" + tasks +
+                ", components=" + components +
+                ", parts=" + parts +
+                ", extraInfo=" + extraInfo +
+                ", importTimestamp=" + importTimestamp +
+                ", lastServerChangeTimestamp=" + lastServerChangeTimestamp +
+                ", lastAndroidChangeTimestamp=" + lastAndroidChangeTimestamp +
+                ", done=" + done +
+                '}';
+    }
 }
 
 

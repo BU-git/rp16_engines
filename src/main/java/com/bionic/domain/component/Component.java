@@ -66,4 +66,17 @@ public class Component {
     public void setSernr(String sernr) {
         this.sernr = sernr;
     }
+
+    @Override
+    public String toString() {
+        return "Component{" +
+                "id=" + id +
+                ", eqart='" + eqart + '\'' +
+                ", equnr=" + equnr +
+                ", herst='" + herst + '\'' +
+                ", typbz='" + typbz + '\'' +
+                ", sernr='" + sernr + '\'' +
+                ", order=" + order +
+                '}';
+    }
 }

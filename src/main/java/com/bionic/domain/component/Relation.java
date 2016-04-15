@@ -65,4 +65,17 @@ public class Relation {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "Relation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", town='" + town + '\'' +
+                ", contactPerson='" + contactPerson + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", number=" + number +
+                ", order=" + order +
+                '}';
+    }
 }
