@@ -60,9 +60,9 @@ public class OrderDaoImpl implements OrderDao {
         query.setParameter("email", email.toLowerCase() + "@kvt.nl");
         List<Order> orders = query.getResultList();
         return orders.stream().map(o -> new OrderBrief(o.getNumber(),
-                o.getImportTimestamp(),
-                o.getLastServerChangeTimestamp(),
-                o.getLastAndroidChangeTimestamp())).collect(Collectors.toList());
+                o.getImportDate(),
+                o.getLastServerChangeDate(),
+                o.getLastAndroidChangeDate())).collect(Collectors.toList());
     }
 
     @Override

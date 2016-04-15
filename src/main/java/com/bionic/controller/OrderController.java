@@ -1,11 +1,5 @@
 package com.bionic.controller;
 
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import com.bionic.domain.Order;
 import com.bionic.domain.xml.XmlFileReader;
 import com.bionic.service.OrderService;
@@ -25,8 +18,8 @@ public class OrderController {
     @Autowired
     private OrderService service;
 
-   @Autowired
-    private XmlFileReader xmlFileReader;
+   /*@Autowired
+    private XmlFileReader xmlFileReader;*/
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAllOrders(ModelMap model) {
@@ -47,9 +40,9 @@ public class OrderController {
         return "order";
     }
 
-    @RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
     public String downloadOrder(@PathVariable long id, HttpServletResponse response, ModelMap model) {
-       /* if (!model.containsAttribute("loggedInUser")) {
+        if (!model.containsAttribute("loggedInUser")) {
             return "redirect:login";
         }
         Order order = service.findById(id);
@@ -68,10 +61,10 @@ public class OrderController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }*/
+        }
         return null;
         //return "orders";
-    }
+    }*/
 /*
     @RequestMapping(value = "/new")
     public String newOrder(){

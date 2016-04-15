@@ -16,9 +16,9 @@ public class UserDaoImpl implements UserDao {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public List<User> getUser (String mail, String password) {
-		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE LOWER(u.email) = :mail AND u.password = :pass", User.class);
-		query.setParameter("mail", mail.toLowerCase());
+	public List<User> getUser (String email, String password) {
+		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE LOWER(u.email) = :email AND u.password = :pass", User.class);
+		query.setParameter("email", email.toLowerCase());
 		query.setParameter("pass", password);
 		return query.getResultList();
 	}

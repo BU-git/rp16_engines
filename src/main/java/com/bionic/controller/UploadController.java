@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -38,6 +39,8 @@ public class UploadController {
                 file.get(i).transferTo(convFile);
                 Order order = fileReader.convertFromXMLToObject(convFile.getAbsolutePath());
                 if (order != null) {
+                    order.setLastServerChangeDate(new Date());
+                    order.setImportDate(new Date());
                     orderService.save(order);
                 }
 
