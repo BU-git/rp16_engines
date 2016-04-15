@@ -14,4 +14,5 @@ public interface OrderService {
     void createOrder(Order order);
     List<OrderBrief> getBriefOrdersForUser(String email);
     Order getOrderForUser(long number, String email);
+    void save(Order order);
 }

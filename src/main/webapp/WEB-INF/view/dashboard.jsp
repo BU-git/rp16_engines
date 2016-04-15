@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Welcome</title>
+    <script src="<c:url value="/resources/js/upload.js"/>"></script>
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
@@ -38,6 +39,61 @@
             <a href="/404 error" style="text-align: center; display: block">
                 <div class="button">Template overzicht</div>
             </a>
+            <form method="post" id="uploadForm" action="upload" enctype="multipart/form-data">
+                <table class="span10">
+                    <tr>
+                        <td colspan="3">
+                            <legend>Upload XML files</legend>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="file" name="files[]" multiple="multiple" onchange="getFileSizeandName(this);"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div id="uploaddiv">
+                                <table id="uploadTable" class="table table-striped table-bordered">
+                                    <tbody id="tbodyid">
+                                    <tr id="tr0">
+                                        <td id="filetd0" height="10px" width="50px"></td>
+                                        <td id="filesizetd0" height="10px" width="5px"></td>
+                                    </tr>
+                                    <tr id="tr1">
+                                        <td id="filetd1"></td>
+                                        <td id="filesizetd1"></td>
+                                    </tr>
+                                    <tr id="tr2">
+                                        <td id="filetd2"></td>
+                                        <td id="filesizetd2"></td>
+                                    </tr>
+                                    <tr id="tr3">
+                                        <td id="filetd3"></td>
+                                        <td id="filesizetd3"></td>
+                                    </tr>
+                                    <tr id="tr4">
+                                        <td id="filetd4"></td>
+                                        <td id="filesizetd4"></td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td id="filecount"></td><td id="totalsize"></td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <button class="btn btn-primary" type="submit" id="startButton" onClick="CloseAndRefresh();">Start</button>
+                            <button class="btn" id="cancelButton">Cancel</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
 </body>

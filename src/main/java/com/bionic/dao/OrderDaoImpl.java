@@ -82,4 +82,13 @@ public class OrderDaoImpl implements OrderDao {
         return query.getSingleResult();*/
     }
 
+    @Override
+    public void save(Order order) {
+        if (order.getNumber() == 0) {
+            em.persist(order);
+        } else {
+            em.merge(order);
+        }
+    }
+
 }

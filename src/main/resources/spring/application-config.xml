@@ -26,6 +26,10 @@
         <property name="password" value="root"/>-->
     </bean>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="20971520"/>
+    </bean>
+
     <bean id="XMLConverter" class="com.bionic.domain.xml.XmlFileReader">
         <property name="marshaller" ref="jaxb2Marshaller" />
         <property name="unmarshaller" ref="jaxb2Marshaller" />

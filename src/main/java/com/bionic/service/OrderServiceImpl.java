@@ -48,4 +48,10 @@ public class OrderServiceImpl implements OrderService{
     public Order getOrderForUser(long number, String email) {
         return orderDao.getOrderForUser(number, email);
     }
+
+    @Override
+    @Transactional
+    public void save(Order order){
+        orderDao.save(order);
+    }
 }
