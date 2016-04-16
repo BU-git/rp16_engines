@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@Table(name="installation")
 @XmlRootElement
 public class Installation {
 

@@ -3,15 +3,13 @@ package com.bionic.domain.component;
 
 import com.bionic.domain.Order;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@Table(name="employee")
 @XmlRootElement
 public class Employee {
 
