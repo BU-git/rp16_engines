@@ -40,7 +40,7 @@
                 <div class="button">Template overzicht</div>
             </a>
             <form method="post" id="uploadForm" action="upload" enctype="multipart/form-data">
-                <table class="span10">
+                <table>
                     <tr>
                         <td colspan="3">
                             <legend>Upload XML files</legend>
@@ -54,32 +54,11 @@
                     <tr>
                         <td colspan="3">
                             <div id="uploaddiv">
-                                <table id="uploadTable" class="table table-striped table-bordered">
-                                    <tbody id="tbodyid">
-                                    <tr id="tr0">
-                                        <td id="filetd0" height="10px" width="50px"></td>
-                                        <td id="filesizetd0" height="10px" width="5px"></td>
-                                    </tr>
-                                    <tr id="tr1">
-                                        <td id="filetd1"></td>
-                                        <td id="filesizetd1"></td>
-                                    </tr>
-                                    <tr id="tr2">
-                                        <td id="filetd2"></td>
-                                        <td id="filesizetd2"></td>
-                                    </tr>
-                                    <tr id="tr3">
-                                        <td id="filetd3"></td>
-                                        <td id="filesizetd3"></td>
-                                    </tr>
-                                    <tr id="tr4">
-                                        <td id="filetd4"></td>
-                                        <td id="filesizetd4"></td>
-                                    </tr>
-                                    </tbody>
+                                <table id="uploadTable">
+
                                     <tfoot>
                                     <tr>
-                                        <td id="filecount"></td><td id="totalsize"></td>
+                                        <td id="filecount"></td>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -88,7 +67,7 @@
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <button class="btn btn-primary" type="submit" id="startButton" onClick="CloseAndRefresh();">Start</button>
+                            <button class="btn" type="submit" id="uploadButton" onClick="CloseAndRefresh();">Upload</button>
                             <button class="btn" id="cancelButton">Cancel</button>
                         </td>
                     </tr>
