@@ -16,8 +16,8 @@
 		<fieldset>
 			<c:if test = "${message != null}"><p id="message">${message}</p><br> </c:if>
 			<cf:form id="loginForm" method="post" action="/dashboard" modelAttribute="user">
-			<cf:label path="mail"><p>Please enter your email</p></cf:label>
-			<cf:input id="mail" name="mail" path="mail" /><br>
+			<cf:label path="email"><p>Please enter your email</p></cf:label>
+			<cf:input id="mail" name="email" path="email" /><br>
 			<cf:label path="password"><p>Password</p></cf:label>
 			<cf:password id="password" name="password" path="password" /><br>
 			<input type="submit" value="Login" />

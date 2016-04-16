@@ -3,7 +3,6 @@ package com.bionic.domain;
 import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
-import java.sql.Timestamp;
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,13 +21,15 @@ import com.bionic.domain.component.Task;
 import org.hibernate.annotations.*;
 
 @Entity
-@Table(name = "ORDERS")
 @XmlRootElement(name = "Order")
+@Table(name="orders")
 public class Order {
 
     @Id
     private long number;
     private String orderType;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     private String reference;
     private String note;
@@ -65,7 +66,8 @@ public class Order {
      * After import it never changed.
      * NotNull
      */
-    private Timestamp importTimestamp;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date importDate;
 
     /**
      * This is time when this order was changed in BO Server.
@@ -75,7 +77,8 @@ public class Order {
      * This field will NOT changed in Android App.
      * NotNull
      */
-    private Timestamp lastServerChangeTimestamp;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastServerChangeDate;
 
     /**
      * This is time when this order was changed in Android.
@@ -85,7 +88,8 @@ public class Order {
      * When order is imported to BO Server this time is set the same value as lastServerChangeTimestamp
      * NotNull
      */
-    private Timestamp lastAndroidChangeTimestamp;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastAndroidChangeDate;
 
     /**
      * boolean flag is needed for showing a red cross or a green check mark. true - if order is done.
@@ -168,20 +172,24 @@ public class Order {
         this.orderType = orderType;
     }
 
-    public void setRelation(Relation relation) {
-        this.relation = relation;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public void setDate(Date date) {
         this.date = date;
     }
 
     public void setReference(String reference) {
         this.reference = reference;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public void setRelation(Relation relation) {
+        this.relation = relation;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public void setInstallation(Installation installation) {
@@ -200,45 +208,33 @@ public class Order {
         this.parts = parts;
     }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
-
     public void setExtraInfo(List<Info> extraInfo) {
         this.extraInfo = extraInfo;
     }
 
-    public Timestamp getImportTimestamp() {
-        return importTimestamp;
+    public Date getImportDate() {
+        return importDate;
     }
 
-    public void setImportTimestamp(Timestamp importTimestamp) {
-        this.importTimestamp = importTimestamp;
+    public void setImportDate(Date importDate) {
+        this.importDate = importDate;
     }
 
-    public Timestamp getLastServerChangeTimestamp() {
-        return lastServerChangeTimestamp;
+    public Date getLastServerChangeDate() {
+        return lastServerChangeDate;
     }
 
-    public void setLastServerChangeTimestamp(Timestamp lastServerChangeTimestamp) {
-        this.lastServerChangeTimestamp = lastServerChangeTimestamp;
+    public void setLastServerChangeDate(Date lastServerChangeDate) {
+        this.lastServerChangeDate = lastServerChangeDate;
     }
 
-    public Timestamp getLastAndroidChangeTimestamp() {
-        return lastAndroidChangeTimestamp;
+    public Date getLastAndroidChangeDate() {
+        return lastAndroidChangeDate;
     }
 
-    public void setLastAndroidChangeTimestamp(Timestamp lastAndroidChangeTimestamp) {
-        this.lastAndroidChangeTimestamp = lastAndroidChangeTimestamp;
+    public void setLastAndroidChangeDate(Date lastAndroidChangeDate) {
+        this.lastAndroidChangeDate = lastAndroidChangeDate;
     }
-
-   /* public Blob getPdf() {
-        return pdf;
-    }
-
-    public void setPdf(Blob pdf) {
-        this.pdf = pdf;
-    }*/
 
     public boolean isDone() {
         return done;
@@ -246,6 +242,28 @@ public class Order {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "number=" + number +
+                ", orderType='" + orderType + '\'' +
+                ", date=" + date +
+                ", reference='" + reference + '\'' +
+                ", note='" + note + '\'' +
+                ", relation=" + relation +
+                ", employee=" + employee +
+                ", installation=" + installation +
+                ", tasks=" + tasks +
+                ", components=" + components +
+                ", parts=" + parts +
+                ", extraInfo=" + extraInfo +
+                ", importTimestamp=" + importDate +
+                ", lastServerChangeTimestamp=" + lastServerChangeDate +
+                ", lastAndroidChangeTimestamp=" + lastAndroidChangeDate +
+                ", done=" + done +
+                '}';
     }
 }
 

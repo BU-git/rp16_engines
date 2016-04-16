@@ -80,4 +80,17 @@ public class Info {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    @Override
+    public String toString() {
+        return "Info{" +
+                "id=" + id +
+                ", kindOfLine='" + kindOfLine + '\'' +
+                ", prePost='" + prePost + '\'' +
+                ", sleutel='" + sleutel + '\'' +
+                ", line='" + line + '\'' +
+                ", description='" + description + '\'' +
+                ", order=" + order +
+                '}';
+    }
 }

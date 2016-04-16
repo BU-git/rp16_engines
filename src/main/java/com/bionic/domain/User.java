@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USERS")
+@Table(name="users")
 public class User {
 
 	@Id
@@ -19,9 +19,9 @@ public class User {
 	
 	public User() { }
 
-	public User(String name, String mail, String password) {
+	public User(String name, String email, String password) {
 		this.name = name;
-		this.email = mail;
+		this.email = email;
 		this.password = password;
 	}
 
@@ -41,11 +41,11 @@ public class User {
 		this.id = id;
 	}
 
-	public String getMail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setMail(String mail) {
+	public void setEmail(String mail) {
 		this.email = mail;
 	}
 

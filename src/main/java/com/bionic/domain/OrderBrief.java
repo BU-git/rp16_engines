@@ -1,6 +1,8 @@
 package com.bionic.domain;
 
-import java.sql.Timestamp;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Date;
 
 public class OrderBrief {
 
@@ -15,7 +17,8 @@ public class OrderBrief {
      * After import it never changed.
      * NotNull
      */
-    private Timestamp importTimestamp;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date importDate;
 
     /**
      * This is time when this order was changed in BO Server.
@@ -25,7 +28,8 @@ public class OrderBrief {
      * This field will NOT changed in Android App.
      * NotNull
      */
-    private Timestamp lastServerChangeTimestamp;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastServerChangeDate;
 
     /**
      * This is time when this order was changed in Android.
@@ -35,41 +39,18 @@ public class OrderBrief {
      * When order is imported to BO Server this time is set the same value as lastServerChangeTimestamp
      * NotNull
      */
-    private Timestamp lastAndroidChangeTimestamp;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastAndroidChangeDate;
 
 
     public OrderBrief() {
     }
 
-    public OrderBrief(long number, Timestamp importTimestamp, Timestamp lastServerChangeTimestamp, Timestamp lastAndroidChangeTimestamp) {
+    public OrderBrief(long number, Date importDate, Date lastServerChangeDate, Date lastAndroidChangeDate) {
         this.number = number;
-        this.importTimestamp = importTimestamp;
-        this.lastServerChangeTimestamp = lastServerChangeTimestamp;
-        this.lastAndroidChangeTimestamp = lastAndroidChangeTimestamp;
-    }
-
-    public Timestamp getLastAndroidChangeTimestamp() {
-        return lastAndroidChangeTimestamp;
-    }
-
-    public void setLastAndroidChangeTimestamp(Timestamp lastAndroidChangeTimestamp) {
-        this.lastAndroidChangeTimestamp = lastAndroidChangeTimestamp;
-    }
-
-    public Timestamp getImportTimestamp() {
-        return importTimestamp;
-    }
-
-    public void setImportTimestamp(Timestamp importTimestamp) {
-        this.importTimestamp = importTimestamp;
-    }
-
-    public Timestamp getLastServerChangeTimestamp() {
-        return lastServerChangeTimestamp;
-    }
-
-    public void setLastServerChangeTimestamp(Timestamp lastServerChangeTimestamp) {
-        this.lastServerChangeTimestamp = lastServerChangeTimestamp;
+        this.importDate = importDate;
+        this.lastServerChangeDate = lastServerChangeDate;
+        this.lastAndroidChangeDate = lastAndroidChangeDate;
     }
 
     public long getNumber() {
@@ -78,5 +59,29 @@ public class OrderBrief {
 
     public void setNumber(long number) {
         this.number = number;
+    }
+
+    public Date getImportDate() {
+        return importDate;
+    }
+
+    public void setImportDate(Date importDate) {
+        this.importDate = importDate;
+    }
+
+    public Date getLastServerChangeDate() {
+        return lastServerChangeDate;
+    }
+
+    public void setLastServerChangeDate(Date lastServerDate) {
+        this.lastServerChangeDate = lastServerDate;
+    }
+
+    public Date getLastAndroidChangeDate() {
+        return lastAndroidChangeDate;
+    }
+
+    public void setLastAndroidChangeDate(Date lastAndroidChangeDate) {
+        this.lastAndroidChangeDate = lastAndroidChangeDate;
     }
 }

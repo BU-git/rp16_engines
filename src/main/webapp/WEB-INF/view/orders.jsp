@@ -29,7 +29,7 @@
         <a href="/templates">
             <span>Template</span>
         </a>
-        <span>Welkom ${loggedInUser.mail}</span>
+        <span>Welkom ${loggedInUser.email}</span>
         <a href="/logout">
             <span>Ultlogen</span>
         </a>

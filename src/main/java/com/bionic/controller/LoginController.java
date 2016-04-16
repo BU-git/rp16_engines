@@ -39,7 +39,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	public String authorization(@ModelAttribute("user")User user, ModelMap model) {
-		List<User> list = userService.getUser(user.getMail(), user.getPassword());
+		List<User> list = userService.getUser(user.getEmail(), user.getPassword());
 		if (!list.isEmpty()) {
 			model.addAttribute("loggedInUser", list.get(0));
 			return "dashboard";
