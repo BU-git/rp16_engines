@@ -162,7 +162,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (4008692,'2015-03-13 00:00:00','\0','2016-04-18 21:17:11',NULL,'2016-04-18 21:17:11','graag gegevens aanvullen\n\nvoor code cijfersloten Lex van der Kade 065138 6097','SM04','getekend contract',1,1,1),(4013250,'2016-04-05 00:00:00','\0','2016-04-18 21:17:11',NULL,'2016-04-18 21:17:11','','SM04','INK16000061-1',2,2,2),(4013294,'2016-04-06 00:00:00','\0','2016-04-18 21:17:12',NULL,'2016-04-18 21:17:12','Uitlaat flexibel reparen en aanbieden, bestellen bij ADL','SM04','4500622119',3,3,3),(4013299,'2016-04-06 00:00:00','\0','2016-04-18 21:17:12',NULL,'2016-04-18 21:17:12','','SM04','4500622119',4,4,4),(4013730,'2016-04-05 00:00:00','\0','2016-04-18 21:17:12',NULL,'2016-04-18 21:17:12','Dit setje draait 3000 toeren.\nSetje staat op de Leersumsestraatweg bij H ectometerpaal 23.1  bij de kruising met de Hoolweg.','SM04','260-414226',5,5,5),(4013731,'2016-04-05 00:00:00','\0','2016-04-18 21:17:12',NULL,'2016-04-18 21:17:12','3000 toeren aggregaat\nAdres is Rijksstraatweg bij hectometerpaal 24.6 op de kruising met de Dartheideweg','SM04','260-414226',6,6,6),(4013735,'2016-04-05 00:00:00','\0','2016-04-18 21:17:12',NULL,'2016-04-18 21:17:12','11-2-14 restwerk 2013 zie bijlage','SM04','260-414226',7,7,7),(4014136,'2016-04-06 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','','SM04','Fer Meuser',8,8,8),(4014137,'2016-04-06 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','','SM04','Fer Meuser',9,9,9),(4014281,'2016-04-06 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','','SM03','',10,10,10),(4014296,'2016-04-04 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','','SM03','',11,11,11),(4014297,'2016-03-29 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','','SM03','Koen de Pauw',12,12,12),(4014491,'2016-04-04 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','1-12-2011/74738JC: vervangen start accu\'s incl. equalizer.','SM03','',13,13,13),(4014496,'2016-04-05 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','','SM03','',14,14,14),(4014498,'2016-04-04 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','','SM03','',15,15,15),(4014527,'2016-04-05 00:00:00','\0','2016-04-18 21:17:13',NULL,'2016-04-18 21:17:13','Let op! contract formeel door Colt beeindigd wegens herstructurering per 31 mei 2002. Er volgt een nieuwe aanvraagLet op !!! Accus verv ivm leef ijd.$st. + 2 st. besturingsaccu\'s.  fan is ok.Oliedrukzender vervangen d 11-11-99, brandstoftankinhoudsmeter','SM03','',16,16,16);
+INSERT INTO `orders` VALUES (4008692,'2015-03-13 00:00:00','\0','2016-04-18 21:26:55',NULL,'2016-04-18 21:26:55','graag gegevens aanvullen\n\nvoor code cijfersloten Lex van der Kade 065138 6097','SM04','getekend contract',1,1,1),(4013250,'2016-04-05 00:00:00','\0','2016-04-18 21:26:55',NULL,'2016-04-18 21:26:55','','SM04','INK16000061-1',2,2,2),(4013294,'2016-04-06 00:00:00','\0','2016-04-18 21:26:56',NULL,'2016-04-18 21:26:56','Uitlaat flexibel reparen en aanbieden, bestellen bij ADL','SM04','4500622119',3,3,3),(4013299,'2016-04-06 00:00:00','\0','2016-04-18 21:26:56',NULL,'2016-04-18 21:26:56','','SM04','4500622119',4,4,4),(4013730,'2016-04-05 00:00:00','\0','2016-04-18 21:26:56',NULL,'2016-04-18 21:26:56','Dit setje draait 3000 toeren.\nSetje staat op de Leersumsestraatweg bij H ectometerpaal 23.1  bij de kruising met de Hoolweg.','SM04','260-414226',5,5,5),(4013731,'2016-04-05 00:00:00','\0','2016-04-18 21:26:56',NULL,'2016-04-18 21:26:56','3000 toeren aggregaat\nAdres is Rijksstraatweg bij hectometerpaal 24.6 op de kruising met de Dartheideweg','SM04','260-414226',6,6,6),(4013735,'2016-04-05 00:00:00','\0','2016-04-18 21:26:56',NULL,'2016-04-18 21:26:56','11-2-14 restwerk 2013 zie bijlage','SM04','260-414226',7,7,7),(4014136,'2016-04-06 00:00:00','\0','2016-04-18 21:26:57',NULL,'2016-04-18 21:26:57','','SM04','Fer Meuser',8,8,8),(4014137,'2016-04-06 00:00:00','\0','2016-04-18 21:26:57',NULL,'2016-04-18 21:26:57','','SM04','Fer Meuser',9,9,9),(4014281,'2016-04-06 00:00:00','\0','2016-04-18 21:26:57',NULL,'2016-04-18 21:26:57','','SM03','',10,10,10),(4014296,'2016-04-04 00:00:00','\0','2016-04-18 21:26:57',NULL,'2016-04-18 21:26:57','','SM03','',11,11,11),(4014297,'2016-03-29 00:00:00','\0','2016-04-18 21:26:57',NULL,'2016-04-18 21:26:57','','SM03','Koen de Pauw',12,12,12),(4014491,'2016-04-04 00:00:00','\0','2016-04-18 21:26:57',NULL,'2016-04-18 21:26:57','1-12-2011/74738JC: vervangen start accu\'s incl. equalizer.','SM03','',13,13,13),(4014496,'2016-04-05 00:00:00','\0','2016-04-18 21:26:57',NULL,'2016-04-18 21:26:57','','SM03','',14,14,14),(4014498,'2016-04-04 00:00:00','\0','2016-04-18 21:26:57',NULL,'2016-04-18 21:26:57','','SM03','',15,15,15),(4014527,'2016-04-05 00:00:00','\0','2016-04-18 21:26:58',NULL,'2016-04-18 21:26:58','Let op! contract formeel door Colt beeindigd wegens herstructurering per 31 mei 2002. Er volgt een nieuwe aanvraagLet op !!! Accus verv ivm leef ijd.$st. + 2 st. besturingsaccu\'s.  fan is ok.Oliedrukzender vervangen d 11-11-99, brandstoftankinhoudsmeter','SM03','',16,16,16);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,13 +360,13 @@ INSERT INTO `tasks` VALUES (1,'SP01','Serviceonderhoud noodstroominstallatie','S
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -376,13 +376,13 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','admin','admin'),(2,'rvrooy@kvt.nl','rvrooy@kvt.nl','rvrooy@kvt.nl'),(3,'rvdmeer@kvt.nl','rvdmeer@kvt.nl','rvdmeer@kvt.nl'),(4,'sbesselink@kvt.nl','sbesselink@kvt.nl','sbesselink@kvt.nl');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin','admin','admin'),(2,'rvrooy@kvt.nl','rvrooy@kvt.nl','rvrooy@kvt.nl'),(3,'rvdmeer@kvt.nl','rvdmeer@kvt.nl','rvdmeer@kvt.nl'),(4,'sbesselink@kvt.nl','sbesselink@kvt.nl','sbesselink@kvt.nl');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -402,4 +402,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-18 21:17:48
+-- Dump completed on 2016-04-18 21:29:28
