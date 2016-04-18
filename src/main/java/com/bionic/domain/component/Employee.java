@@ -13,10 +13,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long id;
+
     private int number;
     private String name;
-
-    @Id
     private String email;
 
     @OneToOne

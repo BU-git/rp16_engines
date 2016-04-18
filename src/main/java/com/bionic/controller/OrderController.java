@@ -65,16 +65,4 @@ public class OrderController {
         return null;
         //return "orders";
     }*/
-/*
-    @RequestMapping(value = "/new")
-    public String newOrder(){
-        try {
-            Order order = xmlFileReader.convertFromXMLToObject("C:\\Users\\fan\\Desktop\\BionicProjectDocs\\xml\\4008692.xml");
-            order.setLastServerChangeTimestamp(new Timestamp(new Date().getTime()));
-            service.createOrder(order);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }*/
 }

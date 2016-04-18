@@ -21,7 +21,13 @@ public class AndroidRestController {
 
     @RequestMapping(value="/users", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json")
     public @ResponseBody List<User> getAllUsers() {
-        return userService.getAllUsers();
+        List<User> result = userService.getAllUsers();
+        for (User u : result) {
+            if (u.getEmail().equalsIgnoreCase("admin")) {
+                result.remove(u);
+            }
+        }
+        return result;
     }
 
     @RequestMapping(value="/orders/brief/{email}",

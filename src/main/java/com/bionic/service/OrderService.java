@@ -11,7 +11,6 @@ public interface OrderService {
     Order findById(long id);
     List<Order> findAllOrders();
     Blob createBlob(MultipartFile file);
-    void createOrder(Order order);
     List<OrderBrief> getBriefOrdersForUser(String email);
     Order getOrderForUser(long number, String email);
     void save(Order order);

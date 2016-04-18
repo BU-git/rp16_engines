@@ -20,8 +20,8 @@ public class Task {
     private String steus;
     private String ktsch;
 
-    @ManyToOne
-    private Order order;
+  /*  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Order order;*/
 
     @XmlElement(name = "VORNR")
     public String getVornr() {
@@ -59,6 +59,22 @@ public class Task {
         this.ktsch = ktsch;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+   /* public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }*/
+
     @Override
     public String toString() {
         return "Task{" +
@@ -66,7 +82,7 @@ public class Task {
                 ", ltxa1='" + ltxa1 + '\'' +
                 ", steus='" + steus + '\'' +
                 ", ktsch='" + ktsch + '\'' +
-                ", order=" + order +
+               // ", order=" + order +
                 '}';
     }
 }

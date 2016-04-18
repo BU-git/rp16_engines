@@ -19,8 +19,8 @@ public class Part {
     private String matnr;
     private String mattx;
 
-    @ManyToOne
-    private Order order;
+   /* @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Order order;*/
 
     @XmlElement(name = "BDMNG")
     public String getBdmng() {
@@ -49,6 +49,22 @@ public class Part {
         this.mattx = mattx;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+   /* public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }*/
+
     @Override
     public String toString() {
         return "Part{" +
@@ -56,7 +72,7 @@ public class Part {
                 ", bdmng='" + bdmng + '\'' +
                 ", matnr='" + matnr + '\'' +
                 ", mattx='" + mattx + '\'' +
-                ", order=" + order +
+               // ", order=" + order +
                 '}';
     }
 }

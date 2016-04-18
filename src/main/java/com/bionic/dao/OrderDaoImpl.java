@@ -48,13 +48,6 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    @Transactional
-    public void createOrder(Order order) {
-        em.merge(order);
-       // em.persist(order);
-    }
-
-    @Override
     public List<OrderBrief> getBriefOrdersForUser(String email) {
         TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o WHERE LOWER(o.employee.email) LIKE :email", Order.class);
         query.setParameter("email", email.toLowerCase() + "@kvt.nl");
@@ -68,10 +61,12 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public Order getOrderForUser(Long number, String email) {
         Order order = em.find(Order.class, number);
-        String emailTemp = order.getEmployee().getEmail();
-        if (emailTemp.equalsIgnoreCase(email + "@kvt.nl")) {
-            return order;
-        }
+        //if(order != null) {
+            String emailTemp = order.getEmployee().getEmail();
+            if (emailTemp.equalsIgnoreCase(email + "@kvt.nl")) {
+                return order;
+            }
+        //}
         return null;
 
         /*TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o " +

@@ -21,8 +21,8 @@ public class Component {
     private String typbz = "";
     private String sernr;
 
-    @ManyToOne
-    private Order order;
+   /* @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Order order;*/
 
     @XmlElement(name = "EQART")
     public String getEqart() {
@@ -68,6 +68,22 @@ public class Component {
         this.sernr = sernr;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+   /* public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }*/
+
     @Override
     public String toString() {
         return "Component{" +
@@ -77,7 +93,7 @@ public class Component {
                 ", herst='" + herst + '\'' +
                 ", typbz='" + typbz + '\'' +
                 ", sernr='" + sernr + '\'' +
-                ", order=" + order +
+                //", order=" + order +
                 '}';
     }
 }

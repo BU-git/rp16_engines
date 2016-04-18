@@ -20,8 +20,8 @@ public class Info {
     private String line;
     private String description;
 
-    @ManyToOne
-    private Order order;
+   /* @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Order order;*/
 
     @XmlElement(name = "SoortRegel")
     public String getKindOfLine() {
@@ -74,13 +74,13 @@ public class Info {
         this.id = id;
     }
 
-    public Order getOrder() {
+   /* public Order getOrder() {
         return order;
     }
 
     public void setOrder(Order order) {
         this.order = order;
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -91,7 +91,7 @@ public class Info {
                 ", sleutel='" + sleutel + '\'' +
                 ", line='" + line + '\'' +
                 ", description='" + description + '\'' +
-                ", order=" + order +
+               // ", order=" + order +
                 '}';
     }
 }
