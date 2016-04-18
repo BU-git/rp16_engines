@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="component")
+@Table(name="components")
 @XmlRootElement
 public class Component {
 

@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="relation")
+@Table(name="relations")
 @XmlRootElement
 public class Relation {
 
@@ -22,8 +22,8 @@ public class Relation {
     private String telephone;
     private int number;
 
-    @OneToOne
-    private Order order;
+/*    @OneToOne
+    private Order order;*/
 
     @XmlAttribute(name = "nummer")
     public int getNumber() {
@@ -76,7 +76,7 @@ public class Relation {
                 ", contactPerson='" + contactPerson + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", number=" + number +
-                ", order=" + order +
+                //", order=" + order +
                 '}';
     }
 }

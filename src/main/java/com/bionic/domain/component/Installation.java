@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="installation")
+@Table(name="installations")
 @XmlRootElement
 public class Installation {
 
@@ -20,8 +20,8 @@ public class Installation {
     private String postCode;
     private String town;
 
-    @OneToOne
-    private Order order;
+/*    @OneToOne
+    private Order order;*/
 
     @XmlElement(name = "Naam")
     public String getName() {
@@ -66,7 +66,7 @@ public class Installation {
                 ", address='" + address + '\'' +
                 ", postCode='" + postCode + '\'' +
                 ", town='" + town + '\'' +
-                ", order=" + order +
+               // ", order=" + order +
                 '}';
     }
 }

@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="employee")
+@Table(name="employees")
 @XmlRootElement
 public class Employee {
 
@@ -21,8 +21,8 @@ public class Employee {
     private String name;
     private String email;
 
-    @OneToOne
-    private Order order;
+  /*  @OneToOne
+    private Order order;*/
 
     @XmlAttribute(name = "nummer")
     public int getNumber() {
@@ -50,7 +50,7 @@ public class Employee {
         this.name = name;
     }
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
@@ -71,7 +71,7 @@ public class Employee {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (order != null ? order.hashCode() : 0);
         return result;
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -79,7 +79,7 @@ public class Employee {
                 "number=" + number +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", order=" + order +
+                //", order=" + order +
                 '}';
     }
 }
