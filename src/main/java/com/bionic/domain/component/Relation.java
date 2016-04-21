@@ -1,9 +1,11 @@
 
 package com.bionic.domain.component;
 
-import com.bionic.domain.Order;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,11 +40,11 @@ public class Relation {
     public String getName() {
         return name;
     }
-    @XmlElement(name = "ContactPerson")
+    @XmlElement(name = "ContactPersoon")
     public String getContactPerson() {
         return contactPerson;
     }
-    @XmlElement(name = "Telephone", defaultValue = "")
+    @XmlElement(name = "Telefoon", defaultValue = "")
     public String getTelephone() {
         return telephone;
     }
