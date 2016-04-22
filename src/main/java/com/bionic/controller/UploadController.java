@@ -42,7 +42,7 @@ public class UploadController {
                 File convFile = new File(file.get(i).getOriginalFilename());
                 file.get(i).transferTo(convFile);
                 Order order = fileReader.convertFromXMLToObject(convFile.getAbsolutePath());
-                //System.out.println(order + "UPLOADED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println(order + "UPLOADED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 if (order != null) {
 
                     /*List<Component> components = order.getComponents();
