@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Welcome</title>
+    <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
     <script src="<c:url value="/resources/js/upload.js"/>"></script>
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -48,21 +49,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="file" name="files[]" multiple="multiple" onchange="getFileSizeandName(this);"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <div id="uploaddiv">
-                                <table id="uploadTable">
-
-                                    <tfoot>
-                                    <tr>
-                                        <td id="filecount"></td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                            <input type="file" name="files[]" id="files" multiple="multiple" onchange="getFileSizeandName(this);"/>
                         </td>
                     </tr>
                     <tr>
