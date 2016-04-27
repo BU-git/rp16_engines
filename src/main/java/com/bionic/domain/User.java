@@ -17,14 +17,20 @@ public class User implements Serializable {
 	private long id;
 	private String name;
 	private String email;
-	private String password;
+	private String passwordHash;
+	private String salt;
+	private Role role;
 	
-	public User() { }
+	public User() {
+		this.role = Role.USER;
+	}
 
-	public User(String name, String email, String password) {
+	public User(String name, String email, String passwordHash, String salt, Role role) {
 		this.name = name;
 		this.email = email;
-		this.password = password;
+		this.passwordHash = passwordHash;
+		this.salt = salt;
+		this.role = role;
 	}
 
 	public String getName() {
@@ -51,11 +57,27 @@ public class User implements Serializable {
 		this.email = mail;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }

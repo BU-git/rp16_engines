@@ -78,6 +78,10 @@ fieldset p {
 	background: #FFFFFF
 }
 
+#content a{
+	width: 200px;
+}
+
 #login-form {
 	background-color: #363636;
 	border-radius: 5px;
@@ -160,7 +164,7 @@ fieldset p {
 	background: linear-gradient(to top, #000000, #3A393B);
 	padding: 10px;
 	color: #FFFFFF;
-	max-width: 150px;
+	width: inherit;
 	margin: 20px;
 }
 

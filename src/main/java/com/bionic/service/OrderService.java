@@ -2,6 +2,7 @@ package com.bionic.service;
 
 import com.bionic.domain.Order;
 import com.bionic.domain.OrderBrief;
+import com.bionic.domain.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Blob;

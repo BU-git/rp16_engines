@@ -17,13 +17,19 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	public List<User> getUser(String mail, String password) {
-		return userDao.getUser(mail, password);
+	
+	public List<User> adminLogin(String mail, String password) {
+		return userDao.adminLogin(mail, password);
 	}
 
 	@Override
 	public List<User> getAllUsers() {
 		return userDao.getAllUsers();
+	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		return userDao.getUserByEmail(email);
 	}
 
 	@Override

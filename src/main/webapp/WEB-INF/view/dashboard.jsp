@@ -51,21 +51,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="file" name="files[]" multiple="multiple" onchange="getFileSizeandName(this);"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <div id="uploaddiv">
-                                <table id="uploadTable">
-
-                                    <tfoot>
-                                    <tr>
-                                        <td id="filecount"></td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                            <input type="file" name="files[]" id="files" multiple="multiple" onchange="getFileSizeandName(this);"/>
                         </td>
                     </tr>
                     <tr>

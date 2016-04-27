@@ -18,8 +18,8 @@
 			<cf:form id="loginForm" method="post" action="/dashboard" modelAttribute="user">
 			<cf:label path="email"><p>Please enter your email</p></cf:label>
 			<cf:input id="mail" name="email" path="email" /><br>
-			<cf:label path="password"><p>Password</p></cf:label>
-			<cf:password id="password" name="password" path="password" /><br>
+			<cf:label path="passwordHash"><p>Password</p></cf:label>
+			<cf:password id="passwordHash" name="passwordHash" path="passwordHash" /><br>
 			<input type="submit" value="Login" />
 			</cf:form>
 		</fieldset>

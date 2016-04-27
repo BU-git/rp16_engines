@@ -1,19 +1,16 @@
 package com.bionic.controller;
 
 import javax.inject.Inject;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.bionic.domain.Role;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.bionic.domain.User;
 import com.bionic.service.UserService;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
 import java.util.List;
 
 @Controller
@@ -34,12 +31,12 @@ public class LoginController {
 
 	@ModelAttribute
 	public User createUser() {
-		return new User();
+		return new User(null, null, null, null, Role.ADMIN);
 	}
 	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	public String authorization(@ModelAttribute("user")User user, ModelMap model) {
-		List<User> list = userService.getUser(user.getEmail(), user.getPassword());
+		List<User> list = userService.adminLogin(user.getEmail(), user.getPasswordHash());
 		if (!list.isEmpty()) {
 			model.addAttribute("loggedInUser", list.get(0));
 			return "dashboard";
