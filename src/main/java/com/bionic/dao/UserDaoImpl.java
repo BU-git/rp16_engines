@@ -5,6 +5,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bionic.domain.User;
 
@@ -27,5 +28,18 @@ public class UserDaoImpl implements UserDao {
 	public List<User> getAllUsers() {
 		TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public List<User> findByEmail(String email){
+		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email =:email", User.class);
+		query.setParameter("email", email.toLowerCase());
+		return query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public void save(User u) {
+		em.persist(u);
 	}
 }
