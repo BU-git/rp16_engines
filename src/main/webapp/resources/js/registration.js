@@ -8,6 +8,7 @@ $(function(){
     var input_email = $('#email');
     var input_name = $('#name');
     var input_password = $('#password');
+    var input_role = $('#role');
     var check1 = $('#check1');
     var check2 = $('#check2');
     var check3 = $('#check3');
@@ -89,8 +90,11 @@ $(function(){
         transition: 'all 0.3s'
     });
     submit.click(function(){
-        var user = {'email':input_email.val(),'name':input_name.val(),'password':input_password.val()};
+        var role = 1;
+        if(input_role.prop('checked')) role = 0;
+        var user = {'email':input_email.val(),'name':input_name.val(),'passwordHash':input_password.val(),'role':role};
         user = JSON.stringify(user);
+        console.log(user);
         $.ajax({
             dataType: "html",
             contentType: 'application/json',
