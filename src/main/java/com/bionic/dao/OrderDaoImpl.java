@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.io.IOException;
 import java.sql.Blob;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,7 +47,9 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<OrderBrief> getBriefOrdersForUser(String email) {
         TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o WHERE LOWER(o.employee.email) LIKE :email", Order.class);
-        query.setParameter("email", email.toLowerCase() + "@kvt.nl");
+        String emailTemp = email.toLowerCase().trim();
+        query.setParameter("email", emailTransformation(emailTemp));
+        System.out.println(emailTransformation(emailTemp));
         List<Order> orders = query.getResultList();
         return orders.stream().map(o -> new OrderBrief(o.getNumber(),
                 o.getImportDate(),
@@ -59,7 +62,7 @@ public class OrderDaoImpl implements OrderDao {
         Order order = em.find(Order.class, number);
         if(order != null) {
             String emailTemp = order.getEmployee().getEmail();
-            if (emailTemp.equalsIgnoreCase(email + "@kvt.nl")) {
+            if (emailTemp.equalsIgnoreCase(emailTransformation(email))) {
                 return order;
             }
         }
@@ -78,4 +81,14 @@ public class OrderDaoImpl implements OrderDao {
         em.merge(order);
     }
 
+    private String emailTransformation(String email) {
+        char[] chars = email.toCharArray();
+        for (int i = chars.length-1; i >= 0; i--) {
+            if (chars[i] == '_') {
+                chars[i] = '.';
+                break;
+            }
+        }
+        return new String(chars);
+    }
 }

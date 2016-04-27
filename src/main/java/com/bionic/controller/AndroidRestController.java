@@ -23,7 +23,7 @@ public class AndroidRestController {
         return userService.getAllUsers();
     }
 
-    @RequestMapping(value = "/users/{email}",
+    @RequestMapping(value = "/user/{email}",
             method = {RequestMethod.GET, RequestMethod.POST},
             produces = "application/json")
     public User getUserByEmail(@PathVariable String email) {
