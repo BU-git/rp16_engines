@@ -35,23 +35,13 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUserByEmail(String email) {
 		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE LOWER(u.email) = :email", User.class);
-		String emailTemp = email.toLowerCase().trim();
-		query.setParameter("email", emailTransformation(emailTemp));
+		query.setParameter("email", email);
 		List<User> users = query.getResultList();
 		if (!users.isEmpty()) {
 			return users.get(0);
 		}
-		return null;
+		return new User(null, null, null, null, Role.USER);
 	}
 
-	private String emailTransformation(String email) {
-		char[] chars = email.toCharArray();
-		for (int i = chars.length-1; i >= 0; i--) {
-			if (chars[i] == '_') {
-				chars[i] = '.';
-				break;
-			}
-		}
-		return new String(chars);
-	}
+
 }
