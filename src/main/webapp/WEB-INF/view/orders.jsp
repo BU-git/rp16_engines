@@ -62,7 +62,11 @@
                             </td>
                             <td><c:out value="${order.date}"/></td>
                             <td><c:out value="${order.installation.name}"/></td>
-                            <td><c:out value="${order.tasks}"/></td>
+                            <td>
+                                <c:forEach var="task" items="${order.tasks}">
+                                    <c:out value="${task.ltxa1}"/>
+                                </c:forEach>
+                            </td>
                             <td><c:out value="${order.relation.town}"/></td>
                             <td>
                                 <a href="/orders/${order.number}">

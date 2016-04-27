@@ -23,10 +23,11 @@ public class User {
 		this.role = Role.USER;
 	}
 
-	public User(String name, String email, String passwordHash, Role role) {
+	public User(String name, String email, String passwordHash, String salt, Role role) {
 		this.name = name;
 		this.email = email;
 		this.passwordHash = passwordHash;
+		this.salt = salt;
 		this.role = role;
 	}
 
@@ -68,5 +69,13 @@ public class User {
 
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }

@@ -7,8 +7,6 @@ import com.bionic.service.OrderService;
 import com.bionic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,14 +20,14 @@ public class AndroidRestController {
 
     @RequestMapping(value="/users", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json")
     public @ResponseBody List<User> getAllUsers() {
-        List<User> users = userService.getAllUsers();
-        List<User> result = new ArrayList<>();
-        for (User u : users) {
-            if (!u.getEmail().equalsIgnoreCase("admin")) {
-                result.add(u);
-            }
-        }
-        return result;
+        return userService.getAllUsers();
+    }
+
+    @RequestMapping(value = "/users/{email}",
+            method = {RequestMethod.GET, RequestMethod.POST},
+            produces = "application/json")
+    public User getUserByEmail(@PathVariable String email) {
+        return userService.getUserByEmail(email);
     }
 
     @RequestMapping(value="/orders/brief/{email}",

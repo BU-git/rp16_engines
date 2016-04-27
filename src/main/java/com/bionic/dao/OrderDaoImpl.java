@@ -2,19 +2,15 @@ package com.bionic.dao;
 
 import com.bionic.domain.Order;
 import com.bionic.domain.OrderBrief;
-import com.bionic.domain.component.Employee;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.io.IOException;
 import java.sql.Blob;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,12 +57,12 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public Order getOrderForUser(Long number, String email) {
         Order order = em.find(Order.class, number);
-        //if(order != null) {
+        if(order != null) {
             String emailTemp = order.getEmployee().getEmail();
             if (emailTemp.equalsIgnoreCase(email + "@kvt.nl")) {
                 return order;
             }
-        //}
+        }
         return null;
 
         /*TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o " +
