@@ -1,5 +1,9 @@
 package com.bionic.service;
 
+import com.bionic.dao.UserDao;
+import com.bionic.domain.Order;
+import com.bionic.domain.User;
+import com.bionic.util.Util;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,8 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bionic.dao.UserDao;
-import com.bionic.domain.User;
+import java.util.List;
 
 
 @Service
@@ -17,9 +20,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	
-	public List<User> adminLogin(String mail, String password) {
-		return userDao.adminLogin(mail, password);
+	public List<User> adminLogin(String email, String password) {
+		return userDao.adminLogin(email, password);
 	}
 
 	@Override
@@ -29,7 +31,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByEmail(String email) {
-		return userDao.getUserByEmail(email);
+		String emailTemp = email.toLowerCase().trim();
+		return userDao.getUserByEmail(Util.emailTransformation(emailTemp));
 	}
 
 	@Override
