@@ -45,26 +45,14 @@ public class UserDaoImpl implements UserDao {
 		return new User(null, null, null, null, Role.USER);
 	}
 
-	private String emailTransformation(String email) {
-		char[] chars = email.toCharArray();
-		for (int i = chars.length-1; i >= 0; i--) {
-			if (chars[i] == '_') {
-				chars[i] = '.';
-				break;
-			}
-		}
-		return new String(chars);
-	}
-
 	@Override
 	public List<User> findByEmail(String email){
 		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email =:email", User.class);
-		query.setParameter("email", email.toLowerCase());
+		query.setParameter("email", email);
 		return query.getResultList();
 	}
 
 	@Override
-	@Transactional
 	public void save(User u) {
 		em.persist(u);
 	}

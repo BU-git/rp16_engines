@@ -35,6 +35,7 @@ public class TemplateServiceImpl implements TemplateService{
         getList(name, fields).forEach(templateDao::save);
     }
 
+    @Override
     public List<String> findAll(){
         return templateDao.findAllTemplateNames();
     }
@@ -47,8 +48,7 @@ public class TemplateServiceImpl implements TemplateService{
     private List<TemplateField> getList(String name, List<FieldHolder> fields){
         List<TemplateField> list = new ArrayList<>();
         TemplateEntity templateEntity = new TemplateEntity();
-        LocalDate localDate = LocalDate.now();
-        Date dt = Date.valueOf(localDate);
+        Date dt = Date.valueOf(LocalDate.now());
         templateEntity.setTemplateName(name);
         for(FieldHolder fieldHolder: fields){
             List<Field> fieldList = fieldDao.findByType(fieldHolder.getType());
