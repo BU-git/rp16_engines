@@ -24,7 +24,6 @@ $(function(){
     });
     popup_ok.popup({
         opentransitionend: function(){
-            console.log("hello");
             setTimeout(
                 function()
                 {
@@ -168,7 +167,7 @@ $(function(){
                 fieldType = $(fieldType).text();
                 fieldValue = $(fieldValue).text();
                 if (fieldType != undefined && fieldType.length > 0 && fieldValue != undefined) {
-                    var field = {'fieldType': fieldType, 'fieldValue': fieldValue};
+                    var field = {'type': fieldType, 'description': fieldValue};
                     fields.push(field);
                 }
             }
@@ -177,6 +176,7 @@ $(function(){
             'fields' : fields,
             'templateName': template_name.val()
         });
+        console.log(fields);
         $.ajax({
             dataType: "html",
             contentType: 'application/json',

@@ -60,7 +60,7 @@
           </td>
           <td id="inline">
             <div class="role">
-              <input id='role' type="checkbox">
+              <input id='role' value="admin" type="checkbox">
             </div>
             <div id="label"><label id="for_role">Admin</label></div>
           </td>
