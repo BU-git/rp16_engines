@@ -14,29 +14,35 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="templateFields")
 public class TemplateField implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @JsonIgnore
     private int id;
 
     @OneToOne(fetch = FetchType.EAGER, targetEntity = Field.class, cascade = CascadeType.ALL)
     private Field field;
 
     @OneToOne(fetch = FetchType.EAGER, targetEntity = TemplateEntity.class, cascade = CascadeType.ALL)
+    @JsonIgnore
     private TemplateEntity templateEntity;
 
     @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
+    @JsonIgnore
     private Date createDt;
 
+    @JsonIgnore
     private Date updateDt;
 
-    public String value;
+    private String value;
 
 
 

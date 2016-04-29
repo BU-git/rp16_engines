@@ -14,6 +14,7 @@ public class TemplateEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+
     private int id;
 
     @Column(nullable = false)
