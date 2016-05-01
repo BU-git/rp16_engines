@@ -32,9 +32,9 @@ a:link, a:visited {
     text-decoration: none;
     display: inline-block;
 }
-a div, a:visited {
-    color: white;
-}
+a div, a:visited, a:link, a:visited  {
+     color: white;
+ }
 #header a{
     margin-top: 15px;
 }
