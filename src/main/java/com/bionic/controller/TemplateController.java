@@ -25,10 +25,7 @@ public class TemplateController {
 
     @RequestMapping(value = "/templates", method = RequestMethod.GET)
     public String templatesPage(ModelMap model){
-        if (!model.containsAttribute("loggedInUser")) {
-            return "redirect:login";
-        }
-        return "templates";
+        return !model.containsAttribute("loggedInUser") ? "redirect:login" : "templates";
     }
 
     @RequestMapping(path = "/templates/save", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
@@ -43,10 +40,11 @@ public class TemplateController {
         return ResponseEntity.ok("ok");
     }
 
-   /* @RequestMapping(value = "/templates/get/{number}",
-            method = {RequestMethod.GET, RequestMethod.POST},
-            produces = "application/json")
-    public List<TemplateField> getAllTemplates(@PathVariable("number") int id){
-        return templateService.findByTemplateId(id);
-    }*/
+    @RequestMapping(path = "templates/overview")
+    public String getListOfAllTemplates(ModelMap model){
+        if (!model.containsAttribute("loggedInUser")) return "templates";
+        model.addAttribute("templates", templateService.findAll());
+        return "templateOverview";
+    }
+
 }

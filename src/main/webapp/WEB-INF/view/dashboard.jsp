@@ -9,17 +9,18 @@
     <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
     <script src="<c:url value="/resources/js/upload.js"/>"></script>
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <div id="header">
-        <a href="/orders" class="left">
+        <a href="<spring:url value="/orders"/>" class="left">
             <span>Orderoverzicht</span>
         </a>
-        <a href="/templates" class="left">
+        <a href="<spring:url value="/templates"/>" class="left">
             <span>Maak template</span>
         </a>
-        <a href="/404 error" class="left">
+        <a href="<spring:url value="/templates/overview"/>" class="left">
             <span>Template overzicht</span>
         </a>
         <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
@@ -33,14 +34,14 @@
         <div id="content" style="text-align: center">
             <p style="text-align: center">Welkom ${loggedInUser.email}</p>
 
-            <a href="/orders" style="text-align: center; display: block">
+            <a href="<spring:url value="/orders"/>" style="text-align: center; display: block">
                 <div class="button">Orderoverzicht</div>
             </a>
-            <a href="/templates" style="text-align: center; display: block">
+            <a href="<spring:url value="/templates"/>" style="text-align: center; display: block">
                 <div class="button">Maak template</div>
             </a>
-            <a href="/404 error" style="text-align: center; display: block">
-                <div class="button">Template overzicht</div>
+            <a href="<spring:url value="/templates/overview"/>" class="left">
+                <span>Template overzicht</span>
             </a>
             <form method="post" id="uploadForm" action="upload" enctype="multipart/form-data">
                 <table>

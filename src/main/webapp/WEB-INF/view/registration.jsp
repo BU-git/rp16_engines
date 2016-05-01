@@ -6,9 +6,9 @@
   <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
   <script src="<c:url value="/resources/js/core.js"/>"></script>
-  <script src="<c:url value="/resources/js/sha3.js"/>"></script>
   <script src="<c:url value="/resources/js/registration.js"/>"></script>
   <link href="<c:url value="/resources/css/registration.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Registration</title>
 </head>
@@ -20,7 +20,7 @@
   <a href="<spring:url value="/templates"/>" class="left">
     <span>Maak template</span>
   </a>
-  <a href="/404 error" class="left">
+  <a href="<spring:url value="/templates/overview"/>" class="left">
     <span>Template overzicht</span>
   </a>
   <span style="text-align: center;">Welkom ${loggedInUser.email}</span>

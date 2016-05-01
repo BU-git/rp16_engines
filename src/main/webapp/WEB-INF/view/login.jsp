@@ -8,6 +8,7 @@
 	<title>Login</title>
 	<link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
 	<link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">
+	<link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
