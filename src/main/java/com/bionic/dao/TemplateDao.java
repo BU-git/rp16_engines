@@ -15,6 +15,6 @@ public interface TemplateDao {
 
     List<String> findAllTemplateNames();
 
-    List<TemplateEntity> findByTemplateName(String name);
+    List<TemplateField> findByTemplateName(String name);
 
 }

@@ -5,6 +5,7 @@ package com.bionic.service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class TemplateServiceImpl implements TemplateService{
     public void save(String name, List<FieldHolder> fields, boolean fromWeb) {
         if(fromWeb && templateDao.findByTemplateName(name).size() > 0) throw new IllegalArgumentException();
         getList(name, fields).forEach(templateDao::save);
+    }
+
+    @Override
+    public List<TemplateField> findByTemplateName(String name){
+        return name != null ? templateDao.findByTemplateName(name) : new LinkedList<>();
     }
 
     @Override

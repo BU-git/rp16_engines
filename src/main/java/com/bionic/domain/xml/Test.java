@@ -34,7 +34,14 @@ public class Test {
         List<TemplateField> list = new LinkedList<>();
         /*TemplateEntity templateEntity = new TemplateEntity();
         test.templateService.findAll().forEach(System.out::println);*/
-        System.out.println(test.templateService.findByTemplateId(1).get(0).getTemplateEntity().getTemplateName());
+        for(TemplateField tf: test.templateService.findByTemplateName("Template X")){
+            System.out.println(tf.getTemplateEntity().getTemplateName());
+            System.out.println(tf.getTemplateEntity().getId());
+            System.out.println(tf.getDescription());
+            System.out.println(tf.getField().getType());
+            System.out.println("**********");
+        }
+        /*System.out.println(test.templateService.findByTemplateName("Template X").get(0).getTemplateEntity().getTemplateName());*/
 
         /*Field field = new Field();
         field.setType("text");

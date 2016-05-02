@@ -24,9 +24,9 @@ public class TemplateDaoImpl implements TemplateDao{
     }
 
     @Override
-    public List<TemplateEntity> findByTemplateName(String name){
-        TypedQuery<TemplateEntity> query = em.createQuery("SELECT te FROM TemplateEntity te WHERE te.templateName =:name",
-                TemplateEntity.class);
+    public List<TemplateField> findByTemplateName(String name){
+        TypedQuery<TemplateField> query = em.createQuery("SELECT DISTINCT te FROM TemplateField te, TemplateEntity t" +
+                        " WHERE te.templateEntity.templateName =:name AND te.templateEntity.id = t.id", TemplateField.class);
         query.setParameter("name", name);
         return query.getResultList();
     }

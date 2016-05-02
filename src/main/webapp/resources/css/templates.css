@@ -64,6 +64,9 @@
     text-align: right;
     padding: 10px;
 }
+#footer{
+    padding: 15px;
+}
 label{
     word-wrap: break-word;
 }
@@ -81,10 +84,10 @@ textarea{
     height: 32px;
     padding: 10px;
 }
-.textField{
+.textField, .textArea{
     width: 400px;
 }
-input.form_controls[type = "text"]{
+input.form_controls[type = "text"], #text_area_form_controls{
     width: 192px;
 }
 input.form_controls[type = "checkbox"]{
@@ -209,7 +212,7 @@ button#my_popup_open{
 ul li{
     list-style: none;
 }
-.prev_element input[type='text'], .prev_element textarea, .prev_element label{
+.prev_element input[type='text'], .prev_element textarea, .prev_element label, textarea{
     display: block;
 }
 .prev_element input[type='checkbox'], .prev_element label, ul li, #left_side, #right_side, #right_side_error, #left_side_error{
@@ -239,11 +242,13 @@ ul li{
     height: 100%;
 }
 #main_table{
+    padding-bottom: 10px;
+    border-spacing: 0;
     max-height: calc(100% - 200px);
 }
 #main_table th{
     /*background-color: #222226;*/
-    background-color: #E0E0E0;
+    background-color: #EBEBEB;
     padding: 1%;
     color: #797A7A;
 }

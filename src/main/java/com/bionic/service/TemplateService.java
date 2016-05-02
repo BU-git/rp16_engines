@@ -12,6 +12,8 @@ public interface TemplateService {
 
     List<TemplateField> findByTemplateId(int id);
 
+    List<TemplateField> findByTemplateName(String name);
+
     List<String> findAll();
 
 }

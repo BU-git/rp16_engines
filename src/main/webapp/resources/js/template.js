@@ -140,7 +140,7 @@ $(function(){
         switch (type){
             case "text field": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><input placeholder="Text Field" readonly class="textField" type="text">';
             case "check box": return '<input checked class="checkBoxField" type="checkbox"><label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
-            case "text area": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><textarea rows="3" cols="45" readonly class="textArea" placeholder="Text Area"></textarea>';
+            case "text area": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><textarea rows="3"  readonly class="textArea" placeholder="Text Area"></textarea>';
         }
     };
     var edit_delete_feature = function(fadeOut){

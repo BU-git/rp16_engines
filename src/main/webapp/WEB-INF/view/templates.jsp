@@ -86,7 +86,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <textarea id="text_area_form_controls" cols="19" rows="3" placeholder="Text Area" readonly></textarea>
+                    <textarea id="text_area_form_controls" rows="3" placeholder="Text Area" readonly></textarea>
                   </td>
                   <td>
                     <button id="text_area" class="my_popup_open"></button>

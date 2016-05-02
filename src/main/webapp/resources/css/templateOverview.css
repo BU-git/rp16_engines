@@ -6,6 +6,11 @@
     border: solid 1px #CCCCCC;
     border-radius: 2px;
 }
+.black{
+    color: #4F4F4F;
+    padding: 0;
+    margin: 0;
+}
 thead{
     display: none;
 }
@@ -19,7 +24,7 @@ thead{
 tbody, #title_banner, #content{
     text-align: center;
 }
-tbody a:hover{
+.black:hover{
     cursor: pointer;
     text-decoration: underline;
     color: #7199E3;
