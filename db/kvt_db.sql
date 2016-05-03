@@ -72,6 +72,30 @@ INSERT INTO `employees` VALUES (1,'rvrooy@kvt.nl','Rooij R. van',10000046),(2,'r
 UNLOCK TABLES;
 
 --
+-- Table structure for table `fields`
+--
+
+DROP TABLE IF EXISTS `fields`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fields` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fields`
+--
+
+LOCK TABLES `fields` WRITE;
+/*!40000 ALTER TABLE `fields` DISABLE KEYS */;
+INSERT INTO `fields` VALUES (1,'text field'),(2,'check box'),(3,'text area');
+/*!40000 ALTER TABLE `fields` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `info`
 --
 
@@ -162,7 +186,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (4008692,'2015-03-13 00:00:00','\0','2016-04-27 16:19:51',NULL,'2016-04-27 16:19:51','graag gegevens aanvullen\n\nvoor code cijfersloten Lex van der Kade 065138 6097','SM04','getekend contract',1,1,1),(4013250,'2016-04-05 00:00:00','\0','2016-04-27 16:19:51',NULL,'2016-04-27 16:19:51','','SM04','INK16000061-1',2,2,2),(4013294,'2016-04-06 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','Uitlaat flexibel reparen en aanbieden, bestellen bij ADL','SM04','4500622119',3,3,3),(4013299,'2016-04-06 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','','SM04','4500622119',4,4,4),(4013730,'2016-04-05 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','Dit setje draait 3000 toeren.\nSetje staat op de Leersumsestraatweg bij H ectometerpaal 23.1  bij de kruising met de Hoolweg.','SM04','260-414226',5,5,5),(4013731,'2016-04-05 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','3000 toeren aggregaat\nAdres is Rijksstraatweg bij hectometerpaal 24.6 op de kruising met de Dartheideweg','SM04','260-414226',6,6,6),(4013735,'2016-04-05 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','11-2-14 restwerk 2013 zie bijlage','SM04','260-414226',7,7,7),(4014136,'2016-04-06 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','','SM04','Fer Meuser',8,8,8),(4014137,'2016-04-06 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','','SM04','Fer Meuser',9,9,9),(4014281,'2016-04-06 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','','SM03','',10,10,10),(4014296,'2016-04-04 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','','SM03','',11,11,11),(4014297,'2016-03-29 00:00:00','\0','2016-04-27 16:19:52',NULL,'2016-04-27 16:19:52','','SM03','Koen de Pauw',12,12,12),(4014491,'2016-04-04 00:00:00','\0','2016-04-27 16:19:53',NULL,'2016-04-27 16:19:53','1-12-2011/74738JC: vervangen start accu\'s incl. equalizer.','SM03','',13,13,13),(4014496,'2016-04-05 00:00:00','\0','2016-04-27 16:19:53',NULL,'2016-04-27 16:19:53','','SM03','',14,14,14),(4014498,'2016-04-04 00:00:00','\0','2016-04-27 16:19:53',NULL,'2016-04-27 16:19:53','','SM03','',15,15,15),(4014527,'2016-04-05 00:00:00','\0','2016-04-27 16:19:53',NULL,'2016-04-27 16:19:53','Let op! contract formeel door Colt beeindigd wegens herstructurering per 31 mei 2002. Er volgt een nieuwe aanvraagLet op !!! Accus verv ivm leef ijd.$st. + 2 st. besturingsaccu\'s.  fan is ok.Oliedrukzender vervangen d 11-11-99, brandstoftankinhoudsmeter','SM03','',16,16,16);
+INSERT INTO `orders` VALUES (4008692,'2015-03-13 00:00:00','\0','2016-05-03 11:43:40',NULL,'2016-05-03 11:43:40','graag gegevens aanvullen\n\nvoor code cijfersloten Lex van der Kade 065138 6097','SM04','getekend contract',1,1,1),(4013250,'2016-04-05 00:00:00','\0','2016-05-03 11:43:40',NULL,'2016-05-03 11:43:40','','SM04','INK16000061-1',2,2,2),(4013294,'2016-04-06 00:00:00','\0','2016-05-03 11:43:41',NULL,'2016-05-03 11:43:41','Uitlaat flexibel reparen en aanbieden, bestellen bij ADL','SM04','4500622119',3,3,3),(4013299,'2016-04-06 00:00:00','\0','2016-05-03 11:43:41',NULL,'2016-05-03 11:43:41','','SM04','4500622119',4,4,4),(4013730,'2016-04-05 00:00:00','\0','2016-05-03 11:43:41',NULL,'2016-05-03 11:43:41','Dit setje draait 3000 toeren.\nSetje staat op de Leersumsestraatweg bij H ectometerpaal 23.1  bij de kruising met de Hoolweg.','SM04','260-414226',5,5,5),(4013731,'2016-04-05 00:00:00','\0','2016-05-03 11:43:41',NULL,'2016-05-03 11:43:41','3000 toeren aggregaat\nAdres is Rijksstraatweg bij hectometerpaal 24.6 op de kruising met de Dartheideweg','SM04','260-414226',6,6,6),(4013735,'2016-04-05 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','11-2-14 restwerk 2013 zie bijlage','SM04','260-414226',7,7,7),(4014136,'2016-04-06 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM04','Fer Meuser',8,8,8),(4014137,'2016-04-06 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM04','Fer Meuser',9,9,9),(4014281,'2016-04-06 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','',10,10,10),(4014296,'2016-04-04 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','',11,11,11),(4014297,'2016-03-29 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','Koen de Pauw',12,12,12),(4014491,'2016-04-04 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','1-12-2011/74738JC: vervangen start accu\'s incl. equalizer.','SM03','',13,13,13),(4014496,'2016-04-05 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','',14,14,14),(4014498,'2016-04-04 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','',15,15,15),(4014527,'2016-04-05 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','Let op! contract formeel door Colt beeindigd wegens herstructurering per 31 mei 2002. Er volgt een nieuwe aanvraagLet op !!! Accus verv ivm leef ijd.$st. + 2 st. besturingsaccu\'s.  fan is ok.Oliedrukzender vervangen d 11-11-99, brandstoftankinhoudsmeter','SM03','',16,16,16);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,9 +200,8 @@ DROP TABLE IF EXISTS `orders_components`;
 CREATE TABLE `orders_components` (
   `Order_number` bigint(20) NOT NULL,
   `components_id` bigint(20) NOT NULL,
-  `oc` int(11) NOT NULL,
-  PRIMARY KEY (`Order_number`,`oc`),
   UNIQUE KEY `UK_1tqwg5n9hvxfd644rmw9wgri0` (`components_id`),
+  KEY `FKi4d6e01iovc3oub69nckdq2ad` (`Order_number`),
   CONSTRAINT `FKaggdgvvnl94r3u3r1hg0c9dr9` FOREIGN KEY (`components_id`) REFERENCES `components` (`id`),
   CONSTRAINT `FKi4d6e01iovc3oub69nckdq2ad` FOREIGN KEY (`Order_number`) REFERENCES `orders` (`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -190,7 +213,7 @@ CREATE TABLE `orders_components` (
 
 LOCK TABLES `orders_components` WRITE;
 /*!40000 ALTER TABLE `orders_components` DISABLE KEYS */;
-INSERT INTO `orders_components` VALUES (4008692,1,1),(4008692,2,2),(4008692,3,3),(4013250,4,1),(4013250,5,2),(4013250,6,3),(4013294,7,1),(4013294,8,2),(4013294,9,3),(4013299,10,1),(4013299,11,2),(4013299,12,3),(4013730,13,1),(4013730,14,2),(4013730,15,3),(4013731,16,1),(4013731,17,2),(4013731,18,3),(4013735,19,1),(4013735,20,2),(4013735,21,3),(4014136,22,1),(4014136,23,2),(4014136,24,3),(4014136,25,4),(4014137,26,1),(4014137,27,2),(4014137,28,3),(4014137,29,4),(4014281,30,1),(4014296,31,1),(4014296,32,2),(4014297,33,1),(4014491,34,1),(4014491,35,2),(4014491,36,3),(4014496,37,1),(4014496,38,2),(4014496,39,3),(4014498,40,1),(4014498,41,2),(4014498,42,3),(4014527,43,1),(4014527,44,2),(4014527,45,3);
+INSERT INTO `orders_components` VALUES (4008692,1),(4008692,2),(4008692,3),(4013250,4),(4013250,5),(4013250,6),(4013294,7),(4013294,8),(4013294,9),(4013299,10),(4013299,11),(4013299,12),(4013730,13),(4013730,14),(4013730,15),(4013731,16),(4013731,17),(4013731,18),(4013735,19),(4013735,20),(4013735,21),(4014136,22),(4014136,23),(4014136,24),(4014136,25),(4014137,26),(4014137,27),(4014137,28),(4014137,29),(4014281,30),(4014296,31),(4014296,32),(4014297,33),(4014491,34),(4014491,35),(4014491,36),(4014496,37),(4014496,38),(4014496,39),(4014498,40),(4014498,41),(4014498,42),(4014527,43),(4014527,44),(4014527,45);
 /*!40000 ALTER TABLE `orders_components` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,9 +227,8 @@ DROP TABLE IF EXISTS `orders_info`;
 CREATE TABLE `orders_info` (
   `Order_number` bigint(20) NOT NULL,
   `extraInfo_id` bigint(20) NOT NULL,
-  `oi` int(11) NOT NULL,
-  PRIMARY KEY (`Order_number`,`oi`),
   UNIQUE KEY `UK_bixjm3t3srk0b6av4lrfrtjn5` (`extraInfo_id`),
+  KEY `FKjj7rlv0vrmn4pqnigpg6k9rh3` (`Order_number`),
   CONSTRAINT `FK1c43oq29r7lb232g26i9v8lx0` FOREIGN KEY (`extraInfo_id`) REFERENCES `info` (`id`),
   CONSTRAINT `FKjj7rlv0vrmn4pqnigpg6k9rh3` FOREIGN KEY (`Order_number`) REFERENCES `orders` (`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -218,7 +240,7 @@ CREATE TABLE `orders_info` (
 
 LOCK TABLES `orders_info` WRITE;
 /*!40000 ALTER TABLE `orders_info` DISABLE KEYS */;
-INSERT INTO `orders_info` VALUES (4008692,1,1),(4008692,2,2),(4008692,3,3),(4008692,4,4),(4008692,5,5),(4008692,6,6),(4013250,7,1),(4013250,8,2),(4013250,9,3),(4013294,10,1),(4013294,11,2),(4013294,12,3),(4013299,13,1),(4013299,14,2),(4013299,15,3),(4013730,16,1),(4013730,17,2),(4013730,18,3),(4013731,19,1),(4013731,20,2),(4013731,21,3),(4013735,22,1),(4013735,23,2),(4013735,24,3),(4014136,25,1),(4014136,26,2),(4014137,27,1),(4014137,28,2),(4014296,29,1),(4014491,30,1),(4014491,31,2),(4014491,32,3),(4014496,33,1),(4014496,34,2),(4014496,35,3),(4014498,36,1),(4014498,37,2),(4014498,38,3),(4014527,39,1),(4014527,40,2),(4014527,41,3);
+INSERT INTO `orders_info` VALUES (4008692,1),(4008692,2),(4008692,3),(4008692,4),(4008692,5),(4008692,6),(4013250,7),(4013250,8),(4013250,9),(4013294,10),(4013294,11),(4013294,12),(4013299,13),(4013299,14),(4013299,15),(4013730,16),(4013730,17),(4013730,18),(4013731,19),(4013731,20),(4013731,21),(4013735,22),(4013735,23),(4013735,24),(4014136,25),(4014136,26),(4014137,27),(4014137,28),(4014296,29),(4014491,30),(4014491,31),(4014491,32),(4014496,33),(4014496,34),(4014496,35),(4014498,36),(4014498,37),(4014498,38),(4014527,39),(4014527,40),(4014527,41);
 /*!40000 ALTER TABLE `orders_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,9 +254,8 @@ DROP TABLE IF EXISTS `orders_parts`;
 CREATE TABLE `orders_parts` (
   `Order_number` bigint(20) NOT NULL,
   `parts_id` bigint(20) NOT NULL,
-  `op` int(11) NOT NULL,
-  PRIMARY KEY (`Order_number`,`op`),
   UNIQUE KEY `UK_tbw6iu6s1yxupiw9mikhhy0vo` (`parts_id`),
+  KEY `FK39xfemob380jf9ruu0bur0w9r` (`Order_number`),
   CONSTRAINT `FK39xfemob380jf9ruu0bur0w9r` FOREIGN KEY (`Order_number`) REFERENCES `orders` (`number`),
   CONSTRAINT `FKthtd79gjjehf9xlcm0qx1apr9` FOREIGN KEY (`parts_id`) REFERENCES `parts` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -246,7 +267,7 @@ CREATE TABLE `orders_parts` (
 
 LOCK TABLES `orders_parts` WRITE;
 /*!40000 ALTER TABLE `orders_parts` DISABLE KEYS */;
-INSERT INTO `orders_parts` VALUES (4008692,1,1),(4008692,2,2),(4008692,3,3),(4008692,4,4),(4013250,5,1),(4013250,6,2),(4013250,7,3),(4013250,8,4),(4013294,9,1),(4013294,10,2),(4013299,11,1),(4013299,12,2),(4013731,13,1),(4013731,14,2),(4013735,15,1),(4013735,16,2),(4014281,17,1),(4014281,18,2),(4014281,19,3),(4014281,20,4),(4014281,21,5),(4014281,22,6),(4014281,23,7),(4014281,24,8),(4014281,25,9),(4014281,26,10),(4014281,27,11),(4014281,28,12),(4014281,29,13),(4014281,30,14),(4014281,31,15),(4014281,32,16),(4014498,33,1);
+INSERT INTO `orders_parts` VALUES (4008692,1),(4008692,2),(4008692,3),(4008692,4),(4013250,5),(4013250,6),(4013250,7),(4013250,8),(4013294,9),(4013294,10),(4013299,11),(4013299,12),(4013731,13),(4013731,14),(4013735,15),(4013735,16),(4014281,17),(4014281,18),(4014281,19),(4014281,20),(4014281,21),(4014281,22),(4014281,23),(4014281,24),(4014281,25),(4014281,26),(4014281,27),(4014281,28),(4014281,29),(4014281,30),(4014281,31),(4014281,32),(4014498,33);
 /*!40000 ALTER TABLE `orders_parts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,9 +281,8 @@ DROP TABLE IF EXISTS `orders_tasks`;
 CREATE TABLE `orders_tasks` (
   `Order_number` bigint(20) NOT NULL,
   `tasks_id` bigint(20) NOT NULL,
-  `ot` int(11) NOT NULL,
-  PRIMARY KEY (`Order_number`,`ot`),
   UNIQUE KEY `UK_7a9m9x3d4608cf5wi9ixy1xma` (`tasks_id`),
+  KEY `FKchctvgis4ubk94906og9xukux` (`Order_number`),
   CONSTRAINT `FK615d2maj3q5ny0vmgjlj3745w` FOREIGN KEY (`tasks_id`) REFERENCES `tasks` (`id`),
   CONSTRAINT `FKchctvgis4ubk94906og9xukux` FOREIGN KEY (`Order_number`) REFERENCES `orders` (`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -274,7 +294,7 @@ CREATE TABLE `orders_tasks` (
 
 LOCK TABLES `orders_tasks` WRITE;
 /*!40000 ALTER TABLE `orders_tasks` DISABLE KEYS */;
-INSERT INTO `orders_tasks` VALUES (4008692,1,1),(4013250,2,1),(4013294,3,1),(4013299,4,1),(4013730,5,1),(4013731,6,1),(4013735,7,1),(4014136,8,1),(4014137,9,1),(4014281,10,1),(4014296,11,1),(4014297,12,1),(4014491,13,1),(4014491,14,2),(4014496,15,1),(4014498,16,1),(4014527,17,1);
+INSERT INTO `orders_tasks` VALUES (4008692,1),(4013250,2),(4013294,3),(4013299,4),(4013730,5),(4013731,6),(4013735,7),(4014136,8),(4014137,9),(4014281,10),(4014296,11),(4014297,12),(4014491,13),(4014491,14),(4014496,15),(4014498,16),(4014527,17);
 /*!40000 ALTER TABLE `orders_tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,6 +380,63 @@ INSERT INTO `tasks` VALUES (1,'SP01','Serviceonderhoud noodstroominstallatie','S
 UNLOCK TABLES;
 
 --
+-- Table structure for table `templatefields`
+--
+
+DROP TABLE IF EXISTS `templatefields`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `templatefields` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createDt` date NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `updateDt` date DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `field_id` int(11) DEFAULT NULL,
+  `templateEntity_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK8s9kbbg0btub0hocrbb2vsr9i` (`field_id`),
+  KEY `FKi3i54ygdsttdgqhfaisjw5atk` (`templateEntity_id`),
+  CONSTRAINT `FK8s9kbbg0btub0hocrbb2vsr9i` FOREIGN KEY (`field_id`) REFERENCES `fields` (`id`),
+  CONSTRAINT `FKi3i54ygdsttdgqhfaisjw5atk` FOREIGN KEY (`templateEntity_id`) REFERENCES `templates` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `templatefields`
+--
+
+LOCK TABLES `templatefields` WRITE;
+/*!40000 ALTER TABLE `templatefields` DISABLE KEYS */;
+INSERT INTO `templatefields` VALUES (1,'2016-05-03','asassas',NULL,NULL,1,1),(2,'2016-05-03','sasasasasa',NULL,NULL,2,1),(3,'2016-05-03','sasasasasasa',NULL,NULL,3,1);
+/*!40000 ALTER TABLE `templatefields` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `templates`
+--
+
+DROP TABLE IF EXISTS `templates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `templates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `templateName` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `templates`
+--
+
+LOCK TABLES `templates` WRITE;
+/*!40000 ALTER TABLE `templates` DISABLE KEYS */;
+INSERT INTO `templates` VALUES (1,'Template');
+/*!40000 ALTER TABLE `templates` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -374,7 +451,7 @@ CREATE TABLE `users` (
   `role` int(11) DEFAULT NULL,
   `salt` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -383,7 +460,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','Bob van Holland','admin',0,NULL),(2,'rvrooy@kvt.nl','Rooij R. van','rvrooy@kvt.nl',1,NULL),(3,'rvdmeer@kvt.nl','Meer van der R.A.','rvdmeer@kvt.nl',1,NULL),(4,'sbesselink@kvt.nl','Besselink S.T.M.','sbesselink@kvt.nl',1,NULL);
+INSERT INTO `users` VALUES (1,'user@kvt.nl','user','fdVwgKuTc7m3c6nJWR9Qp9YfGfUrbCUk33WcH8t8Rjg=',1,'OHza8jrQBkIOcTHevtIwfHYJtApUzXt2ks4C9FylFuo='),(2,'admin@kvt.nl','Bob van Holland','9jOWoVdiHZ+N1WtoYZ8MkIQnUG5/u0NRD8XbQJBiZew=',0,'K/qqHrEGvnyAvwCfrtWqFea0QgsBj4MOUNu4Wsc2jPM='),(3,'rvrooy@kvt.nl','Rooij R. van','OrQSPtoZGV7/YIeGe5uYHSs/Qn8gRwmEdoknnoX+CmQ=',1,'Ztf7WvyG/6bLT6zq0L8lKeDL4YKKtMqtg+2SlTuTFnQ='),(4,'rvdmeer@kvt.nl','Meer van der R.A.','Fk+8dHCQ862c0ojsWEpi6HZOR31nwClRm+uSS87b2YI=',1,'esLCAa8fwDXrq/tSRtXqZ5djQFpiGIR9ANMM1Wt9Tv0='),(5,'sbesselink@kvt.nl','Besselink S.T.M.','f+32HZVA9sz3/bRl5JG2IVkf/Th3LsVRQGPfkBFLK1o=',1,'sGO907cwKT8I6r2kqdK3a8Z8iVj94kZCdsIauSgWAsY=');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -404,4 +481,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-27 20:41:12
+-- Dump completed on 2016-05-03 18:32:28
