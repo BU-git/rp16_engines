@@ -3,13 +3,10 @@ package com.bionic.service;
 import com.bionic.dao.OrderDao;
 import com.bionic.domain.Order;
 import com.bionic.domain.OrderBrief;
-import com.bionic.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.inject.Inject;
 import java.sql.Blob;
 import java.util.List;
 
@@ -37,12 +34,13 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public List<OrderBrief> getBriefOrdersForUser(String email) {
         String emailTemp = email.toLowerCase().trim();
-        return orderDao.getBriefOrdersForUser(Util.emailTransformation(emailTemp));
+        return orderDao.getBriefOrdersForUser(emailTemp);
     }
 
     @Override
     public Order getOrderForUser(long number, String email) {
-        return orderDao.getOrderForUser(number, Util.emailTransformation(email));
+        String emailTemp = email.toLowerCase().trim();
+        return orderDao.getOrderForUser(number, emailTemp);
     }
 
     @Override

@@ -1,14 +1,10 @@
 package com.bionic.service;
 
 import com.bionic.dao.UserDao;
-import com.bionic.domain.Order;
 import com.bionic.domain.User;
-import com.bionic.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,6 +24,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserByEmail(String email) {
 		String emailTemp = email.toLowerCase().trim();
-		return userDao.getUserByEmail(Util.emailTransformation(emailTemp));
+		return userDao.getUserByEmail(emailTemp);
 	}
 }
