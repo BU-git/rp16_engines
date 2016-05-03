@@ -17,8 +17,9 @@ html, body {
 
 body {
 	/*color: #ff8b3d;*/
-    font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'Helvetica Neue', sans-serif;
+	text-rendering: optimizeLegibility;
 }
 
 a:link, a:visited {
@@ -65,10 +66,16 @@ fieldset p {
 }
 
 #content {
-	min-height: 90%;
+	/*min-height: 90%;
 	background: #FFFFFF;
 	padding: 10px;
-	margin: 10px;
+	margin: 10px;*/
+	padding-top: 9px;
+	padding-right: 2px;
+	padding-left: 1px;
+	border-radius: 2px;
+	min-height: 90%;
+	background: #FFFFFF
 }
 
 #content a{

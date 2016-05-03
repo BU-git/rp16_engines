@@ -17,11 +17,13 @@ public class Test {
     @Autowired
     private XmlFileReader xmlFileReader;
 
+
     public static void main(String[] args) throws IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         Test test = (Test) context.getBean("test");
-        String name = "src/main/resources/xml/4014527.xml";
+        String name = "src/main/resources/xml/4013731.xml";
         Order order = test.xmlFileReader.convertFromXMLToObject(name);
-        if(order != null) System.out.println(order.getParts());;
+        if(order != null) System.out.println(order.getRelation());;
     }
+
 }

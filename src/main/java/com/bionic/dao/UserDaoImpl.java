@@ -5,6 +5,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import com.bionic.domain.Role;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.bionic.domain.User;
 import java.util.List;
 
@@ -35,7 +37,8 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUserByEmail(String email) {
 		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE LOWER(u.email) = :email", User.class);
-		query.setParameter("email", email);
+		String emailTemp = email.toLowerCase().trim();
+		query.setParameter("email", emailTransformation(emailTemp));
 		List<User> users = query.getResultList();
 		if (!users.isEmpty()) {
 			return users.get(0);
@@ -44,4 +47,27 @@ public class UserDaoImpl implements UserDao {
 	}
 
 
+	private String emailTransformation(String email) {
+		char[] chars = email.toCharArray();
+		for (int i = chars.length-1; i >= 0; i--) {
+			if (chars[i] == '_') {
+				chars[i] = '.';
+				break;
+			}
+		}
+		return new String(chars);
+	}
+
+	@Override
+	public List<User> findByEmail(String email){
+		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email =:email", User.class);
+		query.setParameter("email", email.toLowerCase());
+		return query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public void save(User u) {
+		em.persist(u);
+	}
 }

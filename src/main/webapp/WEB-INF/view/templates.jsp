@@ -7,6 +7,7 @@
   <script src="<c:url value="/resources/js/template.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
   <link href="<c:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Make Template</title>
 </head>
 <body>
@@ -52,13 +53,14 @@
       <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
     </div>
     <div id="container">
-      <div class="hd_main">
-        <table class="middle" id="title">
-          <tr><td><input id="template_name" placeholder="Template name" type="text"></td></tr>
-        </table>
-      </div>
       <div id="main_screen">
-        <table id="main_table"><tr><th id="first_th">Form Controls</th><th id="second_th">Form Preview Area</th></tr>
+        <table id="main_table">
+          <tr><td colspan="2"><div class="hd_main">
+            <table class="middle" id="title">
+              <tr><td><input id="template_name" placeholder="Template name" type="text"></td></tr>
+            </table>
+          </div></td> </tr>
+          <tr><th id="first_th">Form Controls</th><th id="second_th">Form Preview Area</th></tr>
           <tr>
             <td id="left">
               <table>

@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
@@ -23,9 +23,11 @@
             <span>Template overzicht</span>
         </a>
         <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
+        <a href="<spring:url value="/register"/>">New User</a>
         <a href="/logout.html" class="right">
             <span>logout</span>
         </a>
+
     </div>
     <div id="content-wrapper" style="height: calc(100% - 120px); text-align: center; align-content: center">
         <div id="content" style="text-align: center">

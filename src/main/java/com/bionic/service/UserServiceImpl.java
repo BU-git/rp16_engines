@@ -1,9 +1,16 @@
 package com.bionic.service;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import com.bionic.dao.UserDao;
 import com.bionic.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.bionic.dao.UserDao;
+import com.bionic.domain.User;
 import java.util.List;
 
 @Service
@@ -25,5 +32,16 @@ public class UserServiceImpl implements UserService {
 	public User getUserByEmail(String email) {
 		String emailTemp = email.toLowerCase().trim();
 		return userDao.getUserByEmail(emailTemp);
+	}
+
+	@Override
+	@Transactional
+	public void save(User u) {
+		if(u != null) userDao.save(u);
+	}
+
+	@Override
+	public List<User> findByEmail(String email) {
+		return email != null ? userDao.findByEmail(email) : new LinkedList<>();
 	}
 }
