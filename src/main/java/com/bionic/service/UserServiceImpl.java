@@ -1,37 +1,29 @@
 package com.bionic.service;
 
-<<<<<<< Temporary merge branch 1
 import java.util.LinkedList;
 import java.util.List;
-
-=======
 import com.bionic.dao.UserDao;
-import com.bionic.domain.Order;
+import com.bionic.domain.Role;
 import com.bionic.domain.User;
-import com.bionic.util.Util;
->>>>>>> Temporary merge branch 2
+import com.bionic.util.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.bionic.dao.UserDao;
-import com.bionic.domain.User;
-
 
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
-	
-<<<<<<< Temporary merge branch 1
-	
-	public List<User> adminLogin(String mail, String password) {
-		return userDao.adminLogin(mail, password);
-=======
-	public List<User> adminLogin(String email, String password) {
-		return userDao.adminLogin(email, password);
->>>>>>> Temporary merge branch 2
+
+	public User adminLogin(String email, String password) {
+		User user = userDao.getUserByEmail(email);
+		if (user == null) return null;
+		if (user.getRole() != Role.ADMIN) return null;
+		String salt = user.getSalt();
+		String passwordHash = user.getPasswordHash();
+		String passwordHashFromPage = PasswordEncoder.getInstance().encode(password, salt);
+		return (passwordHash.equals(passwordHashFromPage)) ? user : null;
 	}
 
 	@Override
@@ -48,7 +40,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void save(User u) {
-		if(u != null) userDao.save(u);
+		PasswordEncoder passwordEncoder = PasswordEncoder.getInstance();
+		if(u != null) {
+			String password = u.getPasswordHash();
+			String salt = PasswordEncoder.nextSALT();
+			String passwordHash = passwordEncoder.encode(password, salt);
+			u.setPasswordHash(passwordHash);
+			u.setSalt(salt);
+			userDao.save(u);
+		}
 	}
 
 	@Override

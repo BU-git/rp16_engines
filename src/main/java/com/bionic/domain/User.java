@@ -1,5 +1,7 @@
 package com.bionic.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -14,11 +16,14 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonIgnore
 	private long id;
 	private String name;
 	private String email;
 	private String passwordHash;
 	private String salt;
+
+	@JsonIgnore
 	private Role role;
 	
 	public User() {

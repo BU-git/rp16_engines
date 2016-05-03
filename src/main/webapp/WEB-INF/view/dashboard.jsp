@@ -23,7 +23,7 @@
         <a href="<spring:url value="/templates/overview"/>" class="left">
             <span>Template overzicht</span>
         </a>
-        <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
+        <span style="text-align: center;">Welkom ${loggedInUser.name}</span>
         <a href="<spring:url value="/register"/>">New User</a>
         <a href="/logout.html" class="right">
             <span>logout</span>

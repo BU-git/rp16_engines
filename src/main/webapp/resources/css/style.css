@@ -116,6 +116,7 @@ fieldset p {
 #login-form fieldset{
 	text-align: center;
 }
+
 #login-form fieldset p#message{
 	color: red;
 	margin: 0;
