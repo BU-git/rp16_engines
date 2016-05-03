@@ -1,0 +1,1 @@
+insert into fields values (1,'text field'),(2,'check box'), (3,'text area');

@@ -64,6 +64,9 @@
     text-align: right;
     padding: 10px;
 }
+#footer{
+    padding: 15px;
+}
 label{
     word-wrap: break-word;
 }
@@ -81,10 +84,10 @@ textarea{
     height: 32px;
     padding: 10px;
 }
-.textField{
+.textField, .textArea{
     width: 400px;
 }
-input.form_controls[type = "text"]{
+input.form_controls[type = "text"], #text_area_form_controls{
     width: 192px;
 }
 input.form_controls[type = "checkbox"]{
@@ -209,7 +212,7 @@ button#my_popup_open{
 ul li{
     list-style: none;
 }
-.prev_element input[type='text'], .prev_element textarea, .prev_element label{
+.prev_element input[type='text'], .prev_element textarea, .prev_element label, textarea{
     display: block;
 }
 .prev_element input[type='checkbox'], .prev_element label, ul li, #left_side, #right_side, #right_side_error, #left_side_error{
@@ -225,7 +228,8 @@ ul li{
     border-bottom: solid 1px #D7D7DB;
     font-weight: bold;
     padding-bottom: 10px;
-    background-color: black;
+    /*background-color: black;*/
+    background-color: #46628A;
 }
 .hd_main{
     height: 50px;
@@ -238,11 +242,15 @@ ul li{
     height: 100%;
 }
 #main_table{
+    padding-bottom: 10px;
+    border-spacing: 0;
     max-height: calc(100% - 200px);
 }
 #main_table th{
-    background-color: #222226;
+    /*background-color: #222226;*/
+    background-color: #EBEBEB;
     padding: 1%;
+    color: #797A7A;
 }
 #first_th{
     width: 20%;
@@ -255,7 +263,7 @@ ul li{
     width: 60%;
     min-width: 600px;
 }
-ul, a:link, a:visited, .hd_main, .hd, .hd_main table, #my_popup ul, #edit_popup ul, #right_side p, #right_side_error p{
+ul, .hd_main, .hd, .hd_main table, #my_popup ul, #edit_popup ul, #right_side p, #right_side_error p{
     text-align: center;
 }
 .inputTable{
@@ -271,64 +279,21 @@ input#template_name[type='text']:focus{
     outline-color:  #A9B068;
     background: #FEFFF0;
 }
-#content {
-    height: 95%;
-    background: #FFFFFF
-}
-body {
-    -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
-    text-rendering: optimizeLegibility;
-}
 label{
     font-size: 13px;
     color: #9FAAB5;
-}
-html, body {
-    background: #B7B6B8;
-    margin: 0;
-    padding: 0;
 }
 button#add_to_form, button#accept{
     border: none;
     background-color: #596E80;
 }
-#header {
-    height: 50px;
-    background: linear-gradient(to top, #000000, #3A393B);
-    z-index: 0;
-}
-#content-wrapper {
-    height: calc(100% - 20px);
-    min-height: 650px;
-    max-height: 650px;
-    min-width: 890px;
-    background: linear-gradient(to bottom, #3A393B, #696969 10%, #B7B6B8 100%, #B7B6B8 100%);
-    padding: 50px 50px 0 50px;
-}
-#content {
-    border-radius: 2px;
-    height: 90%;
+#content1 {
+    padding: 5px 2px 6px 1px;
+    height: 95%;
     background: #FFFFFF
 }
-body {
-    -webkit-font-smoothing: antialiased;
-    font-family: 'Helvetica Neue', sans-serif;
-    text-rendering: optimizeLegibility;
-}
-a:link, a:visited {
-    text-decoration: none;
-    display: inline-block;
-}
-fieldset p, a div, a:link, a:visited, .hd_main, .hd, #my_popup button, #edit_popup button, button#edit_button, button#save_button,
-#header, #main_table th{
+.hd_main, .hd, #my_popup button, #edit_popup button, button#edit_button, button#save_button{
     color: white;
-}
-#header a{
-    margin-top: 15px;
-}
-#header span {
-    margin: 20px;
 }
 input#template_name{
     margin-top: 0;
@@ -340,13 +305,17 @@ input#template_name{
     font-size: 19px;
     padding: 6px;
 }
-#title, #header, #main_table, #main_screen, .hd_main, .hd{
+#title, #main_table, #main_screen, .hd_main, .hd{
     width: 100%;
 }
-#title{
-    background: url("../images/templates/make_template-icon.png") no-repeat 5px;
+#main_screen table{
+    margin-top: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.middle, #main_screen table, #popup_ok table, #popup_error, .inputTable{
+.middle, #popup_ok table, #popup_error, .inputTable{
     margin-left: auto;
     margin-right: auto;
     padding: 7px;

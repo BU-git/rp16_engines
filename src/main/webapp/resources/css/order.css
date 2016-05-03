@@ -15,8 +15,8 @@ html, body {
   	background-size: cover;
 }*/
 
-body {
-	/*color: #ff8b3d;*/
+/*body {
+	/!*color: #ff8b3d;*!/
     font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 }
@@ -47,7 +47,7 @@ body {
 	background: #FFFFFF;
 	padding: 10px;
 	margin: 10px;
-}
+}*/
 
 
 #login-form {
