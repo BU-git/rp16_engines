@@ -39,15 +39,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void save(User u) {
+	public void save(User user) {
 		PasswordEncoder passwordEncoder = PasswordEncoder.getInstance();
-		if(u != null) {
-			String password = u.getPasswordHash();
+		if(user != null) {
+			String password = user.getPasswordHash();
 			String salt = PasswordEncoder.nextSALT();
 			String passwordHash = passwordEncoder.encode(password, salt);
-			u.setPasswordHash(passwordHash);
-			u.setSalt(salt);
-			userDao.save(u);
+			user.setPasswordHash(passwordHash);
+			user.setSalt(salt);
+			userDao.save(user);
 		}
 	}
 
