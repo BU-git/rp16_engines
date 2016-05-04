@@ -52,11 +52,12 @@ public class TemplateController {
     @RequestMapping(path = "templates/all"/*, consumes = MediaType.APPLICATION_JSON_VALUE*/)
     @ResponseBody
     public ResponseEntity<CustomTemplateHolder> getListOfAllTemplatesForDataTables(ModelMap model){
-        if (!model.containsAttribute("loggedInUser")) ResponseEntity.ok("redirect:/login");
+        if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         CustomTemplateHolder holder = new CustomTemplateHolder();
         holder.setData(templateService.findAllForDataTables());
         return ResponseEntity.ok(holder);
     }
+
     @RequestMapping(value = "templates/remove/{name}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteTemplateByName(ModelMap model, @PathVariable("name") String name){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
