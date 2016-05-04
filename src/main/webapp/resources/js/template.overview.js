@@ -25,7 +25,6 @@ $(document).ready(function() {
             ]
         });
     };
-    $.when(initTable()).then(setAction());
     var deleteTemplate = function(name){
         var url = '/templates/remove/'+name;
         $.ajax({
@@ -36,5 +35,6 @@ $(document).ready(function() {
             url:url/*,
             success: table.ajax.reload()*/
         })
-    }
+    };
+    $.when(initTable()).then(setAction());
 });

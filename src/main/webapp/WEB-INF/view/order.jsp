@@ -11,7 +11,15 @@
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
 </head>
 <body>
-<div id="header">
+<body><div id="header">
+    <div>
+        <a href="<spring:url value="/"/>" id="logo">
+            <img src="../../resources/images/logo.png">
+        </a>
+    </div>
+    <a href="<spring:url value="/dashboard"/>">
+        <span>Dashboard</span>
+    </a>
     <a href="<spring:url value="/orders"/>" class="left">
         <span>Orderoverzicht</span>
     </a>
@@ -22,6 +30,7 @@
         <span>Template overzicht</span>
     </a>
     <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
+    <a href="<spring:url value="/register"/>">New User</a>
     <a href="<spring:url value="/logout"/>" class="right">
         <span>logout</span>
     </a>
