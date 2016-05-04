@@ -18,7 +18,7 @@ public class TemplateRestController {
     @Autowired
     private TemplateService templateService;
 
-    @RequestMapping(value = "/templates/get/{number}",
+    @RequestMapping(value = "get/template/{number}",
             method = {RequestMethod.GET, RequestMethod.POST},
             produces = "application/json")
     public List<TemplateField> getAllTemplates(@PathVariable("number") int id){

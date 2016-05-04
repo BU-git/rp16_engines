@@ -5,16 +5,13 @@
 <head>
   <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/template.overview.js"/>"></script>
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/templateOverview.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/jquery.dataTables.min.css"/>" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Template Overview</title>
-  <script>
-    $(document).ready(function() {
-      $('#example').DataTable();
-    } );
-  </script>
+
 </head>
 <body>
 <div id="header">
@@ -42,19 +39,20 @@
           <tr>
             <th>#</th>
             <th>Template Name</th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbody>
-          <% int a = 1; %>
+          <%--<% int a = 1; %>
           <c:forEach var ="t" items="${templates}">
-            <tr>
+            <tr id="row<%out.println(a);%>">
               <td><% out.println(a++); %></td>
               <td>
                 <c:if test="${!t.equals('NSA')}"><a href="/templates/overview/${t}"><p class="black" >${t}</p></a></c:if>
                 <c:if test="${t.equals('NSA')}">${t}</c:if>
               </td>
             </tr>
-          </c:forEach>
+          </c:forEach>--%>
           </tbody>
         </table>
       </div>

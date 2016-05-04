@@ -11,8 +11,17 @@
     padding: 0;
     margin: 0;
 }
-thead{
-    display: none;
+.del{
+    outline: none;
+    border: none;
+    width: 28px;
+    height: 32px;
+    background: transparent url("../images/templates/overview/delete-trash-icon.png") no-repeat 0;
+}
+.del:hover{
+    background: transparent url("../images/templates/overview/delete-trash-icon-red.png") no-repeat 0;
+    transition: background .2s;
+    cursor: pointer;
 }
 #template_overview, #content{
     margin-left: auto;

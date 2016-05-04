@@ -48,7 +48,7 @@
           <tr><td class="number"><% out.println(a++); %></td>
             <td class="element">
               <c:if test="${f.field.id == 1}"><label>${f.description}<input placeholder="Text Field" readonly type="text"></label></c:if>
-              <c:if test="${f.field.id == 2}"><input type="checkbox"><label>${f.description}</label></c:if>
+              <c:if test="${f.field.id == 2}"><input type="checkbox" onclick="return false"><label>${f.description}</label></c:if>
               <c:if test="${f.field.id == 3}"><label>${f.description}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
             </td></tr>
         </c:forEach>

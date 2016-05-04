@@ -50,6 +50,8 @@
     margin-top: 25px;
 }
 #popup_error{
+    min-height: 150px;
+    min-width: 300px;
     box-shadow: 0 0 30px #5C2F2F;
     border-radius: 4px;
 }
@@ -315,7 +317,7 @@ input#template_name{
     margin-left: auto;
     margin-right: auto;
 }
-.middle, #popup_ok table, #popup_error, .inputTable{
+.middle, #popup_ok table, #popup_error table, .inputTable{
     margin-left: auto;
     margin-right: auto;
     padding: 7px;

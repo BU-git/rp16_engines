@@ -5,7 +5,6 @@
 <head>
   <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-  <script src="<c:url value="/resources/js/core.js"/>"></script>
   <script src="<c:url value="/resources/js/registration.js"/>"></script>
   <link href="<c:url value="/resources/css/registration.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">

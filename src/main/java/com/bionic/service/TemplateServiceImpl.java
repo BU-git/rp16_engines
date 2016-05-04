@@ -1,5 +1,4 @@
 
-
 package com.bionic.service;
 
 import java.sql.Date;
@@ -14,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bionic.dao.FieldDao;
 import com.bionic.dao.TemplateDao;
+import com.bionic.domain.template.CustomTemplateNameFront;
 import com.bionic.domain.template.Field;
 import com.bionic.domain.template.FieldHolder;
 import com.bionic.domain.template.TemplateEntity;
@@ -32,18 +32,41 @@ public class TemplateServiceImpl implements TemplateService{
     @Override
     @Transactional
     public void save(String name, List<FieldHolder> fields, boolean fromWeb) {
-        if(fromWeb && templateDao.findByTemplateName(name).size() > 0) throw new IllegalArgumentException();
+        if(fromWeb && templateDao.findFieldsByTemplateName(name).size() > 0) throw new IllegalArgumentException();
         getList(name, fields).forEach(templateDao::save);
     }
 
     @Override
     public List<TemplateField> findByTemplateName(String name){
-        return name != null ? templateDao.findByTemplateName(name) : new LinkedList<>();
+        return name != null ? templateDao.findFieldsByTemplateName(name) : new LinkedList<>();
     }
 
     @Override
     public List<String> findAll(){
         return templateDao.findAllTemplateNames();
+    }
+
+    @Override
+    public List<CustomTemplateNameFront> findAllForDataTables(){
+        int i = 1;
+        List<CustomTemplateNameFront> list = new ArrayList<>();
+        for(String s: templateDao.findAllTemplateNames()){
+            String val = "row"+i;
+            CustomTemplateNameFront custom = new CustomTemplateNameFront();
+            custom.setName("<a id='row"+val+"' href='/templates/overview/"+s+"'><p class='black'>"+s+"</p></a>");
+            custom.setAction("<button class='del' value='row" + val + "'></button>");
+            custom.setPosition(i++);
+            list.add(custom);
+        }
+        return list;
+    }
+
+    @Override
+    @Transactional
+    public void removeTemplateByName(String name) {
+        if(name == null) return;
+        templateDao.findFieldsByTemplateName(name).forEach(templateDao::removeTemplateField);
+        templateDao.findTemplateByName(name).forEach(templateDao::removeTemplate);
     }
 
     @Override
