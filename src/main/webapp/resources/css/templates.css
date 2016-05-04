@@ -311,13 +311,18 @@ button#add_to_form, button#accept{
 }
 input#template_name{
     margin-top: 0;
+    margin-bottom: 10px;
     font-family: 'Calibri', serif;
     letter-spacing: 2px;
     color: #414252;
     width: 500px;
-    height: 30px;
+    height: 35px;
     font-size: 19px;
     padding: 6px;
+}
+#title{
+    padding: 4px;
+    margin: 0;
 }
 #title, #main_table, #main_screen, .hd_main, .hd{
     width: 100%;
