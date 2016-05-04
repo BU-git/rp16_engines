@@ -32,7 +32,7 @@
     </div>
     <div id="content-wrapper" style="height: calc(100% - 120px); text-align: center; align-content: center">
         <div id="content" style="text-align: center">
-            <p style="text-align: center">Welkom ${loggedInUser.email}</p>
+            <p style="text-align: center">Welkom ${loggedInUser.name}</p>
 
             <a href="<spring:url value="/orders"/>" style="text-align: center; display: block">
                 <div class="button">Orderoverzicht</div>

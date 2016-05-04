@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 public class HttpErrorController {
 
@@ -20,8 +18,13 @@ public class HttpErrorController {
     }
 
     @RequestMapping("/500")
-    public String error500(HttpServletRequest request, Exception e, Model model){
-        model.addAttribute("error", e.getMessage());
+    public String error500(Exception e, Model model){
+        StackTraceElement[] stack = e.getStackTrace();
+        StringBuilder sb = new StringBuilder();
+        for(StackTraceElement el : stack) {
+            sb.append(el.toString()).append(System.lineSeparator());
+        }
+        model.addAttribute("error", sb.toString());
         return "/http-pages/500";
     }
 }
