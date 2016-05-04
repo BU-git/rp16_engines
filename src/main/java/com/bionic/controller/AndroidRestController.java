@@ -23,21 +23,21 @@ public class AndroidRestController {
         return userService.getAllUsers();
     }
 
-    @RequestMapping(value = "/user/{email}",
+    @RequestMapping(value = "/user/{email:.+}",
             method = {RequestMethod.GET, RequestMethod.POST},
             produces = "application/json")
     public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
 
-    @RequestMapping(value="/orders/brief/{email}",
+    @RequestMapping(value="/orders/brief/{email:.+}",
             method = {RequestMethod.POST, RequestMethod.GET},
             produces = "application/json")
     public List<OrderBrief> getBriefOrders(@PathVariable("email") String email) {
         return orderService.getBriefOrdersForUser(email);
     }
 
-    @RequestMapping(value = "/orders/{number}/{email}",
+    @RequestMapping(value = "/orders/{number}/{email:.+}",
             method = {RequestMethod.GET, RequestMethod.POST},
             produces = "application/json")
     public Order getOrderForUser(@PathVariable("number") long number,

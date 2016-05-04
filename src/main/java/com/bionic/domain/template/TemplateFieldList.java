@@ -5,8 +5,9 @@ import java.util.List;
 
 public class TemplateFieldList {
 
-    private List<TemplateField> fields;
     private String templateName;
+
+    private List<FieldHolder> fields;
 
     public String getTemplateName() {
         return templateName;
@@ -16,13 +17,12 @@ public class TemplateFieldList {
         this.templateName = templateName;
     }
 
-    public List<TemplateField> getFields() {
+    public List<FieldHolder> getFields() {
         return fields;
     }
 
-
-
-    public void setFields(List<TemplateField> fields) {
+    public void setFields(List<FieldHolder> fields) {
         this.fields = fields;
     }
+
 }

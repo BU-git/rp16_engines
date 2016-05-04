@@ -1,5 +1,9 @@
 package com.bionic.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,15 +12,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonIgnore
 	private long id;
 	private String name;
 	private String email;
 	private String passwordHash;
 	private String salt;
+
+	@JsonIgnore
 	private Role role;
 	
 	public User() {
@@ -77,5 +84,17 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", email='" + email + '\'' +
+				", passwordHash='" + passwordHash + '\'' +
+				", salt='" + salt + '\'' +
+				", role=" + role +
+				'}';
 	}
 }

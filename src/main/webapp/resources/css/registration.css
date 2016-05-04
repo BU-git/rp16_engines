@@ -1,0 +1,163 @@
+label{
+    font-size: 13px;
+    color: #9FAAB5;
+}
+#popup_ok{
+    box-shadow: 0 0 30px #3A4F43;
+    background-color: #F7F7E6;
+    height: 150px;
+    width: 300px;
+}
+#popup_ok, #popup_error, input, input:focus {
+    border-radius: 4px;
+}
+#popup_ok table, #popup_error{
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#popup_error{
+    box-shadow: 0 0 30px #5C2F2F;
+}
+#right_side p{
+    color: #4F5C55;
+    padding-top: 45px;
+}
+#right_side p, #right_side_error p{
+    text-align: center;
+    font-size: 18px;
+}
+#left_side, #left_side_error{
+    border-radius: 4px 0 0 4px;
+    width: 120px;
+    max-width: 120px;
+    float: left;
+    background-color: #F7FAED;
+}
+#left_side, #right_side, #right_side_error, #left_side_error{
+    height: 150px;
+    display: inline;
+}
+#right_side_error p{
+    padding-top: 35px;
+}
+#right_side{
+    background-color: #EEF2DF;
+}
+#right_side_error{
+    color: #594040;
+    background-color: #F7EBEB;
+}
+#right_side, #right_side_error{
+    border-radius: 0 4px 4px 0 ;
+    width: 180px;
+    float: right;
+}
+#left_side img, #left_side_error img{
+    width: 100px;
+    height: 100px;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+#form_name{
+    background: url("../images/templates/new_user-icon.png") no-repeat 5px;
+    box-shadow: 0 0 2px #4F4F4F;
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 4px;
+    padding-bottom: 15px;
+    color: #ACADAD;
+}
+input, .role{
+    height: 30px;
+}
+input {
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
+    width: 300px;
+    border: 1px solid #AAAAB3;
+}
+button#register, table#register_form, #content{
+    border-radius: 2px;
+}
+button#register{
+    outline: none;
+    font-size: 16px;
+    background-color: black;
+    border: none;
+    padding: 10px 15px;;
+}
+button#register:disabled, button#register:disabled:hover{
+    color: #EBEEF0;
+    background-color: #474747;
+    box-shadow: 0 0 0;
+}
+button#register:hover{
+    box-shadow: 0 0 8px #4F4F4F;
+    background-color: white;
+    color: black;
+    transition:.2s ease-in-out;
+}
+#label, #role{
+    padding: 5px;
+}
+#role{
+    margin-top: 10px;
+}
+.role{
+    margin-top: 22px;
+}
+.role, #label{
+    display: inline;
+}
+#name{
+    width: 200px;
+}
+input#role{
+    width: auto;
+    height: auto;
+}
+input:focus{
+    transition: all 0.3s;
+    outline-color:  #F7EBEB;
+    background: #FEFFF0;
+}
+#email, #password, .inline, #for_name, #name{
+    display: block;
+}
+table#register_form {
+    background-color: #FAFAFA;
+    min-height: calc(100% - 60px);;
+    max-height: calc(100% - 60px);;
+    box-shadow: 0 0 2px #4F4F4F;
+    width: calc(100% - 15px);
+    padding: 50px 0;
+    margin: 0 auto;
+}
+#register_form table{
+    margin: 0 auto;
+}
+#register_form td{
+    padding: 12px;
+}
+.center{
+    text-align: center;
+}
+.center button{
+    margin-left: 50px;
+}
+button#register {
+    color: white;
+}
+button#register:hover {
+    cursor: pointer;
+}
+.w{
+    width: 24px;
+}
+.warn, .check{
+    display: none;
+    margin-top: 15px;
+    width: 22px;
+    height: 22px;
+}

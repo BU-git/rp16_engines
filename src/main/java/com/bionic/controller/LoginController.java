@@ -36,9 +36,9 @@ public class LoginController {
 	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	public String authorization(@ModelAttribute("user")User user, ModelMap model) {
-		List<User> list = userService.adminLogin(user.getEmail(), user.getPasswordHash());
-		if (!list.isEmpty()) {
-			model.addAttribute("loggedInUser", list.get(0));
+		User userTemp = userService.adminLogin(user.getEmail(), user.getPasswordHash());
+		if (userTemp != null) {
+			model.addAttribute("loggedInUser", userTemp);
 			return "dashboard";
 		} else {
 			String message = "Invalid credentials!";

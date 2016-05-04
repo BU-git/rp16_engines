@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Order ${order.number}</title>
     <link href="<c:url value="/resources/css/order.css"/>" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
 </head>
 <body>
 <div id="header">
@@ -16,7 +17,7 @@
     <a href="<spring:url value="/templates"/>" class="left">
         <span>Maak template</span>
     </a>
-    <a href="/404 error" class="left">
+    <a href="<spring:url value="/templates/overview"/>" class="left">
         <span>Template overzicht</span>
     </a>
     <span style="text-align: center;">Welkom ${loggedInUser.email}</span>

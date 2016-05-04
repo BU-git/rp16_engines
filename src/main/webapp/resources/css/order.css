@@ -9,7 +9,6 @@ html, body {
 }
 
 body {
-    /*color: #ff8b3d;*/
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     background: linear-gradient(to bottom, #3A393B, #696969 10%, #B7B6B8 100%, #B7B6B8 100%);
@@ -57,7 +56,7 @@ fieldset p {
 }
 
 #content {
-    min-height: 90%;
+    height: 90%;
     background: lightgrey;
     padding: 10px;
     margin: 10px;

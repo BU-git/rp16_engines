@@ -24,7 +24,6 @@ $(function(){
     });
     popup_ok.popup({
         opentransitionend: function(){
-            console.log("hello");
             setTimeout(
                 function()
                 {
@@ -141,7 +140,7 @@ $(function(){
         switch (type){
             case "text field": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><input placeholder="Text Field" readonly class="textField" type="text">';
             case "check box": return '<input checked class="checkBoxField" type="checkbox"><label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
-            case "text area": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><textarea rows="3" cols="45" readonly class="textArea" placeholder="Text Area"></textarea>';
+            case "text area": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><textarea rows="3"  readonly class="textArea" placeholder="Text Area"></textarea>';
         }
     };
     var edit_delete_feature = function(fadeOut){
@@ -168,7 +167,7 @@ $(function(){
                 fieldType = $(fieldType).text();
                 fieldValue = $(fieldValue).text();
                 if (fieldType != undefined && fieldType.length > 0 && fieldValue != undefined) {
-                    var field = {'fieldType': fieldType, 'fieldValue': fieldValue};
+                    var field = {'type': fieldType, 'description': fieldValue};
                     fields.push(field);
                 }
             }
@@ -177,6 +176,7 @@ $(function(){
             'fields' : fields,
             'templateName': template_name.val()
         });
+        console.log(fields);
         $.ajax({
             dataType: "html",
             contentType: 'application/json',

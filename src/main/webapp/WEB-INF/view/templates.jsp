@@ -7,6 +7,8 @@
   <script src="<c:url value="/resources/js/template.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
   <link href="<c:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Make Template</title>
 </head>
 <body>
@@ -17,7 +19,7 @@
   <a href="<spring:url value="/templates"/>" class="left">
     <span>Maak template</span>
   </a>
-  <a href="/404 error" class="left">
+  <a href="<spring:url value="/templates/overview"/>" class="left">
     <span>Template overzicht</span>
   </a>
   <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
@@ -26,7 +28,7 @@
   </a>
 </div>
 <div id="content-wrapper">
-  <div id="content">
+  <div id="content1">
     <div id="my_popup" style="background-color: white">
       <div class="hd"></div><table class="inputTable"><tr><td><textarea id="popup_area" class="popup_area" rows="8" cols="30" placeholder="Field description"></textarea></td></tr></table>
       <br><br>
@@ -52,13 +54,15 @@
       <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
     </div>
     <div id="container">
-      <div class="hd_main">
-        <table class="middle" id="title">
-          <tr><td><input id="template_name" placeholder="Template name" type="text"></td></tr>
-        </table>
-      </div>
       <div id="main_screen">
-        <table id="main_table"><tr><th id="first_th">Form Controls</th><th id="second_th">Form Preview Area</th></tr>
+        <table id="main_table">
+          <tr><td colspan="2">
+            <div class="hd_main">
+            <table class="middle" id="title">
+              <tr><td><input id="template_name" placeholder="Template name" type="text"></td></tr>
+            </table>
+          </div></td> </tr>
+          <tr><th id="first_th">Form Controls</th><th id="second_th">Form Preview Area</th></tr>
           <tr>
             <td id="left">
               <table>
@@ -82,7 +86,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <textarea id="text_area_form_controls" cols="19" rows="3" placeholder="Text Area" readonly></textarea>
+                    <textarea id="text_area_form_controls" rows="3" placeholder="Text Area" readonly></textarea>
                   </td>
                   <td>
                     <button id="text_area" class="my_popup_open"></button>
