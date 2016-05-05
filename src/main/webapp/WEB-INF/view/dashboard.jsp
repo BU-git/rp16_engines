@@ -12,12 +12,12 @@
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
-<body><div id="header">
-    <div>
-        <a href="<spring:url value="/"/>" id="logo">
-            <img src="../../resources/images/logo.png">
 <body>
 <div id="header">
+    <div>
+        <a href="<spring:url value="/"/>" id="logo">
+            <img src="../../resources/images/logo.png"></a>
+    </div>
     <a href="<spring:url value="/orders"/>" class="left">
         <span>Orderoverzicht</span>
     </a>
@@ -32,7 +32,6 @@
     <a href="/logout.html" class="right">
         <span>logout</span>
     </a>
-
 </div>
 <div id="content-wrapper" style="height: calc(100% - 120px); text-align: center; align-content: center">
     <div id="content" style="text-align: center">
