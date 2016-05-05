@@ -45,7 +45,7 @@ public class OrderBrief {
     /**
      * Order status
      */
-    private int status;
+    private int orderStatus;
 
     private final static int ORDER_STATUS_NOT_STARTED = 0;
     private final static int ORDER_STATUS_IN_PROGRESS = 1;
@@ -61,6 +61,7 @@ public class OrderBrief {
         this.importDate = importDate;
         this.lastServerChangeDate = lastServerChangeDate;
         this.lastAndroidChangeDate = lastAndroidChangeDate;
+        this.orderStatus = ORDER_STATUS_NOT_STARTED;
     }
 
     public long getNumber() {
@@ -93,5 +94,13 @@ public class OrderBrief {
 
     public void setLastAndroidChangeDate(Date lastAndroidChangeDate) {
         this.lastAndroidChangeDate = lastAndroidChangeDate;
+    }
+
+    public int getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }
