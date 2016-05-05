@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags/form" 	prefix="cf"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="cf"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,11 +24,11 @@
 				</c:otherwise>
 			</c:choose>
 			<cf:form id="loginForm" method="post" action="/dashboard" modelAttribute="user">
-			<cf:label path="email"><p>Please enter your email</p></cf:label>
-			<cf:input id="mail" name="email" path="email" /><br>
-			<cf:label path="passwordHash"><p>Password</p></cf:label>
-			<cf:password id="passwordHash" name="passwordHash" path="passwordHash" /><br>
-			<input type="submit" value="Login" />
+				<cf:label path="email"><p>Please enter your email</p></cf:label>
+				<cf:input id="mail" name="email" path="email" /><br>
+				<cf:label path="passwordHash"><p>Password</p></cf:label>
+				<cf:password id="passwordHash" name="passwordHash" path="passwordHash" /><br>
+				<input type="submit" value="Login" />
 			</cf:form>
 		</fieldset>
 	</div>

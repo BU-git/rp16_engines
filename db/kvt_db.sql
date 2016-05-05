@@ -451,7 +451,7 @@ CREATE TABLE `users` (
   `role` int(11) DEFAULT NULL,
   `salt` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -460,7 +460,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user@kvt.nl','user','fdVwgKuTc7m3c6nJWR9Qp9YfGfUrbCUk33WcH8t8Rjg=',1,'OHza8jrQBkIOcTHevtIwfHYJtApUzXt2ks4C9FylFuo='),(2,'admin@kvt.nl','Bob van Holland','9jOWoVdiHZ+N1WtoYZ8MkIQnUG5/u0NRD8XbQJBiZew=',0,'K/qqHrEGvnyAvwCfrtWqFea0QgsBj4MOUNu4Wsc2jPM='),(3,'rvrooy@kvt.nl','Rooij R. van','OrQSPtoZGV7/YIeGe5uYHSs/Qn8gRwmEdoknnoX+CmQ=',1,'Ztf7WvyG/6bLT6zq0L8lKeDL4YKKtMqtg+2SlTuTFnQ='),(4,'rvdmeer@kvt.nl','Meer van der R.A.','Fk+8dHCQ862c0ojsWEpi6HZOR31nwClRm+uSS87b2YI=',1,'esLCAa8fwDXrq/tSRtXqZ5djQFpiGIR9ANMM1Wt9Tv0='),(5,'sbesselink@kvt.nl','Besselink S.T.M.','f+32HZVA9sz3/bRl5JG2IVkf/Th3LsVRQGPfkBFLK1o=',1,'sGO907cwKT8I6r2kqdK3a8Z8iVj94kZCdsIauSgWAsY=');
+INSERT INTO `users` VALUES (1,'admin@kvt.nl','Bob van Holland','0ff7a384cd97cec0f2f9c7affcabd45b263b9c10b5c18a1f98811bd4371b6f7c',0,'rzsibU4J0umgNVXojujF26NTNilk5Wek'),(4,'rvrooy@kvt.nl','Rooij R. van','d13e4d49537a910a5b9f0a19be74ece86cd89ca0a2e2c492290ea203abe744df',1,'Gwbhsjki2BpE1AhGaCTqDnp286t9oUzJ'),(5,'sbesselink@kvt.nl','Besselink S.T.M.','6b1efebde99cb977e45a9939ae7ccf769773562f645401dadc0d8e758aaa15b3',1,'nhcQe6UBpzC7kxIA6HAAydLxrqnu0VKa'),(6,'rvdmeer@kvt.nl','Meer van der R.A.','ef1d8ec8ea1af3556a9b2d3d57bbc463ea2cd0b7f5bb3121f3291e1ca37cb98c',1,'jW5JoBZLSF79x7cAQERrEuLnBY0PmBUL');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -481,4 +481,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-03 18:32:28
+-- Dump completed on 2016-05-03 20:58:05

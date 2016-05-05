@@ -31,7 +31,6 @@
     <span>Template overzicht</span>
   </a>
   <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
-  <a href="<spring:url value="/register"/>">New User</a>
   <a href="<spring:url value="/logout"/>" class="right">
     <span>logout</span>
   </a>

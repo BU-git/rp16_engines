@@ -52,6 +52,16 @@
           </tr>
           </thead>
           <tbody>
+          <% int a = 1; %>
+          <c:forEach var ="t" items="${templates}">
+            <tr>
+              <td><% out.println(a++); %></td>
+              <td>
+                <c:if test="${!t.equals('NSA')}"><a href="/templates/overview/${t}"><p class="black" >${t}</p></a></c:if>
+                <c:if test="${t.equals('NSA')}">${t}</c:if>
+              </td>
+            </tr>
+          </c:forEach>
           </tbody>
         </table>
       </div>
