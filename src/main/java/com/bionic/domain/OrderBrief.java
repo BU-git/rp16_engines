@@ -42,6 +42,16 @@ public class OrderBrief {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastAndroidChangeDate;
 
+    /**
+     * Order status
+     */
+    private int status;
+
+    private final static int ORDER_STATUS_NOT_STARTED = 0;
+    private final static int ORDER_STATUS_IN_PROGRESS = 1;
+    private final static int ORDER_STATUS_COMPLETE = 2;
+    private final static int ORDER_STATUS_COMPLETE_UPLOADED = 3;
+
 
     public OrderBrief() {
     }
