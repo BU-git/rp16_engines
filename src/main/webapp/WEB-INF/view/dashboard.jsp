@@ -43,8 +43,8 @@
         <a href="<spring:url value="/templates"/>" style="text-align: center; display: block">
             <div class="button">Maak template</div>
         </a>
-        <a href="<spring:url value="/templates/overview"/>" class="left">
-            <span>Template overzicht</span>
+        <a href="<spring:url value="/templates/overview"/>" style="text-align: center; display: block">
+            <div class="button">Template overzicht</div>
         </a>
         <form method="post" id="uploadForm" action="upload" enctype="multipart/form-data">
             <table>

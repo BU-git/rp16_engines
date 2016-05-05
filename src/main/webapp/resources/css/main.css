@@ -18,13 +18,14 @@ html, body {
 }
 #header {
     width: 100%;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     height: 50px;
+    opacity: 1;
    /* background: linear-gradient(to top, #000000, #3A393B);*/
     background-color: #023672;
-    z-index: 0;
+   /* z-index: 0;*/
     color: white;
 }
 #content-wrapper {
