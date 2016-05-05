@@ -82,7 +82,7 @@ CREATE TABLE `fields` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +91,7 @@ CREATE TABLE `fields` (
 
 LOCK TABLES `fields` WRITE;
 /*!40000 ALTER TABLE `fields` DISABLE KEYS */;
-INSERT INTO `fields` VALUES (1,'text field'),(2,'check box'),(3,'text area');
+INSERT INTO `fields` VALUES (1,'text field'),(2,'check box'),(3,'text area'),(4,'label');
 /*!40000 ALTER TABLE `fields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,11 +160,11 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `number` bigint(20) NOT NULL,
   `date` datetime DEFAULT NULL,
-  `done` bit(1) NOT NULL,
   `importDate` datetime DEFAULT NULL,
   `lastAndroidChangeDate` datetime DEFAULT NULL,
   `lastServerChangeDate` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
+  `orderStatus` int(11) NOT NULL,
   `orderType` varchar(255) DEFAULT NULL,
   `reference` varchar(255) DEFAULT NULL,
   `employee_id` bigint(20) DEFAULT NULL,
@@ -186,7 +186,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (4008692,'2015-03-13 00:00:00','\0','2016-05-03 11:43:40',NULL,'2016-05-03 11:43:40','graag gegevens aanvullen\n\nvoor code cijfersloten Lex van der Kade 065138 6097','SM04','getekend contract',1,1,1),(4013250,'2016-04-05 00:00:00','\0','2016-05-03 11:43:40',NULL,'2016-05-03 11:43:40','','SM04','INK16000061-1',2,2,2),(4013294,'2016-04-06 00:00:00','\0','2016-05-03 11:43:41',NULL,'2016-05-03 11:43:41','Uitlaat flexibel reparen en aanbieden, bestellen bij ADL','SM04','4500622119',3,3,3),(4013299,'2016-04-06 00:00:00','\0','2016-05-03 11:43:41',NULL,'2016-05-03 11:43:41','','SM04','4500622119',4,4,4),(4013730,'2016-04-05 00:00:00','\0','2016-05-03 11:43:41',NULL,'2016-05-03 11:43:41','Dit setje draait 3000 toeren.\nSetje staat op de Leersumsestraatweg bij H ectometerpaal 23.1  bij de kruising met de Hoolweg.','SM04','260-414226',5,5,5),(4013731,'2016-04-05 00:00:00','\0','2016-05-03 11:43:41',NULL,'2016-05-03 11:43:41','3000 toeren aggregaat\nAdres is Rijksstraatweg bij hectometerpaal 24.6 op de kruising met de Dartheideweg','SM04','260-414226',6,6,6),(4013735,'2016-04-05 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','11-2-14 restwerk 2013 zie bijlage','SM04','260-414226',7,7,7),(4014136,'2016-04-06 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM04','Fer Meuser',8,8,8),(4014137,'2016-04-06 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM04','Fer Meuser',9,9,9),(4014281,'2016-04-06 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','',10,10,10),(4014296,'2016-04-04 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','',11,11,11),(4014297,'2016-03-29 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','Koen de Pauw',12,12,12),(4014491,'2016-04-04 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','1-12-2011/74738JC: vervangen start accu\'s incl. equalizer.','SM03','',13,13,13),(4014496,'2016-04-05 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','',14,14,14),(4014498,'2016-04-04 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','','SM03','',15,15,15),(4014527,'2016-04-05 00:00:00','\0','2016-05-03 11:43:42',NULL,'2016-05-03 11:43:42','Let op! contract formeel door Colt beeindigd wegens herstructurering per 31 mei 2002. Er volgt een nieuwe aanvraagLet op !!! Accus verv ivm leef ijd.$st. + 2 st. besturingsaccu\'s.  fan is ok.Oliedrukzender vervangen d 11-11-99, brandstoftankinhoudsmeter','SM03','',16,16,16);
+INSERT INTO `orders` VALUES (4008692,'2015-03-13 00:00:00','2016-05-05 15:40:34',NULL,'2016-05-05 15:40:34','graag gegevens aanvullen\n\nvoor code cijfersloten Lex van der Kade 065138 6097',0,'SM04','getekend contract',1,1,1),(4013250,'2016-04-05 00:00:00','2016-05-05 15:40:34',NULL,'2016-05-05 15:40:34','',0,'SM04','INK16000061-1',2,2,2),(4013294,'2016-04-06 00:00:00','2016-05-05 15:40:35',NULL,'2016-05-05 15:40:35','Uitlaat flexibel reparen en aanbieden, bestellen bij ADL',0,'SM04','4500622119',3,3,3),(4013299,'2016-04-06 00:00:00','2016-05-05 15:40:35',NULL,'2016-05-05 15:40:35','',0,'SM04','4500622119',4,4,4),(4013730,'2016-04-05 00:00:00','2016-05-05 15:40:35',NULL,'2016-05-05 15:40:35','Dit setje draait 3000 toeren.\nSetje staat op de Leersumsestraatweg bij H ectometerpaal 23.1  bij de kruising met de Hoolweg.',0,'SM04','260-414226',5,5,5),(4013731,'2016-04-05 00:00:00','2016-05-05 15:40:35',NULL,'2016-05-05 15:40:35','3000 toeren aggregaat\nAdres is Rijksstraatweg bij hectometerpaal 24.6 op de kruising met de Dartheideweg',0,'SM04','260-414226',6,6,6),(4013735,'2016-04-05 00:00:00','2016-05-05 15:40:35',NULL,'2016-05-05 15:40:35','11-2-14 restwerk 2013 zie bijlage',0,'SM04','260-414226',7,7,7),(4014136,'2016-04-06 00:00:00','2016-05-05 15:40:35',NULL,'2016-05-05 15:40:35','',0,'SM04','Fer Meuser',8,8,8),(4014137,'2016-04-06 00:00:00','2016-05-05 15:40:35',NULL,'2016-05-05 15:40:35','',0,'SM04','Fer Meuser',9,9,9),(4014281,'2016-04-06 00:00:00','2016-05-05 15:40:36',NULL,'2016-05-05 15:40:36','',0,'SM03','',10,10,10),(4014296,'2016-04-04 00:00:00','2016-05-05 15:40:36',NULL,'2016-05-05 15:40:36','',0,'SM03','',11,11,11),(4014297,'2016-03-29 00:00:00','2016-05-05 15:40:36',NULL,'2016-05-05 15:40:36','',0,'SM03','Koen de Pauw',12,12,12),(4014491,'2016-04-04 00:00:00','2016-05-05 15:40:36',NULL,'2016-05-05 15:40:36','1-12-2011/74738JC: vervangen start accu\'s incl. equalizer.',0,'SM03','',13,13,13),(4014496,'2016-04-05 00:00:00','2016-05-05 15:40:36',NULL,'2016-05-05 15:40:36','',0,'SM03','',14,14,14),(4014498,'2016-04-04 00:00:00','2016-05-05 15:40:36',NULL,'2016-05-05 15:40:36','',0,'SM03','',15,15,15),(4014527,'2016-04-05 00:00:00','2016-05-05 15:40:36',NULL,'2016-05-05 15:40:36','Let op! contract formeel door Colt beeindigd wegens herstructurering per 31 mei 2002. Er volgt een nieuwe aanvraagLet op !!! Accus verv ivm leef ijd.$st. + 2 st. besturingsaccu\'s.  fan is ok.Oliedrukzender vervangen d 11-11-99, brandstoftankinhoudsmeter',0,'SM03','',16,16,16);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,7 +399,7 @@ CREATE TABLE `templatefields` (
   KEY `FKi3i54ygdsttdgqhfaisjw5atk` (`templateEntity_id`),
   CONSTRAINT `FK8s9kbbg0btub0hocrbb2vsr9i` FOREIGN KEY (`field_id`) REFERENCES `fields` (`id`),
   CONSTRAINT `FKi3i54ygdsttdgqhfaisjw5atk` FOREIGN KEY (`templateEntity_id`) REFERENCES `templates` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -408,7 +408,6 @@ CREATE TABLE `templatefields` (
 
 LOCK TABLES `templatefields` WRITE;
 /*!40000 ALTER TABLE `templatefields` DISABLE KEYS */;
-INSERT INTO `templatefields` VALUES (1,'2016-05-03','asassas',NULL,NULL,1,1),(2,'2016-05-03','sasasasasa',NULL,NULL,2,1),(3,'2016-05-03','sasasasasasa',NULL,NULL,3,1);
 /*!40000 ALTER TABLE `templatefields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,7 +422,7 @@ CREATE TABLE `templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `templateName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -432,7 +431,6 @@ CREATE TABLE `templates` (
 
 LOCK TABLES `templates` WRITE;
 /*!40000 ALTER TABLE `templates` DISABLE KEYS */;
-INSERT INTO `templates` VALUES (1,'Template');
 /*!40000 ALTER TABLE `templates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -481,4 +479,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-03 20:58:05
+-- Dump completed on 2016-05-05 15:45:55

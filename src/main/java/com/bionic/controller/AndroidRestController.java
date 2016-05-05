@@ -37,7 +37,7 @@ public class AndroidRestController {
         return orderService.getBriefOrdersForUser(email);
     }
 
-    @RequestMapping(value = "/orders/{number}/{email:.+}",
+    @RequestMapping(value = "/orders/get/{number}/{email:.+}",
             method = {RequestMethod.GET, RequestMethod.POST},
             produces = "application/json")
     public Order getOrderForUser(@PathVariable("number") long number,
