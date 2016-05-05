@@ -51,10 +51,10 @@
                 <tbody align="center">
                         <tr>
                             <td>
-                                <c:if test="${order.done == true}">
+                                <c:if test="${order.orderStatus == 2 || order.orderStatus == 3}">
                                     <img src="../../resources/images/yes.png">
                                 </c:if>
-                                <c:if test="${order.done == false}">
+                                <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
                                     <img src="../../resources/images/no.png">
                                 </c:if>
                             </td>
