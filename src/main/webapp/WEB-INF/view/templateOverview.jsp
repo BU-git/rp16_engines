@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<body><div id="header">
+<div id="header">
   <div>
     <a href="<spring:url value="/"/>" id="logo">
       <img src="../../resources/images/logo.png">
@@ -52,16 +52,6 @@
           </tr>
           </thead>
           <tbody>
-          <% int a = 1; %>
-          <c:forEach var ="t" items="${templates}">
-            <tr>
-              <td><% out.println(a++); %></td>
-              <td>
-                <c:if test="${!t.equals('NSA')}"><a href="/templates/overview/${t}"><p class="black" >${t}</p></a></c:if>
-                <c:if test="${t.equals('NSA')}">${t}</c:if>
-              </td>
-            </tr>
-          </c:forEach>
           </tbody>
         </table>
       </div>

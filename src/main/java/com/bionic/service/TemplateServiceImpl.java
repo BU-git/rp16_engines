@@ -53,7 +53,7 @@ public class TemplateServiceImpl implements TemplateService{
         for(String s: templateDao.findAllTemplateNames()){
             String val = "row"+i;
             CustomTemplateNameFront custom = new CustomTemplateNameFront();
-            custom.setName("<a id='row"+val+"' href='/templates/overview/"+s+"'><p class='black'>"+s+"</p></a>");
+            custom.setName("<a id='row"+val+"' href='/templates/overview/"+s+"'><p class='black'>"+s.replace("<","&lt;")+"</p></a>");
             custom.setAction("<button class='del' value='row" + val + "'></button>");
             custom.setPosition(i++);
             list.add(custom);

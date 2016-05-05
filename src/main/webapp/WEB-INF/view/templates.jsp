@@ -12,7 +12,7 @@
   <title>Make Template</title>
 </head>
 <body>
-<body><div id="header">
+<div id="header">
   <div>
     <a href="<spring:url value="/"/>" id="logo">
       <img src="../../resources/images/logo.png">

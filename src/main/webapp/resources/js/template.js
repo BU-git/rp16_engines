@@ -86,8 +86,12 @@ $(function(){
         check_for_fields_alive();
     });
     var check_template_is_not_empty = function(){
-        if(template_name.val().length < 1) save_button.prop("disabled", true);
-        else save_button.prop("disabled", false);
+        var value = template_name.val();
+        if(value.length < 1)save_button.prop("disabled", true);
+        else {
+            template_name.val(value.replace(/[`~@#$%&|=?.;:'<>\{\}\[\]\\\/]/gi, ''));
+            save_button.prop("disabled", false);
+        }
     };
     edit_area.bind('input propertychange',function(){
         if(edit_area.val().length < 1)accept_button.prop("disabled", true);

@@ -6,10 +6,10 @@
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/single.template.css"/>" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
-  <title>${list.get(0).templateEntity.templateName}</title>
+  <title>${list.get(0).templateEntity.templateName.replace("<","&lt;")}</title>
 </head>
 <body>
-<body><div id="header">
+<div id="header">
   <div>
     <a href="<spring:url value="/"/>" id="logo">
       <img src="../../resources/images/logo.png">
@@ -40,7 +40,7 @@
       <table id="info">
         <tr>
           <td><span>Template name:</span></td>
-          <td><p>${list.get(0).templateEntity.templateName}</p></td>
+          <td><p>${list.get(0).templateEntity.templateName.replace("<","&lt;")}</p></td>
         </tr>
         <tr>
           <td><span>Date Created:</span></td>
@@ -56,9 +56,9 @@
         <c:forEach var="f" items="${list}">
           <tr><td class="number"><% out.println(a++); %></td>
             <td class="element">
-              <c:if test="${f.field.id == 1}"><label>${f.description}<input placeholder="Text Field" readonly type="text"></label></c:if>
-              <c:if test="${f.field.id == 2}"><input type="checkbox" onclick="return false"><label>${f.description}</label></c:if>
-              <c:if test="${f.field.id == 3}"><label>${f.description}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
+              <c:if test="${f.field.id == 1}"><label>${f.description.replace("<","&lt;")}<input placeholder="Text Field" readonly type="text"></label></c:if>
+              <c:if test="${f.field.id == 2}"><input type="checkbox" onclick="return false"><label>${f.description.replace("<","&lt;")}</label></c:if>
+              <c:if test="${f.field.id == 3}"><label>${f.description.replace("<","&lt;")}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
             </td></tr>
         </c:forEach>
       </table>

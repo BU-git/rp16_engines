@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
 </head>
 <body>
-<body><div id="header">
+<div id="header">
     <div>
         <a href="<spring:url value="/"/>" id="logo">
             <img src="../../resources/images/logo.png">
