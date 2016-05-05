@@ -30,7 +30,7 @@
         <a href="/templates">
             <span>Template</span>
         </a>
-        <span>Welkom ${loggedInUser.email}</span>
+        <span>Welkom ${loggedInUser.name}</span>
         <a href="/logout">
             <span>Ultlogen</span>
         </a>

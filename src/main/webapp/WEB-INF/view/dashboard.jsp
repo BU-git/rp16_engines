@@ -13,57 +13,57 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div id="header">
-        <a href="<spring:url value="/orders"/>" class="left">
-            <span>Orderoverzicht</span>
+<div id="header">
+    <a href="<spring:url value="/orders"/>" class="left">
+        <span>Orderoverzicht</span>
+    </a>
+    <a href="<spring:url value="/templates"/>" class="left">
+        <span>Maak template</span>
+    </a>
+    <a href="<spring:url value="/templates/overview"/>" class="left">
+        <span>Template overzicht</span>
+    </a>
+    <span style="text-align: center;">Welkom ${loggedInUser.name}</span>
+    <a href="<spring:url value="/register"/>">New User</a>
+    <a href="/logout.html" class="right">
+        <span>logout</span>
+    </a>
+
+</div>
+<div id="content-wrapper" style="height: calc(100% - 120px); text-align: center; align-content: center">
+    <div id="content" style="text-align: center">
+        <p style="text-align: center">Welkom ${loggedInUser.name}</p>
+
+        <a href="<spring:url value="/orders"/>" style="text-align: center; display: block">
+            <div class="button">Orderoverzicht</div>
         </a>
-        <a href="<spring:url value="/templates"/>" class="left">
-            <span>Maak template</span>
+        <a href="<spring:url value="/templates"/>" style="text-align: center; display: block">
+            <div class="button">Maak template</div>
         </a>
         <a href="<spring:url value="/templates/overview"/>" class="left">
             <span>Template overzicht</span>
         </a>
-        <span style="text-align: center;">Welkom ${loggedInUser.name}</span>
-        <a href="<spring:url value="/register"/>">New User</a>
-        <a href="/logout.html" class="right">
-            <span>logout</span>
-        </a>
-
+        <form method="post" id="uploadForm" action="upload" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <legend>Upload XML files</legend>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="file" name="files[]" id="files" multiple="multiple" onchange="getFileSizeandName(this);"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button class="btn" type="submit" id="uploadButton" onClick="CloseAndRefresh();">Upload</button>
+                        <button class="btn" id="cancelButton">Cancel</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
-    <div id="content-wrapper" style="height: calc(100% - 120px); text-align: center; align-content: center">
-        <div id="content" style="text-align: center">
-            <p style="text-align: center">Welkom ${loggedInUser.name}</p>
-
-            <a href="<spring:url value="/orders"/>" style="text-align: center; display: block">
-                <div class="button">Orderoverzicht</div>
-            </a>
-            <a href="<spring:url value="/templates"/>" style="text-align: center; display: block">
-                <div class="button">Maak template</div>
-            </a>
-            <a href="<spring:url value="/templates/overview"/>" class="left">
-                <span>Template overzicht</span>
-            </a>
-            <form method="post" id="uploadForm" action="upload" enctype="multipart/form-data">
-                <table>
-                    <tr>
-                        <td colspan="3">
-                            <legend>Upload XML files</legend>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="file" name="files[]" id="files" multiple="multiple" onchange="getFileSizeandName(this);"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <button class="btn" type="submit" id="uploadButton" onClick="CloseAndRefresh();">Upload</button>
-                            <button class="btn" id="cancelButton">Cancel</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
+</div>
 </body>
 </html>

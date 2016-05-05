@@ -6,8 +6,7 @@
 </head>
 <body>
     <h1>Internal server error. 500!</h1>
-    <h2>Cause:
-        <c:out value="${error}"/>
-    </h2>
+    <h2>Cause:</h2>
+    <p><c:out value="${error}"/></p>
 </body>
 </html>
