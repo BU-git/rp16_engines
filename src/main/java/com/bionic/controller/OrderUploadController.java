@@ -40,7 +40,7 @@ public class OrderUploadController {
 
     @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, headers=("content-type=multipart/*"), consumes = "multipart/form-data")
     public ResponseEntity uploadFile(@PathVariable("number") long number,
-                                     @RequestParam("checksum") MultipartFile checksum,
+                                     //@RequestParam("checksum") MultipartFile checksum,
                                      @RequestParam MultipartFile filePart) {
         File file = null;
         if (!filePart.isEmpty()) {
