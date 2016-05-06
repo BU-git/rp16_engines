@@ -4,6 +4,7 @@ import com.bionic.domain.User;
 import com.bionic.domain.component.Employee;
 import com.bionic.service.EmployeeService;
 import com.bionic.service.UserService;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,6 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import com.bionic.domain.Order;
 import com.bionic.service.OrderService;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -71,26 +79,24 @@ public class OrderController {
 
     @RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
     public String downloadOrder(@PathVariable long id, HttpServletResponse response, ModelMap model) {
-        /*if (!model.containsAttribute("loggedInUser")) {
+        if (!model.containsAttribute("loggedInUser")) {
             return "redirect:login";
         }
-        try {
-            response.setHeader("Content-Disposition", "inline;filename=\"" + id + "\"");
-            OutputStream out = response.getOutputStream();
-            Blob pdf = order.getPdf();
-            if (pdf != null) {
-                IOUtils.copy(pdf.getBinaryStream(), out);
+        Order order = orderService.findById(id);
+        boolean exist = Files.exists(Paths.get(order.getPdfLink()));
+        if (exist) {
+            File pdf = new File(order.getPdfLink());
+            try {
+                response.setHeader("Content-Disposition", "inline;filename=\"" + id + "\"");
+                OutputStream out = response.getOutputStream();
+                IOUtils.copy(new FileInputStream(pdf), out);
                 out.flush();
                 out.close();
-            } else {
-                model.addAttribute("message", "Pdf-file not found!");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
+        }
         return null;
-        //return "orders";
     }
 
 }
