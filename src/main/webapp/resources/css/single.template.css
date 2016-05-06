@@ -15,7 +15,9 @@ th{
 #content_place span{
     padding-right: 10px;
     text-transform: uppercase;
-    color: #804440;
+    /*color: #804440;*/
+    color: #5a5a5a;
+    font-weight: bold;
 }
 #content_place p{
     margin: 5px;
@@ -42,11 +44,11 @@ th{
 #info{
     margin-top: 10px;
     border-spacing: 0;
-    background-color: #F5F5F5;
+    background-color: rgba(229, 188, 23, 0.71);
     border-radius: 3px;
 }
 #info td:first-child{
-    border-right: 1px solid #CCCCCC;
+    border-right: 1px solid #707070;
 }
 td.element{
     padding: 10px;
@@ -95,7 +97,7 @@ textarea{
     float: left;
 }
 #content_place{
-    min-height: 570px;
-    max-height: 570px;
+    min-height: 565px;
+    max-height: 565px;
     overflow: auto;
 }

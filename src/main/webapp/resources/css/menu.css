@@ -16,7 +16,7 @@ body {
     height: 100%;
     width: 100%;
 }
-
+/*
 header {
     position: fixed;
     text-align: center;
@@ -26,7 +26,7 @@ header {
     height: 9vh;
     width: 100%;
     background-color: black;
-}
+}*/
 
 ul {
     padding: 0;
@@ -91,8 +91,6 @@ ul {
 
 #left-menu .logo {
     position: relative;
-    /*top: -10px;
-    padding: 50px;*/
     padding-left: 3vw;
     top: 5vh;
 }
@@ -137,7 +135,6 @@ ul {
 }
 
 /************************************ Classes ***********************************************/
-
 .button {
     border: 1px solid #FFFFFF;
     color: #FFFFFF;
@@ -304,11 +301,9 @@ body.menu-on #content-wrapper {
     -ms-transform: scale(0.8);
 }
 
-@media (min-aspect-ratio: 8/9) {
-    body.menu-on #left-menu {
-        visibility: visible;
-        opacity: 1;
-    }
+body.menu-on #left-menu {
+    visibility: visible;
+    opacity: 1;
 }
 
 body.menu-on #right-menu {

@@ -12,7 +12,15 @@
   <title>Make Template</title>
 </head>
 <body>
-<div id="header">
+<body><div id="header">
+  <div>
+    <a href="<spring:url value="/"/>" id="logo">
+      <img src="../../resources/images/logo.png">
+    </a>
+  </div>
+  <a href="<spring:url value="/dashboard"/>">
+    <span>Dashboard</span>
+  </a>
   <a href="<spring:url value="/orders"/>" class="left">
     <span>Orderoverzicht</span>
   </a>
@@ -66,6 +74,9 @@
           <tr>
             <td id="left">
               <table>
+                <tr>
+                  <td colspan="2"><p>Click (+) to add a field to your template form.</p></td>
+                </tr>
                 <tr>
                   <td>
                     <input class="form_controls" placeholder="Text Field" readonly type="text">

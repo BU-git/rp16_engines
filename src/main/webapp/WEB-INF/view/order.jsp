@@ -1,7 +1,7 @@
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="cf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -11,7 +11,15 @@
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
 </head>
 <body>
-<div id="header">
+<body><div id="header">
+    <div>
+        <a href="<spring:url value="/"/>" id="logo">
+            <img src="../../resources/images/logo.png">
+        </a>
+    </div>
+    <a href="<spring:url value="/dashboard"/>">
+        <span>Dashboard</span>
+    </a>
     <a href="<spring:url value="/orders"/>" class="left">
         <span>Orderoverzicht</span>
     </a>
@@ -22,18 +30,30 @@
         <span>Template overzicht</span>
     </a>
     <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
+    <a href="<spring:url value="/register"/>">New User</a>
     <a href="<spring:url value="/logout"/>" class="right">
         <span>logout</span>
     </a>
 </div>
     <div id="content-wrapper">
       <div id="content">
+          <p>
+            <c:if test="${order.orderStatus == 2 || order.orderStatus == 3}">
+                <img src="../../resources/images/yes.png">
+            </c:if>
+            <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
+                <img src="../../resources/images/no.png">
+            </c:if>
+            Order №${order.number} information
+          </p>
 			 <table align="center" id="order">
                  <tr>
                     <td>Number</td>
                     <td>${order.number}</td>
                     <td>Date</td>
-                    <td>${order.date}</td>
+                    <td>
+                        <fmt:formatDate value="${order.date}" pattern="dd-MM-yyyy" />
+                    </td>
                  </tr>
                  <tr>
                      <td>Contact person</td>
@@ -60,17 +80,19 @@
                      <td>${order.employee.email}</td>
                  </tr>
             </table>
-          <div id="select-form">
-            <cf:form method="post" action="/changeOrder/${order.number}" modelAttribute="user">
-                <cf:select path="email">
-                <cf:option value="" disabled="true" selected="true">Select employee</cf:option>
-                <c:forEach var="user" items="${allUsers}">
-                    <cf:option value="${user.email}">${user.name} (${user.email})</cf:option>
-                </c:forEach>
-                 </cf:select>
-                <input type="submit" value="Change" />
-            </cf:form>
-          </div>
+          <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
+              <div id="select-form">
+                  <cf:form method="post" action="/changeOrder/${order.number}" modelAttribute="user">
+                      <cf:select path="email">
+                          <cf:option value="" disabled="true" selected="true">Select employee</cf:option>
+                          <c:forEach var="user" items="${allUsers}">
+                              <cf:option value="${user.email}">${user.name} (${user.email})</cf:option>
+                          </c:forEach>
+                      </cf:select>
+                      <input type="submit" value="Change" />
+                  </cf:form>
+              </div>
+          </c:if>
         </div>
     </div>
 </body>

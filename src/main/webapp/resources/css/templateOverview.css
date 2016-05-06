@@ -1,6 +1,6 @@
 #template_overview{
     width: 500px;
-    max-height: 80%;
+    max-height: 85%;
     margin-top: 15px;
     margin-bottom: 10px;
     border: solid 1px #CCCCCC;
@@ -11,8 +11,17 @@
     padding: 0;
     margin: 0;
 }
-thead{
-    display: none;
+.del{
+    outline: none;
+    border: none;
+    width: 28px;
+    height: 32px;
+    background: transparent url("../images/templates/overview/delete-trash-icon.png") no-repeat 0;
+}
+.del:hover{
+    background: transparent url("../images/templates/overview/delete-trash-icon-red.png") no-repeat 0;
+    transition: background .2s;
+    cursor: pointer;
 }
 #template_overview, #content{
     margin-left: auto;
@@ -37,7 +46,7 @@ tbody, #title_banner, #content{
     font-weight: bold;
 }
 #content_place{
-    height: 91%;
+    min-height: 565px;
     background-color: #FAFAFA;
 }
 

@@ -3,6 +3,7 @@ package com.bionic.service;
 
 import java.util.List;
 
+import com.bionic.domain.template.CustomTemplateNameFront;
 import com.bionic.domain.template.FieldHolder;
 import com.bionic.domain.template.TemplateField;
 
@@ -15,5 +16,9 @@ public interface TemplateService {
     List<TemplateField> findByTemplateName(String name);
 
     List<String> findAll();
+
+    List<CustomTemplateNameFront> findAllForDataTables();
+
+    void removeTemplateByName(String name);
 
 }

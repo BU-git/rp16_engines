@@ -9,7 +9,15 @@
   <title>${list.get(0).templateEntity.templateName}</title>
 </head>
 <body>
-<div id="header">
+<body><div id="header">
+  <div>
+    <a href="<spring:url value="/"/>" id="logo">
+      <img src="../../resources/images/logo.png">
+    </a>
+  </div>
+  <a href="<spring:url value="/dashboard"/>">
+    <span>Dashboard</span>
+  </a>
   <a href="<spring:url value="/orders"/>" class="left">
     <span>Orderoverzicht</span>
   </a>
@@ -20,6 +28,7 @@
     <span>Template overzicht</span>
   </a>
   <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
+  <a href="<spring:url value="/register"/>">New User</a>
   <a href="<spring:url value="/logout"/>" class="right">
     <span>logout</span>
   </a>
@@ -48,7 +57,7 @@
           <tr><td class="number"><% out.println(a++); %></td>
             <td class="element">
               <c:if test="${f.field.id == 1}"><label>${f.description}<input placeholder="Text Field" readonly type="text"></label></c:if>
-              <c:if test="${f.field.id == 2}"><input type="checkbox"><label>${f.description}</label></c:if>
+              <c:if test="${f.field.id == 2}"><input type="checkbox" onclick="return false"><label>${f.description}</label></c:if>
               <c:if test="${f.field.id == 3}"><label>${f.description}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
             </td></tr>
         </c:forEach>

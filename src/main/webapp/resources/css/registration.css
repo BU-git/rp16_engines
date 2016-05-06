@@ -60,7 +60,7 @@ label{
     margin-left: 10px;
 }
 #form_name{
-    background: url("../images/templates/new_user-icon.png") no-repeat 5px;
+    /*background: url("../images/templates/new_user-icon.png") no-repeat 5px;*/
     box-shadow: 0 0 2px #4F4F4F;
     font-size: 24px;
     font-weight: bold;
@@ -83,19 +83,23 @@ button#register, table#register_form, #content{
 button#register{
     outline: none;
     font-size: 16px;
-    background-color: black;
+    /*background-color: black;*/
+    background-color: #596E80;
     border: none;
     padding: 10px 15px;;
 }
 button#register:disabled, button#register:disabled:hover{
+    /*color: #EBEEF0;
+    background-color: #474747;*/
+    background-color: #8795A1;
     color: #EBEEF0;
-    background-color: #474747;
     box-shadow: 0 0 0;
 }
 button#register:hover{
-    box-shadow: 0 0 8px #4F4F4F;
-    background-color: white;
-    color: black;
+    /*box-shadow: 0 0 8px #4F4F4F;*/
+    /*background-color: white;
+    color: black;*/
+    background-color: #8795A1;
     transition:.2s ease-in-out;
 }
 #label, #role{

@@ -24,11 +24,6 @@ import org.hibernate.annotations.*;
 @Table(name="orders")
 public class Order {
 
-/*    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
-
-    @NotNull*/
     @Id
     private long number;
     private String orderType;
@@ -100,9 +95,14 @@ public class Order {
     private Date lastAndroidChangeDate;
 
     /**
-     * boolean flag is needed for showing a red cross or a green check mark. true - if order is done.
+     * Order status
      */
-    private boolean done;
+    private int orderStatus;
+
+    private final static int ORDER_STATUS_NOT_STARTED = 0;
+    private final static int ORDER_STATUS_IN_PROGRESS = 1;
+    private final static int ORDER_STATUS_COMPLETE = 2;
+    private final static int ORDER_STATUS_COMPLETE_UPLOADED = 3;
 
     /*@Lob
     private Blob pdf;*/
@@ -244,12 +244,12 @@ public class Order {
         this.lastAndroidChangeDate = lastAndroidChangeDate;
     }
 
-    public boolean isDone() {
-        return done;
+    public int getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     @Override
@@ -270,7 +270,7 @@ public class Order {
                 ", importTimestamp=" + importDate +
                 ", lastServerChangeTimestamp=" + lastServerChangeDate +
                 ", lastAndroidChangeTimestamp=" + lastAndroidChangeDate +
-                ", done=" + done +
+                ", status=" + orderStatus +
                 '}';
     }
 }

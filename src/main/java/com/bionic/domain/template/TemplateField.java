@@ -25,10 +25,10 @@ public class TemplateField implements Serializable {
     @JsonIgnore
     private int id;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Field.class, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = Field.class, cascade = CascadeType.PERSIST)
     private Field field;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = TemplateEntity.class, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = TemplateEntity.class, cascade = CascadeType.PERSIST)
     @JsonIgnore
     private TemplateEntity templateEntity;
 

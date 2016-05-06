@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,18 +24,30 @@
     </script>
 </head>
 <body>
-    <div id="header">
-        <a href="/dashboard">
-            <span>Dashboard</span>
-        </a>
-        <a href="/templates">
-            <span>Template</span>
-        </a>
-        <span>Welkom ${loggedInUser.email}</span>
-        <a href="/logout">
-            <span>Ultlogen</span>
+<body><div id="header">
+    <div>
+        <a href="<spring:url value="/"/>" id="logo">
+            <img src="../../resources/images/logo.png">
         </a>
     </div>
+    <a href="<spring:url value="/dashboard"/>">
+        <span>Dashboard</span>
+    </a>
+    <a href="<spring:url value="/orders"/>" class="left">
+        <span>Orderoverzicht</span>
+    </a>
+    <a href="<spring:url value="/templates"/>" class="left">
+        <span>Maak template</span>
+    </a>
+    <a href="<spring:url value="/templates/overview"/>" class="left">
+        <span>Template overzicht</span>
+    </a>
+    <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
+    <a href="<spring:url value="/register"/>">New User</a>
+    <a href="<spring:url value="/logout"/>" class="right">
+        <span>logout</span>
+    </a>
+</div>
     <div id="content-wrapper">
         <div id="content">
             <table align="center" id="table" class="display" cellspacing="0">
@@ -53,10 +66,10 @@
                     <c:forEach var="order" items="${allOrders}">
                         <tr>
                             <td>
-                                <c:if test="${order.done == true}">
+                                <c:if test="${order.orderStatus == 2 || order.orderStatus == 3}">
                                     <img src="../../resources/images/yes.png">
                                 </c:if>
-                                <c:if test="${order.done == false}">
+                                <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
                                     <img src="../../resources/images/no.png">
                                 </c:if>
                                 <c:out value="${order.number}"/>

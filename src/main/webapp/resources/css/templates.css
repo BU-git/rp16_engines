@@ -1,8 +1,9 @@
 #my_popup, #edit_popup{
     width: 300px;
-    height: 340px;
+    height: 400px;
     border-radius: 3px;
-    box-shadow: 0 0 30px #343357;
+    box-shadow: 0 0 30px #0d1857;
+    display: none;
 }
 #left_side img, #left_side_error img{
     width: 100px;
@@ -50,10 +51,14 @@
     margin-top: 25px;
 }
 #popup_error{
+    display: none;
+    min-height: 150px;
+    min-width: 300px;
     box-shadow: 0 0 30px #5C2F2F;
     border-radius: 4px;
 }
 #popup_ok{
+    display: none;
     box-shadow: 0 0 30px #3A4F43;
     background-color: #F7F7E6;
     height: 150px;
@@ -161,8 +166,8 @@ button#edit_button:hover{
 }
 .popup_area:focus, #edit_area:focus{
     transition: all 0.3s;
-    background-color: #FAFFE6;
-    outline-color: #ACBD68;
+    /*background-color: #f1f8ff;
+    outline-color: rgba(17, 33, 95, 0.6);*/
 }
 #my_popup button:hover,button#edit_button:hover, button#save_button:hover, button.delete:hover, button.edit:hover,
 #edit_popup button:hover, .edit_popup_open:hover,button#text_field:hover, #check_box:hover, #text_area:hover, a:hover, a:active{
@@ -185,6 +190,14 @@ button#edit_button:hover{
 }
 #left, #prev, #main_table th, #title{
     box-shadow: 0 0 2px #4F4F4F;
+}
+#left table td{
+    max-width: 192px;
+}
+#left table td p{
+    font-size: 14px;
+    color: #808b96;
+    margin-bottom: 35px;
 }
 #prev{
     background-color: white;
@@ -229,7 +242,7 @@ ul li{
     font-weight: bold;
     padding-bottom: 10px;
     /*background-color: black;*/
-    background-color: #46628A;
+    background-color: #023672;
 }
 .hd_main{
     height: 50px;
@@ -248,14 +261,15 @@ ul li{
 }
 #main_table th{
     /*background-color: #222226;*/
-    background-color: #EBEBEB;
+    background-color: #707070;
     padding: 1%;
-    color: #797A7A;
+    color: white;
 }
 #first_th{
     width: 20%;
     height: 20px;
     max-height: 50px;
+    border-right: solid 1px white;
 }
 #second_th{
     height: 20px;
@@ -275,9 +289,9 @@ input[type='text']{
 }
 input#template_name[type='text']:focus{
     transition: all 0.3s;
-    border-color: white;
-    outline-color:  #A9B068;
-    background: #FEFFF0;
+    /*border-color: white;*/
+    /*background-color: #f1f8ff;
+    outline-color: rgba(17, 33, 95, 0.6);*/
 }
 label{
     font-size: 13px;
@@ -297,13 +311,18 @@ button#add_to_form, button#accept{
 }
 input#template_name{
     margin-top: 0;
+    margin-bottom: 10px;
     font-family: 'Calibri', serif;
     letter-spacing: 2px;
     color: #414252;
     width: 500px;
-    height: 30px;
+    height: 35px;
     font-size: 19px;
     padding: 6px;
+}
+#title{
+    padding: 4px;
+    margin: 0;
 }
 #title, #main_table, #main_screen, .hd_main, .hd{
     width: 100%;
@@ -315,7 +334,7 @@ input#template_name{
     margin-left: auto;
     margin-right: auto;
 }
-.middle, #popup_ok table, #popup_error, .inputTable{
+.middle, #popup_ok table, #popup_error table, .inputTable{
     margin-left: auto;
     margin-right: auto;
     padding: 7px;

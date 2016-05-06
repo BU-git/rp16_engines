@@ -66,10 +66,6 @@ $(function(){
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         return regex.test(input_email.val());
     }
-    /*var generateHash = function(message){
-        var hash = CryptoJS.SHA3(message);
-        console.log(hash.toString());
-    };*/
     popup_error.popup({
         opentransitionend: function(){
             setTimeout(function(){
@@ -83,7 +79,7 @@ $(function(){
         opentransitionend: function(){
             setTimeout(function() {
                     popup_ok.popup('hide');
-                    window.location.replace("/dashboard");
+                    window.location.replace("/register");
                 }, 2500);
         },
         blur : false,
@@ -110,7 +106,6 @@ $(function(){
                 errorHandler(result.status);
             }
         });
-        /*generateHash(input_password.val());*/
     });
     var errorHandler = function(status){
         switch(status){
