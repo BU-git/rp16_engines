@@ -38,10 +38,13 @@ public class OrderUploadController {
     }
 
 
-    @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, headers=("content-type=multipart/*"), consumes = "multipart/form-data")
+    @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, /*headers=("content-type=multipart*//*"),*/ consumes = "multipart/form-data")
     public ResponseEntity uploadFile(@PathVariable("number") long number,
                                      //@RequestParam("checksum") MultipartFile checksum,
-                                     @RequestParam MultipartFile filePart) {
+                                     @RequestBody MultipartFile filePart) {
+        System.out.println(filePart.getSize() + " =  SIZE");
+        System.out.println(filePart.getOriginalFilename() + " = NAME");
+        System.out.println();
         File file = null;
         if (!filePart.isEmpty()) {
             try {
