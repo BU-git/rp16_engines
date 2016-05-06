@@ -1,3 +1,4 @@
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="cf" uri="http://www.springframework.org/tags/form" %>
@@ -35,34 +36,28 @@
                     <td>${order.date}</td>
                  </tr>
                  <tr>
-                     <td>Relation</td>
+                     <td>Contact person</td>
+                     <td>${order.relation.contactPerson}</td>
+                     <td>Town</td>
                      <td>${order.relation.town}</td>
-                     <td>Reference</td>
-                     <td>${order.reference}</td>
-                 </tr>
-                 <tr>
-                     <td>Parts</td>
-                     <td>${order.parts}</td>
-                     <td>Installation</td>
-                     <td>${order.installation.address}</td>
                  </tr>
                  <tr>
                      <td>Phone number</td>
                      <td>${order.relation.telephone}</td>
-                     <td>Parts</td>
-                     <td>${order.parts}</td>
+                     <td>Installation name</td>
+                     <td>${order.installation.name}</td>
+                 </tr>
+                 <tr>
+                     <td>Installation address</td>
+                     <td>${order.installation.address}</td>
+                     <td>Reference</td>
+                     <td>${order.reference}</td>
                  </tr>
                  <tr>
                      <td>Employee</td>
                      <td>${order.employee.name}</td>
-                     <td>Date</td>
-                     <td>${order.date}</td>
-                 </tr>
-                 <tr>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
+                     <td>Email</td>
+                     <td>${order.employee.email}</td>
                  </tr>
             </table>
           <div id="select-form">

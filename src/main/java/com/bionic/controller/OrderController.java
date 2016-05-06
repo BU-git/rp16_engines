@@ -54,12 +54,22 @@ public class OrderController {
         if (!model.containsAttribute("loggedInUser")) {
             return "redirect:login";
         }
+        Order order = orderService.findById(id);
         Employee employee = employeeService.findByEmail(user.getEmail());
         if (employee != null) {
-            Order order = orderService.findById(id);
-            order.setEmployee(employee);
-            orderService.save(order);
+            Employee empl = new Employee();
+            empl.setEmail(employee.getEmail());
+            empl.setName(employee.getName());
+            empl.setNumber(employee.getNumber());
+            order.setEmployee(empl);
         }
+        else {
+            employee = new Employee();
+            employee.setEmail(user.getEmail());
+            employee.setName(user.getName());
+            order.setEmployee(employee);
+        }
+        orderService.save(order);
         return "redirect:/orders/{id}";
     }
 
