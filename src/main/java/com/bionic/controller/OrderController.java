@@ -15,6 +15,8 @@ import com.bionic.domain.Order;
 import com.bionic.domain.User;
 import com.bionic.domain.component.Employee;
 import com.bionic.service.OrderService;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import com.bionic.service.UserService;
 
 @Controller
@@ -25,8 +27,8 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private UserService userService;
-   /*@Autowired
-    private XmlFileReader xmlFileReader;*/
+    @Autowired
+    private EmployeeService employeeService;
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAllOrders(ModelMap model) {
@@ -67,29 +69,28 @@ public class OrderController {
         return "redirect:/orders/{id}";
     }
 
-    /*@RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
     public String downloadOrder(@PathVariable long id, HttpServletResponse response, ModelMap model) {
-        if (!model.containsAttribute("loggedInUser")) {
+        /*if (!model.containsAttribute("loggedInUser")) {
             return "redirect:login";
         }
-        Order order = orderService.findById(id);
-        if (order != null) {
-            try {
-                response.setHeader("Content-Disposition", "inline;filename=\"" + order.getNumber() + "\"");
-                OutputStream out = response.getOutputStream();
-                Blob pdf = order.getPdf();
-                if (pdf != null) {
-                    IOUtils.copy(pdf.getBinaryStream(), out);
-                    out.flush();
-                    out.close();
-                } else {
-                    model.addAttribute("message", "Pdf-file not found!");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+        try {
+            response.setHeader("Content-Disposition", "inline;filename=\"" + id + "\"");
+            OutputStream out = response.getOutputStream();
+            Blob pdf = order.getPdf();
+            if (pdf != null) {
+                IOUtils.copy(pdf.getBinaryStream(), out);
+                out.flush();
+                out.close();
+            } else {
+                model.addAttribute("message", "Pdf-file not found!");
             }
-        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
         return null;
         //return "orders";
-    }*/
+    }
+
 }
