@@ -8,10 +8,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Order ${order.number}</title>
     <link href="<c:url value="/resources/css/order.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
 </head>
 <body>
-<body><div id="header">
+<div id="header">
     <div>
         <a href="<spring:url value="/"/>" id="logo">
             <img src="../../resources/images/logo.png">
@@ -29,7 +30,7 @@
     <a href="<spring:url value="/templates/overview"/>" class="left">
         <span>Template overzicht</span>
     </a>
-    <span style="text-align: center;">Welkom ${loggedInUser.email}</span>
+    <span style="text-align: center;">Welkom ${loggedInUser.name}</span>
     <a href="<spring:url value="/register"/>">New User</a>
     <a href="<spring:url value="/logout"/>" class="right">
         <span>logout</span>

@@ -17,6 +17,7 @@ import com.bionic.domain.component.Installation;
 import com.bionic.domain.component.Part;
 import com.bionic.domain.component.Relation;
 import com.bionic.domain.component.Task;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.*;
 
 @Entity
@@ -104,9 +105,8 @@ public class Order {
     private final static int ORDER_STATUS_COMPLETE = 2;
     private final static int ORDER_STATUS_COMPLETE_UPLOADED = 3;
 
-    /*@Lob
-    private Blob pdf;*/
-
+    @JsonIgnore
+    private String pdfLink;
 
     @XmlElementWrapper(name = "ExtraInfo")
     @XmlElement(name = "Info", type = Info.class)
@@ -250,6 +250,14 @@ public class Order {
 
     public void setOrderStatus(int orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getPdfLink() {
+        return pdfLink;
+    }
+
+    public void setPdfLink(String pdfLink) {
+        this.pdfLink = pdfLink;
     }
 
     @Override
