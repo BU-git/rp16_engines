@@ -5,16 +5,21 @@ $(function(){
     var label_for_name = $('#for_name');
     var label_for_mail = $('#for_mail');
     var label_for_password = $('#for_password');
+    var label_for_password_confirmation = $('#for_password_confirmation');
     var input_email = $('#email');
     var input_name = $('#name');
     var input_password = $('#password');
+    var input_password_confirmation = $('#password_confirmation');
     var input_role = $('#role');
+    var input_number = $('#number');
     var check1 = $('#check1');
     var check2 = $('#check2');
     var check3 = $('#check3');
+    var check4 = $('#check4');
     var warn1 = $('#warn1');
     var warn2 = $('#warn2');
     var warn3 = $('#warn3');
+    var warn4 = $('#warn4');
     var message = "Oops.. something wrong =/";
     var errorMessage = $('#right_side_error').find('p');
 
@@ -24,7 +29,11 @@ $(function(){
     var check_all_input_not_empty = function(){
         if(!(input_email.val().length > 5) && !isEmail(input_email.val())) return false;
         if(!(input_name.val().length > 2)) return false;
-        return input_password.val().length > 2;
+        if(!input_password.val().length > 2 || !input_password_confirmation.val() >2) return false;
+        return check_password_matched();
+    };
+    var check_password_matched = function(){
+        return input_password.val() == input_password_confirmation.val();
     };
     var enable_submit = function(){
         if(check_all_input_not_empty() && isEmail(input_email.val())) {
@@ -59,7 +68,14 @@ $(function(){
         enable_submit();
     });
     input_password.bind('input propertychange', function(){
-        paint_info(input_password, label_for_password, check_input_not_empty(input_password),warn3,check3);
+        var not_empty = check_input_not_empty(input_password);
+        paint_info(input_password, label_for_password, not_empty,warn3,check3);
+        input_password_confirmation.prop('disabled', !not_empty);
+        enable_submit();
+    });
+    input_password_confirmation.bind('input propertychange', function(){
+        paint_info(input_password_confirmation, label_for_password_confirmation, check_input_not_empty(input_password_confirmation) &&
+        check_password_matched(), warn4, check4);
         enable_submit();
     });
     function isEmail() {
@@ -88,7 +104,7 @@ $(function(){
     submit.click(function(){
         var role = 1;
         if(input_role.prop('checked')) role = 0;
-        var user = {'email':input_email.val(),'name':input_name.val(),'passwordHash':input_password.val(),'role':role};
+        var user = {'Email':input_email.val(),'Name':input_name.val(),'password':input_password.val(),'Role':role, 'Number':input_number.val()};
         user = JSON.stringify(user);
         console.log(user);
         $.ajax({

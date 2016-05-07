@@ -1,0 +1,165 @@
+#title_banner p{
+    font-size: 24px;
+    margin: 5px;
+    color: #ACADAD;
+    font-weight: bold;
+}
+label{
+    font-size: 13px;
+    color: #9FAAB5;
+}
+.inputTable{
+    margin: 0 auto;
+}
+tbody, #title_banner, #content,.hd, ul, #edit_popup ul{
+    text-align: center;
+}
+#content{
+    margin-left: auto;
+    margin-right: auto;
+}
+#content_place{
+    min-height: 565px;
+    background-color: #FAFAFA;
+}
+#content_place, #title_banner{
+    margin: 0 8px;
+    padding: 4px;
+    box-shadow: 0 0 2px #4F4F4F;
+}
+.del{
+    outline: none;
+    border: none;
+    width: 28px;
+    height: 32px;
+    background: transparent url("../images/templates/overview/delete-trash-icon.png") no-repeat 0;
+}
+.del:hover{
+    background: transparent url("../images/templates/overview/delete-trash-icon-red.png") no-repeat 0;
+    transition: background .2s;
+    cursor: pointer;
+}
+.edit{
+    margin-right: 5px;
+    outline: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    background: transparent url("../images/templates/overview/edit-icon-new-orange-hover.png") no-repeat 0;
+}
+.edit:hover{
+    background: transparent url("../images/templates/overview/edit-icon-new-orange.png") no-repeat 0;
+}
+#edit_popup{
+    width: 400px;
+    height: 385px;
+    border-radius: 3px;
+    box-shadow: 0 0 30px #0d1857;
+    display: none;
+}
+#edit_popup button:hover, .edit:hover{
+    transition: background .2s;
+    cursor: pointer;
+}
+#edit_popup ul{
+    list-style: none;
+    border-top: solid 1px #D7D7DB;
+    border-radius:  0 0 3px 3px;
+    padding-bottom: 11px;
+    background-color: white;
+}
+#edit_popup button{
+    outline: none;
+    margin-top: 4%;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+}
+.hd{
+    width: 100%;
+    color: white;
+    border-radius: 2px 2px 0 0;
+    text-transform: uppercase;
+    padding-top: 9%;
+    height: 40px;
+    border-bottom: solid 1px #D7D7DB;
+    font-weight: bold;
+    padding-bottom: 10px;
+    background-color: #023672;
+}
+button.edit_popup_close{
+    width: 85px;
+    border: solid 1px;
+    background-color: #994343;
+}
+button.edit_popup_close:hover{
+    background-color: #C97777;
+}
+.right_li{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 20px;
+}
+button#accept{
+    width: 85px;
+    margin-left: 10px;
+    border: none;
+    background-color: #596E80;
+}
+button#accept:hover, button#accept:disabled, button#accept:disabled:hover{
+    background-color: #8795A1;
+}
+ul li{
+    display: inline;
+}
+.inputTable td{
+    padding: 5px;
+}
+.w{
+    width: 24px;
+}
+.warn, .check{
+    margin-top: 15px;
+    width: 22px;
+    height: 22px;
+}
+.warn{
+    display: none;
+}
+#email, #number, .inline, #for_name, #name{
+    display: block;
+}
+/*#label, */#role{
+    padding: 5px;
+}
+#label{
+    float: right;
+    margin-top: 20px;
+}
+#role{
+    float: left;
+    margin-top: 22px;
+}
+.role, #label{
+    display: inline;
+}
+#name{
+    width: 200px;
+}
+input#role{
+    width: auto;
+    height: auto;
+}
+input, .role{
+    height: 30px;
+}
+input {
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
+    width: 300px;
+    border: 1px solid #AAAAB3;
+}
+label{
+    text-align: left;
+}
+

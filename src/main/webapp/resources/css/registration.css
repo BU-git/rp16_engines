@@ -60,7 +60,6 @@ label{
     margin-left: 10px;
 }
 #form_name{
-    /*background: url("../images/templates/new_user-icon.png") no-repeat 5px;*/
     box-shadow: 0 0 2px #4F4F4F;
     font-size: 24px;
     font-weight: bold;
@@ -142,7 +141,7 @@ table#register_form {
     margin: 0 auto;
 }
 #register_form td{
-    padding: 12px;
+    padding: 6px;
 }
 .center{
     text-align: center;

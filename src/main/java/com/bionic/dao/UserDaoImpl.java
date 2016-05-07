@@ -23,6 +23,11 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public List<User> findAllRoleUsers(){
+		return em.createQuery("SELECT u FROM User u", User.class).getResultList();
+	}
+
+	@Override
 	public User getUserByEmail(String email) {
 		TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE LOWER(u.email) = :email", User.class);
 		String emailTemp = email.toLowerCase().trim();
@@ -42,8 +47,23 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	@Transactional
+	public User findById(long id) {
+		return em.find(User.class, id);
+	}
+
+	@Override
 	public void save(User u) {
 		em.persist(u);
+	}
+
+	@Override
+	public void update(User u) {
+		em.persist(u);
+	}
+
+	@Override
+	@Transactional
+	public void remove(User u) {
+		em.remove(u);
 	}
 }

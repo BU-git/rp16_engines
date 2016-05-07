@@ -10,7 +10,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
-    <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">
+    <%--<link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">--%>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
     <script>
         $(document).ready(function() {

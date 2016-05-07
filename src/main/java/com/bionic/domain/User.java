@@ -1,7 +1,5 @@
 package com.bionic.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -9,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="users")
@@ -25,7 +25,9 @@ public class User implements Serializable {
 
 	@JsonIgnore
 	private Role role;
-	
+	@JsonIgnore
+	private int number;
+
 	public User() {
 		this.role = Role.USER;
 	}
@@ -86,6 +88,14 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
@@ -95,6 +105,7 @@ public class User implements Serializable {
 				", passwordHash='" + passwordHash + '\'' +
 				", salt='" + salt + '\'' +
 				", role=" + role +
+				", number=" + number +
 				'}';
 	}
 }
