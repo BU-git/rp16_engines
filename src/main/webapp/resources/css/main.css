@@ -28,7 +28,7 @@ html, body {
     height: 50px;
    /* background: linear-gradient(to top, #000000, #3A393B);*/
     background-color: #023672;
-    z-index: 0;
+    z-index: 100;
     color: white;
 }
 #content-wrapper {

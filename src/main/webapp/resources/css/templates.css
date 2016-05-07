@@ -212,6 +212,8 @@ button#edit_button:hover{
     padding: 10px;
 }
 button.my_popup_close, button.edit_popup_close{
+    min-width: 60px;
+    margin-left: 35px;
     border: solid 1px;
     background-color: #994343;
 }
