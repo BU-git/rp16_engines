@@ -1,3 +1,11 @@
+html {
+    overflow-y: scroll;
+}
+
+body.menu-on {
+    overflow-y: scroll;
+}
+
 a,
 a:hover ,
 a:visited {
@@ -16,28 +24,13 @@ body {
     height: 100%;
     width: 100%;
 }
-/*
-header {
-    position: fixed;
-    text-align: center;
-    color: white;
-    margin: 0;
-    padding: 0;
-    height: 9vh;
-    width: 100%;
-    background-color: black;
-}*/
 
 ul {
     padding: 0;
 }
 
-
 /************************************ ID's ***********************************************/
 #content-wrapper {
-    width: 100%;
-    height: 100%;
-    position: fixed;
     overflow: hidden;
     top: 0;
     left: 0;
@@ -113,7 +106,7 @@ ul {
     -moz-transition-duration: 0.7s;
     -o-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
-    background-color: rgba(28, 28, 26, 1);
+    background-color: #011B39;
     position: fixed;
     height: 100%;
     top: 0;
@@ -134,8 +127,14 @@ ul {
     overflow: hidden;
 }
 
+#right-menu .sitemap ul li {
+    text-align: left;
+    display: block;
+}
+
 /************************************ Classes ***********************************************/
 .button {
+    padding: 0;
     border: 1px solid #FFFFFF;
     color: #FFFFFF;
     cursor: pointer;
@@ -188,7 +187,7 @@ ul {
 
 .menu-toggle {
     position: fixed;
-    top: 2vh;
+    top: 10px;
     right: 2vw;
     margin-right: 24px;
     z-index: 150;
@@ -207,17 +206,13 @@ body.menu-on .menu-toggle .bar {
         color: #FFFFFF;
     }
 
-    .menu-case-contacts .menu-item a {
-        color: #ff6432;
-    }
-
     .menu-toggle {
-        margin-right: 30.358px;
+        margin-right: 30px;
     }
 
     .logo,
     .left-part {
-        margin-left: 30.358px;
+        margin-left: 30px;
     }
 
     .menu-toggle .bar {
@@ -228,7 +223,7 @@ body.menu-on .menu-toggle .bar {
         -ms-transform-origin: 2px 50%;
         position: relative;
         display: block;
-        width: 32.284px;
+        width: 32px;
         height: 4px;
         line-height: 1px;
         background: white;
@@ -259,7 +254,7 @@ body.menu-on .menu-toggle .bar {
     }
 
     #right-menu .sitemap {
-        margin-right: 50.642px;
+        margin-right: 50px;
     }
 
     .menu-item {
@@ -268,6 +263,13 @@ body.menu-on .menu-toggle .bar {
 }
 
 /************menu events*******************/
+/*body.menu-on {
+    overflow-y: scroll;
+}*/
+/*
+body.menu-on::-webkit-scrollbar {
+    display: block;
+}*/
 
 body.menu-on .menu-toggle .bar.bar-1 {
     transform: rotate(45deg);

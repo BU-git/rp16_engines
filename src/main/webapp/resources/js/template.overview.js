@@ -27,7 +27,7 @@ $(document).ready(function() {
             delete_name = parent.find("td:nth-child(2)").text();
             $.when(deleteTemplate(delete_name)).then(function(){
                 setTimeout(function(){
-                    /*table.ajax.reload();*/
+                    table.ajax.reload();
                 }, 1000);
             }).then(setTimeout(setAction(), 300))
         });

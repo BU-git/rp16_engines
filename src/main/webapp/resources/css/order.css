@@ -1,101 +1,22 @@
-/*
-
-@charset "utf-8";
-
-html, body {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
+#rawtable {
+    background: #023672;
+    border-radius: 20px;
+    width:800px;
+    margin:auto;
+    border: 1px solid black;
+    padding: 20px 5px 20px 5px;
 }
 
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    background: linear-gradient(to bottom, #3A393B, #696969 10%, #B7B6B8 100%, #B7B6B8 100%);
-}
-
-a:link, a:visited {
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-
-a:hover, a:active {
-    cursor: pointer;
-}
-
-a div {
-    color: white;
-}
-
-fieldset p {
-    color: white;
-}
-
-#header {
-    color: #FFFFFF;
-    width: 100%;
-    height: 50px;
-    background: linear-gradient(to top, #000000, #3A393B);
-    z-index: 0;
-}
-
-#header a{
-    margin-top: 15px;
-    padding-bottom: 10px;
-}
-#header span {
-    margin: 20px;
-}
-
-#content-wrapper {
-    /!*min-height: calc(100% - 100px);*!/
-    padding: 50px;
-    z-index: 0;
-}
-
-#content {
-    height: 90%;
-    background: lightgrey;
-    padding: 10px;
-    margin: 10px;
-}
-
-#content a{
-    width: 200px;
-}
-*/
-
-.button {
-    cursor: pointer;
-    background: linear-gradient(to top, #000000, #3A393B);
-    padding: 10px;
-    color: #FFFFFF;
-    width: inherit;
-    margin: 20px;
-}
-
-.left {
-    text-align: left;
-}
-
-.right {
-    text-align: right;
-}
-table {
+#rawtable table {
     border-collapse: collapse;
+    width: 600px;
 }
 
 #order td{
     border-right: 1px solid black;
     padding: 10px 20px 20px 5px;
-    font-size: 12px;
-}
-
-#order tr{
-    background: lightgrey;
+    font-size: 14px;
+    color: white;
 }
 
 #order td:last-child {
@@ -107,3 +28,17 @@ table {
     padding-bottom: 20px;
 }
 
+#image img {
+    background: white;
+    border: 3px solid #023672;
+    border-radius: 20px;
+    padding: 6px;
+    vertical-align:middle;
+    width:18px;
+    height:18px;
+    margin-right: 5px;
+}
+
+#image {
+    text-align:center;
+}

@@ -6,6 +6,8 @@ import com.bionic.domain.User;
 import com.bionic.service.OrderService;
 import com.bionic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -18,30 +20,35 @@ public class AndroidRestController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value="/users", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json")
-    public @ResponseBody List<User> getAllUsers() {
-        return userService.getAllUsers();
+    @RequestMapping(value="/users", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user/{email:.+}",
-            method = {RequestMethod.GET, RequestMethod.POST},
+            method = RequestMethod.POST,
             produces = "application/json")
-    public User getUserByEmail(@PathVariable String email) {
-        return userService.getUserByEmail(email);
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        User user = userService.getUserByEmail(email);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @RequestMapping(value="/orders/brief/{email:.+}",
-            method = {RequestMethod.POST, RequestMethod.GET},
+            method = RequestMethod.POST,
             produces = "application/json")
-    public List<OrderBrief> getBriefOrders(@PathVariable("email") String email) {
-        return orderService.getBriefOrdersForUser(email);
+    public ResponseEntity<List<OrderBrief>> getBriefOrders(@PathVariable("email") String email) {
+        List<OrderBrief> orders = orderService.getBriefOrdersForUser(email);
+        return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/orders/get/{number}/{email:.+}",
-            method = {RequestMethod.GET, RequestMethod.POST},
+            method = RequestMethod.POST,
             produces = "application/json")
-    public Order getOrderForUser(@PathVariable("number") long number,
+    public ResponseEntity<Order> getOrderForUser(@PathVariable("number") long number,
                                  @PathVariable("email") String email) {
-        return orderService.getOrderForUser(number, email);
+        Order order = orderService.getOrderForUser(number, email);
+        return order != null ? new ResponseEntity<>(order, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 }

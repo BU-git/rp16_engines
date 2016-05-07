@@ -17,7 +17,7 @@ public class HttpErrorController {
         return "/http-pages/400";
     }
 
-    @RequestMapping("/500")
+/*    @RequestMapping("/500")
     public String error500(Exception e, Model model){
         StackTraceElement[] stack = e.getStackTrace();
         StringBuilder sb = new StringBuilder();
@@ -26,5 +26,5 @@ public class HttpErrorController {
         }
         model.addAttribute("error", sb.toString());
         return "/http-pages/500";
-    }
+    }*/
 }

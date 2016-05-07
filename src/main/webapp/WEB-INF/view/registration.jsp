@@ -10,41 +10,88 @@
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Registration</title>
+  <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <script>
+    $(window).load(function() {
+      $('#menu-toggle')
+              .click(function(){
+                $('body').toggleClass('menu-on');
+              });
+    });
+  </script>
 </head>
 <body>
-<div id="header">
-  <div>
-    <a href="<spring:url value="/"/>" id="logo">
-      <img src="../../resources/images/logo.png">
-    </a>
+  <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
+    <span class='bar bar-1'></span>
+    <span class='bar bar-2'></span>
+    <span class='bar bar-3'></span>
   </div>
-  <a href="<spring:url value="/dashboard"/>">
-    <span>Dashboard</span>
-  </a>
-  <a href="<spring:url value="/orders"/>" class="left">
-    <span>Orderoverzicht</span>
-  </a>
-  <a href="<spring:url value="/templates"/>" class="left">
-    <span>Maak template</span>
-  </a>
-  <a href="<spring:url value="/templates/overview"/>" class="left">
-    <span>Template overzicht</span>
-  </a>
-  <span style="text-align: center;">Welkom ${loggedInUser.name}</span>
-  <a href="<spring:url value="/logout"/>" class="right">
-    <span>logout</span>
-  </a>
-</div>
-<div id="content-wrapper">
-  <div id="popup_ok">
-    <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
-    <div id="right_side"><p>User registered!!!</p></div>
+
+  <div id="left-menu">
+    <div class="logo">
+      <a href="http://www.kvt.nl/">
+        <img src="<c:url value="/resources/images/logo_kvt.png"/>">
+      </a>
+    </div>
+    <div class="left-part-container">
+      <div class="left-part">
+        <a href="<spring:url value="/logout"/>">
+          <div class="button">
+            Logout
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
-  <div id="popup_error">
-    <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
-    <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
+  <div id="right-menu">
+    <div class="sitemap">
+      <ul class="site-menu">
+        <li class="menu-item">
+          <a href="<spring:url value="/dashboard"/>">
+            Dashboard
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/orders">
+            Orders overview
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/templates">
+            Create template
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/templates/overview">
+            Templates overview
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/register">
+            New User
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div id="content">
+  <div id="content-wrapper" style="text-align: center; align-content: center">
+    <div id="header">
+      <div style="position: fixed; top: 0; left: 10px;">
+        <a href="<spring:url value="/"/>" id="logo">
+          <img src="../../resources/images/logo.png">
+        </a>
+      </div>
+      <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
+    </div>
+    <div id="popup_ok">
+      <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
+      <div id="right_side"><p>User registered!!!</p></div>
+    </div>
+    <div id="popup_error">
+      <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
+      <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
+    </div>
+    <div id="content">
     <table id="register_form">
       <caption id="form_name">New user</caption>
       <tr><td><table>
@@ -106,6 +153,6 @@
       </table></td></tr>
     </table>
   </div>
-</div>
+  </div>
 </body>
 </html>
