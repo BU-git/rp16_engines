@@ -7,13 +7,8 @@ import com.bionic.service.OrderService;
 import com.bionic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -25,14 +20,14 @@ public class AndroidRestController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value="/users", method = {RequestMethod.POST, RequestMethod.GET}, produces = "application/json")
+    @RequestMapping(value="/users", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user/{email:.+}",
-            method = {RequestMethod.GET, RequestMethod.POST},
+            method = RequestMethod.POST,
             produces = "application/json")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
         User user = userService.getUserByEmail(email);
@@ -40,7 +35,7 @@ public class AndroidRestController {
     }
 
     @RequestMapping(value="/orders/brief/{email:.+}",
-            method = {RequestMethod.POST, RequestMethod.GET},
+            method = RequestMethod.POST,
             produces = "application/json")
     public ResponseEntity<List<OrderBrief>> getBriefOrders(@PathVariable("email") String email) {
         List<OrderBrief> orders = orderService.getBriefOrdersForUser(email);
@@ -48,7 +43,7 @@ public class AndroidRestController {
     }
 
     @RequestMapping(value = "/orders/get/{number}/{email:.+}",
-            method = {RequestMethod.GET, RequestMethod.POST},
+            method = RequestMethod.POST,
             produces = "application/json")
     public ResponseEntity<Order> getOrderForUser(@PathVariable("number") long number,
                                  @PathVariable("email") String email) {
