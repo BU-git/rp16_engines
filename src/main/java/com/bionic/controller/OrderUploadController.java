@@ -41,19 +41,19 @@ public class OrderUploadController {
     @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, /*headers=("content-type=multipart*//*"),*/ consumes = "multipart/form-data")
     public ResponseEntity uploadFile(@PathVariable("number") long number,
                                      //@RequestParam("checksum") MultipartFile checksum,
-                                     @RequestBody MultipartFile filePart) {
-        System.out.println(filePart.getSize() + " =  SIZE");
-        System.out.println(filePart.getOriginalFilename() + " = NAME");
+                                     @RequestBody MultipartFile fileData) {
+        System.out.println(fileData.getSize() + " =  SIZE");
+        System.out.println(fileData.getOriginalFilename() + " = NAME");
         System.out.println();
         File file = null;
-        if (!filePart.isEmpty()) {
+        if (!fileData.isEmpty()) {
             try {
                 file = new File(ROOT + "/" + number + ".pdf");
                 BufferedOutputStream stream = new BufferedOutputStream(
                         new FileOutputStream(file));
-                FileCopyUtils.copy(filePart.getInputStream(), stream);
+                FileCopyUtils.copy(fileData.getInputStream(), stream);
                 stream.close();
-                System.out.println("You successfully uploaded " + filePart.getName() + "!");
+                System.out.println("You successfully uploaded " + fileData.getName() + "!");
             } catch (Exception e) {
                 e.printStackTrace();
                 return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
