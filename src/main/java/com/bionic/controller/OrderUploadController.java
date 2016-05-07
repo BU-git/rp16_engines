@@ -79,7 +79,7 @@ public class OrderUploadController {
         return null;
     }*/
 
-    @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, headers=("content-type=multipart*//*"), consumes = "multipart/form-data")
+    @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, headers=("content-type=multipart/*"), consumes = "multipart/form-data")
     public ResponseEntity uploadFile(@PathVariable("number") long number, MultipartHttpServletRequest request) {
         System.out.println("Starting upload method...");
         MultipartFile fileData = request.getFile("file");
