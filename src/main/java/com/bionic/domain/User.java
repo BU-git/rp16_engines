@@ -25,7 +25,9 @@ public class User implements Serializable {
 
 	@JsonIgnore
 	private Role role;
-	
+	@JsonIgnore
+	private int number;
+
 	public User() {
 		this.role = Role.USER;
 	}
@@ -84,6 +86,14 @@ public class User implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
 	@Override

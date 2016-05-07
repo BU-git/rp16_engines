@@ -2,7 +2,6 @@ package com.bionic.controller;
 
 import com.bionic.domain.User;
 import com.bionic.domain.component.Employee;
-import com.bionic.service.EmployeeService;
 import com.bionic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +21,6 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private UserService userService;
-    @Autowired
-    private EmployeeService employeeService;
-
    /*@Autowired
     private XmlFileReader xmlFileReader;*/
 
@@ -55,18 +51,12 @@ public class OrderController {
             return "redirect:login";
         }
         Order order = orderService.findById(id);
-        Employee employee = employeeService.findByEmail(user.getEmail());
-        if (employee != null) {
-            Employee empl = new Employee();
-            empl.setEmail(employee.getEmail());
-            empl.setName(employee.getName());
-            empl.setNumber(employee.getNumber());
-            order.setEmployee(empl);
-        }
-        else {
-            employee = new Employee();
-            employee.setEmail(user.getEmail());
-            employee.setName(user.getName());
+        List<User> list = userService.findByEmail(user.getEmail());
+        if (!list.isEmpty()) {
+            Employee employee = new Employee();
+            employee.setName(list.get(0).getName());
+            employee.setEmail(list.get(0).getEmail());
+            employee.setNumber(list.get(0).getNumber());
             order.setEmployee(employee);
         }
         orderService.save(order);
