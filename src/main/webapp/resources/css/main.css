@@ -1,3 +1,7 @@
+html {
+    overflow-y: scroll;
+}
+
 body {
     -webkit-font-smoothing: antialiased;
     font-family: 'Helvetica Neue', sans-serif;
@@ -8,6 +12,7 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
 #header img, #header div{
     float: left;
     width: 49px;
@@ -24,11 +29,11 @@ html, body {
     height: 50px;
    /* background: linear-gradient(to top, #000000, #3A393B);*/
     background-color: #023672;
-    z-index: 0;
+    z-index: 100;
     color: white;
 }
 #content-wrapper {
-    height: calc(100% - 20px);
+    height: calc(100% - 120px);
     min-height: 650px;
     max-height: 650px;
     min-width: 890px;
@@ -59,4 +64,13 @@ a div, a:visited, a:link, a:visited  {
 }
 .left {
     text-align: left;
+}
+
+#buttons {
+    background: #023672;
+    border-radius: 20px;
+    width: 200px;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 20px 5px 20px 5px;
 }
