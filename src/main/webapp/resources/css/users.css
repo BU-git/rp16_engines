@@ -84,6 +84,7 @@ tbody, #title_banner, #content,.hd, ul, #edit_popup ul{
     height: 40px;
     border-bottom: solid 1px #D7D7DB;
     font-weight: bold;
+    font-size: 18px;
     padding-bottom: 10px;
     background-color: #023672;
 }
