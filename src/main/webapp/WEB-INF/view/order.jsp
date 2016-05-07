@@ -38,7 +38,7 @@
 </div>
     <div id="content-wrapper">
       <div id="content">
-          <p>
+          <p id="image">
             <c:if test="${order.orderStatus == 2 || order.orderStatus == 3}">
                 <img src="../../resources/images/yes.png">
             </c:if>
@@ -47,40 +47,42 @@
             </c:if>
             Order №${order.number} information
           </p>
+          <div id="rawtable">
 			 <table align="center" id="order">
                  <tr>
-                    <td>Number</td>
+                    <td>Number:</td>
                     <td>${order.number}</td>
-                    <td>Date</td>
+                    <td>Date:</td>
                     <td>
                         <fmt:formatDate value="${order.date}" pattern="dd-MM-yyyy" />
                     </td>
                  </tr>
                  <tr>
-                     <td>Contact person</td>
+                     <td>Contact person:</td>
                      <td>${order.relation.contactPerson}</td>
-                     <td>Town</td>
+                     <td>Town:</td>
                      <td>${order.relation.town}</td>
                  </tr>
                  <tr>
-                     <td>Phone number</td>
+                     <td>Phone number:</td>
                      <td>${order.relation.telephone}</td>
-                     <td>Installation name</td>
+                     <td>Installation name:</td>
                      <td>${order.installation.name}</td>
                  </tr>
                  <tr>
-                     <td>Installation address</td>
+                     <td>Installation address:</td>
                      <td>${order.installation.address}</td>
-                     <td>Reference</td>
+                     <td>Reference:</td>
                      <td>${order.reference}</td>
                  </tr>
                  <tr>
-                     <td>Employee</td>
+                     <td>Employee:</td>
                      <td>${order.employee.name}</td>
-                     <td>Email</td>
+                     <td>Email:</td>
                      <td>${order.employee.email}</td>
                  </tr>
             </table>
+          </div>
           <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
               <div id="select-form">
                   <cf:form method="post" action="/changeOrder/${order.number}" modelAttribute="user">
