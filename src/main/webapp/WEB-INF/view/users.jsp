@@ -38,9 +38,20 @@
     <span>logout</span>
   </a>
 </div>
+<div id="popup_ok" style="display: none">
+  <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
+  <div id="right_side"><p>User deleted!</p></div>
+</div>
+<div id="popup_error" style="display: none">
+  <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
+  <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
+</div>
 <div id="edit_popup" style="background-color: white">
   <div class="hd">Edit User Info</div>
   <table class="inputTable">
+    <tr>
+      <td colspan="3" class="info"><p id="info">Click 'Accept' to save the changes for the current user.</p></td>
+    </tr>
     <tr>
       <td class="w">
         <img class="check" id="check1" src="../../resources/images/templates/check-icon.png">

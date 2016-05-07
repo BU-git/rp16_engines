@@ -60,10 +60,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void update(UserWrapper u) {
-		if(u == null) throw  new IllegalArgumentException("user == null");
-		User user;
+		if(u == null) throw  new IllegalStateException("user == null");
 		List<User> list = findByEmail(u.getEmail());
 		if(list.size() > 0 && list.get(0).getId() != u.getId())throw  new IllegalArgumentException("user with this email already exist");
+		User user;
 		if(list.size() > 0) user = list.get(0);
 		else user = findById(u.getId());
 		user.setNumber(u.getNumber());
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void removeById(long id) {
 		User u = findById(id);
-		if(u == null) return;
+		if(u == null) throw new IllegalStateException();
 		userDao.remove(u);
 	}
 
@@ -91,6 +91,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.findById(id);
 	}
 
+	@Override
 	public List<UserWrapper> findAllForDataTables(){
 		List<UserWrapper> result = new ArrayList<>();
 		List<User> users = userDao.findAllRoleUsers();
@@ -107,7 +108,6 @@ public class UserServiceImpl implements UserService {
 		wrapper.setId(u.getId());
 		wrapper.setRole(u.getRole() == Role.ADMIN ? "admin" : "user");
 		wrapper.setNumber(u.getNumber());
-		wrapper.setAction("<button class='edit'></button><button class='del'></button>");
 		return wrapper;
 	}
 }

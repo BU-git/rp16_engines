@@ -102,4 +102,17 @@ public class TemplateField implements Serializable {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "******TemplateField {" +
+                "id=" + id +
+                ", field=" + field +
+                ", templateEntity_id=" + templateEntity.getId() +
+                ", templateEntity='"+ templateEntity+
+                ", description='" + description + '\'' +
+                ", createDt=" + createDt +
+                ", updateDt=" + updateDt +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }

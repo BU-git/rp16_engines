@@ -7,15 +7,11 @@ public class CustomTemplateNameFront {
 
     @JsonProperty("#")
     private int position;
+    @JsonProperty("Name")
     private String name;
-    private String action;
 
     public int getPosition() {
         return position;
-    }
-
-    public String getAction() {
-        return action;
     }
 
     public String getName() {
@@ -30,7 +26,4 @@ public class CustomTemplateNameFront {
         this.name = name;
     }
 
-    public void setAction(String action) {
-        this.action = action;
-    }
 }

@@ -11,7 +11,7 @@ import com.bionic.domain.template.TemplateEntity;
 import com.bionic.domain.template.TemplateField;
 
 @Repository
-@Transactional(readOnly = true)
+/*@Transactional(readOnly = true)*/
 public class TemplateDaoImpl implements TemplateDao{
 
     @PersistenceContext
@@ -29,6 +29,7 @@ public class TemplateDaoImpl implements TemplateDao{
         query.setParameter("name", name);
         return query.getResultList();
     }
+
     @Override
     public List<TemplateField> findFieldsByTemplateName(String name){
         TypedQuery<TemplateField> query = em.createQuery("SELECT DISTINCT te FROM TemplateField te, TemplateEntity t" +

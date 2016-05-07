@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,8 @@ public class TemplateController {
             templateService.save(fields.getTemplateName(), fields.getFields(), true);
         }catch (IllegalArgumentException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Template with this name already exist");
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
         return ResponseEntity.ok("ok");
     }
@@ -50,7 +53,7 @@ public class TemplateController {
         return "templateOverview";
     }
 
-    @RequestMapping(path = "templates/all"/*, consumes = MediaType.APPLICATION_JSON_VALUE*/)
+    @RequestMapping(path = "templates/all")
     @ResponseBody
     public ResponseEntity<DataTablesAjaxHolder> getListOfAllTemplatesForDataTables(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
@@ -62,7 +65,13 @@ public class TemplateController {
     @RequestMapping(value = "templates/remove/{name}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteTemplateByName(ModelMap model, @PathVariable("name") String name){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
-        templateService.removeTemplateByName(name);
+        try {
+            templateService.removeTemplateByName(name);
+        }catch (ObjectOptimisticLockingFailureException e){
+            e.printStackTrace();
+        } catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("oops");
+        }
         return ResponseEntity.ok("ok");
     }
 

@@ -5,6 +5,7 @@
 <head>
   <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
   <script src="<c:url value="/resources/js/template.overview.js"/>"></script>
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/templateOverview.css"/>" rel="stylesheet" type="text/css">
@@ -37,6 +38,14 @@
   <a href="<spring:url value="/logout"/>" class="right">
     <span>logout</span>
   </a>
+</div>
+<div id="popup_ok" style="display: none">
+  <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
+  <div id="right_side"><p>Template deleted!</p></div>
+</div>
+<div id="popup_error" style="display: none">
+  <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
+  <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
 </div>
 <div id="content-wrapper">
   <div id="content">

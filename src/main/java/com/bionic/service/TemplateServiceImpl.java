@@ -20,7 +20,7 @@ import com.bionic.domain.template.TemplateEntity;
 import com.bionic.domain.template.TemplateField;
 
 @Service
-@Transactional(readOnly = true)
+/*@Transactional(readOnly = true)*/
 public class TemplateServiceImpl implements TemplateService{
 
     @Autowired
@@ -50,11 +50,10 @@ public class TemplateServiceImpl implements TemplateService{
     public List<CustomTemplateNameFront> findAllForDataTables(){
         int i = 1;
         List<CustomTemplateNameFront> list = new ArrayList<>();
-        for(String s: templateDao.findAllTemplateNames()){
-            String val = "row"+i;
+        List<String> templates = templateDao.findAllTemplateNames();
+        for(String s: templates){
             CustomTemplateNameFront custom = new CustomTemplateNameFront();
-            custom.setName("<a id='row"+val+"' href='/templates/overview/"+s+"'><p class='black'>"+s.replace("<","&lt;")+"</p></a>");
-            custom.setAction("<button class='del' value='row" + val + "'></button>");
+            custom.setName("<a href='/templates/overview/" + s + "'><p class='black'>" + s.replace("<", "&lt;") + "</p></a>");
             custom.setPosition(i++);
             list.add(custom);
         }
@@ -65,8 +64,15 @@ public class TemplateServiceImpl implements TemplateService{
     @Transactional
     public void removeTemplateByName(String name) {
         if(name == null) return;
-        templateDao.findFieldsByTemplateName(name).forEach(templateDao::removeTemplateField);
-        templateDao.findTemplateByName(name).forEach(templateDao::removeTemplate);
+        List<TemplateField> fields = templateDao.findFieldsByTemplateName(name);
+        List<TemplateEntity> entities = templateDao.findTemplateByName(name);
+        /*for(int i = 0; i<fields.size(); i++){
+            System.out.println(fields.get(i));
+            *//*templateDao.removeTemplateField(fields.get(i));*//*
+        }*/
+        entities.forEach(templateDao::removeTemplate);
+        fields.forEach(templateDao::removeTemplateField);
+
     }
 
     @Override
@@ -92,5 +98,4 @@ public class TemplateServiceImpl implements TemplateService{
         }
         return list;
     }
-
 }
