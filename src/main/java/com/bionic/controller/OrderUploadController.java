@@ -16,7 +16,7 @@ import java.io.*;
 import java.util.Date;
 
 @RestController
-@MultipartConfig
+//@MultipartConfig
 public class OrderUploadController {
 
     private static final String ROOT = "pdf_reports";
