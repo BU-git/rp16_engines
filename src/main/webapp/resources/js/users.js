@@ -162,7 +162,7 @@ $(document).ready(function() {
                 setTimeout(function(){
                     table.ajax.reload();
                 }, 500);
-            }).then(setEditAction());
+            });
         });
     };
     var deleteTemplate = function(id){

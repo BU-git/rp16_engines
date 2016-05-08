@@ -1,11 +1,12 @@
 
 package com.bionic.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bionic.domain.DataTablesAjaxHolder;
 import com.bionic.domain.template.CustomTemplateHolder;
+import com.bionic.domain.template.CustomTemplateNameFront;
 import com.bionic.domain.template.TemplateFieldList;
 import com.bionic.service.TemplateService;
 
@@ -49,7 +51,6 @@ public class TemplateController {
     @RequestMapping(path = "templates/overview")
     public String getListOfAllTemplates(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
-        model.addAttribute("templates", templateService.findAll());
         return "templateOverview";
     }
 
@@ -58,7 +59,8 @@ public class TemplateController {
     public ResponseEntity<DataTablesAjaxHolder> getListOfAllTemplatesForDataTables(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         CustomTemplateHolder holder = new CustomTemplateHolder();
-        holder.setData(templateService.findAllForDataTables());
+        List<CustomTemplateNameFront> list = templateService.findAllForDataTables();
+        holder.setData(list);
         return ResponseEntity.ok(holder);
     }
 
@@ -67,9 +69,7 @@ public class TemplateController {
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
         try {
             templateService.removeTemplateByName(name);
-        }catch (ObjectOptimisticLockingFailureException e){
-            e.printStackTrace();
-        } catch(Exception e){
+        }catch(Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("oops");
         }
         return ResponseEntity.ok("ok");

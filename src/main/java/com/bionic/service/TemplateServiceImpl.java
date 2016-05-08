@@ -20,7 +20,7 @@ import com.bionic.domain.template.TemplateEntity;
 import com.bionic.domain.template.TemplateField;
 
 @Service
-/*@Transactional(readOnly = true)*/
+@Transactional(readOnly = true)
 public class TemplateServiceImpl implements TemplateService{
 
     @Autowired
@@ -32,7 +32,7 @@ public class TemplateServiceImpl implements TemplateService{
     @Override
     @Transactional
     public void save(String name, List<FieldHolder> fields, boolean fromWeb) {
-        if(fromWeb && templateDao.findFieldsByTemplateName(name).size() > 0) throw new IllegalArgumentException();
+        if(fromWeb && templateDao.findTemplateByName(name).size() > 0) throw new IllegalArgumentException();
         getList(name, fields).forEach(templateDao::save);
     }
 
@@ -53,7 +53,7 @@ public class TemplateServiceImpl implements TemplateService{
         List<String> templates = templateDao.findAllTemplateNames();
         for(String s: templates){
             CustomTemplateNameFront custom = new CustomTemplateNameFront();
-            custom.setName("<a href='/templates/overview/" + s + "'><p class='black'>" + s.replace("<", "&lt;") + "</p></a>");
+            custom.setName("<a href='/templates/overview/" + s + "'><p class='black'>" + s + "</p></a>");
             custom.setPosition(i++);
             list.add(custom);
         }
@@ -64,15 +64,8 @@ public class TemplateServiceImpl implements TemplateService{
     @Transactional
     public void removeTemplateByName(String name) {
         if(name == null) return;
-        List<TemplateField> fields = templateDao.findFieldsByTemplateName(name);
         List<TemplateEntity> entities = templateDao.findTemplateByName(name);
-        /*for(int i = 0; i<fields.size(); i++){
-            System.out.println(fields.get(i));
-            *//*templateDao.removeTemplateField(fields.get(i));*//*
-        }*/
         entities.forEach(templateDao::removeTemplate);
-        fields.forEach(templateDao::removeTemplateField);
-
     }
 
     @Override

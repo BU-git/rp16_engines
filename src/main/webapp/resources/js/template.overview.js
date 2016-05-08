@@ -28,8 +28,8 @@ $(document).ready(function() {
             $.when(deleteTemplate(delete_name)).then(function(){
                 setTimeout(function(){
                     table.ajax.reload();
-                }, 1000);
-            }).then(setTimeout(setAction(), 300))
+                }, 600);
+            });
         });
     };
     var initTable = function(){

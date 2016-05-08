@@ -5,13 +5,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.bionic.domain.template.TemplateEntity;
 import com.bionic.domain.template.TemplateField;
 
 @Repository
-/*@Transactional(readOnly = true)*/
 public class TemplateDaoImpl implements TemplateDao{
 
     @PersistenceContext
@@ -32,10 +30,9 @@ public class TemplateDaoImpl implements TemplateDao{
 
     @Override
     public List<TemplateField> findFieldsByTemplateName(String name){
-        TypedQuery<TemplateField> query = em.createQuery("SELECT DISTINCT te FROM TemplateField te, TemplateEntity t" +
-                        " WHERE te.templateEntity.templateName =:name AND te.templateEntity.id = t.id", TemplateField.class);
-        query.setParameter("name", name);
-        return query.getResultList();
+        TypedQuery<TemplateEntity> entityTypedQuery = em.createQuery("SELECT te FROM TemplateEntity te WHERE te.templateName =:name", TemplateEntity.class);
+        entityTypedQuery.setParameter("name", name);
+        return entityTypedQuery.setMaxResults(1).getSingleResult().getFields();
     }
 
     @Override
