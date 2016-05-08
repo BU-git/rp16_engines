@@ -61,8 +61,10 @@ public class TemplateController {
 
     @RequestMapping(value = "templates/remove/{name}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteTemplateByName(ModelMap model, @PathVariable("name") String name){
+        System.out.println("Start removing");
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
         templateService.removeTemplateByName(name);
+        System.out.println("Finish removing");
         return ResponseEntity.ok("ok");
     }
 
