@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -114,7 +115,7 @@
                                 </c:if>
                                 <c:out value="${order.number}"/>
                             </td>
-                            <td><c:out value="${order.date}"/></td>
+                            <td> <fmt:formatDate value="${order.date}" pattern="dd-MM-yyyy" /></td>
                             <td><c:out value="${order.installation.name}"/></td>
                             <td>
                                 <c:forEach var="task" items="${order.tasks}">

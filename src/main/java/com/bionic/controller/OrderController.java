@@ -1,14 +1,24 @@
 package com.bionic.controller;
 
+import java.util.List;
+
 import com.bionic.domain.User;
 import com.bionic.domain.component.Employee;
+import com.bionic.service.EmployeeService;
 import com.bionic.service.UserService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import com.bionic.domain.Order;
+import com.bionic.domain.User;
+import com.bionic.domain.component.Employee;
 import com.bionic.service.OrderService;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -19,6 +29,7 @@ import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import com.bionic.service.UserService;
 
 @Controller
 @SessionAttributes("loggedInUser")
@@ -28,7 +39,8 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private EmployeeService employeeService;
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAllOrders(ModelMap model) {
