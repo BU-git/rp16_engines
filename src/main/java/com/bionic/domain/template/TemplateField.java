@@ -14,12 +14,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="templateFields")
-public class TemplateField implements Serializable {
+public class TemplateField implements Serializable, Comparable<TemplateField> {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -34,7 +35,7 @@ public class TemplateField implements Serializable {
     @JsonIgnore
     private TemplateEntity templateEntity;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1024)
     private String description;
 
     @Column(nullable = false)
@@ -44,6 +45,7 @@ public class TemplateField implements Serializable {
     @JsonIgnore
     private Date updateDt;
 
+    @Column(length = 1024)
     private String value;
 
 
@@ -116,5 +118,12 @@ public class TemplateField implements Serializable {
                 ", updateDt=" + updateDt +
                 ", value='" + value + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(TemplateField o) {
+        if(o == null) return -1;
+        if(o.getId() == this.id) return 0;
+        return this.id > o.getId() ? 1 : -1 ;
     }
 }

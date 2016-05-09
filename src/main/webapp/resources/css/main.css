@@ -1,7 +1,6 @@
 html {
     overflow-y: scroll;
 }
-
 body {
     -webkit-font-smoothing: antialiased;
     font-family: 'Helvetica Neue', sans-serif;
@@ -26,14 +25,15 @@ html, body {
     top: 0;
     left: 0;
     height: 50px;
-   /* background: linear-gradient(to top, #000000, #3A393B);*/
+    /*background: linear-gradient(to top, rgba(2, 61, 129, 0.93), #023162);*/
     background-color: #023672;
     z-index: 100;
     color: white;
 }
 #content-wrapper {
     /*height: calc(100% - 120px);*/
-    min-height: 650px;
+    min-height: 750px;
+    max-height: 750px;
     /*max-height: 650px;*/
     min-width: 890px;
     background-color: #E8E8E8;
@@ -44,7 +44,8 @@ html, body {
 #content {
 	padding: 8px 2px 8px 1px;
     border-radius: 2px;
-    height: 95%;
+    min-height: 655px;
+    max-height: 655px;
     background: #FFFFFF
 }
 a:link, a:visited {
@@ -64,7 +65,6 @@ a div, a:visited, a:link, a:visited  {
 .left {
     text-align: left;
 }
-
 #buttons {
     background: #023672;
     border-radius: 20px;

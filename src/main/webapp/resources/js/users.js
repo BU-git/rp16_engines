@@ -26,9 +26,6 @@ $(document).ready(function() {
     var number_td;
     var role_td;
     edit_popup.popup({
-        onopen: function(){
-            $('.popup_area').val("");
-        },
         onclose: function(){
             setTimeout(function(){
                 paint_info(input_email, label_for_mail, true,warn1,check1);

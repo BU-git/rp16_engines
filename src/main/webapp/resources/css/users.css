@@ -2,6 +2,8 @@
     font-size: 24px;
     margin: 5px;
     color: #ACADAD;
+}
+#title_banner p,.hd{
     font-weight: bold;
 }
 label{
@@ -11,15 +13,15 @@ label{
 .inputTable{
     margin: 10px auto 0  auto;
 }
-tbody, #title_banner, #content,.hd, ul, #edit_popup ul{
+tbody, #title_banner, #content,.hd, ul, #edit_popup ul, #right_side p, #right_side_error p{
     text-align: center;
 }
-#content{
+#content, #popup_ok table, #popup_error{
     margin-left: auto;
     margin-right: auto;
 }
 #content_place{
-    min-height: 565px;
+    min-height: 600px;
     background-color: #FAFAFA;
 }
 #content_place, #title_banner{
@@ -28,21 +30,19 @@ tbody, #title_banner, #content,.hd, ul, #edit_popup ul{
     box-shadow: 0 0 2px #4F4F4F;
 }
 .del{
-    outline: none;
-    border: none;
     width: 28px;
     height: 32px;
     background: transparent url("../images/templates/overview/delete-trash-icon.png") no-repeat 0;
 }
 .del:hover{
     background: transparent url("../images/templates/overview/delete-trash-icon-red.png") no-repeat 0;
-    transition: background .2s;
-    cursor: pointer;
+}
+.edit, #edit_popup button, .del, button#accept{
+    border: none;
+    outline: none;
 }
 .edit{
     margin-right: 5px;
-    outline: none;
-    border: none;
     width: 32px;
     height: 32px;
     background: transparent url("../images/templates/overview/edit-icon-new-orange-hover.png") no-repeat 0;
@@ -50,14 +50,15 @@ tbody, #title_banner, #content,.hd, ul, #edit_popup ul{
 .edit:hover{
     background: transparent url("../images/templates/overview/edit-icon-new-orange.png") no-repeat 0;
 }
+#edit_popup, ul button{
+    border-radius: 3px;
+}
 #edit_popup{
     width: 400px;
     height: 450px;
-    border-radius: 3px;
     box-shadow: 0 0 30px #0d1857;
-    display: none;
 }
-#edit_popup button:hover, .edit:hover{
+#edit_popup button:hover, .edit:hover, .del:hover{
     transition: background .2s;
     cursor: pointer;
 }
@@ -69,28 +70,24 @@ tbody, #title_banner, #content,.hd, ul, #edit_popup ul{
     background-color: white;
 }
 #edit_popup button{
-    outline: none;
     margin-top: 4%;
-    border-radius: 3px;
     padding: 10px;
+}
+.hd, #edit_popup button{
     color: white;
 }
 .hd{
     width: 100%;
-    color: white;
     border-radius: 2px 2px 0 0;
     text-transform: uppercase;
     padding-top: 9%;
     height: 40px;
     border-bottom: solid 1px #D7D7DB;
-    font-weight: bold;
-    font-size: 18px;
     padding-bottom: 10px;
     background-color: #023672;
 }
 button.edit_popup_close{
-    margin-left: 30px;
-    width: 85px;
+    margin-left: 25px;
     border: solid 1px;
     background-color: #994343;
 }
@@ -102,19 +99,21 @@ button.edit_popup_close:hover{
     padding-left: 15px;
     margin-left: 15px;
 }
-button#accept{
+button.edit_popup_close, button#accept{
     width: 85px;
+    font-size: 16px;
+}
+button#accept{
     margin-left: 10px;
-    border: none;
-    background-color: #596E80;
+    background: rgba(23, 85, 133, 0.85);
 }
 button#accept:hover, button#accept:disabled, button#accept:disabled:hover{
-    background-color: #8795A1;
+    background-color: rgba(21, 71, 114, 0.62);
 }
-ul li{
+ul li, .role, #label, #left_side, #right_side, #right_side_error, #left_side_error{
     display: inline;
 }
-.inputTable td{
+.inputTable td, #role{
     padding: 5px;
 }
 .w{
@@ -125,28 +124,26 @@ ul li{
     width: 22px;
     height: 22px;
 }
-.warn{
+.warn, #edit_popup, .dataTables_length{
     display: none;
 }
 #email, #number, .inline, #for_name, #name{
     display: block;
 }
-#role{
-    padding: 5px;
+#label, #right_side, #right_side_error{
+    float: right;
 }
 #label{
-    float: right;
-    margin-top: 20px;
+    margin-top: 21px;
+}
+#role, #left_side, #left_side_error{
+    float: left;
 }
 #role{
-    float: left;
     margin-top: 22px;
 }
-.role, #label{
-    display: inline;
-}
 #name{
-    width: 200px;
+    width: 230px;
 }
 input#role{
     width: auto;
@@ -155,31 +152,27 @@ input#role{
 input, .role{
     height: 30px;
 }
+#popup_ok,p#info, input[type='number'], input[type='email']{
+    min-width: 300px;
+    max-width: 300px;
+}
 input {
     font-size: 14px;
     padding: 5px 10px 5px 10px;
-    width: 300px;
     border: 1px solid #AAAAB3;
 }
 label{
     text-align: left;
 }
-.dataTables_length{
-    display: none;
-}
 #popup_ok{
     box-shadow: 0 0 30px #3A4F43;
     background-color: #F7F7E6;
-    height: 150px;
-    width: 300px;
 }
 #popup_ok, #popup_error, input, input:focus {
     border-radius: 4px;
 }
-#popup_ok table, #popup_error{
+#popup_ok table, #popup_error, #left_side img, #left_side_error img{
     margin-top: 25px;
-    margin-right: auto;
-    margin-left: auto;
 }
 #popup_error{
     box-shadow: 0 0 30px #5C2F2F;
@@ -188,20 +181,17 @@ label{
     color: #4F5C55;
     padding-top: 45px;
 }
-#right_side p, #right_side_error p{
-    text-align: center;
+#right_side p, #right_side_error p,.hd{
     font-size: 18px;
 }
 #left_side, #left_side_error{
     border-radius: 4px 0 0 4px;
     width: 120px;
     max-width: 120px;
-    float: left;
     background-color: #F7FAED;
 }
-#left_side, #right_side, #right_side_error, #left_side_error{
+#left_side, #right_side, #right_side_error, #left_side_error,#popup_ok{
     height: 150px;
-    display: inline;
 }
 #right_side_error p{
     padding-top: 35px;
@@ -216,21 +206,16 @@ label{
 #right_side, #right_side_error{
     border-radius: 0 4px 4px 0 ;
     width: 180px;
-    float: right;
 }
 #left_side img, #left_side_error img{
     width: 100px;
     height: 100px;
-    margin-top: 25px;
     margin-left: 10px;
 }
-td.info{
+td.info,p#info{
     min-height: 35px;
 }
 p#info{
-    min-width: 300px;
-    max-width: 300px;
-    min-height: 35px;
     font-size: 14px;
     margin-left: 35px;
     text-align: justify;

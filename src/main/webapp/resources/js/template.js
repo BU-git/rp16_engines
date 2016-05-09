@@ -6,6 +6,7 @@ $(function(){
     var text_field = $('#text_field');
     var check_box = $('#check_box');
     var text_area = $('#text_area');
+    var label = $('#label');
     var popup = $('#my_popup');
     var edit_popup = $('#edit_popup');
     var popup_ok = $('#popup_ok');
@@ -61,6 +62,11 @@ $(function(){
     check_box.click(function(){
         hd.text("Add New CheckBox");
         field_to_be_inserted = "check box";
+        edit_delete_feature(777);
+    });
+    label.click(function(){
+        hd.text("Add New Text Label");
+        field_to_be_inserted = "label";
         edit_delete_feature(777);
     });
     text_area.click(function(){
@@ -143,8 +149,9 @@ $(function(){
         var popup_area = $('#popup_area');
         switch (type){
             case "text field": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><input placeholder="Text Field" readonly class="textField" type="text">';
-            case "check box": return '<input checked class="checkBoxField" type="checkbox"><label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
+            case "check box": return '<input checked class="checkBoxField" type="checkbox" onclick="return false"><label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
             case "text area": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><textarea rows="3"  readonly class="textArea" placeholder="Text Area"></textarea>';
+            case "label": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
         }
     };
     var edit_delete_feature = function(fadeOut){

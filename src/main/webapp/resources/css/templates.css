@@ -1,15 +1,17 @@
 #my_popup, #edit_popup{
-    width: 300px;
-    height: 420px;
-    border-radius: 3px;
+    width: 368px;
+    height: 419px;
     box-shadow: 0 0 30px #0d1857;
-    display: none;
+}
+#my_popup, #edit_popup, button#edit_button, button#save_button, #my_popup button, #edit_popup button, ul button{
+    border-radius: 3px;
+}
+textarea#edit_area,#popup_area{
+    min-width: 345px;
 }
 #left_side img, #left_side_error img{
     width: 100px;
     height: 100px;
-    margin-top: 25px;
-    margin-left: 10px;
 }
 #message{
     font-size: 18px;
@@ -45,28 +47,23 @@
 #right_side, #right_side_error{
     border-radius: 0 4px 4px 0 ;
     width: 180px;
-    float: right;
 }
-#popup_ok table, #popup_error{
+#popup_ok table, #popup_error,#left_side img, #left_side_error img{
     margin-top: 25px;
 }
 #popup_error{
-    display: none;
-    min-height: 150px;
-    min-width: 300px;
     box-shadow: 0 0 30px #5C2F2F;
-    border-radius: 4px;
 }
 #popup_ok{
-    display: none;
     box-shadow: 0 0 30px #3A4F43;
     background-color: #F7F7E6;
-    height: 150px;
-    width: 300px;
+}
+#popup_error, #popup_ok{
+    min-height: 150px;
+    min-width: 300px;
     border-radius: 4px;
 }
-#footer_list button{
-    text-align: right;
+#footer_list button, .textField, input.form_controls[type = "text"],.popup_area, #text_area_form_controls, .prev_element textarea, #edit_area, .textArea,#my_popup button, #edit_popup button{
     padding: 10px;
 }
 #footer{
@@ -75,11 +72,11 @@
 label{
     word-wrap: break-word;
 }
-textarea{
+textarea, input[type='text']{
     border-radius: 2px;
     border: solid 1px #A8A8A8;
 }
-#main_table button, #text_area_form_controls, .prev textarea{
+#main_table button, #text_area_form_controls, .prev textarea, #my_popup button, #edit_popup button,button#my_popup_open, #footer_list button{
     outline: none;
 }
 #text_field_label{
@@ -87,10 +84,6 @@ textarea{
 }
 .textField, input.form_controls[type = "text"]{
     height: 32px;
-    padding: 10px;
-}
-.textField, .textArea{
-    width: 400px;
 }
 input.form_controls[type = "text"], #text_area_form_controls{
     width: 192px;
@@ -98,25 +91,28 @@ input.form_controls[type = "text"], #text_area_form_controls{
 input.form_controls[type = "checkbox"]{
     margin-right: 0;
 }
-#check_box_field_label, input.form_controls[type = "text"]{
+#check_box_field_label, input.form_controls[type = "text"], #label_form_controls, #right_side, #right_side_error{
     float: right;
 }
-button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open{
-    border-radius: 50%;
-    overflow: hidden;
-    border: none;
+button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open, #label,#left_side img, #left_side_error img{
     margin-left: 10px;
+}
+button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open, #label{
+    overflow: hidden;
     width: 30px;
     height: 32px;
 }
+.prev td input[type='text'],.textField, .textArea, .prev td textarea{
+    width: 400px;
+}
 .prev td{
     text-align: left;
-    max-width: 400px;
+    max-width: 410px;
 }
-.edit_popup_open, .delete, .prev_element{
+.edit_popup_open, .delete, .prev_element, #my_popup, #edit_popup, #popup_error, #popup_ok{
     display: none;
 }
-button#text_field, #check_box, #text_area{
+button#text_field, #check_box, #text_area, #label{
     background: transparent url("../images/templates/grey_hover_plus-icon.png") no-repeat 0;
 }
 button.delete{
@@ -131,62 +127,51 @@ button.edit_popup_open{
 button.edit_popup_open:hover{
     background: transparent url("../images/templates/edit-icon-hover.png") no-repeat 0;
 }
-button#text_field:hover, #check_box:hover, #text_area:hover{
+button#text_field:hover, #check_box:hover, #text_area:hover, #label:hover{
     background: transparent url("../images/templates/grey_plus-icon.png") no-repeat 0;
 }
 button#save_button{
-    background: #596E80 url("../images/templates/save-icon.png") no-repeat 5px;
+    background: rgba(23, 85, 133, 0.85);
 }
-button#save_button:disabled, button#save_button:disabled:hover{
+button#save_button:disabled, button#save_button:disabled:hover,button#edit_button:disabled, button#edit_button:disabled:hover{
     color: #EBEEF0;
-    background-color: #8795A1;
 }
-button#save_button:hover, button#add_to_form:hover, button#accept:hover, button#add_to_form:disabled, button#accept:disabled,
-button#add_to_form:disabled:hover, button#accept:disabled:hover{
-    background-color: #8795A1;
+button#save_button:hover, button#save_button:disabled, button#save_button:disabled:hover,button#add_to_form:hover, button#accept:hover, button#add_to_form:disabled, button#accept:disabled, button#add_to_form:disabled:hover, button#accept:disabled:hover,button#add_to_form:disabled:hover{
+    background-color: rgba(21, 71, 114, 0.62);
 }
-button#edit_button, button#save_button{
-    border: none;
-    border-radius: 3px;
-    padding-left: 30px;
+button#save_button,button#edit_button{
+    margin-right: 10px;
+    margin-left: 10px;
 }
 button#edit_button{
-    background: #806E59 url("../images/templates/edit-icon.png") no-repeat 5px;
+    background: #806E59;
 }
 button#edit_button:disabled, button#edit_button:disabled:hover{
-    color: #EBEEF0;
     background-color: #ADA295;
 }
 button#edit_button:hover{
     background-color: #A69179;
 }
 .popup_area, #text_area_form_controls, .prev_element textarea, #edit_area, .textArea{
-    padding: 10px;
     resize: none;
 }
-.popup_area:focus, #edit_area:focus{
+.popup_area:focus, #edit_area:focus,input#template_name[type='text']:focus{
     transition: all 0.3s;
-    /*background-color: #f1f8ff;
-    outline-color: rgba(17, 33, 95, 0.6);*/
 }
-#my_popup button:hover,button#edit_button:hover, button#save_button:hover, button.delete:hover, button.edit:hover,
-#edit_popup button:hover, .edit_popup_open:hover,button#text_field:hover, #check_box:hover, #text_area:hover, a:hover, a:active{
+#my_popup button:hover,button#edit_button:hover, button#save_button:hover, button.delete:hover, button.edit:hover,#edit_popup button:hover, .edit_popup_open:hover,button#text_field:hover, #check_box:hover, #text_area:hover, a:hover, a:active,.my_popup_open:hover{
     transition: background .2s;
     cursor: pointer;
 }
 #my_popup ul, #edit_popup ul{
-    list-style: none;
     border-top: solid 1px #D7D7DB;
     border-radius:  0 0 3px 3px;
     padding-bottom: 11px;
-    background-color: white;
 }
 .right_li{
     margin-right: 30px;
 }
 #left{
     background-color: #FAFAFA;
-
 }
 #left, #prev, #main_table th, #title{
     box-shadow: 0 0 2px #4F4F4F;
@@ -199,32 +184,36 @@ button#edit_button:hover{
     color: #808b96;
     margin-bottom: 35px;
 }
-#prev{
+#prev,#my_popup ul,#edit_popup ul{
     background-color: white;
 }
 .row td{
     padding-bottom: 20px;
 }
-#my_popup button, #edit_popup button{
-    outline: none;
+#my_popup button,#edit_popup button{
     margin-top: 4%;
-    border-radius: 3px;
-    padding: 10px;
+}
+button#edit_button,button#save_button{
+    font-size: 15px;
+    width: 95px;
+}
+button.my_popup_close,button.edit_popup_close,#my_popup button,#edit_popup button{
+    font-size: 15px;
+    width: 115px;
 }
 button.my_popup_close, button.edit_popup_close{
+    border-radius: 8px;
     min-width: 60px;
     margin-left: 35px;
-    border: solid 1px;
     background-color: #994343;
 }
 button.my_popup_close:hover, button.edit_popup_close:hover{
     background-color: #C97777;
 }
-button#my_popup_open{
+button#my_popup_open/*, #footer_list button*/{
     text-align: right;
-    outline: none;
 }
-ul li{
+ul li,#my_popup ul, #edit_popup ul{
     list-style: none;
 }
 .prev_element input[type='text'], .prev_element textarea, .prev_element label, textarea{
@@ -237,17 +226,18 @@ ul li{
     height: 400px;
     overflow:auto;
 }
+.hd, #main_table,p.info{
+    padding-bottom: 10px;
+}
 .hd{
     padding-top: 9%;
     height: 40px;
     border-bottom: solid 1px #D7D7DB;
     font-weight: bold;
-    padding-bottom: 10px;
     font-size: 18px;
-    /*background-color: black;*/
     background-color: #023672;
 }
-.hd_main{
+.hd_main,#first_th,#second_th{
     height: 50px;
 }
 .hd_main, .hd{
@@ -258,62 +248,55 @@ ul li{
     height: 100%;
 }
 #main_table{
-    padding-bottom: 10px;
     border-spacing: 0;
     max-height: calc(100% - 200px);
 }
 #main_table th{
-    /*background-color: #222226;*/
     background-color: #707070;
     padding: 1%;
-    color: white;
 }
 #first_th{
     width: 20%;
-    height: 20px;
-    max-height: 50px;
     border-right: solid 1px white;
 }
 #second_th{
-    height: 20px;
-    max-height: 50px;
     width: 60%;
     min-width: 600px;
 }
-ul, .hd_main, .hd, .hd_main table, #my_popup ul, #edit_popup ul, #right_side p, #right_side_error p{
+ul, .hd_main, .hd, .hd_main table, #my_popup ul, #edit_popup ul, #right_side p, #right_side_error p,button#save_button,button#edit_button{
     text-align: center;
 }
 .inputTable{
-    margin-top: 10%;
+    margin-top: 2%;
+    margin-bottom: 10%;
 }
-input[type='text']{
-    border-radius: 2px;
-    border: 1px solid #AAAAB3;
-}
-input#template_name[type='text']:focus{
-    transition: all 0.3s;
-    /*border-color: white;*/
-    /*background-color: #f1f8ff;
-    outline-color: rgba(17, 33, 95, 0.6);*/
+p.info{
+    text-align: justify;
+    font-size: 14px;
+    color: #65707b;
 }
 label{
     font-size: 13px;
     color: #9FAAB5;
 }
-button#add_to_form, button#accept{
+button#add_to_form, button#accept,button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open, #label,button#edit_button, button#save_button, button.my_popup_close, button.edit_popup_close{
     border: none;
-    background-color: #596E80;
+}
+button#add_to_form, button#accept{
+    background-color: rgba(23, 85, 133, 0.85);
 }
 #content1 {
     padding: 5px 2px 6px 1px;
     height: 95%;
     background: #FFFFFF
 }
-.hd_main, .hd, #my_popup button, #edit_popup button, button#edit_button, button#save_button{
+.hd_main, .hd, #my_popup button, #edit_popup button, button#edit_button, button#save_button,#main_table th{
     color: white;
 }
-input#template_name{
+input#template_name,#main_screen table{
     margin-top: 0;
+}
+input#template_name{
     margin-bottom: 10px;
     font-family: 'Calibri', serif;
     letter-spacing: 2px;
@@ -340,5 +323,5 @@ input#template_name{
 .middle, #popup_ok table, #popup_error table, .inputTable{
     margin-left: auto;
     margin-right: auto;
-    padding: 7px;
+    padding: 8px;
 }

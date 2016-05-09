@@ -108,6 +108,7 @@
               <c:if test="${f.field.id == 1}"><label>${f.description.replace("<","&lt;")}<input placeholder="Text Field" readonly type="text"></label></c:if>
               <c:if test="${f.field.id == 2}"><input type="checkbox" onclick="return false"><label>${f.description.replace("<","&lt;")}</label></c:if>
               <c:if test="${f.field.id == 3}"><label>${f.description.replace("<","&lt;")}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
+              <c:if test="${f.field.id == 4}"><label>${f.description.replace("<","&lt;")}</label></c:if>
             </td></tr>
         </c:forEach>
       </table>

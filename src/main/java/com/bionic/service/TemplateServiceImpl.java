@@ -4,6 +4,7 @@ package com.bionic.service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,7 +39,10 @@ public class TemplateServiceImpl implements TemplateService{
 
     @Override
     public List<TemplateField> findByTemplateName(String name){
-        return name != null ? templateDao.findFieldsByTemplateName(name) : new LinkedList<>();
+        if(name == null) return new LinkedList<>();
+        List<TemplateField> list = templateDao.findFieldsByTemplateName(name);
+        Collections.sort(list);
+        return list;
     }
 
     @Override

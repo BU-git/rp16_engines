@@ -1,6 +1,6 @@
 #template_overview{
     width: 500px;
-    max-height: 85%;
+    max-height: 90%;
     margin-top: 15px;
     margin-bottom: 10px;
     border: solid 1px #CCCCCC;
@@ -18,27 +18,27 @@
     height: 32px;
     background: transparent url("../images/templates/overview/delete-trash-icon.png") no-repeat 0;
 }
-.del:hover{
+.del:hover {
     background: transparent url("../images/templates/overview/delete-trash-icon-red.png") no-repeat 0;
+}
+.del:hover, .black:hover{
     transition: background .2s;
     cursor: pointer;
 }
-#template_overview, #content{
+#template_overview, #content, #popup_ok table, #popup_error{
     margin-left: auto;
     margin-right: auto;
 }
 .dataTables_length, #example_filter, .dataTables_info,  #example_next, #example_previous{
     display: none;
 }
-tbody, #title_banner, #content{
+tbody, #title_banner, #content, #right_side p, #right_side_error p{
     text-align: center;
 }
 .black:hover{
-    cursor: pointer;
     text-decoration: underline;
     color: #7199E3;
 }
-
 #title_banner p{
     font-size: 24px;
     margin: 5px;
@@ -46,12 +46,11 @@ tbody, #title_banner, #content{
     font-weight: bold;
 }
 #content_place{
-    min-height: 565px;
+    min-height: 600px;
     background-color: #FAFAFA;
 }
-
 #content_place, #title_banner{
-    margin: 0px 8px;
+    margin: 0 8px;
     padding: 4px;
     box-shadow: 0 0 2px #4F4F4F;
 }
@@ -64,10 +63,8 @@ tbody, #title_banner, #content{
 #popup_ok, #popup_error, input, input:focus {
     border-radius: 4px;
 }
-#popup_ok table, #popup_error{
+#popup_ok table, #popup_error, #left_side img, #left_side_error img{
     margin-top: 25px;
-    margin-right: auto;
-    margin-left: auto;
 }
 #popup_error{
     box-shadow: 0 0 30px #5C2F2F;
@@ -77,7 +74,6 @@ tbody, #title_banner, #content{
     padding-top: 45px;
 }
 #right_side p, #right_side_error p{
-    text-align: center;
     font-size: 18px;
 }
 #left_side, #left_side_error{
@@ -109,6 +105,5 @@ tbody, #title_banner, #content{
 #left_side img, #left_side_error img{
     width: 100px;
     height: 100px;
-    margin-top: 25px;
     margin-left: 10px;
 }

@@ -3,11 +3,13 @@ package com.bionic.domain.xml;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Named;
 
+import com.bionic.domain.template.TemplateField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -28,7 +30,16 @@ public class Test {
     public static void main(String[] args) throws IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         Test test = (Test) context.getBean("test");
-        test.fillTemplates("XTemplate", 15);
+        /*test.fillTemplates("XTemplate", 15);*/
+        test.testOrder("Template fucking test");
+    }
+
+    private void testOrder(String name){
+        List<TemplateField> list = templateService.findByTemplateName(name);
+        Collections.sort(list);
+        for(TemplateField f: list){
+            System.out.println(f);
+        }
     }
 
     private void theSameNameTemplate(String name, int count){

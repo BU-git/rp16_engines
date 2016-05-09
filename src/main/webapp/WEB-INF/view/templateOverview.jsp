@@ -4,7 +4,7 @@
 <html>
 <head>
   <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
-  <script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
   <script src="<c:url value="/resources/js/template.overview.js"/>"></script>
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">

@@ -86,16 +86,21 @@
       <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
     </div>
     <div id="my_popup" style="background-color: white">
-      <div class="hd"></div><table class="inputTable"><tr><td><textarea id="popup_area" class="popup_area" rows="8" cols="30" placeholder="Field description"></textarea></td></tr></table>
-      <br><br>
+      <div class="hd">
+      </div>
+      <table class="inputTable">
+        <tr><td><p class="info">Click "Add to Form" to add a field with description to the template form.</p></td></tr>
+        <tr><td><textarea id="popup_area" class="popup_area" rows="8"  placeholder="Field description"></textarea></td></tr></table>
       <ul>
         <li><button class="my_popup_close">Close</button></li>
         <li class="right_li"><button class="my_popup_close" id="add_to_form">Add to Form</button></li>
       </ul>
     </div>
     <div id="edit_popup" style="background-color: white">
-      <div class="hd">Edit Element</div><table class="inputTable"><tr><td><textarea id="edit_area" rows="8" cols="30" placeholder="Field description"></textarea></td></tr></table>
-      <br><br>
+      <div class="hd">Edit Element</div>
+      <table class="inputTable">
+        <tr><td><p class="info">Click on the "Accept" button to save the changes to the form.</p></td></tr>
+        <tr><td><textarea id="edit_area" rows="8" placeholder="Field description"></textarea></td></tr></table>
       <ul>
         <li><button class="edit_popup_close">Close</button></li>
         <li class="right_li"><button class="edit_popup_close" id="accept">Accept</button></li>
@@ -136,7 +141,7 @@
                 <tr>
                   <td>
                     <label id="check_box_field_label">Check Box
-                      <input class="form_controls" type="checkbox" checked>
+                      <input class="form_controls" type="checkbox" checked onclick="return false">
                     </label>
                   </td>
                   <td>
@@ -150,6 +155,14 @@
                   <td>
                     <button id="text_area" class="my_popup_open"></button>
                   </td>
+                </tr>
+                <tr>
+                <td>
+                  <label id="label_form_controls">Text Label</label>
+                </td>
+                <td>
+                  <button id="label" class="my_popup_open"></button>
+                </td>
                 </tr>
               </table>
             </td>
