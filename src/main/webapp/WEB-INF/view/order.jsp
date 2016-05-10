@@ -131,17 +131,30 @@
                 </table>
             </div>
             <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
-                  <div id="select-form">
-                      <cf:form method="post" action="/changeOrder/${order.number}" modelAttribute="user">
-                          <cf:select path="email" required="true">
-                              <cf:option value="" disabled="true" selected="true">Select employee</cf:option>
+                  <ul id="select-form">
+                      <li>
+                      <form method="post" action="/assignEmployee/${order.number}">
+                          <select name="email" required>
+                              <option value="" disabled selected>Select employee</option>
                               <c:forEach var="user" items="${allUsers}">
-                                  <cf:option value="${user.email}">${user.name} (${user.email})</cf:option>
+                                  <option value="${user.email}">${user.name} (${user.email})</option>
                               </c:forEach>
-                          </cf:select>
+                          </select>
                           <input type="submit" value="Change" />
-                      </cf:form>
-                  </div>
+                      </form>
+                      </li>
+                      <li>
+                      <form method="post" action="/assignTemplate/${order.number}">
+                          <select name="name" required>
+                               <option value="" disabled selected>Select template</option>
+                               <c:forEach var="temp" items="${allTemplates}">
+                                   <option value="${temp}">${temp}</option>
+                               </c:forEach>
+                          </select>
+                          <input type="submit" value="Change" />
+                      </form>
+                      </li>
+                  </ul>
             </c:if>
         </div>
     </div>

@@ -2,6 +2,8 @@ package com.bionic.controller;
 
 import com.bionic.domain.User;
 import com.bionic.domain.component.Employee;
+import com.bionic.domain.template.TemplateEntity;
+import com.bionic.service.TemplateService;
 import com.bionic.service.UserService;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TemplateService templateService;
 
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
@@ -40,7 +44,7 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
-    public String showOrder(@PathVariable("id") long id, @ModelAttribute("user")User user, ModelMap model) {
+    public String showOrder(@PathVariable("id") long id, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) {
             return "redirect:/login";
         }
@@ -48,16 +52,18 @@ public class OrderController {
         model.addAttribute("order",order);
         List<User> userList = userService.getAllUsers();
         model.addAttribute("allUsers", userList);
+        List<String> templateList = templateService.findAll();
+        model.addAttribute("allTemplates", templateList);
         return "order";
     }
 
-    @RequestMapping(value = "/changeOrder/{id}", method = RequestMethod.POST)
-    public String changeEmployee(@PathVariable("id") long id, @ModelAttribute("user")User user, ModelMap model) {
+    @RequestMapping(value = "/assignEmployee/{id}", method = RequestMethod.POST)
+    public String assignEmployee(@PathVariable("id") long id, @RequestParam("email")String email, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) {
             return "redirect:login";
         }
         Order order = orderService.findById(id);
-        List<User> list = userService.findByEmail(user.getEmail());
+        List<User> list = userService.findByEmail(email);
         if (!list.isEmpty()) {
             Employee employee = new Employee();
             employee.setName(list.get(0).getName());
@@ -65,6 +71,17 @@ public class OrderController {
             employee.setNumber(list.get(0).getNumber());
             order.setEmployee(employee);
         }
+        orderService.save(order);
+        return "redirect:/orders/{id}";
+    }
+
+    @RequestMapping(value = "/assignTemplate/{id}", method = RequestMethod.POST)
+    public String assignTemplate(@PathVariable("id") long id, @RequestParam("name")String name, ModelMap model) {
+        if (!model.containsAttribute("loggedInUser")) {
+            return "redirect:login";
+        }
+        Order order = orderService.findById(id);
+        templateService.findByTemplateName(name);
         orderService.save(order);
         return "redirect:/orders/{id}";
     }

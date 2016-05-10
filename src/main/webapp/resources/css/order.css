@@ -1,3 +1,18 @@
+#image img {
+    background: white;
+    border: 3px solid #023672;
+    border-radius: 20px;
+    padding: 6px;
+    vertical-align:middle;
+    width:18px;
+    height:18px;
+    margin-right: 5px;
+}
+
+#image {
+    text-align:center;
+}
+
 #rawtable {
     background: #023672;
     border-radius: 20px;
@@ -23,22 +38,17 @@
     border-right: none;
 }
 
-#select-form {
+#select-form li {
+    float: left;
+    list-style-type: none;
+}
+
+#select-form form {
+    display: block;
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-#image img {
-    background: white;
-    border: 3px solid #023672;
-    border-radius: 20px;
-    padding: 6px;
-    vertical-align:middle;
-    width:18px;
-    height:18px;
-    margin-right: 5px;
-}
-
-#image {
-    text-align:center;
+#select-form li:last-child {
+    margin-left: 50px;
 }
