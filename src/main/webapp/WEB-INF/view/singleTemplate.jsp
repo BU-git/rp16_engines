@@ -18,6 +18,7 @@
               });
     });
   </script>
+  <title>${list.get(0).templateEntity.templateName.replace("<","&lt;")}</title>
 </head>
 <body>
 <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
@@ -88,7 +89,7 @@
       <table id="info">
         <tr>
           <td><span>Template name:</span></td>
-          <td><p>${list.get(0).templateEntity.templateName}</p></td>
+          <td><p>${list.get(0).templateEntity.templateName.replace("<","&lt;")}</p></td>
         </tr>
         <tr>
           <td><span>Date Created:</span></td>
@@ -104,9 +105,10 @@
         <c:forEach var="f" items="${list}">
           <tr><td class="number"><% out.println(a++); %></td>
             <td class="element">
-              <c:if test="${f.field.id == 1}"><label>${f.description}<input placeholder="Text Field" readonly type="text"></label></c:if>
-              <c:if test="${f.field.id == 2}"><input type="checkbox" onclick="return false"><label>${f.description}</label></c:if>
-              <c:if test="${f.field.id == 3}"><label>${f.description}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
+              <c:if test="${f.field.id == 1}"><label>${f.description.replace("<","&lt;")}<input placeholder="Text Field" readonly type="text"></label></c:if>
+              <c:if test="${f.field.id == 2}"><input type="checkbox" onclick="return false"><label>${f.description.replace("<","&lt;")}</label></c:if>
+              <c:if test="${f.field.id == 3}"><label>${f.description.replace("<","&lt;")}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
+              <c:if test="${f.field.id == 4}"><label>${f.description.replace("<","&lt;")}</label></c:if>
             </td></tr>
         </c:forEach>
       </table>

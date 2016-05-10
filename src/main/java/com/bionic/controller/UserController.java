@@ -65,15 +65,24 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<String> receiveTemplate(@RequestBody UserWrapper u, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
-        System.out.println("USER: " + u);
-        userService.update(u);
+        try {
+            userService.update(u);
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User with this email already exist");
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getLocalizedMessage());
+        }
         return ResponseEntity.ok("ok");
     }
 
-    @RequestMapping(value = "users/remove/{id}")
+    @RequestMapping(value = "users/remove/{id}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteTemplateByName(ModelMap model, @PathVariable("id") long id){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
-        userService.removeById(id);
+        try {
+            userService.removeById(id);
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getLocalizedMessage());
+        }
         return ResponseEntity.ok("ok");
     }
 }

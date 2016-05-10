@@ -4,6 +4,7 @@ package com.bionic.service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,13 +33,16 @@ public class TemplateServiceImpl implements TemplateService{
     @Override
     @Transactional
     public void save(String name, List<FieldHolder> fields, boolean fromWeb) {
-        if(fromWeb && templateDao.findFieldsByTemplateName(name).size() > 0) throw new IllegalArgumentException();
+        if(fromWeb && templateDao.findTemplateByName(name).size() > 0) throw new IllegalArgumentException();
         getList(name, fields).forEach(templateDao::save);
     }
 
     @Override
     public List<TemplateField> findByTemplateName(String name){
-        return name != null ? templateDao.findFieldsByTemplateName(name) : new LinkedList<>();
+        if(name == null) return new LinkedList<>();
+        List<TemplateField> list = templateDao.findFieldsByTemplateName(name);
+        Collections.sort(list);
+        return list;
     }
 
     @Override
@@ -50,11 +54,10 @@ public class TemplateServiceImpl implements TemplateService{
     public List<CustomTemplateNameFront> findAllForDataTables(){
         int i = 1;
         List<CustomTemplateNameFront> list = new ArrayList<>();
-        for(String s: templateDao.findAllTemplateNames()){
-            String val = "row"+i;
+        List<String> templates = templateDao.findAllTemplateNames();
+        for(String s: templates){
             CustomTemplateNameFront custom = new CustomTemplateNameFront();
-            custom.setName("<a id='row"+val+"' href='/templates/overview/"+s+"'><p class='black'>"+s.replace("<","&lt;")+"</p></a>");
-            custom.setAction("<button class='del' value='row" + val + "'></button>");
+            custom.setName("<a href='/templates/overview/" + s + "'><p class='black'>" + s + "</p></a>");
             custom.setPosition(i++);
             list.add(custom);
         }
@@ -65,8 +68,8 @@ public class TemplateServiceImpl implements TemplateService{
     @Transactional
     public void removeTemplateByName(String name) {
         if(name == null) return;
-        templateDao.findFieldsByTemplateName(name).forEach(templateDao::removeTemplateField);
-        templateDao.findTemplateByName(name).forEach(templateDao::removeTemplate);
+        List<TemplateEntity> entities = templateDao.findTemplateByName(name);
+        entities.forEach(templateDao::removeTemplate);
     }
 
     @Override
@@ -92,5 +95,4 @@ public class TemplateServiceImpl implements TemplateService{
         }
         return list;
     }
-
 }

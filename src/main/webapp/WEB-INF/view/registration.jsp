@@ -92,66 +92,68 @@
       <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
     </div>
     <div id="content">
-    <table id="register_form">
-      <caption id="form_name">New user</caption>
-      <tr><td><table>
-        <tr>
-          <td class="w">
-            <img class="check" id="check1" src="../../resources/images/templates/check-icon.png">
-            <img class="warn" id="warn1" src="../../resources/images/templates/warn-icon.png">
-          </td>
-          <td colspan="2">
-            <label class="inline" id="for_mail" for="email">Email</label><input id="email" type="email">
-          </td>
-        </tr>
-        <tr>
-          <td class="w">
-            <img class="check" id="check2" src="../../resources/images/templates/check-icon.png">
-            <img class="warn" id="warn2" src="../../resources/images/templates/warn-icon.png">
-          </td>
-          <td>
-            <label class="inline" id="for_name" for="name">Name</label><input id="name" type="text">
-          </td>
-          <td id="inline">
-            <div class="role">
-              <input id='role' value="admin" type="checkbox">
-            </div>
-            <div id="label"><label id="for_role">Admin</label></div>
-          </td>
-        </tr>
-        <tr>
-          <td class="w">
-            <img class="warn" id="warn3" src="../../resources/images/templates/warn-icon.png">
-            <img class="check" id="check3" src="../../resources/images/templates/check-icon.png">
-          </td>
-          <td colspan="2">
-            <label class="inline" id="for_password" for="password">Password</label><input id="password" type="password">
-          </td>
-        </tr>
-        <tr>
-          <td class="w">
-            <img class="warn" id="warn4" src="../../resources/images/templates/warn-icon.png">
-            <img class="check" id="check4" src="../../resources/images/templates/check-icon.png">
-          </td>
-          <td colspan="2">
-            <label class="inline" id="for_password_confirmation" for="password_confirmation">Confirm password</label>
+    <div id="register_form">
+      <div id="title_banner"><p>New User</p></div>
+      <div id="reg">
+        <table>
+          <tr>
+            <td class="w">
+              <img class="check" id="check1" src="../../resources/images/templates/check-icon.png">
+              <img class="warn" id="warn1" src="../../resources/images/templates/warn-icon.png">
+            </td>
+            <td colspan="2">
+              <label class="inline" id="for_mail" for="email">Email</label><input id="email" type="email">
+            </td>
+          </tr>
+          <tr>
+            <td class="w">
+              <img class="check" id="check2" src="../../resources/images/templates/check-icon.png">
+              <img class="warn" id="warn2" src="../../resources/images/templates/warn-icon.png">
+            </td>
+            <td>
+              <label class="inline" id="for_name" for="name">Name</label><input id="name" type="text">
+            </td>
+            <td id="inline">
+              <div class="role">
+                <input id='role' value="admin" type="checkbox">
+              </div>
+              <div id="label"><label id="for_role">Admin</label></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="w">
+              <img class="warn" id="warn3" src="../../resources/images/templates/warn-icon.png">
+              <img class="check" id="check3" src="../../resources/images/templates/check-icon.png">
+            </td>
+            <td colspan="2">
+              <label class="inline" id="for_password" for="password">Password</label><input id="password" type="password">
+            </td>
+          </tr>
+          <tr>
+            <td class="w">
+              <img class="warn" id="warn4" src="../../resources/images/templates/warn-icon.png">
+              <img class="check" id="check4" src="../../resources/images/templates/check-icon.png">
+            </td>
+            <td colspan="2">
+              <label class="inline" id="for_password_confirmation" for="password_confirmation">Confirm password</label>
               <input id="password_confirmation" type="password" disabled>
-          </td>
-        </tr>
-        <tr>
+            </td>
+          </tr>
+          <tr>
             <td class="w">
             </td>
-          <td colspan="2">
-            <label class="inline" id="for_number" for="number">Number</label><input id="number" type="number">
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3" class="center">
-            <button id="register" disabled="disabled">Submit</button>
-          </td>
-        </tr>
-      </table></td></tr>
-    </table>
+            <td colspan="2">
+              <label class="inline" id="for_number" for="number">Number</label><input id="number" type="number">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="center">
+              <button id="register" disabled="disabled">Submit</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
   </div>
 </body>

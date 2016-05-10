@@ -15,21 +15,27 @@ th{
 #content_place span{
     padding-right: 10px;
     text-transform: uppercase;
-    /*color: #804440;*/
     color: #5a5a5a;
     font-weight: bold;
 }
 #content_place p{
-    margin: 5px;
     color: #6E6E6E;
 }
-#title_banner, #content_place p{
+#content_place p, #title_banner p{
+    margin: 5px;
+}
+#title_banner, #content_place p, .number{
     text-align: center;
 }
-#content_place, #title_banner{
-    margin: 0px 8px;
-    padding: 4px;
+#content_place{
+    box-shadow: 0 1px 2px #4F4F4F;
+}
+#title_banner{
     box-shadow: 0 0 2px #4F4F4F;
+}
+#content_place, #title_banner{
+    margin: 0 8px;
+    padding: 4px;
 }
 #content_place table{
     padding: 10px;
@@ -43,9 +49,7 @@ th{
 }
 #info{
     margin-top: 10px;
-    border-spacing: 0;
     background-color: rgba(229, 188, 23, 0.71);
-    border-radius: 3px;
 }
 #info td:first-child{
     border-right: 1px solid #707070;
@@ -54,8 +58,8 @@ td.element{
     padding: 10px;
     max-width: 515px;
 }
-table#template{
-    border-radius: 2px;
+table#template, #info{
+    border-radius: 3px;
     border-spacing: 0;
 }
 table#template td:first-child{
@@ -77,7 +81,6 @@ table#template td:first-child{
 }
 .number{
     width: 55px;
-    text-align: center;
 }
 #content_place table input[type='text'], label, #content_place table textarea{
     display: block;
@@ -97,7 +100,7 @@ textarea{
     float: left;
 }
 #content_place{
-    min-height: 565px;
-    max-height: 565px;
+    min-height: 600px;
+    max-height: 600px;
     overflow: auto;
 }

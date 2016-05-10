@@ -14,8 +14,6 @@ public class UserWrapper {
     private int number;
     @JsonProperty("Role")
     private String role;
-    @JsonProperty("Action")
-    private String action;
 
     private String password;
 
@@ -57,26 +55,6 @@ public class UserWrapper {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    @Override
-    public String toString() {
-        return "UserWrapper{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", number=" + number +
-                ", role='" + role + '\'' +
-                ", action='" + action + '\'' +
-                '}';
     }
 
     public String getPassword() {

@@ -1,6 +1,6 @@
 #template_overview{
     width: 500px;
-    max-height: 85%;
+    max-height: 90%;
     margin-top: 15px;
     margin-bottom: 10px;
     border: solid 1px #CCCCCC;
@@ -18,27 +18,27 @@
     height: 32px;
     background: transparent url("../images/templates/overview/delete-trash-icon.png") no-repeat 0;
 }
-.del:hover{
+.del:hover {
     background: transparent url("../images/templates/overview/delete-trash-icon-red.png") no-repeat 0;
+}
+.del:hover, .black:hover{
     transition: background .2s;
     cursor: pointer;
 }
-#template_overview, #content{
+#template_overview, #content, #popup_ok table, #popup_error{
     margin-left: auto;
     margin-right: auto;
 }
 .dataTables_length, #example_filter, .dataTables_info,  #example_next, #example_previous{
     display: none;
 }
-tbody, #title_banner, #content{
+tbody, #title_banner, #content, #right_side p, #right_side_error p{
     text-align: center;
 }
 .black:hover{
-    cursor: pointer;
     text-decoration: underline;
     color: #7199E3;
 }
-
 #title_banner p{
     font-size: 24px;
     margin: 5px;
@@ -46,12 +46,64 @@ tbody, #title_banner, #content{
     font-weight: bold;
 }
 #content_place{
-    min-height: 565px;
+    min-height: 600px;
     background-color: #FAFAFA;
 }
-
 #content_place, #title_banner{
-    margin: 0px 8px;
+    margin: 0 8px;
     padding: 4px;
     box-shadow: 0 0 2px #4F4F4F;
+}
+#popup_ok{
+    box-shadow: 0 0 30px #3A4F43;
+    background-color: #F7F7E6;
+    height: 150px;
+    width: 300px;
+}
+#popup_ok, #popup_error, input, input:focus {
+    border-radius: 4px;
+}
+#popup_ok table, #popup_error, #left_side img, #left_side_error img{
+    margin-top: 25px;
+}
+#popup_error{
+    box-shadow: 0 0 30px #5C2F2F;
+}
+#right_side p{
+    color: #4F5C55;
+    padding-top: 45px;
+}
+#right_side p, #right_side_error p{
+    font-size: 18px;
+}
+#left_side, #left_side_error{
+    border-radius: 4px 0 0 4px;
+    width: 120px;
+    max-width: 120px;
+    float: left;
+    background-color: #F7FAED;
+}
+#left_side, #right_side, #right_side_error, #left_side_error{
+    height: 150px;
+    display: inline;
+}
+#right_side_error p{
+    padding-top: 35px;
+}
+#right_side{
+    background-color: #EEF2DF;
+}
+#right_side_error{
+    color: #594040;
+    background-color: #F7EBEB;
+}
+#right_side, #right_side_error{
+    border-radius: 0 4px 4px 0 ;
+    width: 180px;
+    float: right;
+}
+#left_side img, #left_side_error img{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
 }

@@ -11,28 +11,31 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="templateFields")
-public class TemplateField implements Serializable {
+public class TemplateField implements Serializable, Comparable<TemplateField> {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Field.class, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Field.class, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "field_id")
     private Field field;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = TemplateEntity.class, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore
     private TemplateEntity templateEntity;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1024)
     private String description;
 
     @Column(nullable = false)
@@ -42,6 +45,7 @@ public class TemplateField implements Serializable {
     @JsonIgnore
     private Date updateDt;
 
+    @Column(length = 1024)
     private String value;
 
 
@@ -102,4 +106,24 @@ public class TemplateField implements Serializable {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "******TemplateField {" +
+                "id=" + id +
+                ", field=" + field +
+                ", templateEntity_id=" + templateEntity.getId() +
+                ", templateEntity='"+ templateEntity+
+                ", description='" + description + '\'' +
+                ", createDt=" + createDt +
+                ", updateDt=" + updateDt +
+                ", value='" + value + '\'' +
+                '}';
+    }
+
+    @Override
+    public int compareTo(TemplateField o) {
+        if(o == null) return -1;
+        if(o.getId() == this.id) return 0;
+        return this.id > o.getId() ? 1 : -1 ;
+    }
 }

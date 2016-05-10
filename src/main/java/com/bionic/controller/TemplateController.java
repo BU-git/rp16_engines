@@ -1,6 +1,8 @@
 
 package com.bionic.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bionic.domain.DataTablesAjaxHolder;
 import com.bionic.domain.template.CustomTemplateHolder;
+import com.bionic.domain.template.CustomTemplateNameFront;
 import com.bionic.domain.template.TemplateFieldList;
 import com.bionic.service.TemplateService;
 
@@ -39,6 +42,8 @@ public class TemplateController {
             templateService.save(fields.getTemplateName(), fields.getFields(), true);
         }catch (IllegalArgumentException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Template with this name already exist");
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
         return ResponseEntity.ok("ok");
     }
@@ -46,25 +51,27 @@ public class TemplateController {
     @RequestMapping(path = "templates/overview")
     public String getListOfAllTemplates(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
-        model.addAttribute("templates", templateService.findAll());
         return "templateOverview";
     }
 
-    @RequestMapping(path = "templates/all"/*, consumes = MediaType.APPLICATION_JSON_VALUE*/)
+    @RequestMapping(path = "templates/all")
     @ResponseBody
     public ResponseEntity<DataTablesAjaxHolder> getListOfAllTemplatesForDataTables(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         CustomTemplateHolder holder = new CustomTemplateHolder();
-        holder.setData(templateService.findAllForDataTables());
+        List<CustomTemplateNameFront> list = templateService.findAllForDataTables();
+        holder.setData(list);
         return ResponseEntity.ok(holder);
     }
 
     @RequestMapping(value = "templates/remove/{name}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteTemplateByName(ModelMap model, @PathVariable("name") String name){
-        System.out.println("Start removing");
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
-        templateService.removeTemplateByName(name);
-        System.out.println("Finish removing");
+        try {
+            templateService.removeTemplateByName(name);
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("oops");
+        }
         return ResponseEntity.ok("ok");
     }
 
