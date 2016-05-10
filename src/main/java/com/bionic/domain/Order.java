@@ -17,6 +17,7 @@ import com.bionic.domain.component.Installation;
 import com.bionic.domain.component.Part;
 import com.bionic.domain.component.Relation;
 import com.bionic.domain.component.Task;
+import com.bionic.domain.template.TemplateEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.*;
 
@@ -107,6 +108,10 @@ public class Order {
 
     @JsonIgnore
     private String pdfLink;
+
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private TemplateEntity templateEntity;
 
     @XmlElementWrapper(name = "ExtraInfo")
     @XmlElement(name = "Info", type = Info.class)
@@ -258,6 +263,14 @@ public class Order {
 
     public void setPdfLink(String pdfLink) {
         this.pdfLink = pdfLink;
+    }
+
+    public TemplateEntity getTemplateEntity() {
+        return templateEntity;
+    }
+
+    public void setTemplateEntity(TemplateEntity templateEntity) {
+        this.templateEntity = templateEntity;
     }
 
     @Override

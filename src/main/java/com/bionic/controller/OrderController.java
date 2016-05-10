@@ -1,9 +1,12 @@
 package com.bionic.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bionic.domain.User;
 import com.bionic.domain.component.Employee;
+import com.bionic.domain.template.TemplateEntity;
+import com.bionic.domain.template.TemplateField;
 import com.bionic.service.TemplateService;
 import com.bionic.service.UserService;
 import org.apache.commons.io.IOUtils;
@@ -81,8 +84,21 @@ public class OrderController {
             return "redirect:login";
         }
         Order order = orderService.findById(id);
-        templateService.findByTemplateName(name);
-        orderService.save(order);
+        List<TemplateEntity> templateEntityList = templateService.findTemplateByName(name);
+        if (!templateEntityList.isEmpty()) {
+            for (TemplateEntity templateEntity : templateEntityList) {
+                if (!templateEntity.isAssigned()) {
+                    templateEntity.setAssigned(true);
+                    templateService.saveTemplate(templateEntity);
+                    order.setTemplateEntity(templateEntity);
+                    orderService.save(order);
+                    return "redirect:/orders/{id}";
+                }
+            }
+            TemplateEntity temp = templateService.cloneTemplate(templateEntityList.get(0));
+            order.setTemplateEntity(temp);
+            orderService.save(order);
+        }
         return "redirect:/orders/{id}";
     }
 
