@@ -14,11 +14,20 @@ public class TemplateEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-
     private int id;
 
     @Column(nullable = false)
     private String templateName;
+
+    private boolean assigned;
+
+    public boolean isAssigned() {
+        return assigned;
+    }
+
+    public void setAssigned(boolean assigned) {
+        this.assigned = assigned;
+    }
 
     public String getTemplateName() {
         return templateName;

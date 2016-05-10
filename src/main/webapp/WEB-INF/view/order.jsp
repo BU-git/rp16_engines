@@ -7,6 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Order ${order.number}</title>
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/order.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">

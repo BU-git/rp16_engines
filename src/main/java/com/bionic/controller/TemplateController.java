@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.bionic.domain.DataTablesAjaxHolder;
 import com.bionic.domain.template.CustomTemplateHolder;
 import com.bionic.domain.template.TemplateFieldList;
 import com.bionic.service.TemplateService;
@@ -51,7 +52,7 @@ public class TemplateController {
 
     @RequestMapping(path = "templates/all"/*, consumes = MediaType.APPLICATION_JSON_VALUE*/)
     @ResponseBody
-    public ResponseEntity<CustomTemplateHolder> getListOfAllTemplatesForDataTables(ModelMap model){
+    public ResponseEntity<DataTablesAjaxHolder> getListOfAllTemplatesForDataTables(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         CustomTemplateHolder holder = new CustomTemplateHolder();
         holder.setData(templateService.findAllForDataTables());
@@ -60,8 +61,10 @@ public class TemplateController {
 
     @RequestMapping(value = "templates/remove/{name}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteTemplateByName(ModelMap model, @PathVariable("name") String name){
+        System.out.println("Start removing");
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
         templateService.removeTemplateByName(name);
+        System.out.println("Finish removing");
         return ResponseEntity.ok("ok");
     }
 

@@ -129,6 +129,23 @@
           </td>
         </tr>
         <tr>
+          <td class="w">
+            <img class="warn" id="warn4" src="../../resources/images/templates/warn-icon.png">
+            <img class="check" id="check4" src="../../resources/images/templates/check-icon.png">
+          </td>
+          <td colspan="2">
+            <label class="inline" id="for_password_confirmation" for="password_confirmation">Confirm password</label>
+              <input id="password_confirmation" type="password" disabled>
+          </td>
+        </tr>
+        <tr>
+            <td class="w">
+            </td>
+          <td colspan="2">
+            <label class="inline" id="for_number" for="number">Number</label><input id="number" type="number">
+          </td>
+        </tr>
+        <tr>
           <td colspan="3" class="center">
             <button id="register" disabled="disabled">Submit</button>
           </td>
