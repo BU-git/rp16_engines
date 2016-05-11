@@ -109,7 +109,6 @@ public class Order {
     @JsonIgnore
     private String pdfLink;
 
-    @JsonIgnore
     private int template_id;
 
     @XmlElementWrapper(name = "ExtraInfo")
