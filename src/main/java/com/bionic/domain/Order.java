@@ -1,10 +1,12 @@
 package com.bionic.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -24,7 +26,7 @@ import org.hibernate.annotations.*;
 @Entity
 @XmlRootElement(name = "Order")
 @Table(name="orders")
-public class Order {
+public class Order implements Serializable, Comparable<Order>{
 
     @Id
     private long number;
@@ -294,6 +296,11 @@ public class Order {
                 ", status=" + orderStatus +
                 '}';
     }
+
+    @Override
+    public int compareTo(Order o) {
+        if(o == null) return 1;
+        if(this.number == o.getNumber() ) return 0;
+        return this.number > o.getNumber() ? -1 : 1;
+    }
 }
-
-

@@ -8,7 +8,11 @@
     <title>Orders</title>
     <meta charset="utf-8">
     <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+   <%-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>--%>
+    <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
+    <script src="../../resources/js/jquery.tabslet.min.js"></script>
+    <script src="../../resources/js/order.js"></script>
+    <link href="../../resources/css/styles.css" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
     <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
@@ -19,10 +23,6 @@
                     .click(function(){
                         $('body').toggleClass('menu-on');
                     });
-        });
-        $(document).ready(function() {
-            var table = $('#table');
-            table.DataTable();
         });
     </script>
 </head>
@@ -90,53 +90,62 @@
                 </div>
                 <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
             </div>
-
-            <table align="center" id="table" class="display" cellspacing="0">
-                <thead>
+            <div class='tabs'>
+                <ul>
+                    <li><a id="all" href="#tab-1">All Orders</a></li>
+                    <li><a id="not_comtleted" href="#tab-2">Not Completed</a></li>
+                    <li><a id="completed" href="#tab-3">Completed</a></li>
+                </ul>
+                <div id='tab-1'>
+                    <table align="center" id="table" class="display" cellspacing="0">
+                    <thead>
                     <tr>
-                        <th>Ordernummer</th>
-                        <th>Service datum</th>
-                        <th>Installatie</th>
-                        <th>Taak</th>
-                        <th>Adres</th>
-                        <th>Info</th>
-                        <th>Pdf</th>
+                        <th>Order number</th>
+                        <th>Service date</th>
+                        <th>Status</th>
+                        <th>Installation</th>
+                        <th>Task</th>
+                        <th>Address</th>
+                        <th>Action</th>
                     </tr>
-                </thead>
-                <tbody align="center">
-                    <c:forEach var="order" items="${allOrders}">
+                    </thead>
+                    <tbody align="center">
+                    </tbody>
+                </table>
+                </div>
+                <div id='tab-2'>
+                    <table align="center" id="not_completed_table" class="display" cellspacing="0">
+                        <thead>
                         <tr>
-                            <td>
-                                <c:if test="${order.orderStatus == 2 || order.orderStatus == 3}">
-                                    <img src="../../resources/images/yes.png">
-                                </c:if>
-                                <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
-                                    <img src="../../resources/images/no.png">
-                                </c:if>
-                                <c:out value="${order.number}"/>
-                            </td>
-                            <td> <fmt:formatDate value="${order.date}" pattern="dd-MM-yyyy" /></td>
-                            <td><c:out value="${order.installation.name}"/></td>
-                            <td>
-                                <c:forEach var="task" items="${order.tasks}">
-                                    <c:out value="${task.ltxa1}"/>
-                                </c:forEach>
-                            </td>
-                            <td><c:out value="${order.relation.town}"/></td>
-                            <td>
-                                <a href="/orders/${order.number}">
-                                    <img src="../../resources/images/info.png">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="/orders/download/${order.number}">
-                                    <img src="../../resources/images/pdf.png">
-                                </a>
-                            </td>
+                            <th>Order number</th>
+                            <th>Service date</th>
+                            <th>Status</th>
+                            <th>Installation</th>
+                            <th>Task</th>
+                            <th>Address</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody align="center">
+                        </tbody>
+                    </table>
+                </div>
+                <div id='tab-3'>
+                    <table align="center" id="completed_table" class="display" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Order number</th>
+                            <th>Service date</th>
+                            <th>Status</th>
+                            <th>Installation</th>
+                            <th>Task</th>
+                            <th>Address</th>
+                        </tr>
+                        </thead>
+                        <tbody align="center">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <c:out value="${message}"/>
         </div>
     </div>

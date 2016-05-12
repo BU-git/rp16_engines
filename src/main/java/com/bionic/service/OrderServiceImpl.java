@@ -3,11 +3,14 @@ package com.bionic.service;
 import com.bionic.dao.OrderDao;
 import com.bionic.domain.Order;
 import com.bionic.domain.OrderBrief;
+import com.bionic.domain.order.OrderWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -23,7 +26,20 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<Order> findAllOrders() {
-        return orderDao.findAllOrders();
+        List<Order> list = orderDao.findAllOrders();
+        Collections.sort(list);
+        return list;
+    }
+
+    @Override
+    public List<OrderWrapper> findAllForDataTables(){
+        List<Order> list = findAllOrders();
+        List<OrderWrapper> result = new ArrayList<>();
+        for(Order o: list){
+            OrderWrapper wrapper = new OrderWrapper(o);
+            result.add(wrapper);
+        }
+        return result;
     }
 
     @Override
@@ -46,6 +62,6 @@ public class OrderServiceImpl implements OrderService{
     @Override
     @Transactional
     public void save(Order order){
-        orderDao.save(order);
+        orderDao.saveOrder(order);
     }
 }

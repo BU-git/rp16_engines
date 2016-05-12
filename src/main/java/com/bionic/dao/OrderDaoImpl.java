@@ -74,7 +74,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public void save(Order order) {
+    public void saveOrder(Order order) {
         em.merge(order);
     }
 }

@@ -71,7 +71,7 @@ public class OrderUploadController {
             String link = file.getAbsolutePath();
             Order order = orderService.findById(number);
             order.setPdfLink(link);
-            orderService.save(order);
+            orderService.saveOrder(order);
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

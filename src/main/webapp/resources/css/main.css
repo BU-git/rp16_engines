@@ -32,9 +32,9 @@ html, body {
 }
 #content-wrapper {
     /*height: calc(100% - 120px);*/
-    min-height: 750px;
-    max-height: 750px;
-    /*max-height: 650px;*/
+   /* min-height: 750px;
+    max-height: 750px;*/
+    max-height: 950px;
     min-width: 890px;
     background-color: #E8E8E8;
     /*background: linear-gradient(to bottom, #3A393B, #696969 10%, #B7B6B8 100%, #B7B6B8 100%);*/
@@ -44,16 +44,18 @@ html, body {
 #content {
 	padding: 8px 2px 8px 1px;
     border-radius: 2px;
-    min-height: 655px;
-    max-height: 655px;
+   /* min-height: 655px;
+    max-height: 655px;*/
     background: #FFFFFF
 }
-a:link, a:visited {
+#left-menu a:link, #left-menu a:visited, .left-part-container a:link,.left-part-container a:visited, #right-menu a:link,
+#right-menu a:visited{
     text-align: center;
     text-decoration: none;
     display: inline-block;
 }
-a div, a:visited, a:link, a:visited  {
+#left-menu a div, #left-menu a:visited, #left-menu a:link, .left-part-container a div,.left-part-container a:visited,.left-part-container a:link,
+#right-menu a div, #right-menu a:visited, #right-menu a:link{
      color: white;
  }
 .left, .right{
