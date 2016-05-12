@@ -8,15 +8,15 @@
     <title>Orders</title>
     <meta charset="utf-8">
     <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
-   <%-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>--%>
-    <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
+    <script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
     <script src="../../resources/js/jquery.tabslet.min.js"></script>
     <script src="../../resources/js/order.js"></script>
     <link href="../../resources/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="../../resources/css/orders.css" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
     <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+    <link href="../../resources/css/dataTables.css" rel="stylesheet" type="text/css">
     <script>
         $(window).load(function() {
             $('#menu-toggle')
@@ -97,7 +97,7 @@
                     <li><a id="completed" href="#tab-3">Completed</a></li>
                 </ul>
                 <div id='tab-1'>
-                    <table align="center" id="table" class="display" cellspacing="0">
+                    <table id="table" align="center" class="display" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Order number</th>
@@ -123,6 +123,7 @@
                             <th>Installation</th>
                             <th>Task</th>
                             <th>Address</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody align="center">
@@ -139,6 +140,7 @@
                             <th>Installation</th>
                             <th>Task</th>
                             <th>Address</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody align="center">

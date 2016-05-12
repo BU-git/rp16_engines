@@ -34,6 +34,7 @@ html, body {
     /*height: calc(100% - 120px);*/
    /* min-height: 750px;
     max-height: 750px;*/
+    min-height: 750px;
     max-height: 950px;
     min-width: 890px;
     background-color: #E8E8E8;
@@ -44,6 +45,7 @@ html, body {
 #content {
 	padding: 8px 2px 8px 1px;
     border-radius: 2px;
+    min-height: 655px;
    /* min-height: 655px;
     max-height: 655px;*/
     background: #FFFFFF

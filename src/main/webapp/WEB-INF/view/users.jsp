@@ -4,7 +4,7 @@
 <html>
 <head>
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link href="<c:url value="/resources/css/jquery.dataTables.min.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/modified.dataTables.min.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/users.css"/>" rel="stylesheet" type="text/css">
   <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
   <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>

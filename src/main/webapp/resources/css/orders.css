@@ -1,0 +1,40 @@
+.completed{
+    background: url("../images/yes.png") no-repeat;
+}
+.not_completed{
+    background: url("../images/no.png") no-repeat;
+}
+.completed, .not_completed{
+    width: 16px;
+    height: 16px;
+}
+.info_action, .pdf_action, .del {
+    margin: 5px;
+    display: inline;
+    width: 32px;
+    height: 32px;
+}
+.info_action:hover, .pdf_action:hover, .del:hover{
+    cursor: pointer;
+}
+.info_action{
+    float: left;
+    background: url("../images/info.png") no-repeat 50% / 100%;;
+}
+.pdf_action{
+    float: right;
+    background: url("../images/pdf.png") no-repeat;
+}
+.del{
+    float: right;
+    background: url("../images/templates/overview/delete-trash-icon.png") no-repeat;
+}
+.del:hover{
+    background: url("../images/templates/overview/delete-trash-icon-red.png") no-repeat;
+}
+input,input:focus {
+    height: 25px;
+    font-size: 14px;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #AAAAB3;
+}

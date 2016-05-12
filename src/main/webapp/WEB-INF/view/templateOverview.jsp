@@ -9,7 +9,7 @@
   <script src="<c:url value="/resources/js/template.overview.js"/>"></script>
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/templateOverview.css"/>" rel="stylesheet" type="text/css">
-  <link href="<c:url value="/resources/css/jquery.dataTables.min.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/modified.dataTables.min.css"/>" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Template Overview</title>
   <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
