@@ -45,29 +45,31 @@ $(document).ready(function() {
      animation:    true
      });
     var not_completed_init = function(){
-        table_not_completed = $('#not_completed_table').DataTable({
-            serverSide: true,
-            ajax: '/orders/not-completed',
-            'columns': [
-                {'data':'Order number'},
-                {'data': 'Service date'},
-                {'data': 'Status'},
-                {'data': 'Installation'},
-                {'data': 'Task'},
-                {'data': 'Address'},
-                {'data': 'Action'}
-            ],
-            "columnDefs": [ {
-                "searchable": false,
-                "orderable": false,
-                "targets": [2,3,4,5,6]
-            },{
-                "targets": -1,
-                "data": 'Action',
-                "defaultContent": "<button class='info_action'></button><button class='pdf_action'></button><button class='del'></button>"
-            } ],
-            "order": [[1, 'asc' ]]
-        });
+        setTimeout(function(){
+            table_not_completed = $('#not_completed_table').DataTable({
+                serverSide: true,
+                ajax: '/orders/not-completed',
+                'columns': [
+                    {'data':'Order number'},
+                    {'data': 'Service date'},
+                    {'data': 'Status'},
+                    {'data': 'Installation'},
+                    {'data': 'Task'},
+                    {'data': 'Address'},
+                    {'data': 'Action'}
+                ],
+                "columnDefs": [ {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": [2,3,4,5,6]
+                },{
+                    "targets": -1,
+                    "data": 'Action',
+                    "defaultContent": "<button class='info_action'></button><button class='pdf_action'></button><button class='del'></button>"
+                } ],
+                "order": [[1, 'asc' ]]
+            });
+        }, 300);
     };
     var all_init = function(){
         table_all = $('#table').DataTable({
@@ -95,29 +97,31 @@ $(document).ready(function() {
         });
     };
     var completed_init = function(){
-        table_completed = $('#completed_table').DataTable({
-            serverSide: true,
-            ajax: '/orders/completed',
-            'columns': [
-                {'data':'Order number'},
-                {'data': 'Service date'},
-                {'data': 'Status'},
-                {'data': 'Installation'},
-                {'data': 'Task'},
-                {'data': 'Address'},
-                {'data': 'Action'}
-            ],
-            "columnDefs": [ {
-                "searchable": false,
-                "orderable": false,
-                "targets": [2,3,4,5,6]
-            },{
-                "targets": -1,
-                "data": 'Action',
-                "defaultContent": "<button class='info_action'></button><button class='pdf_action'></button><button class='del'></button>"
-            } ],
-            "order": [[1, 'asc' ]]
-        });
+        setTimeout(function(){
+            table_completed = $('#completed_table').DataTable({
+                serverSide: true,
+                ajax: '/orders/completed',
+                'columns': [
+                    {'data':'Order number'},
+                    {'data': 'Service date'},
+                    {'data': 'Status'},
+                    {'data': 'Installation'},
+                    {'data': 'Task'},
+                    {'data': 'Address'},
+                    {'data': 'Action'}
+                ],
+                "columnDefs": [ {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": [2,3,4,5,6]
+                },{
+                    "targets": -1,
+                    "data": 'Action',
+                    "defaultContent": "<button class='info_action'></button><button class='pdf_action'></button><button class='del'></button>"
+                } ],
+                "order": [[1, 'asc' ]]
+            });
+        },300);
     };
     var setAction = function(selector){
         var reload;
