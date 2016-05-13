@@ -16,7 +16,7 @@ $(document).ready(function() {
         opentransitionend: function(){
             setTimeout(function() {
                 popup_ok.popup('hide');
-            }, 900);
+            }, 950);
         },
         blur : false,
         transition: 'all 0.3s'
