@@ -459,8 +459,15 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@kvt.nl','Bob van Holland','0ff7a384cd97cec0f2f9c7affcabd45b263b9c10b5c18a1f98811bd4371b6f7c',0,'rzsibU4J0umgNVXojujF26NTNilk5Wek'),(4,'rvrooy@kvt.nl','Rooij R. van','d13e4d49537a910a5b9f0a19be74ece86cd89ca0a2e2c492290ea203abe744df',1,'Gwbhsjki2BpE1AhGaCTqDnp286t9oUzJ'),(5,'sbesselink@kvt.nl','Besselink S.T.M.','6b1efebde99cb977e45a9939ae7ccf769773562f645401dadc0d8e758aaa15b3',1,'nhcQe6UBpzC7kxIA6HAAydLxrqnu0VKa'),(6,'rvdmeer@kvt.nl','Meer van der R.A.','ef1d8ec8ea1af3556a9b2d3d57bbc463ea2cd0b7f5bb3121f3291e1ca37cb98c',1,'jW5JoBZLSF79x7cAQERrEuLnBY0PmBUL');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin@kvt.nl','Bob van Holland','111223','
+0ff7a384cd97cec0f2f9c7affcabd45b263b9c10b5c18a1f98811bd4371b6f7c',0,'rzsibU4J0um
+gNVXojujF26NTNilk5Wek'),(4,'rvrooy@kvt.nl','Rooij R. van','111223','d13e4d49537a
+910a5b9f0a19be74ece86cd89ca0a2e2c492290ea203abe744df',1,'Gwbhsjki2BpE1AhGaCTqDnp
+286t9oUzJ'),(5,'sbesselink@kvt.nl','Besselink S.T.M.','111223','6b1efebde99cb977
+e45a9939ae7ccf769773562f645401dadc0d8e758aaa15b3',1,'nhcQe6UBpzC7kxIA6HAAydLxrqn
+u0VKa'),(6,'rvdmeer@kvt.nl','Meer van der R.A.','111223','ef1d8ec8ea1af3556a9b2d
+3d57bbc463ea2cd0b7f5bb3121f3291e1ca37cb98c',1,'jW5JoBZLSF79x7cAQERrEuLnBY0PmBUL'
+);/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
