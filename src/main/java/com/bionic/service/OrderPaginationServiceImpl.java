@@ -26,17 +26,12 @@ public class OrderPaginationServiceImpl implements OrderPaginationService {
     private OrderPaginationDao orderPaginationDao;
 
     @Override
-    public OrderWrapperHolder getAllOrders(int pageNumber, int pageSize, String search, String direction, int column) {
-        return fillUpOrderWrapperHolder(getOrderPage(pageNumber, pageSize, search, direction, column, ALL_ORDERS), total);
+    public OrderWrapperHolder getAllOrders(int pageNumber, int pageSize, String search, String direction, int column, int status) {
+        return fillUpOrderWrapperHolder(getOrderPage(pageNumber, pageSize, search, direction, column, status));
     }
 
-    @Override
-    public OrderWrapperHolder getOrdersByStatus(int pageNumber, int pageSize, String search, String direction, int column, int status) {
-        return fillUpOrderWrapperHolder(getOrderPage(pageNumber, pageSize, search, direction, column, status), total);
-    }
-
-    private Page<Order> getOrderPage(int pageNumber, int pageSize, String search, String direction, int column, int status){
-        Sort.Direction dir = direction != null && direction.equals("asc") ?
+    private Page<Order> getOrderPage(int pageNumber, int pageSize, String search, String sortDir, int column, int status){
+        Sort.Direction dir = sortDir != null && sortDir.equals("asc") ?
                 Sort.Direction.DESC : Sort.Direction.ASC;
         PageRequest request = new PageRequest(pageNumber, pageSize, dir, resolveColumnName(column));
         if(search != null && search.length() > 0){
@@ -72,7 +67,7 @@ public class OrderPaginationServiceImpl implements OrderPaginationService {
         }
     }
 
-    private OrderWrapperHolder fillUpOrderWrapperHolder(Page<Order> page, long total){
+    private OrderWrapperHolder fillUpOrderWrapperHolder(Page<Order> page){
         List<Order> list = page.getContent();
         List<OrderWrapper> result = new ArrayList<>();
         for(Order o: list){

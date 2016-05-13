@@ -14,12 +14,12 @@
 .del{
     outline: none;
     border: none;
-    width: 28px;
+    width: 32px;
     height: 32px;
-    background: transparent url("../images/templates/overview/delete-trash-icon.png") no-repeat 0;
+    background: transparent url("../images/Delete.svg") no-repeat 0;
 }
 .del:hover {
-    background: transparent url("../images/templates/overview/delete-trash-icon-red.png") no-repeat 0;
+    background: transparent url("../images/Delete-hover.svg") no-repeat 0;
 }
 .del:hover, .black:hover{
     transition: background .2s;

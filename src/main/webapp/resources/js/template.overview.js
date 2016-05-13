@@ -44,7 +44,11 @@ $(document).ready(function() {
                 "targets": -1,
                 "data": 'Action',
                 "defaultContent": "<button class='del'></button>"
-            }]
+            }, {
+            "searchable": false,
+            "orderable": false,
+            "targets": [2]
+        }]
         });
     };
     var deleteTemplate = function(name){

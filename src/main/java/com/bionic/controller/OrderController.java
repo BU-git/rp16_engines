@@ -1,31 +1,37 @@
 package com.bionic.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
-import com.bionic.domain.User;
-import com.bionic.domain.component.Employee;
-import com.bionic.domain.order.OrderWrapperHolder;
-import com.bionic.domain.template.TemplateEntity;
-import com.bionic.service.TemplateService;
-import com.bionic.service.UserService;
-import com.bionic.service.OrderPaginationService;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bionic.domain.Order;
+import com.bionic.domain.User;
+import com.bionic.domain.component.Employee;
+import com.bionic.domain.order.OrderWrapperHolder;
+import com.bionic.domain.template.TemplateEntity;
+import com.bionic.service.OrderPaginationService;
 import com.bionic.service.OrderService;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Map;
+import com.bionic.service.TemplateService;
+import com.bionic.service.UserService;
 
 
 @Controller
@@ -63,6 +69,18 @@ public class OrderController {
     public ResponseEntity<OrderWrapperHolder> showNotCompleted(@RequestParam Map<String,String> allRequestParams, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, NOT_COMPLETED_ORDERS));
+    }
+
+    @RequestMapping(value = "/orders/remove/{number}", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<String> removeOrderByNumber(@PathVariable("number") long number, ModelMap model){
+        if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+        try {
+            orderService.remove(number);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("oops");
+        }
+        return ResponseEntity.ok("ok");
     }
 
     @RequestMapping(value = "/orders/completed")
@@ -150,9 +168,9 @@ public class OrderController {
             String searchValue = allRequestParams.get("search[value]");
             String sortDir = allRequestParams.get("order[0][dir]");
             switch (target){
-                case NOT_COMPLETED_ORDERS: return orderPaginationService.getOrdersByStatus(start/length, length, searchValue, sortDir, column, NOT_COMPLETED_ORDERS);
-                case ALL_ORDERS: return orderPaginationService.getAllOrders(start/length, length, searchValue, sortDir, column);
-                case COMPLETED_ORDERS: return orderPaginationService.getOrdersByStatus(start/length, length, searchValue, sortDir, column, COMPLETED_ORDERS);
+                case NOT_COMPLETED_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, NOT_COMPLETED_ORDERS);
+                case ALL_ORDERS: return orderPaginationService.getAllOrders(start/length, length, searchValue, sortDir, column, ALL_ORDERS);
+                case COMPLETED_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, COMPLETED_ORDERS);
                 default: return new OrderWrapperHolder();
             }
         }catch (Exception e){

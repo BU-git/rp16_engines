@@ -10,6 +10,7 @@
     <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
     <script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
     <script src="../../resources/js/jquery.tabslet.min.js"></script>
+    <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
     <script src="../../resources/js/order.js"></script>
     <link href="../../resources/css/styles.css" rel="stylesheet" type="text/css">
     <link href="../../resources/css/orders.css" rel="stylesheet" type="text/css">
@@ -90,6 +91,14 @@
                 </div>
                 <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
             </div>
+            <div id="popup_ok" style="display: none">
+                <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
+                <div id="right_side"><p>Order deleted!</p></div>
+            </div>
+            <div id="popup_error" style="display: none">
+                <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
+                <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
+            </div>
             <div class='tabs'>
                 <ul>
                     <li><a id="all" href="#tab-1">All Orders</a></li>
@@ -106,7 +115,7 @@
                         <th>Installation</th>
                         <th>Task</th>
                         <th>Address</th>
-                        <th>Action</th>
+                        <th class="action">Action</th>
                     </tr>
                     </thead>
                     <tbody align="center">
@@ -123,7 +132,7 @@
                             <th>Installation</th>
                             <th>Task</th>
                             <th>Address</th>
-                            <th>Action</th>
+                            <th class="action">Action</th>
                         </tr>
                         </thead>
                         <tbody align="center">
@@ -140,7 +149,7 @@
                             <th>Installation</th>
                             <th>Task</th>
                             <th>Address</th>
-                            <th>Action</th>
+                            <th class="action">Action</th>
                         </tr>
                         </thead>
                         <tbody align="center">

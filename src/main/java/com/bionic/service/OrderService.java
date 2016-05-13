@@ -1,13 +1,13 @@
 package com.bionic.service;
 
-import com.bionic.domain.Order;
-import com.bionic.domain.OrderBrief;
-import com.bionic.domain.User;
-import com.bionic.domain.order.OrderWrapper;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.sql.Blob;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.bionic.domain.Order;
+import com.bionic.domain.OrderBrief;
+import com.bionic.domain.order.OrderWrapper;
 
 public interface OrderService {
     Order findById(long id);
@@ -17,4 +17,5 @@ public interface OrderService {
     List<OrderBrief> getBriefOrdersForUser(String email);
     Order getOrderForUser(long number, String email);
     void save(Order order);
+    void remove(long number);
 }

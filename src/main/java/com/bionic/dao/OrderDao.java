@@ -1,11 +1,12 @@
 package com.bionic.dao;
 
-import com.bionic.domain.Order;
-import com.bionic.domain.OrderBrief;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.web.multipart.MultipartFile;
 import java.sql.Blob;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.bionic.domain.Order;
+import com.bionic.domain.OrderBrief;
 
 public interface OrderDao {
 
@@ -14,5 +15,6 @@ public interface OrderDao {
     Blob createBlob(MultipartFile file);
     List<OrderBrief> getBriefOrdersForUser(String email);
     void saveOrder(Order order);
+    void remove(Order order);
     Order getOrderForUser(Long number, String email);
 }

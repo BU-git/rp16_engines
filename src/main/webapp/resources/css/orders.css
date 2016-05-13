@@ -1,40 +1,112 @@
 .completed{
-    background: url("../images/yes.png") no-repeat;
+    background: url("../images/yes.svg") no-repeat;
 }
 .not_completed{
-    background: url("../images/no.png") no-repeat;
+    background: url("../images/no.svg") no-repeat;
 }
 .completed, .not_completed{
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
 }
 .info_action, .pdf_action, .del {
-    margin: 5px;
+    border: none;
+    margin: 2px;
     display: inline;
     width: 32px;
     height: 32px;
+    outline: none;
 }
 .info_action:hover, .pdf_action:hover, .del:hover{
+    transition: 0.2s;
     cursor: pointer;
 }
 .info_action{
-    float: left;
-    background: url("../images/info.png") no-repeat 50% / 100%;;
+    background: url("../images/Info-hover.svg") no-repeat;
+}
+.info_action:hover{
+    background: url("../images/Info.svg") no-repeat;
 }
 .pdf_action{
-    float: right;
-    background: url("../images/pdf.png") no-repeat;
+    background: url("../images/pdf-hover.svg") no-repeat;
+}
+.pdf_action:hover{
+    background: url("../images/pdf.svg") no-repeat;
 }
 .del{
-    float: right;
-    background: url("../images/templates/overview/delete-trash-icon.png") no-repeat;
+    background: url("../images/Delete.svg") no-repeat;
 }
 .del:hover{
-    background: url("../images/templates/overview/delete-trash-icon-red.png") no-repeat;
+    background: url("../images/Delete-hover.svg") no-repeat;
 }
-input,input:focus {
+input,input:focus, select {
     height: 25px;
-    font-size: 14px;
     padding: 5px 10px 5px 10px;
     border: 1px solid #AAAAB3;
+}
+input{
+    font-size: 14px;
+}
+.action{
+    min-width: 90px;
+    max-width: 90px;
+}
+#popup_ok{
+    box-shadow: 0 0 30px #3A4F43;
+    background-color: #F7F7E6;
+    height: 150px;
+    width: 300px;
+}
+#popup_ok, #popup_error {
+    border-radius: 4px;
+}
+#popup_ok table, #popup_error, #left_side img, #left_side_error img{
+    margin-top: 25px;
+}
+#popup_error{
+    box-shadow: 0 0 30px #5C2F2F;
+}
+#right_side p{
+    color: #4F5C55;
+    padding-top: 45px;
+}
+#right_side p, #right_side_error p{
+    font-size: 18px;
+}
+#left_side, #left_side_error{
+    border-radius: 4px 0 0 4px;
+    width: 120px;
+    max-width: 120px;
+    float: left;
+    background-color: #F7FAED;
+}
+#left_side, #right_side, #right_side_error, #left_side_error{
+    height: 150px;
+    display: inline;
+}
+#right_side_error p{
+    padding-top: 35px;
+}
+#right_side{
+    background-color: #EEF2DF;
+}
+#right_side_error{
+    color: #594040;
+    background-color: #F7EBEB;
+}
+#right_side, #right_side_error{
+    border-radius: 0 4px 4px 0 ;
+    width: 180px;
+    float: right;
+}
+#left_side img, #left_side_error img{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+}
+#content, #popup_ok table, #popup_error{
+    margin-left: auto;
+    margin-right: auto;
+}
+#right_side p, #right_side_error p{
+    text-align: center;
 }

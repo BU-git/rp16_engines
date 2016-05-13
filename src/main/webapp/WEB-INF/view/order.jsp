@@ -87,10 +87,10 @@
             </div>
             <p id="image">
                 <c:if test="${order.orderStatus == 2 || order.orderStatus == 3}">
-                    <img src="../../resources/images/yes.png">
+                    <img src="../../resources/images/yes.svg">
                 </c:if>
                 <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
-                    <img src="../../resources/images/no.png">
+                    <img src="../../resources/images/no.svg">
                 </c:if>
                 Order №${order.number} information
             </p>

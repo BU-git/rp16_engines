@@ -1,17 +1,20 @@
 package com.bionic.service;
 
-import com.bionic.dao.OrderDao;
-import com.bionic.domain.Order;
-import com.bionic.domain.OrderBrief;
-import com.bionic.domain.order.OrderWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.bionic.dao.OrderDao;
+import com.bionic.domain.Order;
+import com.bionic.domain.OrderBrief;
+import com.bionic.domain.order.OrderWrapper;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -63,5 +66,14 @@ public class OrderServiceImpl implements OrderService{
     @Transactional
     public void save(Order order){
         orderDao.saveOrder(order);
+    }
+
+    @Override
+    @Transactional
+    public void remove(long number) {
+        if(number < 0) throw new IllegalArgumentException();
+        Order order = orderDao.findById(number);
+        if(order == null) throw new NoSuchElementException();
+        orderDao.remove(order);
     }
 }
