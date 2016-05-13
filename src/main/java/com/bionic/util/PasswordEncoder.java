@@ -44,4 +44,11 @@ public class PasswordEncoder {
         return sb.toString();
     }
 
+    public static synchronized String createPassword(int chars) {
+        StringBuilder sb = new StringBuilder(chars);
+        for( int i = 0; i < chars; i++ )
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        return sb.toString();
+    }
+
 }

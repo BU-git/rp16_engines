@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +24,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
+	/*@Autowired
+	private MailSender sender;
+*/
 	public User adminLogin(String email, String password) {
 		User user = userDao.getUserByEmail(email);
 		if (user == null) return null;
@@ -98,6 +103,12 @@ public class UserServiceImpl implements UserService {
 		if(users.size() < 1) return result;
 		result.addAll(users.stream().map(this::wrapMe).collect(Collectors.toList()));
 		return result;
+	}
+
+	@Override
+	public void restorePassword(String email) {
+		String newPassword = PasswordEncoder.getInstance().createPassword(7);
+		//SimpleMailMessage message = new SimpleMailMessage();
 	}
 
 	private UserWrapper wrapMe(User u){
