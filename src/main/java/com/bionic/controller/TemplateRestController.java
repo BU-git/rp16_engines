@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bionic.domain.template.CustomTemplateAndroid;
-import com.bionic.domain.template.CustomTemplateElementAndroid;
+import com.bionic.domain.template.android.CustomTemplateAndroid;
+import com.bionic.domain.template.android.CustomTemplateElementAndroid;
 import com.bionic.domain.template.TemplateField;
 import com.bionic.service.TemplateService;
 

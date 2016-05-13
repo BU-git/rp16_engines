@@ -57,7 +57,7 @@ public class UserController {
         return ResponseEntity.ok(holder);
     }
 
-    @RequestMapping(path = "/users/show/all")
+    @RequestMapping(path = "/users")
     public String showAllUsers(ModelMap model){
         return !model.containsAttribute("loggedInUser") ? "redirect:/login": "users";
     }

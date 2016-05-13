@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bionic.domain.DataTablesAjaxHolder;
-import com.bionic.domain.template.CustomTemplateHolder;
-import com.bionic.domain.template.CustomTemplateNameFront;
-import com.bionic.domain.template.TemplateFieldList;
+import com.bionic.domain.template.web.CustomTemplateHolder;
+import com.bionic.domain.template.web.CustomTemplateNameFront;
+import com.bionic.domain.template.web.CustomTemplateFieldList;
 import com.bionic.service.TemplateService;
 
 @Controller
@@ -36,7 +36,7 @@ public class TemplateController {
 
     @RequestMapping(path = "/templates/save", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<String> receiveTemplate(@RequestBody TemplateFieldList fields, ModelMap model){
+    public ResponseEntity<String> receiveTemplate(@RequestBody CustomTemplateFieldList fields, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
         try {
             templateService.save(fields.getTemplateName(), fields.getFields(), true);

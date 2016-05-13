@@ -9,12 +9,12 @@ import java.util.List;
 
 import javax.inject.Named;
 
-import com.bionic.domain.template.TemplateField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.bionic.domain.template.FieldHolder;
+import com.bionic.domain.template.TemplateField;
+import com.bionic.domain.template.web.CustomTemplateFieldHolder;
 import com.bionic.service.TemplateService;
 
 @Named
@@ -44,7 +44,7 @@ public class Test {
 
     private void theSameNameTemplate(String name, int count){
         for(int i=0; i<count; i++){
-            List<FieldHolder> list = new ArrayList<>();
+            List<CustomTemplateFieldHolder> list = new ArrayList<>();
             list.add(generateField(name+i,"text field"));
             list.add(generateField(name+i,"text field"));
             list.add(generateField(name+i,"text field"));
@@ -56,7 +56,7 @@ public class Test {
 
     private void fillTemplates(String name, int count){
         for(int i=0; i<count; i++){
-            List<FieldHolder> list = new LinkedList<>();
+            List<CustomTemplateFieldHolder> list = new LinkedList<>();
             list.add(generateField(name+i,"text field"));
             list.add(generateField(name+i,"text field"));
             list.add(generateField(i+name,"text area"));
@@ -72,8 +72,8 @@ public class Test {
         }
     }
 
-    private FieldHolder generateField(String name, String type){
-        FieldHolder holder = new FieldHolder();
+    private CustomTemplateFieldHolder generateField(String name, String type){
+        CustomTemplateFieldHolder holder = new CustomTemplateFieldHolder();
         holder.setDescription(name);
         holder.setType(type);
         return holder;

@@ -1,9 +1,9 @@
 
-package com.bionic.domain.template;
+package com.bionic.domain.template.web;
 
 import java.io.Serializable;
 
-public class FieldHolder implements Serializable {
+public class CustomTemplateFieldHolder implements Serializable {
 
     private String type;
 

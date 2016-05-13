@@ -1,4 +1,4 @@
-package com.bionic.domain.template;
+package com.bionic.domain.template.android;
 
 public class CustomTemplateElementAndroid {
 
