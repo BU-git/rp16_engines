@@ -111,9 +111,7 @@ public class Order implements Serializable, Comparable<Order>{
     @JsonIgnore
     private String pdfLink;
 
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JsonIgnore
-    private TemplateEntity templateEntity;
+    private int template_id;
 
     @XmlElementWrapper(name = "ExtraInfo")
     @XmlElement(name = "Info", type = Info.class)
@@ -267,12 +265,12 @@ public class Order implements Serializable, Comparable<Order>{
         this.pdfLink = pdfLink;
     }
 
-    public TemplateEntity getTemplateEntity() {
-        return templateEntity;
+    public int getTemplate_id() {
+        return template_id;
     }
 
-    public void setTemplateEntity(TemplateEntity templateEntity) {
-        this.templateEntity = templateEntity;
+    public void setTemplate_id(int template_id) {
+        this.template_id = template_id;
     }
 
     @Override

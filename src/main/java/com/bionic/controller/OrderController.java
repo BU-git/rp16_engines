@@ -128,13 +128,13 @@ public class OrderController {
                 if (!templateEntity.isAssigned()) {
                     templateEntity.setAssigned(true);
                     templateService.saveTemplate(templateEntity);
-                    order.setTemplateEntity(templateEntity);
+                    order.setTemplate_id(templateEntity.getId());
                     orderService.save(order);
                     return "redirect:/orders/{id}";
                 }
             }
             TemplateEntity temp = templateService.cloneTemplate(templateEntityList.get(0));
-            order.setTemplateEntity(temp);
+            order.setTemplate_id(temp.getId());
             orderService.save(order);
         }
         return "redirect:/orders/{id}";
