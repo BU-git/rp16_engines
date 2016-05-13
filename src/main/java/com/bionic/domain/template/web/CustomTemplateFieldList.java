@@ -1,13 +1,13 @@
 
-package com.bionic.domain.template;
+package com.bionic.domain.template.web;
 
 import java.util.List;
 
-public class TemplateFieldList {
+public class CustomTemplateFieldList {
 
     private String templateName;
 
-    private List<FieldHolder> fields;
+    private List<CustomTemplateFieldHolder> fields;
 
     public String getTemplateName() {
         return templateName;
@@ -17,11 +17,11 @@ public class TemplateFieldList {
         this.templateName = templateName;
     }
 
-    public List<FieldHolder> getFields() {
+    public List<CustomTemplateFieldHolder> getFields() {
         return fields;
     }
 
-    public void setFields(List<FieldHolder> fields) {
+    public void setFields(List<CustomTemplateFieldHolder> fields) {
         this.fields = fields;
     }
 

@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bionic.dao.FieldDao;
 import com.bionic.dao.TemplateDao;
-import com.bionic.domain.template.CustomTemplateNameFront;
+import com.bionic.domain.template.web.CustomTemplateNameFront;
 import com.bionic.domain.template.Field;
-import com.bionic.domain.template.FieldHolder;
+import com.bionic.domain.template.web.CustomTemplateFieldHolder;
 import com.bionic.domain.template.TemplateEntity;
 import com.bionic.domain.template.TemplateField;
 
@@ -38,7 +38,7 @@ public class TemplateServiceImpl implements TemplateService{
 
     @Override
     @Transactional
-    public void save(String name, List<FieldHolder> fields, boolean fromWeb) {
+    public void save(String name, List<CustomTemplateFieldHolder> fields, boolean fromWeb) {
         if(fromWeb && templateDao.findTemplateByName(name).size() > 0) throw new IllegalArgumentException();
         getList(name, fields).forEach(templateDao::save);
     }
@@ -83,19 +83,19 @@ public class TemplateServiceImpl implements TemplateService{
         return templateDao.findByTemplateId(id);
     }
 
-    private List<TemplateField> getList(String name, List<FieldHolder> fields){
+    private List<TemplateField> getList(String name, List<CustomTemplateFieldHolder> fields){
         List<TemplateField> list = new ArrayList<>();
         TemplateEntity templateEntity = new TemplateEntity();
         Date dt = Date.valueOf(LocalDate.now());
         templateEntity.setTemplateName(name);
-        for(FieldHolder fieldHolder: fields){
-            List<Field> fieldList = fieldDao.findByType(fieldHolder.getType());
+        for(CustomTemplateFieldHolder customTemplateFieldHolder : fields){
+            List<Field> fieldList = fieldDao.findByType(customTemplateFieldHolder.getType());
             if(fieldList.size() < 1) continue;
             Field f = fieldList.get(0);
             TemplateField templateField = new TemplateField();
             templateField.setTemplateEntity(templateEntity);
             templateField.setField(f);
-            templateField.setDescription(fieldHolder.getDescription());
+            templateField.setDescription(customTemplateFieldHolder.getDescription());
             templateField.setCreateDt(dt);
             list.add(templateField);
         }

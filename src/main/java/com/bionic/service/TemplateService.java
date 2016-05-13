@@ -3,8 +3,8 @@ package com.bionic.service;
 
 import java.util.List;
 
-import com.bionic.domain.template.CustomTemplateNameFront;
-import com.bionic.domain.template.FieldHolder;
+import com.bionic.domain.template.web.CustomTemplateNameFront;
+import com.bionic.domain.template.web.CustomTemplateFieldHolder;
 import com.bionic.domain.template.TemplateEntity;
 import com.bionic.domain.template.TemplateField;
 
@@ -12,7 +12,7 @@ public interface TemplateService {
 
     void saveTemplate(TemplateEntity template);
 
-    void save(String name, List<FieldHolder> fields, boolean fromWeb);
+    void save(String name, List<CustomTemplateFieldHolder> fields, boolean fromWeb);
 
     List<TemplateField> findByTemplateId(int id);
 

@@ -1,5 +1,5 @@
 
-package com.bionic.domain.template;
+package com.bionic.domain.template.web;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
