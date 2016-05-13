@@ -71,6 +71,11 @@
                         New User
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="/users">
+                        All Users
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -96,6 +101,9 @@
                 </a>
                 <a href="<spring:url value="/register"/>" style="text-align: center; display: block">
                     <div class="button">New user</div>
+                </a>
+                <a href="<spring:url value="/users"/>" style="text-align: center; display: block">
+                    <div class="button">All users</div>
                 </a>
             </div>
             <form method="post" id="uploadForm" action="upload" enctype="multipart/form-data">

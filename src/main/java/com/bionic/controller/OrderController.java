@@ -144,7 +144,9 @@ public class OrderController {
     public String downloadOrder(@PathVariable long id, HttpServletResponse response, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
-        boolean exist = Files.exists(Paths.get(order.getPdfLink()));
+        String link = order.getPdfLink();
+        if (link == null) return "orders";
+        boolean exist = Files.exists(Paths.get(link));
         if (exist) {
             File pdf = new File(order.getPdfLink());
             try {

@@ -78,6 +78,11 @@
                         New User
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="/users">
+                        All Users
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
