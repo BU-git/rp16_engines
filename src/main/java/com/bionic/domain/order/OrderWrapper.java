@@ -1,12 +1,12 @@
 package com.bionic.domain.order;
 
 
-import com.bionic.domain.Order;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.bionic.domain.Order;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OrderWrapper {
 
@@ -51,7 +51,7 @@ public class OrderWrapper {
 
     public void setOrderStatus(int orderStatus) {
         switch (orderStatus){
-            case 1: {
+            case 4: {
                 this.orderStatus = COMPLETED_STATUS;
                 break;
             }

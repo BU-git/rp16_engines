@@ -37,7 +37,7 @@ $(document).ready(function() {
     $('#completed').click(function(){
         if(c) table_completed.ajax.reload();
         else{
-            $.when(completed_init()).then(then(setAction('#completed_table')));
+            $.when(completed_init()).then((setAction('#completed_table')));
             c = true;
         }
     });
