@@ -2,7 +2,13 @@ $(function(){
     var field_to_be_inserted = "";
     var edit_opened = 0;
     var removed = [];
-    var count = 1;
+    var template_name = $('#template_name');
+    var save_button = $('#save_button');
+    var accept_button = $('#accept');
+    var edit_area = $('#edit_area');
+    var edit_button = $('#edit_button');
+    var test = parseInt($('#count').val());
+    var count = $.isNumeric(test) ? test+1 : 1;
     var text_field = $('#text_field');
     var check_box = $('#check_box');
     var text_area = $('#text_area');
@@ -11,6 +17,10 @@ $(function(){
     var edit_popup = $('#edit_popup');
     var popup_ok = $('#popup_ok');
     var popup_error = $('#popup_error');
+    var add_to_form = $('#add_to_form');
+    var hd = $('.hd');
+    var popup_area = $('#popup_area');
+
     popup_error.popup({
         opentransitionend: function(){
             setTimeout(
@@ -47,12 +57,12 @@ $(function(){
     popup.popup({
         onopen: function(){
             $('.popup_area').val("");
-            $('#add_to_form').prop("disabled", true);
+            add_to_form.prop("disabled", true);
         },
         blur : false,
         transition: 'all 0.3s'
     });
-    var hd = $('.hd');
+
     text_field.click(function(){
         hd.text("Add New Text Field");
         field_to_be_inserted = "text field";
@@ -74,18 +84,14 @@ $(function(){
         edit_delete_feature(777);
     });
     // check for field description is not empty
-    var popup_area = $('#popup_area');
+
     popup_area.bind('input propertychange',function(){
         var add_to_form =  $('#add_to_form');
         if(popup_area.val().length < 1) add_to_form.prop("disabled", true);
         else add_to_form.prop("disabled", false);
     });
     //check for template name is not empty
-    var template_name = $('#template_name');
-    var save_button = $('#save_button');
-    var accept_button = $('#accept');
-    var edit_area = $('#edit_area');
-    var edit_button = $('#edit_button');
+
     template_name.bind('input propertychange', function(){
         check_template_is_not_empty();
         check_for_fields_alive();
@@ -102,8 +108,8 @@ $(function(){
         if(edit_area.val().length < 1)accept_button.prop("disabled", true);
         else accept_button.prop("disabled", false);
     });
-    $('#add_to_form').click(function(){
-        $('.prev').append('<tr class="row" id="row'+count+'" class="prev_element"><td class="action">' +
+    add_to_form.click(function(){
+        $('.prev').append('<tr class="prev_element" id="row'+count+'"><td class="action">' +
             '<button class="delete" id="delete'+count+'"></button><button class="edit_popup_open" id="edit'+count+'"></button></td>' +
             '<td>'+getFieldType(field_to_be_inserted)+'<span hidden id="fieldType'+count+'">'+field_to_be_inserted+'</span></td></tr>');
         $('.prev_element').fadeIn();
@@ -136,19 +142,11 @@ $(function(){
             edit_button.prop("disabled", false);
         }
     };
-    var edit_on_click = function(number, selector){
-        $(selector).click(function(){
-            hd.text("Edit Element");
-            selector = '#fieldDescription' + number;
-            edit_opened = number;
-            edit_area.val($(selector).text());
-        });
-    };
     var getFieldType = function(type){
         var popup_area = $('#popup_area');
         switch (type){
             case "text field": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><input placeholder="Text Field" readonly class="textField" type="text">';
-            case "check box": return '<input checked class="checkBoxField" type="checkbox" onclick="return false"><label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
+            case "check box": return '<input checked  class="checkBoxField"type="checkbox" onclick="return false"><label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
             case "text area": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label><textarea rows="3"  readonly class="textArea" placeholder="Text Area"></textarea>';
             case "label": return '<label id="fieldDescription'+count+'">'+popup_area.val().replace(/</g, "&lt;").replace(/>/g, "&gt;")+'</label>';
         }
@@ -164,6 +162,26 @@ $(function(){
             edit_popup_open_buttons.fadeToggle();
         }
     };
+    var edit_on_click = function(number, selector){
+        $(selector).click(function(){
+            hd.text("Edit Element");
+            selector = '#fieldDescription' + number;
+            edit_opened = number;
+            edit_area.val($(selector).text());
+        });
+    };
+    var setAction = function(){
+        $('.edit_popup_open').each(function(){
+            edit_on_click(this.value, '#'+this.id);
+        });
+        $('.delete').each(function(){
+            delete_on_click(this.value, '#'+this.id)
+        })
+    };
+    if(count > 0){
+        edit_button.prop("disabled", false);
+        setAction();
+    }
     save_button.click(function(){
         var fields = [];
         for(var i=1; i <= count; i++){

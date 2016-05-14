@@ -45,10 +45,10 @@ tbody, #title_banner, #content,.hd, ul, #edit_popup ul, #right_side p, #right_si
     margin-right: 5px;
     width: 32px;
     height: 32px;
-    background: transparent url("../images/templates/overview/edit-icon-new-orange-hover.svg") no-repeat 0;
+    background: transparent url("../images/users/edit-icon-new-orange-hover.svg") no-repeat 0;
 }
 .edit:hover{
-    background: transparent url("../images/templates/overview/edit-icon-new-orange.svg") no-repeat 0;
+    background: transparent url("../images/users/edit-icon-new-orange.svg") no-repeat 0;
 }
 #edit_popup, ul button{
     border-radius: 3px;

@@ -11,18 +11,27 @@
     padding: 0;
     margin: 0;
 }
-.del{
+.edit,.del{
     outline: none;
     border: none;
     width: 32px;
     height: 32px;
+    display: inline;
+}
+.edit{
+    background: transparent url("../images/templates/overview/add-template-icon-hover.svg") no-repeat 0;
+}
+.edit:hover{
+    background: transparent url("../images/templates/overview/add-template-icon.svg") no-repeat 0;
+}
+.del{
     background: transparent url("../images/Delete.svg") no-repeat 0;
 }
 .del:hover {
     background: transparent url("../images/Delete-hover.svg") no-repeat 0;
 }
-.del:hover, .black:hover{
-    transition: background .2s;
+.del:hover,.black:hover,.edit:hover{
+    transition: ease-in-out .2s;
     cursor: pointer;
 }
 #template_overview, #content, #popup_ok table, #popup_error{
