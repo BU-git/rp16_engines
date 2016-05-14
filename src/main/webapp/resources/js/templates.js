@@ -178,7 +178,7 @@ $(function(){
             delete_on_click(this.value, '#'+this.id)
         })
     };
-    if(count > 0){
+    if(count > 1){
         edit_button.prop("disabled", false);
         setAction();
     }
