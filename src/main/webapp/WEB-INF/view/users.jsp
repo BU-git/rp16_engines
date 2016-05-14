@@ -3,16 +3,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link href="<c:url value="/resources/css/modified.dataTables.min.css"/>" rel="stylesheet" type="text/css">
-  <link href="<c:url value="/resources/css/users.css"/>" rel="stylesheet" type="text/css">
-  <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
-  <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
-  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-  <script src="<c:url value="/resources/js/users.js"/>"></script>
-  <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
-    <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/css/dataTables.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/css/users.css"/>" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="<spring:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
+  <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+  <script src="<spring:url value="/resources/js/modified.dataTables.min.js"/>"></script>
+  <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <script src="<spring:url value="/resources/js/users.js"/>"></script>
     <script>
         $(window).load(function() {
             $('#menu-toggle')
@@ -29,11 +29,10 @@
   <span class='bar bar-2'></span>
   <span class='bar bar-3'></span>
 </div>
-
 <div id="left-menu">
   <div class="logo">
     <a href="http://www.kvt.nl/">
-      <img src="<c:url value="/resources/images/logo_kvt.png"/>">
+      <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
     </a>
   </div>
   <div class="left-part-container">
@@ -55,34 +54,39 @@
         </a>
       </li>
       <li class="menu-item">
-        <a href="/orders">
+        <a href="<spring:url value="/orders"/>">
           Orders overview
         </a>
       </li>
       <li class="menu-item">
-        <a href="/templates">
+        <a href="<spring:url value="/templates/new"/>">
           Create template
         </a>
       </li>
       <li class="menu-item">
-        <a href="/templates/overview">
+        <a href="<spring:url value="/templates"/>">
           Templates overview
         </a>
       </li>
       <li class="menu-item">
-        <a href="/register">
+        <a href="<spring:url value="/users/new"/>">
           New User
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="<spring:url value="/users/all"/>">
+          Users
         </a>
       </li>
     </ul>
   </div>
 </div>
 <div id="popup_ok" style="display: none">
-  <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
+  <div id="left_side"><img src="<spring:url value="/resources/images/templates/ok-icon.png"/>"></div>
   <div id="right_side"><p>User deleted!</p></div>
 </div>
 <div id="popup_error" style="display: none">
-  <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
+  <div id="left_side_error"><img src="<spring:url value="/resources/images/templates/error-icon.png"/>"></div>
   <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
 </div>
 <div id="edit_popup" style="background-color: white">
@@ -93,8 +97,8 @@
     </tr>
     <tr>
       <td class="w">
-        <img class="check" id="check1" src="../../resources/images/templates/check-icon.png">
-        <img class="warn" id="warn1" src="../../resources/images/templates/warn-icon.png">
+        <img class="check" id="check1" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
+        <img class="warn" id="warn1" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
       </td>
       <td colspan="2">
         <label class="inline" id="for_mail" for="email">Email</label><input id="email" type="email">
@@ -102,8 +106,8 @@
     </tr>
     <tr>
       <td class="w">
-        <img class="check" id="check2" src="../../resources/images/templates/check-icon.png">
-        <img class="warn" id="warn2" src="../../resources/images/templates/warn-icon.png">
+        <img class="check" id="check2" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
+        <img class="warn" id="warn2" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
       </td>
       <td>
         <label class="inline" id="for_name" for="name">Name</label><input id="name" type="text">
@@ -117,8 +121,8 @@
     </tr>
     <tr>
       <td class="w">
-        <img class="warn" id="warn3" src="../../resources/images/templates/warn-icon.png">
-        <img class="check" id="check3" src="../../resources/images/templates/check-icon.png">
+        <img class="warn" id="warn3" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
+        <img class="check" id="check3" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
       </td>
       <td colspan="2">
         <label class="inline" id="for_number" for="number">Number</label><input id="number" type="number">
@@ -136,7 +140,7 @@
     <div id="header">
       <div style="position: fixed; top: 0; left: 10px;">
         <a href="<spring:url value="/"/>" id="logo">
-          <img src="../../resources/images/logo.png">
+          <img src="<spring:url value="/resources/images/logo.png"/>">
         </a>
       </div>
       <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>

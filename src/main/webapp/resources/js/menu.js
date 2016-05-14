@@ -4,4 +4,3 @@ $(window).load(function() {
             $('body').toggleClass('menu-on');
         });
 });
-

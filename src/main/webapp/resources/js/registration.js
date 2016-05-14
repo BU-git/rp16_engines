@@ -95,7 +95,7 @@ $(function(){
         opentransitionend: function(){
             setTimeout(function() {
                     popup_ok.popup('hide');
-                    window.location.replace("/register");
+                    window.location.replace("/users/new");
                 }, 2500);
         },
         blur : false,
@@ -106,19 +106,17 @@ $(function(){
         if(input_role.prop('checked')) role = 0;
         var user = {'Email':input_email.val(),'Name':input_name.val(),'password':input_password.val(),'Role':role, 'Number':input_number.val()};
         user = JSON.stringify(user);
-        console.log(user);
         $.ajax({
             dataType: "html",
             contentType: 'application/json',
             mimeType: 'application/json',
             type: "POST",
-            url:"/register/user",
+            url:"/users/new",
             data: user,
             success: function(result){
                 popup_ok.popup('show')
             },
             error: function(result){
-                console.log(result.status);
                 errorHandler(result.status);
             }
         });

@@ -29,9 +29,9 @@ public class TemplateController {
     @Autowired
     private TemplateService templateService;
 
-    @RequestMapping(value = "/templates", method = RequestMethod.GET)
+    @RequestMapping(value = "/templates/new", method = RequestMethod.GET)
     public String templatesPage(ModelMap model){
-        return !model.containsAttribute("loggedInUser") ? "redirect:/login" : "templates";
+        return !model.containsAttribute("loggedInUser") ? "redirect:/login" : "/templates";
     }
 
     @RequestMapping(path = "/templates/save", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
@@ -48,23 +48,23 @@ public class TemplateController {
         return ResponseEntity.ok("ok");
     }
 
-    @RequestMapping(path = "templates/overview")
+    @RequestMapping(path = "/templates", method = RequestMethod.GET)
     public String getListOfAllTemplates(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
-        return "templateOverview";
+        return "/templateOverview";
     }
 
-    @RequestMapping(path = "templates/all")
+    @RequestMapping(path = "/templates", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<DataTablesAjaxHolder> getListOfAllTemplatesForDataTables(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         CustomTemplateHolder holder = new CustomTemplateHolder();
-        List<CustomTemplateNameFront> list = templateService.findAllForDataTables();
+        List<CustomTemplateNameFront> list = templateService.findUniqueTemplateNames();
         holder.setData(list);
         return ResponseEntity.ok(holder);
     }
 
-    @RequestMapping(value = "templates/remove/{name}", method = RequestMethod.POST)
+    @RequestMapping(value = "/templates/remove/{name}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteTemplateByName(ModelMap model, @PathVariable("name") String name){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
         try {
@@ -75,10 +75,10 @@ public class TemplateController {
         return ResponseEntity.ok("ok");
     }
 
-    @RequestMapping(value = "templates/overview/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/templates/get/{name}", method = RequestMethod.GET)
     public String getSingleTemplateOverview(ModelMap model, @PathVariable("name") String name){
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
-        model.addAttribute("list", templateService.findByTemplateName(name));
+        model.addAttribute("list", templateService.findFieldsByTemplateName(name));
         return "singleTemplate";
     }
 }

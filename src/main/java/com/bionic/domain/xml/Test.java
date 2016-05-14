@@ -35,7 +35,7 @@ public class Test {
     }
 
     private void testOrder(String name){
-        List<TemplateField> list = templateService.findByTemplateName(name);
+        List<TemplateField> list = templateService.findFieldsByTemplateName(name);
         Collections.sort(list);
         for(TemplateField f: list){
             System.out.println(f);

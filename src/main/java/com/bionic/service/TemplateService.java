@@ -14,17 +14,17 @@ public interface TemplateService {
 
     void save(String name, List<CustomTemplateFieldHolder> fields, boolean fromWeb);
 
-    List<TemplateField> findByTemplateId(int id);
+    TemplateEntity findByTemplateId(long id);
 
-    List<TemplateField> findByTemplateName(String name);
+    List<TemplateField> findFieldsByTemplateName(String name);
 
     List<String> findAll();
 
-    List<CustomTemplateNameFront> findAllForDataTables();
+    List<CustomTemplateNameFront> findUniqueTemplateNames();
 
     void removeTemplateByName(String name);
 
-    List<TemplateEntity> findTemplateByName (String name);
+    List<TemplateEntity> findTemplatesListByName(String name);
 
     TemplateEntity cloneTemplate(TemplateEntity templateEntity);
 

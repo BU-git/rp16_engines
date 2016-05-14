@@ -3,14 +3,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
-  <script src="<c:url value="/resources/js/template.js"/>"></script>
-  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-  <link href="<c:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
-  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
-  <title>Make Template</title>
-  <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+  <script src="<spring:url value="/resources/js/template.js"/>"></script>
+  <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <link href="<spring:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
+  <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <script>
     $(window).load(function() {
@@ -20,6 +19,7 @@
               });
     });
   </script>
+  <title>Make Template</title>
 </head>
 <body>
 <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
@@ -31,7 +31,7 @@
 <div id="left-menu">
   <div class="logo">
     <a href="http://www.kvt.nl/">
-      <img src="<c:url value="/resources/images/logo_kvt.png"/>">
+      <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
     </a>
   </div>
   <div class="left-part-container">
@@ -53,23 +53,28 @@
         </a>
       </li>
       <li class="menu-item">
-        <a href="/orders">
+        <a href="<spring:url value="/orders"/>">
           Orders overview
         </a>
       </li>
       <li class="menu-item">
-        <a href="/templates">
+        <a href="<spring:url value="/templates/new"/>">
           Create template
         </a>
       </li>
       <li class="menu-item">
-        <a href="/templates/overview">
+        <a href="<spring:url value="/templates"/>">
           Templates overview
         </a>
       </li>
       <li class="menu-item">
-        <a href="/register">
+        <a href="<spring:url value="/users/new"/>">
           New User
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="<spring:url value="/users/all"/>">
+          Users
         </a>
       </li>
     </ul>
@@ -80,12 +85,12 @@
     <div id="header">
       <div style="position: fixed; top: 0; left: 10px;">
         <a href="<spring:url value="/"/>" id="logo">
-          <img src="../../resources/images/logo.png">
+          <img src="<spring:url value="/resources/images/logo.png"/>">
         </a>
       </div>
       <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
     </div>
-    <div id="my_popup" style="background-color: white">
+    <div id="my_popup" style="background-color: white; display: none">
       <div class="hd">
       </div>
       <table class="inputTable">
@@ -96,7 +101,7 @@
         <li class="right_li"><button class="my_popup_close" id="add_to_form">Add to Form</button></li>
       </ul>
     </div>
-    <div id="edit_popup" style="background-color: white">
+    <div id="edit_popup" style="background-color: white; display: none">
       <div class="hd">Edit Element</div>
       <table class="inputTable">
         <tr><td><p class="info">Click on the "Accept" button to save the changes to the form.</p></td></tr>
@@ -106,12 +111,12 @@
         <li class="right_li"><button class="edit_popup_close" id="accept">Accept</button></li>
       </ul>
     </div>
-    <div id="popup_ok">
-      <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
-      <div id="right_side"><p>Template added!!!</p></div>
+    <div id="popup_ok" style="background-color: white; display: none">
+      <div id="left_side"><img src="<spring:url value="/resources/images/templates/ok-icon.png"/>"></div>
+      <div id="right_side"><p>Template added!</p></div>
     </div>
-    <div id="popup_error">
-      <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
+    <div id="popup_error" style="background-color: white; display: none">
+      <div id="left_side_error"><img src="<spring:url value="/resources/images/templates/error-icon.png"/>"></div>
       <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
     </div>
     <div id="container">

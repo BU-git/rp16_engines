@@ -13,7 +13,6 @@ $(function(){
     var popup_error = $('#popup_error');
     popup_error.popup({
         opentransitionend: function(){
-            console.log("hello");
             setTimeout(
                 function()
                 {
@@ -29,7 +28,7 @@ $(function(){
                 function()
                 {
                     popup_ok.popup('hide');
-                    window.location.replace("/templates");
+                    window.location.replace("/templates/new");
                 }, 2500);
         },
         blur : false,
@@ -187,7 +186,6 @@ $(function(){
             'fields' : fields,
             'templateName': template_name.val()
         });
-        console.log(fields);
         $.ajax({
             dataType: "html",
             contentType: 'application/json',

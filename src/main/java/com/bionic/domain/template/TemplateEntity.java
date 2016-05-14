@@ -1,6 +1,7 @@
 
 package com.bionic.domain.template;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,20 +14,27 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name="templates")
 public class TemplateEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    @JsonProperty("customTemplateID")
+    private long id;
 
     @Column(nullable = false)
+    @JsonProperty("customTemplateName")
     private String templateName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "templateEntity", fetch = FetchType.EAGER)
+    @JsonProperty("customTemplateElements")
     private List<TemplateField> fields;
 
+    @JsonIgnore
     private boolean assigned;
 
     public boolean isAssigned() {
@@ -41,7 +49,7 @@ public class TemplateEntity {
         return templateName;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -49,11 +57,12 @@ public class TemplateEntity {
         this.templateName = templateName;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
     public List<TemplateField> getFields() {
+        Collections.sort(fields);
         return fields;
     }
 

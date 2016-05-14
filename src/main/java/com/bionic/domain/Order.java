@@ -3,15 +3,25 @@ package com.bionic.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.*;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import com.bionic.domain.component.Component;
 import com.bionic.domain.component.Employee;
 import com.bionic.domain.component.Info;
@@ -19,9 +29,7 @@ import com.bionic.domain.component.Installation;
 import com.bionic.domain.component.Part;
 import com.bionic.domain.component.Relation;
 import com.bionic.domain.component.Task;
-import com.bionic.domain.template.TemplateEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.*;
 
 @Entity
 @XmlRootElement(name = "Order")
@@ -111,7 +119,7 @@ public class Order implements Serializable, Comparable<Order>{
     @JsonIgnore
     private String pdfLink;
 
-    private int template_id;
+    private long template_id;
 
     @XmlElementWrapper(name = "ExtraInfo")
     @XmlElement(name = "Info", type = Info.class)
@@ -265,11 +273,11 @@ public class Order implements Serializable, Comparable<Order>{
         this.pdfLink = pdfLink;
     }
 
-    public int getTemplate_id() {
+    public long getTemplate_id() {
         return template_id;
     }
 
-    public void setTemplate_id(int template_id) {
+    public void setTemplate_id(long template_id) {
         this.template_id = template_id;
     }
 

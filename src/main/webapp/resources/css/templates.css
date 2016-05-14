@@ -113,23 +113,24 @@ button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open
     display: none;
 }
 button#text_field, #check_box, #text_area, #label{
-    background: transparent url("../images/templates/grey_hover_plus-icon.png") no-repeat 0;
-}
-button.delete{
-    background: transparent url("../images/templates/delete-icon-not%20hover.png") no-repeat 0;
-}
-button.delete:hover{
-    background: transparent url("../images/templates/delete-icon.png") no-repeat 0;
-}
-button.edit_popup_open{
-    background: transparent url("../images/templates/edit-icon-n.png") no-repeat 0;
-}
-button.edit_popup_open:hover{
-    background: transparent url("../images/templates/edit-icon-hover.png") no-repeat 0;
+    background: transparent url("../images/templates/plus-icon.svg") no-repeat 0;
 }
 button#text_field:hover, #check_box:hover, #text_area:hover, #label:hover{
-    background: transparent url("../images/templates/grey_plus-icon.png") no-repeat 0;
+    background: transparent url("../images/templates/plus-icon-hover.svg") no-repeat 0;
 }
+button.delete{
+    background: transparent url("../images/templates/delete.svg") no-repeat 0;
+}
+button.delete:hover{
+    background: transparent url("../images/templates/delete-hover.svg") no-repeat 0;
+}
+button.edit_popup_open{
+    background: transparent url("../images/templates/edit-icon.svg") no-repeat 0;
+}
+button.edit_popup_open:hover{
+    background: transparent url("../images/templates/edit-icon-hover.svg") no-repeat 0;
+}
+
 button#save_button{
     background: rgba(23, 85, 133, 0.85);
 }
