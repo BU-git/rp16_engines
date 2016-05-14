@@ -4,7 +4,7 @@
 <html>
 <head>
   <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
-  <script src="<spring:url value="/resources/js/template.js"/>"></script>
+  <script src="<spring:url value="/resources/js/templates.js"/>"></script>
   <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
   <link href="<spring:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
   <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">

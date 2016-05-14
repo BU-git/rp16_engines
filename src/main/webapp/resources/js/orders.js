@@ -69,7 +69,7 @@ $(document).ready(function() {
                 } ],
                 "order": [[1, 'asc' ]]
             });
-        }, 500);
+        }, 100);
     };
     var all_init = function(){
         table_all = $('#table').DataTable({

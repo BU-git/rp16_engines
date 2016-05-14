@@ -103,7 +103,7 @@ $(function(){
         else accept_button.prop("disabled", false);
     });
     $('#add_to_form').click(function(){
-        $('.prev').append('<tr class="row" id="row'+count+'" class="prev_element"><td>' +
+        $('.prev').append('<tr class="row" id="row'+count+'" class="prev_element"><td class="action">' +
             '<button class="delete" id="delete'+count+'"></button><button class="edit_popup_open" id="edit'+count+'"></button></td>' +
             '<td>'+getFieldType(field_to_be_inserted)+'<span hidden id="fieldType'+count+'">'+field_to_be_inserted+'</span></td></tr>');
         $('.prev_element').fadeIn();

@@ -94,8 +94,11 @@ input.form_controls[type = "checkbox"]{
 #check_box_field_label, input.form_controls[type = "text"], #label_form_controls, #right_side, #right_side_error{
     float: right;
 }
-button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open, #label,#left_side img, #left_side_error img{
+button#text_field, #check_box, #text_area, button.delete, #label,#left_side img, #left_side_error img{
     margin-left: 10px;
+}
+td.action{
+    /*padding-top: 15px;*/
 }
 button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open, #label{
     overflow: hidden;
@@ -130,15 +133,14 @@ button.edit_popup_open{
 button.edit_popup_open:hover{
     background: transparent url("../images/templates/edit-icon-hover.svg") no-repeat 0;
 }
-
-button#save_button{
-    background: rgba(23, 85, 133, 0.85);
+button#save_button,button#add_to_form, button#accept{
+    background-color: #34495e;
 }
 button#save_button:disabled, button#save_button:disabled:hover,button#edit_button:disabled, button#edit_button:disabled:hover{
     color: #EBEEF0;
 }
 button#save_button:hover, button#save_button:disabled, button#save_button:disabled:hover,button#add_to_form:hover, button#accept:hover, button#add_to_form:disabled, button#accept:disabled, button#add_to_form:disabled:hover, button#accept:disabled:hover,button#add_to_form:disabled:hover{
-    background-color: rgba(21, 71, 114, 0.62);
+    background-color: #73808C;
 }
 button#save_button,button#edit_button{
     margin-right: 10px;
@@ -241,6 +243,9 @@ ul li,#my_popup ul, #edit_popup ul{
 .hd_main,#first_th,#second_th{
     height: 50px;
 }
+#first_th,#second_th{
+    font-size: 20px;
+}
 .hd_main, .hd{
     border-radius: 2px 2px 0 0;
     text-transform: uppercase;
@@ -282,9 +287,6 @@ label{
 }
 button#add_to_form, button#accept,button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open, #label,button#edit_button, button#save_button, button.my_popup_close, button.edit_popup_close{
     border: none;
-}
-button#add_to_form, button#accept{
-    background-color: rgba(23, 85, 133, 0.85);
 }
 #content1 {
     padding: 5px 2px 6px 1px;

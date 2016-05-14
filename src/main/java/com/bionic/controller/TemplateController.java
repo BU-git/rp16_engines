@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.bionic.domain.DataTablesAjaxHolder;
+import com.bionic.domain.template.web.CustomTemplateFieldList;
 import com.bionic.domain.template.web.CustomTemplateHolder;
 import com.bionic.domain.template.web.CustomTemplateNameFront;
-import com.bionic.domain.template.web.CustomTemplateFieldList;
 import com.bionic.service.TemplateService;
 
 @Controller
@@ -56,7 +55,7 @@ public class TemplateController {
 
     @RequestMapping(path = "/templates", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<DataTablesAjaxHolder> getListOfAllTemplatesForDataTables(ModelMap model){
+    public ResponseEntity<CustomTemplateHolder> getListOfAllTemplatesForDataTables(ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         CustomTemplateHolder holder = new CustomTemplateHolder();
         List<CustomTemplateNameFront> list = templateService.findUniqueTemplateNames();

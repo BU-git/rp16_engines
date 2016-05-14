@@ -8,7 +8,7 @@
   <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
   <script src="<spring:url value="/resources/js/template.overview.js"/>"></script>
   <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/templateOverview.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/css/template.overview.css"/>" rel="stylesheet" type="text/css">
   <link href="<spring:url value="/resources/css/modified.dataTables.min.css"/>" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="<spring:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Template Overview</title>

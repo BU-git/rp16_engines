@@ -1,8 +1,6 @@
 .tabs > DIV {
-	/*border-top: 1px solid #c7c7c7*/
 	margin-top: 10px;
 	background: white !important;
-	/*border-bottom: 4px solid #E95855 !important;*/
 }
 .tabs UL.horizontal {
 	list-style: none outside none;

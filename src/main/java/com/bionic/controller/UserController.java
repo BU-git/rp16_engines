@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.bionic.domain.DataTablesAjaxHolder;
 import com.bionic.domain.Role;
 import com.bionic.domain.User;
 import com.bionic.domain.user.UserWrapper;
@@ -50,7 +49,7 @@ public class UserController {
 
     @RequestMapping(path = "/users/all", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<DataTablesAjaxHolder> getListOfAllTemplatesForDataTables(ModelMap model) {
+    public ResponseEntity<UserWrapperHolder> getListOfAllTemplatesForDataTables(ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         UserWrapperHolder holder = new UserWrapperHolder();
         holder.setData(userService.findAllForDataTables());

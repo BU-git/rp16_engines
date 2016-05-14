@@ -12,7 +12,7 @@
     <script src="<spring:url value="/resources/js/jquery.tabslet.min.js"/>"></script>
     <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
     <script src="<spring:url value="/resources/js/orders.js"/>"></script>
-    <link href="<spring:url value="/resources/css/styles.css"/>" rel="stylesheet" type="text/css">
+    <link href="<spring:url value="/resources/css/tabslet.css"/>" rel="stylesheet" type="text/css">
     <link href="<spring:url value="/resources/css/orders.css"/>" rel="stylesheet" type="text/css">
     <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link href="<spring:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
@@ -104,6 +104,7 @@
                 <div id="left_side_error"><img src="<spring:url value="/resources/images/templates/error-icon.png"/>"></div>
                 <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
             </div>
+            <div id="title_banner"><p>Orders</p></div>
             <div class='tabs'>
                 <ul>
                     <li><a id="all" href="#tab-1">All Orders</a></li>

@@ -4,6 +4,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="OrderType" type="xs:string"/>
+				<xs:element name="INTNOT" type="xs:string" minOccurs="0"/>
 				<xs:element name="Relatie">
 					<xs:complexType>
 						<xs:sequence>
@@ -72,6 +73,21 @@
 													<xs:length value="0"/>
 												</xs:restriction>
 											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Kenmerken"  minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Kenmerk"  minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ATNAM" minOccurs="0" maxOccurs="1" type="xs:string" default=""/>
+																<xs:element name="ATWRT" minOccurs="0" maxOccurs="1" type="xs:string" default=""/>
+																<xs:element name="ATBEZ" minOccurs="0" maxOccurs="1" type="xs:string" default=""/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
 										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
