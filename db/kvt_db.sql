@@ -166,7 +166,7 @@ CREATE TABLE `orders` (
   `orderType` varchar(255) DEFAULT NULL,
   `pdfLink` varchar(255) DEFAULT NULL,
   `reference` varchar(255) DEFAULT NULL,
-  `template_id` int(11) NOT NULL,
+  `customTemplateID` int(11) NOT NULL,
   `employee_id` bigint(20) DEFAULT NULL,
   `installation_id` bigint(20) DEFAULT NULL,
   `relation_id` bigint(20) DEFAULT NULL,

@@ -184,7 +184,7 @@
                           <button class="edit_popup_open" value="<% out.print(a); %>" id="edit<% out.print(a); %>"></button>
                         </td>
                         <td>
-                          <label id="fieldDescription<% out.print(a); %>">${f.description}
+                          <label><span  id="fieldDescription<% out.print(a); %>">${f.description}</span>
                             <input class="textField" placeholder="Text Field" readonly type="text"></label>
                           <span hidden id="fieldType<% out.print(a++); %>">text field</span>
                         </td>
@@ -210,7 +210,7 @@
                           <button class="edit_popup_open" id="edit<% out.print(a); %>" value="<% out.print(a); %>"></button>
                         </td>
                         <td>
-                          <label id="fieldDescription<% out.print(a); %>">${f.description}
+                          <label><span  id="fieldDescription<% out.print(a); %>">${f.description}</span>
                             <textarea rows="3" readonly class="textArea" placeholder="Text Area"></textarea></label>
                           <span hidden id="fieldType<% out.print(a++); %>">text area</span>
                         </td>
