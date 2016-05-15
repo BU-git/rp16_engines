@@ -389,7 +389,7 @@ CREATE TABLE `templatefields` (
   KEY `FKi3i54ygdsttdgqhfaisjw5atk` (`templateEntity_id`),
   CONSTRAINT `FK8s9kbbg0btub0hocrbb2vsr9i` FOREIGN KEY (`field_id`) REFERENCES `fields` (`id`),
   CONSTRAINT `FKi3i54ygdsttdgqhfaisjw5atk` FOREIGN KEY (`templateEntity_id`) REFERENCES `templates` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -398,6 +398,7 @@ CREATE TABLE `templatefields` (
 
 LOCK TABLES `templatefields` WRITE;
 /*!40000 ALTER TABLE `templatefields` DISABLE KEYS */;
+INSERT INTO `templatefields` VALUES (1,'2016-05-15','f1',NULL,NULL,1,1),(2,'2016-05-15','f2',NULL,NULL,2,1),(3,'2016-05-15','f3',NULL,NULL,3,1);
 /*!40000 ALTER TABLE `templatefields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,7 +414,7 @@ CREATE TABLE `templates` (
   `assigned` bit(1) NOT NULL,
   `templateName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,6 +423,7 @@ CREATE TABLE `templates` (
 
 LOCK TABLES `templates` WRITE;
 /*!40000 ALTER TABLE `templates` DISABLE KEYS */;
+INSERT INTO `templates` VALUES (1,'\0','T1');
 /*!40000 ALTER TABLE `templates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -471,4 +473,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-15 22:12:53
+-- Dump completed on 2016-05-15 22:17:22
