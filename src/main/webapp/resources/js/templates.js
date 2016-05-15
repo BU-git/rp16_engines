@@ -13,7 +13,6 @@ $(function(){
     var popup_error = $('#popup_error');
     popup_error.popup({
         opentransitionend: function(){
-            console.log("hello");
             setTimeout(
                 function()
                 {
@@ -29,7 +28,7 @@ $(function(){
                 function()
                 {
                     popup_ok.popup('hide');
-                    window.location.replace("/templates");
+                    window.location.replace("/templates/new");
                 }, 2500);
         },
         blur : false,
@@ -104,7 +103,7 @@ $(function(){
         else accept_button.prop("disabled", false);
     });
     $('#add_to_form').click(function(){
-        $('.prev').append('<tr class="row" id="row'+count+'" class="prev_element"><td>' +
+        $('.prev').append('<tr class="row" id="row'+count+'" class="prev_element"><td class="action">' +
             '<button class="delete" id="delete'+count+'"></button><button class="edit_popup_open" id="edit'+count+'"></button></td>' +
             '<td>'+getFieldType(field_to_be_inserted)+'<span hidden id="fieldType'+count+'">'+field_to_be_inserted+'</span></td></tr>');
         $('.prev_element').fadeIn();
@@ -187,7 +186,6 @@ $(function(){
             'fields' : fields,
             'templateName': template_name.val()
         });
-        console.log(fields);
         $.ajax({
             dataType: "html",
             contentType: 'application/json',

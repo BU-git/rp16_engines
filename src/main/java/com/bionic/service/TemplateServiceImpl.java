@@ -40,11 +40,11 @@ public class TemplateServiceImpl implements TemplateService{
     @Transactional
     public void save(String name, List<CustomTemplateFieldHolder> fields, boolean fromWeb) {
         if(fromWeb && templateDao.findTemplateByName(name).size() > 0) throw new IllegalArgumentException();
-        getList(name, fields).forEach(templateDao::save);
+        getTemplateFieldsList(name, fields).forEach(templateDao::save);
     }
 
     @Override
-    public List<TemplateField> findByTemplateName(String name){
+    public List<TemplateField> findFieldsByTemplateName(String name){
         if(name == null) return new LinkedList<>();
         List<TemplateField> list = templateDao.findFieldsByTemplateName(name);
         Collections.sort(list);
@@ -57,13 +57,13 @@ public class TemplateServiceImpl implements TemplateService{
     }
 
     @Override
-    public List<CustomTemplateNameFront> findAllForDataTables(){
+    public List<CustomTemplateNameFront> findUniqueTemplateNames(){
         int i = 1;
         List<CustomTemplateNameFront> list = new ArrayList<>();
         List<String> templates = templateDao.findAllTemplateNames();
         for(String s: templates){
             CustomTemplateNameFront custom = new CustomTemplateNameFront();
-            custom.setName("<a href='/templates/overview/" + s + "'><p class='black'>" + s + "</p></a>");
+            custom.setName("<a href='/templates/get/" + s + "'><p class='black'>" + s + "</p></a>");
             custom.setPosition(i++);
             list.add(custom);
         }
@@ -73,17 +73,17 @@ public class TemplateServiceImpl implements TemplateService{
     @Override
     @Transactional
     public void removeTemplateByName(String name) {
-        if(name == null) return;
+        if(name == null) throw new IllegalArgumentException("Template name equals null =/");
         List<TemplateEntity> entities = templateDao.findTemplateByName(name);
         entities.forEach(templateDao::removeTemplate);
     }
 
     @Override
-    public List<TemplateField> findByTemplateId(int id) {
+    public TemplateEntity findByTemplateId(long id) {
         return templateDao.findByTemplateId(id);
     }
 
-    private List<TemplateField> getList(String name, List<CustomTemplateFieldHolder> fields){
+    private List<TemplateField> getTemplateFieldsList(String name, List<CustomTemplateFieldHolder> fields){
         List<TemplateField> list = new ArrayList<>();
         TemplateEntity templateEntity = new TemplateEntity();
         Date dt = Date.valueOf(LocalDate.now());
@@ -103,7 +103,7 @@ public class TemplateServiceImpl implements TemplateService{
     }
 
     @Override
-    public List<TemplateEntity> findTemplateByName(String name) {
+    public List<TemplateEntity> findTemplatesListByName(String name) {
         return templateDao.findTemplateByName(name);
     }
 

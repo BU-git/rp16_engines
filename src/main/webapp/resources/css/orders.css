@@ -11,7 +11,6 @@
 .info_action, .pdf_action, .del {
     border: none;
     margin: 2px;
-    display: inline;
     width: 32px;
     height: 32px;
     outline: none;
@@ -53,7 +52,6 @@ input{
 #popup_ok{
     box-shadow: 0 0 30px #3A4F43;
     background-color: #F7F7E6;
-    height: 150px;
     width: 300px;
 }
 #popup_ok, #popup_error {
@@ -79,8 +77,10 @@ input{
     float: left;
     background-color: #F7FAED;
 }
-#left_side, #right_side, #right_side_error, #left_side_error{
+#left_side, #right_side, #right_side_error, #left_side_error,#popup_ok{
     height: 150px;
+}
+#left_side, #right_side, #right_side_error, #left_side_error,.info_action, .pdf_action, .del {
     display: inline;
 }
 #right_side_error p{
@@ -107,6 +107,23 @@ input{
     margin-left: auto;
     margin-right: auto;
 }
-#right_side p, #right_side_error p{
+#right_side p, #right_side_error p,#title_banner{
     text-align: center;
+}
+#title_banner p{
+    font-size: 24px;
+    margin: 5px;
+    color: #ACADAD;
+    font-weight: bold;
+}
+#title_banner{
+    box-shadow: 0 0 2px #4F4F4F;
+}
+.tabs{
+    min-height: 600px;
+    box-shadow: 0 1px 2px #4F4F4F;
+}
+.tabs, #title_banner{
+    margin: 0 8px;
+    padding: 4px;
 }

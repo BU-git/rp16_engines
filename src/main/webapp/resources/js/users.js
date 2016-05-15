@@ -180,7 +180,10 @@ $(document).ready(function() {
     };
     var initTable = function(){
         table = $('#example').DataTable({
-            'ajax': '/users/get/all',
+            'ajax': {
+                'url': '/users/all/',
+                'type': 'POST'
+            },
             'columns': [
                 {'data': 'Id'},
                 {'data': 'Name'},
@@ -193,6 +196,10 @@ $(document).ready(function() {
                 "targets": -1,
                 "data": 'Action',
                 "defaultContent": "<button class='edit'></button><button class='del'></button>"
+            }, {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": [5]
             }]
         });
     };

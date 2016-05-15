@@ -69,7 +69,7 @@ $(document).ready(function() {
                 } ],
                 "order": [[1, 'asc' ]]
             });
-        }, 300);
+        }, 100);
     };
     var all_init = function(){
         table_all = $('#table').DataTable({
@@ -121,7 +121,7 @@ $(document).ready(function() {
                 } ],
                 "order": [[1, 'asc' ]]
             });
-        },300);
+        },500);
     };
     var setAction = function(selector){
         var reload;

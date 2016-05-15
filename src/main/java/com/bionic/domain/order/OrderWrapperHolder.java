@@ -1,8 +1,5 @@
 package com.bionic.domain.order;
 
-
-import com.bionic.domain.DataTablesAjaxHolder;
-
 import java.util.List;
 
 public class OrderWrapperHolder {

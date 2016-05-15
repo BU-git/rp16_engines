@@ -44,22 +44,12 @@ public class TemplateDaoImpl implements TemplateDao{
 
     @Override
     public void removeTemplate(TemplateEntity template) {
-        System.out.println("remove template");
         em.remove(template);
     }
 
     @Override
-    public void removeTemplateField(TemplateField field){
-        System.out.println("remove field");
-        em.remove(field);
-    }
-
-    @Override
-    public List<TemplateField> findByTemplateId(int id) {
-        TypedQuery<TemplateField> query = em.createQuery("SELECT tf FROM TemplateField tf WHERE tf.templateEntity.id=:id",
-                TemplateField.class);
-        query.setParameter("id", id);
-        return query.getResultList();
+    public TemplateEntity findByTemplateId(long id) {
+        return em.find(TemplateEntity.class, id);
     }
 
     @Override

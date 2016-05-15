@@ -122,7 +122,7 @@ public class OrderController {
     public String assignTemplate(@PathVariable("id") long id, @RequestParam("name")String name, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
-        List<TemplateEntity> templateEntityList = templateService.findTemplateByName(name);
+        List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
         if (!templateEntityList.isEmpty()) {
             for (TemplateEntity templateEntity : templateEntityList) {
                 if (!templateEntity.isAssigned()) {

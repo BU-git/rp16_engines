@@ -24,7 +24,7 @@ $(document).ready(function() {
     var setAction = function(){
         $('#example').find('tbody').on('click','.del', function(){
             var parent = $(this).parent().parent();
-            delete_name = parent.find("td:nth-child(2)").text();
+            delete_name = parent.find('td:nth-child(2)').text();
             $.when(deleteTemplate(delete_name)).then(function(){
                 setTimeout(function(){
                     table.ajax.reload();
@@ -34,7 +34,10 @@ $(document).ready(function() {
     };
     var initTable = function(){
         table = $('#example').DataTable({
-            'ajax': '/templates/all',
+            'ajax': {
+                'url': '/templates',
+                'type': 'POST'
+            },
             'columns': [
                 {'data':'#'},
                 {'data': 'Name'},
@@ -57,7 +60,7 @@ $(document).ready(function() {
             dataType: "html",
             contentType: 'application/json',
             mimeType: 'application/json',
-            type: "POST",
+            type: 'POST',
             url:url,
             success: function(result){
                 popup_ok.popup('show')

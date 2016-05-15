@@ -30,12 +30,13 @@ public class Test {
     public static void main(String[] args) throws IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         Test test = (Test) context.getBean("test");
-        test.fillTemplates("XTemplate", 15);
+        /*test.fillTemplates("XTemplate", 15);*/
+        test.xmlFileReader.convertFromXMLToObject("4014981.xml");
         /*test.testOrder("Template fucking test");*/
     }
 
     private void testOrder(String name){
-        List<TemplateField> list = templateService.findByTemplateName(name);
+        List<TemplateField> list = templateService.findFieldsByTemplateName(name);
         Collections.sort(list);
         for(TemplateField f: list){
             System.out.println(f);

@@ -3,16 +3,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <script src="<c:url value="/resources/js/jquery-1.12.2.js"/>"></script>
-  <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
-  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-  <script src="<c:url value="/resources/js/template.overview.js"/>"></script>
-  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link href="<c:url value="/resources/css/templateOverview.css"/>" rel="stylesheet" type="text/css">
-  <link href="<c:url value="/resources/css/modified.dataTables.min.css"/>" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
+  <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+  <script src="<spring:url value="/resources/js/modified.dataTables.min.js"/>"></script>
+  <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <script src="<spring:url value="/resources/js/template.overview.js"/>"></script>
+  <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/css/template.overview.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/css/modified.dataTables.min.css"/>" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="<spring:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Template Overview</title>
-  <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <script>
     $(window).load(function() {
@@ -33,7 +33,7 @@
 <div id="left-menu">
   <div class="logo">
     <a href="http://www.kvt.nl/">
-      <img src="<c:url value="/resources/images/logo_kvt.png"/>">
+      <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
     </a>
   </div>
   <div class="left-part-container">
@@ -55,28 +55,28 @@
         </a>
       </li>
       <li class="menu-item">
-        <a href="/orders">
+        <a href="<spring:url value="/orders"/>">
           Orders overview
         </a>
       </li>
       <li class="menu-item">
-        <a href="/templates">
+        <a href="<spring:url value="/templates/new"/>">
           Create template
         </a>
       </li>
       <li class="menu-item">
-        <a href="/templates/overview">
+        <a href="<spring:url value="/templates"/>">
           Templates overview
         </a>
       </li>
       <li class="menu-item">
-        <a href="/register">
+        <a href="<spring:url value="/users/new"/>">
           New User
         </a>
       </li>
       <li class="menu-item">
-        <a href="/users">
-          All Users
+        <a href="<spring:url value="/users/all"/>">
+          Users
         </a>
       </li>
     </ul>
@@ -87,17 +87,17 @@
     <div id="header">
       <div style="position: fixed; top: 0; left: 10px;">
         <a href="<spring:url value="/"/>" id="logo">
-          <img src="../../resources/images/logo.png">
+          <img src="<spring:url value="/resources/images/logo.png"/>">
         </a>
       </div>
       <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
     </div>
     <div id="popup_ok" style="display: none">
-      <div id="left_side"><img src="../../resources/images/templates/ok-icon.png"></div>
+      <div id="left_side"><img src="<spring:url value="/resources/images/templates/ok-icon.png"/>"></div>
       <div id="right_side"><p>Template deleted!</p></div>
     </div>
     <div id="popup_error" style="display: none">
-      <div id="left_side_error"><img src="../../resources/images/templates/error-icon.png"></div>
+      <div id="left_side_error"><img src="<spring:url value="/resources/images/templates/error-icon.png"/>"></div>
       <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
     </div>
     <div id="title_banner"><p>Template Overview</p></div>

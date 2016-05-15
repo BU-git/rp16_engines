@@ -14,9 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="templateFields")
@@ -25,10 +26,11 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @JsonIgnore
-    private int id;
+    private long id;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Field.class, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "field_id")
+    @JsonIgnore
     private Field field;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -36,6 +38,7 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
     private TemplateEntity templateEntity;
 
     @Column(nullable = false, length = 1024)
+    @JsonProperty("elementText")
     private String description;
 
     @Column(nullable = false)
@@ -46,11 +49,16 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
     private Date updateDt;
 
     @Column(length = 1024)
+    @JsonProperty("elementValue")
     private String value;
 
+    @Transient
+    @JsonProperty("elementType")
+    public int getElementType() {
+        return field.getId();
+    }
 
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -78,7 +86,7 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
         return description;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -107,22 +115,8 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
     }
 
     @Override
-    public String toString() {
-        return "******TemplateField {" +
-                "id=" + id +
-                ", field=" + field +
-                ", templateEntity_id=" + templateEntity.getId() +
-                ", templateEntity='"+ templateEntity+
-                ", description='" + description + '\'' +
-                ", createDt=" + createDt +
-                ", updateDt=" + updateDt +
-                ", value='" + value + '\'' +
-                '}';
-    }
-
-    @Override
-    public int compareTo(TemplateField o) {
-        if(o == null) return -1;
+    public int compareTo(TemplateField  o) {
+        if(o == null) return 1;
         if(o.getId() == this.id) return 0;
         return this.id > o.getId() ? 1 : -1 ;
     }

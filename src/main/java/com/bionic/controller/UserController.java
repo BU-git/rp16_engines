@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.bionic.domain.DataTablesAjaxHolder;
 import com.bionic.domain.Role;
 import com.bionic.domain.User;
 import com.bionic.domain.user.UserWrapper;
@@ -28,12 +27,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/register")
+    @RequestMapping(path = "/users/new", method = RequestMethod.GET)
     public String getPage(ModelMap model){
         return !model.containsAttribute("loggedInUser") ? "redirect:login": "/registration";
     }
 
-    @RequestMapping(path = "/register/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/users/new", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> register(@RequestBody UserWrapper user, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
@@ -48,19 +47,20 @@ public class UserController {
         return ResponseEntity.ok("ok");
     }
 
-    @RequestMapping(path = "/users/get/all")
+    @RequestMapping(path = "/users/all", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<DataTablesAjaxHolder> getListOfAllTemplatesForDataTables(ModelMap model) {
+    public ResponseEntity<UserWrapperHolder> getListOfAllTemplatesForDataTables(ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         UserWrapperHolder holder = new UserWrapperHolder();
         holder.setData(userService.findAllForDataTables());
         return ResponseEntity.ok(holder);
     }
 
-    @RequestMapping(path = "/users")
+    @RequestMapping(path = "/users/all", method = RequestMethod.GET)
     public String showAllUsers(ModelMap model){
         return !model.containsAttribute("loggedInUser") ? "redirect:/login": "users";
     }
+
     @RequestMapping(value = "/users/update/", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<String> receiveTemplate(@RequestBody UserWrapper u, ModelMap model){
@@ -75,7 +75,7 @@ public class UserController {
         return ResponseEntity.ok("ok");
     }
 
-    @RequestMapping(value = "users/remove/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/remove/{id}", method = RequestMethod.POST)
     public ResponseEntity<String> deleteTemplateByName(ModelMap model, @PathVariable("id") long id){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
         try {

@@ -13,15 +13,13 @@ public interface TemplateDao {
 
     void save(TemplateField t);
 
-    List<TemplateField> findByTemplateId(int id);
+    TemplateEntity findByTemplateId(long id);
 
     List<String> findAllTemplateNames();
 
     List<TemplateField> findFieldsByTemplateName(String name);
 
     void removeTemplate(TemplateEntity template);
-
-    void removeTemplateField(TemplateField field);
 
     List<TemplateEntity> findTemplateByName(String name);
 

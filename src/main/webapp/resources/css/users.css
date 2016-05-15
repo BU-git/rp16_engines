@@ -168,7 +168,10 @@ label{
     box-shadow: 0 0 30px #3A4F43;
     background-color: #F7F7E6;
 }
-#popup_ok, #popup_error, input, input:focus {
+input, input:focus {
+    border-radius: 2px;
+}
+#popup_ok, #popup_error{
     border-radius: 4px;
 }
 #popup_ok table, #popup_error, #left_side img, #left_side_error img{
