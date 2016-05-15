@@ -27,7 +27,6 @@
   <span class='bar bar-2'></span>
   <span class='bar bar-3'></span>
 </div>
-
 <div id="left-menu">
   <div class="logo">
     <a href="http://www.kvt.nl/">
@@ -120,6 +119,7 @@
       <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
     </div>
     <div id="container">
+      <input type="hidden" id="count" value="${count}">
       <div id="main_screen">
         <table id="main_table">
           <tr><td colspan="2">
@@ -171,7 +171,68 @@
                 </tr>
               </table>
             </td>
-            <td id="prev"><div id="auto_scroll"><table class="prev"></table></div></td>
+            <td id="prev">
+              <div id="auto_scroll">
+              <table class="prev">
+                <% int a = 1; %>
+                <c:if test="${fields.size() > 0}">
+                  <c:forEach var="f" items="${fields}">
+                    <c:if test="${f.field.id == 1}">
+                      <tr class="prev_element" id="row<% out.print(a); %>">
+                        <td class="action">
+                          <button class="delete" id="delete<% out.print(a); %>" value="<% out.print(a); %>"></button>
+                          <button class="edit_popup_open" value="<% out.print(a); %>" id="edit<% out.print(a); %>"></button>
+                        </td>
+                        <td>
+                          <label><span  id="fieldDescription<% out.print(a); %>">${f.description}</span>
+                            <input class="textField" placeholder="Text Field" readonly type="text"></label>
+                          <span hidden id="fieldType<% out.print(a++); %>">text field</span>
+                        </td>
+                      </tr>
+                    </c:if>
+                    <c:if test="${f.field.id == 2}">
+                      <tr class="prev_element" id="row<% out.print(a); %>">
+                        <td class="action">
+                          <button class="delete" id="delete<% out.print(a); %>" value="<% out.print(a); %>"></button>
+                          <button class="edit_popup_open" id="edit<% out.print(a); %>" value="<% out.print(a); %>"></button>
+                        </td>
+                        <td>
+                          <input class="checkBoxField" type="checkbox" checked onclick="return false">
+                          <label id="fieldDescription<% out.print(a); %>">${f.description}</label>
+                          <span hidden id="fieldType<% out.print(a++); %>">check box</span>
+                        </td>
+                      </tr>
+                    </c:if>
+                    <c:if test="${f.field.id == 3}">
+                      <tr class="prev_element" id="row<% out.print(a); %>">
+                        <td class="action">
+                          <button class="delete" id="delete<% out.print(a); %>" value="<% out.print(a); %>"></button>
+                          <button class="edit_popup_open" id="edit<% out.print(a); %>" value="<% out.print(a); %>"></button>
+                        </td>
+                        <td>
+                          <label><span  id="fieldDescription<% out.print(a); %>">${f.description}</span>
+                            <textarea rows="3" readonly class="textArea" placeholder="Text Area"></textarea></label>
+                          <span hidden id="fieldType<% out.print(a++); %>">text area</span>
+                        </td>
+                      </tr>
+                    </c:if>
+                    <c:if test="${f.field.id == 4}">
+                      <tr class="prev_element" id="row<% out.print(a); %>">
+                        <td class="action">
+                          <button class="delete" id="delete<% out.print(a); %>" value="<% out.print(a); %>"></button>
+                          <button class="edit_popup_open" id="edit<% out.print(a); %>" value="<% out.print(a); %>"></button>
+                        </td>
+                        <td>
+                          <label id="fieldDescription<% out.print(a); %>">${f.description}</label>
+                          <span hidden id="fieldType<% out.print(a++); %>">text area</span>
+                        </td>
+                      </tr>
+                    </c:if>
+                  </c:forEach>
+                </c:if>
+              </table>
+            </div>
+            </td>
           </tr>
           <tr><td></td><td id="footer">
             <ul id="footer_list">

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.bionic.domain.template.TemplateField;
 import com.bionic.domain.template.web.CustomTemplateFieldList;
 import com.bionic.domain.template.web.CustomTemplateHolder;
 import com.bionic.domain.template.web.CustomTemplateNameFront;
@@ -29,13 +31,22 @@ public class TemplateController {
     private TemplateService templateService;
 
     @RequestMapping(value = "/templates/new", method = RequestMethod.GET)
-    public String templatesPage(ModelMap model){
+    public String createTemplatePage(ModelMap model){
         return !model.containsAttribute("loggedInUser") ? "redirect:/login" : "/templates";
+    }
+
+    @RequestMapping(value = "/templates/new", method = RequestMethod.POST)
+    public String editTemplatePage(@RequestParam String name, ModelMap model){
+        if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
+        List<TemplateField> list = templateService.findFieldsByTemplateName(name);
+        model.addAttribute("fields", list);
+        model.addAttribute("count", list.size());
+        return "/templates";
     }
 
     @RequestMapping(path = "/templates/save", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<String> receiveTemplate(@RequestBody CustomTemplateFieldList fields, ModelMap model){
+    public ResponseEntity<String> saveTemplate(@RequestBody CustomTemplateFieldList fields, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.ok("redirect:/login");
         try {
             templateService.save(fields.getTemplateName(), fields.getFields(), true);

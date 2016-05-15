@@ -119,7 +119,7 @@ public class Order implements Serializable, Comparable<Order>{
     @JsonIgnore
     private String pdfLink;
 
-    private long template_id;
+    private long customTemplateID;
 
     @XmlElementWrapper(name = "ExtraInfo")
     @XmlElement(name = "Info", type = Info.class)
@@ -273,12 +273,12 @@ public class Order implements Serializable, Comparable<Order>{
         this.pdfLink = pdfLink;
     }
 
-    public long getTemplate_id() {
-        return template_id;
+    public long getCustomTemplateID() {
+        return customTemplateID;
     }
 
-    public void setTemplate_id(long template_id) {
-        this.template_id = template_id;
+    public void setCustomTemplateID(long customTemplateID) {
+        this.customTemplateID = customTemplateID;
     }
 
     @Override

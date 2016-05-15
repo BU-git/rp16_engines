@@ -22,7 +22,8 @@ $(document).ready(function() {
         transition: 'all 0.3s'
     });
     var setAction = function(){
-        $('#example').find('tbody').on('click','.del', function(){
+        var ex = $('#example');
+        ex.find('tbody').on('click','.del', function(){
             var parent = $(this).parent().parent();
             delete_name = parent.find('td:nth-child(2)').text();
             $.when(deleteTemplate(delete_name)).then(function(){
@@ -30,6 +31,10 @@ $(document).ready(function() {
                     table.ajax.reload();
                 }, 600);
             });
+        });
+        ex.find('tbody').on('click','.edit', function(){
+            var parent = $(this).parent().parent();
+            post2blank('/templates/new', parent.find('td:nth-child(2)').text())
         });
     };
     var initTable = function(){
@@ -46,7 +51,7 @@ $(document).ready(function() {
             "columnDefs": [ {
                 "targets": -1,
                 "data": 'Action',
-                "defaultContent": "<button class='del'></button>"
+                "defaultContent": "<button class='edit'></button><button class='del'></button>"
             }, {
             "searchable": false,
             "orderable": false,
@@ -70,5 +75,11 @@ $(document).ready(function() {
             }
         })
     };
+    function post2blank(url, name)
+    {   var myform = '<form id="temporary_form" hidden action="' +url+ '" method="POST">' +
+        '<input type="text" name="name" value="'+name+'"></form>';
+        $(myform).appendTo('body').submit();
+        $('#temporary_form').remove();
+    }
     $.when(initTable()).then(setAction());
 });

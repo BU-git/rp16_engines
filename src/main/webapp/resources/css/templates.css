@@ -102,8 +102,8 @@ td.action{
 }
 button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open, #label{
     overflow: hidden;
-    width: 30px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
 }
 .prev td input[type='text'],.textField, .textArea, .prev td textarea{
     width: 400px;
@@ -112,7 +112,7 @@ button#text_field, #check_box, #text_area, button.delete, button.edit_popup_open
     text-align: left;
     max-width: 410px;
 }
-.edit_popup_open, .delete, .prev_element, #my_popup, #edit_popup, #popup_error, #popup_ok{
+.edit_popup_open, .delete,#my_popup, #edit_popup, #popup_error, #popup_ok{
     display: none;
 }
 button#text_field, #check_box, #text_area, #label{
@@ -190,7 +190,7 @@ button#edit_button:hover{
 #prev,#my_popup ul,#edit_popup ul{
     background-color: white;
 }
-.row td{
+.prev_element td{
     padding-bottom: 20px;
 }
 #my_popup button,#edit_popup button{
@@ -249,9 +249,6 @@ ul li,#my_popup ul, #edit_popup ul{
 .hd_main, .hd{
     border-radius: 2px 2px 0 0;
     text-transform: uppercase;
-}
-#main_screen{
-    height: 100%;
 }
 #main_table{
     border-spacing: 0;
