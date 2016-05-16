@@ -129,7 +129,7 @@
                     <br>
                     <!-- The global progress bar -->
                     <div id="progress" class="progress">
-                        <div class="progress-bar" id="progress-bar">%</div>
+                        <div class="progress-bar" id="progress-bar"></div>
                     </div>
                     <p class="message"><span id="message"></span></p>
                     <!-- The container for the uploaded files -->
