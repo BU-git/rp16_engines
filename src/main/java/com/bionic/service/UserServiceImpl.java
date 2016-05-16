@@ -27,7 +27,6 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	public static String fromAdress = "kvttest2016@gmail.com";
-	public static String userAddress = "fantom_9119@mail.ru";
 	public static String adminAddress = "fantom_9119@mail.ru";
 
 
@@ -36,13 +35,8 @@ public class UserServiceImpl implements UserService {
 		if (user == null) return null;
 		if (user.getRole() != Role.ADMIN) return null;
 		String salt = user.getSalt();
-		System.err.println(salt);
 		String passwordHash = user.getPasswordHash();
-		System.err.println(password);
-		System.err.println(passwordHash);
 		String passwordHashFromPage = PasswordEncoder.getInstance().encode(password, salt);
-		System.err.println(passwordHashFromPage);
-		System.err.println("Almost!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return (passwordHash.equals(passwordHashFromPage)) ? user : null;
 	}
 
@@ -128,17 +122,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void restorePassword(User user, String newPassword) {
 		String userText = "Login: " + user.getEmail() + ";\nNew password: " + newPassword + ".";
-		//sendMessage(userAddress, userText);
+		sendMessage(user.getEmail(), userText);
 
 		String adminText = "User: " + user.getName() + "(" + user.getEmail() + ")" + "restored his password. \n" +
 				"User's new password: " + newPassword;
-		//sendMessage(adminAddress, adminText);
+		sendMessage(adminAddress, adminText);
 	}
 
 	private void sendMessage(String email, String text) {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom(fromAdress);
-		message.setTo(userAddress);
+		message.setTo(email);
 		message.setSubject("New Password!");
 		message.setText(text);
 		mailSender.send(message);
