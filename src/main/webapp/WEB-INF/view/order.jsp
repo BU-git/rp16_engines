@@ -133,6 +133,17 @@
                          <td>Email:</td>
                          <td>${order.employee.email}</td>
                      </tr>
+                     <tr>
+                         <td>Template ID:</td>
+                         <c:if test="${order.customTemplateID == 0}">
+                             <td>no template</td>
+                         </c:if>
+                         <c:if test="${order.customTemplateID != 0}">
+                             <td>${order.customTemplateID}</td>
+                         </c:if>
+                         <td></td>
+                         <td></td>
+                     </tr>
                 </table>
             </div>
             <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">

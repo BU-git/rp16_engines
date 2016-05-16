@@ -16,13 +16,6 @@ public class TemplateDaoImpl implements TemplateDao{
     private EntityManager em;
 
     @Override
-    public void saveTemplate(TemplateEntity template) {
-        if (template.getId() == 0)
-        em.persist(template);
-        else em.merge(template);
-    }
-
-    @Override
     public void save(TemplateField t) {
         em.persist(t);
     }

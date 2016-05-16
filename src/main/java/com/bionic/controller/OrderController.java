@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -124,17 +125,9 @@ public class OrderController {
         Order order = orderService.findById(id);
         List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
         if (!templateEntityList.isEmpty()) {
-            for (TemplateEntity templateEntity : templateEntityList) {
-                if (!templateEntity.isAssigned()) {
-                    templateEntity.setAssigned(true);
-                    templateService.saveTemplate(templateEntity);
-                    order.setCustomTemplateID(templateEntity.getId());
-                    orderService.save(order);
-                    return "redirect:/orders/{id}";
-                }
-            }
-            TemplateEntity temp = templateService.cloneTemplate(templateEntityList.get(0));
-            order.setCustomTemplateID(temp.getId());
+            TemplateEntity template = templateEntityList.get(0);
+            order.setCustomTemplateID(template.getId());
+            order.setLastServerChangeDate(new Date());
             orderService.save(order);
         }
         return "redirect:/orders/{id}";

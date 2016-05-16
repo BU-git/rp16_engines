@@ -9,8 +9,6 @@ import com.bionic.domain.template.TemplateField;
 
 public interface TemplateDao {
 
-    void saveTemplate(TemplateEntity template);
-
     void save(TemplateField t);
 
     TemplateEntity findByTemplateId(long id);
