@@ -32,6 +32,12 @@ public class TemplateServiceImpl implements TemplateService{
 
     @Override
     @Transactional
+    public void saveTemplate(TemplateEntity temp) {
+        templateDao.saveTemplate(temp);
+    }
+
+    @Override
+    @Transactional
     public void save(String name, List<CustomTemplateFieldHolder> fields, boolean fromWeb) {
         if(fromWeb && templateDao.findTemplateByName(name).size() > 0) throw new IllegalArgumentException();
         getTemplateFieldsList(name, fields).forEach(templateDao::save);
@@ -101,4 +107,8 @@ public class TemplateServiceImpl implements TemplateService{
         return templateDao.findTemplateByName(name);
     }
 
+    @Override
+    public List<TemplateEntity> findAllTemplates() {
+       return templateDao.findAll();
+    }
 }

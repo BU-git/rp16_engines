@@ -38,17 +38,13 @@
     border-right: none;
 }
 
-#select-form li {
-    float: left;
-    list-style-type: none;
-}
-
-#select-form form {
-    display: block;
-    padding-top: 50px;
+#select-form {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40px;
     padding-bottom: 20px;
 }
 
-#select-form li:last-child {
-    margin-left: 50px;
+#select-form td:last-child {
+    padding-left: 40px;
 }

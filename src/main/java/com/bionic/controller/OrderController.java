@@ -98,7 +98,7 @@ public class OrderController {
         model.addAttribute("order",order);
         List<User> userList = userService.getAllUsers();
         model.addAttribute("allUsers", userList);
-        List<String> templateList = templateService.findAll();
+        List<TemplateEntity> templateList = templateService.findAllTemplates();
         model.addAttribute("allTemplates", templateList);
         return "order";
     }
@@ -123,12 +123,21 @@ public class OrderController {
     public String assignTemplate(@PathVariable("id") long id, @RequestParam("name")String name, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
-        List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
-        if (!templateEntityList.isEmpty()) {
-            TemplateEntity template = templateEntityList.get(0);
-            order.setCustomTemplateID(template.getId());
+        if (name.equals("default")) {
             order.setLastServerChangeDate(new Date());
+            order.setCustomTemplateID(0);
             orderService.save(order);
+        }
+        else {
+            List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
+            if (!templateEntityList.isEmpty()) {
+                TemplateEntity template = templateEntityList.get(0);
+                template.setAssigned(true);
+                templateService.saveTemplate(template);
+                order.setCustomTemplateID(template.getId());
+                order.setLastServerChangeDate(new Date());
+                orderService.save(order);
+            }
         }
         return "redirect:/orders/{id}";
     }
