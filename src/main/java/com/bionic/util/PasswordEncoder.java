@@ -37,9 +37,16 @@ public class PasswordEncoder {
         return null;
     }
 
-    public static synchronized String nextSALT() {
+    public synchronized String nextSALT() {
         StringBuilder sb = new StringBuilder(32);
         for( int i = 0; i < 32; i++ )
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        return sb.toString();
+    }
+
+    public synchronized String createPassword(int chars) {
+        StringBuilder sb = new StringBuilder(chars);
+        for( int i = 0; i < chars; i++ )
             sb.append(AB.charAt(rnd.nextInt(AB.length())));
         return sb.toString();
     }

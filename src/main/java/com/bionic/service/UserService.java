@@ -15,4 +15,5 @@ public interface UserService {
 	List<User> findByEmail(String email);
 	User findById(long id);
 	List<UserWrapper> findAllForDataTables();
+	void restorePassword(User user, String newPassword);
 }

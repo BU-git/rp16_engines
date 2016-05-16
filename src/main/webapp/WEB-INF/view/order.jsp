@@ -133,11 +133,27 @@
                          <td>Email:</td>
                          <td>${order.employee.email}</td>
                      </tr>
+                     <tr>
+                         <td>Template name:</td>
+                         <c:if test="${order.customTemplateID == 0}">
+                             <td>Default template</td>
+                         </c:if>
+                         <c:if test="${order.customTemplateID != 0}">
+                             <c:forEach var="temp" items="${allTemplates}">
+                                 <c:if test="${order.customTemplateID == temp.id}">
+                                     <td>${temp.templateName}</td>
+                                 </c:if>
+                             </c:forEach>
+                         </c:if>
+                         <td>Template ID:</td>
+                         <td>${order.customTemplateID}</td>
+                     </tr>
                 </table>
             </div>
             <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
-                  <ul id="select-form">
-                      <li>
+                  <table id="select-form">
+                      <tr>
+                      <td>
                       <form method="post" action="/assignEmployee/${order.number}">
                           <select name="email" required>
                               <option value="" disabled selected>Select employee</option>
@@ -147,19 +163,21 @@
                           </select>
                           <input type="submit" value="Change" />
                       </form>
-                      </li>
-                      <li>
+                      </td>
+                      <td>
                       <form method="post" action="/assignTemplate/${order.number}">
                           <select name="name" required>
                                <option value="" disabled selected>Select template</option>
+                               <option value="default">Default template</option>
                                <c:forEach var="temp" items="${allTemplates}">
-                                   <option value="${temp}">${temp}</option>
+                                   <option value="${temp.templateName}">${temp.templateName}</option>
                                </c:forEach>
                           </select>
                           <input type="submit" value="Change" />
                       </form>
-                      </li>
-                  </ul>
+                      </td>
+                      </tr>
+                  </table>
             </c:if>
         </div>
     </div>

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -97,7 +98,7 @@ public class OrderController {
         model.addAttribute("order",order);
         List<User> userList = userService.getAllUsers();
         model.addAttribute("allUsers", userList);
-        List<String> templateList = templateService.findAll();
+        List<TemplateEntity> templateList = templateService.findAllTemplates();
         model.addAttribute("allTemplates", templateList);
         return "order";
     }
@@ -122,20 +123,21 @@ public class OrderController {
     public String assignTemplate(@PathVariable("id") long id, @RequestParam("name")String name, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
-        List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
-        if (!templateEntityList.isEmpty()) {
-            for (TemplateEntity templateEntity : templateEntityList) {
-                if (!templateEntity.isAssigned()) {
-                    templateEntity.setAssigned(true);
-                    templateService.saveTemplate(templateEntity);
-                    order.setCustomTemplateID(templateEntity.getId());
-                    orderService.save(order);
-                    return "redirect:/orders/{id}";
-                }
-            }
-            TemplateEntity temp = templateService.cloneTemplate(templateEntityList.get(0));
-            order.setCustomTemplateID(temp.getId());
+        if (name.equals("default")) {
+            order.setLastServerChangeDate(new Date());
+            order.setCustomTemplateID(0);
             orderService.save(order);
+        }
+        else {
+            List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
+            if (!templateEntityList.isEmpty()) {
+                TemplateEntity template = templateEntityList.get(0);
+                template.setAssigned(true);
+                templateService.saveTemplate(template);
+                order.setCustomTemplateID(template.getId());
+                order.setLastServerChangeDate(new Date());
+                orderService.save(order);
+            }
         }
         return "redirect:/orders/{id}";
     }
@@ -144,7 +146,9 @@ public class OrderController {
     public String downloadOrder(@PathVariable long id, HttpServletResponse response, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
-        boolean exist = Files.exists(Paths.get(order.getPdfLink()));
+        String link = order.getPdfLink();
+        if (link == null) return "orders";
+        boolean exist = Files.exists(Paths.get(link));
         if (exist) {
             File pdf = new File(order.getPdfLink());
             try {

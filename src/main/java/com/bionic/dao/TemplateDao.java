@@ -9,7 +9,7 @@ import com.bionic.domain.template.TemplateField;
 
 public interface TemplateDao {
 
-    void saveTemplate(TemplateEntity template);
+    void saveTemplate(TemplateEntity temp);
 
     void save(TemplateField t);
 
@@ -22,5 +22,7 @@ public interface TemplateDao {
     void removeTemplate(TemplateEntity template);
 
     List<TemplateEntity> findTemplateByName(String name);
+
+    List<TemplateEntity> findAll();
 
 }

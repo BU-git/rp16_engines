@@ -10,7 +10,7 @@ import com.bionic.domain.template.TemplateField;
 
 public interface TemplateService {
 
-    void saveTemplate(TemplateEntity template);
+    void saveTemplate (TemplateEntity temp);
 
     void save(String name, List<CustomTemplateFieldHolder> fields, boolean fromWeb);
 
@@ -26,6 +26,6 @@ public interface TemplateService {
 
     List<TemplateEntity> findTemplatesListByName(String name);
 
-    TemplateEntity cloneTemplate(TemplateEntity templateEntity);
+    List<TemplateEntity> findAllTemplates();
 
 }

@@ -32,8 +32,8 @@ public class TemplateServiceImpl implements TemplateService{
 
     @Override
     @Transactional
-    public void saveTemplate(TemplateEntity template) {
-        templateDao.saveTemplate(template);
+    public void saveTemplate(TemplateEntity temp) {
+        templateDao.saveTemplate(temp);
     }
 
     @Override
@@ -108,22 +108,7 @@ public class TemplateServiceImpl implements TemplateService{
     }
 
     @Override
-    @Transactional
-    public TemplateEntity cloneTemplate(TemplateEntity templateEntity) {
-        TemplateEntity temp = new TemplateEntity();
-        temp.setAssigned(true);
-        temp.setTemplateName(templateEntity.getTemplateName());
-        List<TemplateField> templateFields = new ArrayList<>();
-        for (TemplateField field : templateEntity.getFields()) {
-            TemplateField tempField = new TemplateField();
-            tempField.setDescription(field.getDescription());
-            tempField.setCreateDt(field.getCreateDt());
-            tempField.setTemplateEntity(templateDao.findTemplateByName(field.getTemplateEntity().getTemplateName()).get(0));
-            tempField.setField(fieldDao.findByType(field.getField().getType()).get(0));
-            templateFields.add(tempField);
-        }
-        temp.setFields(templateFields);
-        templateDao.saveTemplate(temp);
-        return temp;
+    public List<TemplateEntity> findAllTemplates() {
+       return templateDao.findAll();
     }
 }

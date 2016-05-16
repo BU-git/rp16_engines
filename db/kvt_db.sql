@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `kvt_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `kvt_db`;
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: kvt_db
 -- ------------------------------------------------------
--- Server version	5.7.8-rc-log
+-- Server version	5.7.11-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -387,7 +389,7 @@ CREATE TABLE `templatefields` (
   KEY `FKi3i54ygdsttdgqhfaisjw5atk` (`templateEntity_id`),
   CONSTRAINT `FK8s9kbbg0btub0hocrbb2vsr9i` FOREIGN KEY (`field_id`) REFERENCES `fields` (`id`),
   CONSTRAINT `FKi3i54ygdsttdgqhfaisjw5atk` FOREIGN KEY (`templateEntity_id`) REFERENCES `templates` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,6 +398,7 @@ CREATE TABLE `templatefields` (
 
 LOCK TABLES `templatefields` WRITE;
 /*!40000 ALTER TABLE `templatefields` DISABLE KEYS */;
+INSERT INTO `templatefields` VALUES (1,'2016-05-15','f1',NULL,NULL,1,1),(2,'2016-05-15','f2',NULL,NULL,2,1),(3,'2016-05-15','f3',NULL,NULL,3,1);
 /*!40000 ALTER TABLE `templatefields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,7 +414,7 @@ CREATE TABLE `templates` (
   `assigned` bit(1) NOT NULL,
   `templateName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -420,6 +423,7 @@ CREATE TABLE `templates` (
 
 LOCK TABLES `templates` WRITE;
 /*!40000 ALTER TABLE `templates` DISABLE KEYS */;
+INSERT INTO `templates` VALUES (1,'\0','T1');
 /*!40000 ALTER TABLE `templates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -451,6 +455,14 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'admin@kvt.nl','Bob van Holland',111223,'0ff7a384cd97cec0f2f9c7affcabd45b263b9c10b5c18a1f98811bd4371b6f7c',0,'rzsibU4J0umgNVXojujF26NTNilk5Wek'),(4,'rvrooy@kvt.nl','Rooij R. van',111223,'d13e4d49537a910a5b9f0a19be74ece86cd89ca0a2e2c492290ea203abe744df',1,'Gwbhsjki2BpE1AhGaCTqDnp286t9oUzJ'),(5,'sbesselink@kvt.nl','Besselink S.T.M.',111223,'6b1efebde99cb977e45a9939ae7ccf769773562f645401dadc0d8e758aaa15b3',1,'nhcQe6UBpzC7kxIA6HAAydLxrqnu0VKa'),(6,'rvdmeer@kvt.nl','Meer van der R.A.',111223,'ef1d8ec8ea1af3556a9b2d3d57bbc463ea2cd0b7f5bb3121f3291e1ca37cb98c',1,'jW5JoBZLSF79x7cAQERrEuLnBY0PmBUL');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'kvt_db'
+--
+
+--
+-- Dumping routines for database 'kvt_db'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -461,4 +473,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-15 21:08:59
+-- Dump completed on 2016-05-15 22:17:22
