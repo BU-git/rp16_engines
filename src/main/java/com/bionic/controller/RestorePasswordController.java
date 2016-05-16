@@ -25,9 +25,14 @@ public class RestorePasswordController {
         if (!users.isEmpty()) {
             User user = users.get(0);
             if (user.getPasswordHash().equals(key)) {
-                userService.restorePassword(email);
+                PasswordEncoder creator = PasswordEncoder.getInstance();
+                String newPassword = creator.createPassword(7);
+                userService.restorePassword(user, newPassword);
+
+                user.setPasswordHash(newPassword);
+                userService.save(user);
+                return new ResponseEntity<>(HttpStatus.OK);
             }
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
