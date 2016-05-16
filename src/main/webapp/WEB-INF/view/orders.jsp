@@ -7,24 +7,38 @@
 <head>
     <title>Orders</title>
     <meta charset="utf-8">
-    <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
-    <script src="<spring:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
-    <script src="<spring:url value="/resources/js/jquery.tabslet.min.js"/>"></script>
-    <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-    <script src="<spring:url value="/resources/js/orders.js"/>"></script>
-    <link href="<spring:url value="/resources/css/tabslet.css"/>" rel="stylesheet" type="text/css">
-    <link href="<spring:url value="/resources/css/orders.css"/>" rel="stylesheet" type="text/css">
-    <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-    <link href="<spring:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
-    <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
-    <link href="<spring:url value="/resources/css/dataTables.css"/>" rel="stylesheet" type="text/css">
+    <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+    <script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
+    <script src="<c:url value="/resources/js/jquery.tabslet.min.js"/>"></script>
+    <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+    <script src="../../resources/js/jquery.ui.widget.js"></script>
+    <script src="../../resources/js/jquery.iframe-transport.js"></script>
+    <script src="../../resources/js/jquery.fileupload.js"></script>
+    <script src="<c:url value="/resources/js/orders.js"/>"></script>
+    <script src="<c:url value="/resources/js/upload.js"/>"></script>
+    <link href="<c:url value="/resources/css/dashboard.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/tabslet.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/orders.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
+    <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/dataTables.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/upload/jquery.fileupload.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/upload/jquery.fileupload-ui.css"/>" rel="stylesheet" type="text/css">
     <script>
         $(window).load(function() {
             $('#menu-toggle')
                     .click(function(){
                         $('body').toggleClass('menu-on');
                     });
+
         });
+        function allowDrop(event){
+            $('.upload').css('border','dashed 3px #cccdce');
+        }
+        function leaveDrop(event){
+            $('.upload').css('border','dashed 1px #cccdce')
+        }
     </script>
 </head>
 <body>
@@ -37,12 +51,12 @@
 <div id="left-menu">
     <div class="logo">
         <a href="http://www.kvt.nl/">
-            <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
+            <img src="<c:url value="/resources/images/logo_kvt.png"/>">
         </a>
     </div>
     <div class="left-part-container">
         <div class="left-part">
-            <a href="<spring:url value="/logout"/>">
+            <a href="<c:url value="/logout"/>">
                 <div class="button">
                     Logout
                 </div>
@@ -105,62 +119,79 @@
                 <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
             </div>
             <div id="title_banner"><p>Orders</p></div>
-            <div class='tabs'>
-                <ul>
-                    <li><a id="all" href="#tab-1">All Orders</a></li>
-                    <li><a id="not_comtleted" href="#tab-2">Not Completed</a></li>
-                    <li><a id="completed" href="#tab-3">Completed</a></li>
-                </ul>
-                <div id='tab-1'>
-                    <table id="table" align="center" class="display" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>Order number</th>
-                        <th>Service date</th>
-                        <th>Status</th>
-                        <th>Installation</th>
-                        <th>Task</th>
-                        <th>Address</th>
-                        <th class="action">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody align="center">
-                    </tbody>
-                </table>
+            <div class="content-place">
+                <div class="upload" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="leaveDrop(event)">
+                    <span class="btn btn-success fileinput-button">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>Upload XML orders..</span>
+                        <input id="fileupload" type="file" name="files[]" multiple accept="application/xml">
+                    </span>
+                    <br>
+                    <!-- The global progress bar -->
+                    <div id="progress" class="progress">
+                        <div class="progress-bar" id="progress-bar">%</div>
+                    </div>
+                    <p class="message"><span id="message"></span></p>
+                    <!-- The container for the uploaded files -->
+                    <div id="files" class="files"></div>
                 </div>
-                <div id='tab-2'>
-                    <table align="center" id="not_completed_table" class="display" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th>Order number</th>
-                            <th>Service date</th>
-                            <th>Status</th>
-                            <th>Installation</th>
-                            <th>Task</th>
-                            <th>Address</th>
-                            <th class="action">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody align="center">
-                        </tbody>
-                    </table>
-                </div>
-                <div id='tab-3'>
-                    <table align="center" id="completed_table" class="display" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th>Order number</th>
-                            <th>Service date</th>
-                            <th>Status</th>
-                            <th>Installation</th>
-                            <th>Task</th>
-                            <th>Address</th>
-                            <th class="action">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody align="center">
-                        </tbody>
-                    </table>
+                <div class='tabs'>
+                    <ul>
+                        <li><a id="all" href="#tab-1">All Orders</a></li>
+                        <li><a id="not_comtleted" href="#tab-2">Not Completed</a></li>
+                        <li><a id="completed" href="#tab-3">Completed</a></li>
+                    </ul>
+                    <div id='tab-1'>
+                        <table id="table" align="center" class="display" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Order number</th>
+                                <th>Service date</th>
+                                <th>Status</th>
+                                <th>Installation</th>
+                                <th>Task</th>
+                                <th>Address</th>
+                                <th class="action">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody align="center">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id='tab-2'>
+                        <table align="center" id="not_completed_table" class="display" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Order number</th>
+                                <th>Service date</th>
+                                <th>Status</th>
+                                <th>Installation</th>
+                                <th>Task</th>
+                                <th>Address</th>
+                                <th class="action">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody align="center">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id='tab-3'>
+                        <table align="center" id="completed_table" class="display" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Order number</th>
+                                <th>Service date</th>
+                                <th>Status</th>
+                                <th>Installation</th>
+                                <th>Task</th>
+                                <th>Address</th>
+                                <th class="action">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody align="center">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

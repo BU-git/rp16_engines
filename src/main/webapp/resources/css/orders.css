@@ -119,11 +119,118 @@ input{
 #title_banner{
     box-shadow: 0 0 2px #4F4F4F;
 }
-.tabs{
+.content-place{
     min-height: 600px;
     box-shadow: 0 1px 2px #4F4F4F;
 }
-.tabs, #title_banner{
+.content-place, #title_banner{
     margin: 0 8px;
     padding: 4px;
+}
+#progress-bar{
+    margin: 0;
+    padding: 0;
+    color: white;
+    height: 22px;
+    width: 0;
+    background-color: #374670;
+    background-image: -moz-linear-gradient(top, #4972ae, #374670);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4972ae), to(#374670));
+    background-image: -webkit-linear-gradient(top, #4972ae, #374670);
+    background-image: -o-linear-gradient(top, #4972ae, #374670);
+    background-image: linear-gradient(to bottom, #4972ae, #374670);
+}
+.progress {
+    margin-top: 5px;
+    height: 20px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9);
+    background-repeat: repeat-x;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.progress .bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #0e90d2;
+    background-image: -moz-linear-gradient(top, #149bdf, #0480be);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));
+    background-image: -webkit-linear-gradient(top, #149bdf, #0480be);
+    background-image: -o-linear-gradient(top, #149bdf, #0480be);
+    background-image: linear-gradient(to bottom, #149bdf, #0480be);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: width 0.6s ease;
+    -moz-transition: width 0.6s ease;
+    -o-transition: width 0.6s ease;
+    transition: width 0.6s ease;
+}
+
+.progress .bar + .bar {
+    -webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+.progress.active .bar {
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -moz-animation: progress-bar-stripes 2s linear infinite;
+    -ms-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
+}
+.fileinput-button{
+    color: white;
+    border-radius: 2px;
+    padding: 9px;
+    margin-bottom: 0;
+    background-image: linear-gradient(to bottom, #4972ae, #374670);
+}
+.fileinput-button:hover{
+    cursor: pointer;
+    transition: 0.3s;
+    background-image: linear-gradient(to bottom, #6985a5, #4c6381);
+}
+.upload{
+    border: dashed 1px #cccdce;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4px;
+    padding: 10px;
+    min-width: 500px;
+    max-width: 500px;
+}
+#message{
+    color: #939393;
+    font-size: 12px;
+    display: none;
+}
+.message{
+    min-height: 30px;
+    max-height: 30px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }

@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var nc = false;
     var c = false;
+    var error = false;
     var popup_ok = $('#popup_ok');
     var popup_error = $('#popup_error');
     var table_all;
@@ -19,7 +20,7 @@ $(document).ready(function() {
         opentransitionend: function(){
             setTimeout(function() {
                 popup_ok.popup('hide');
-            }, 900);
+            }, 1500);
         },
         blur : false,
         transition: 'all 0.3s'
@@ -171,4 +172,60 @@ $(document).ready(function() {
         })
     };
     $.when(all_init()).then(setAction('#table'));
+    'use strict';
+    var url = '/upload';
+    var file_count = 0;
+    var bar = $('#progress-bar');
+    var message = $('span#message');
+    $('#fileupload').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            file_count++;
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            if(progress == 100) {
+                setTimeout(function(){
+                    setTimeout(function(){
+                        $.when(message.fadeOut()).then(setTimeout(function(){
+                            message.text("");
+                            message.css('color', '#939393');
+                        },500));
+                        error = false;
+                        error_count = 0;
+                    }, 5500);
+                    bar.css('width', 0);
+                    table_all.ajax.reload();
+                    if(c) table_completed.ajax.reload();
+                    if(nc) table_not_completed.ajax.reload();
+                },2000);
+            }
+            setTimeout(function(){
+                if(progress == 100) {
+                    if(!error) message.text(file_count + " files uploaded");
+                    message.fadeIn();
+                }
+                bar.css({'width':progress + '%'});
+                bar.text(progress + '%')
+            },500);
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled')
+        .bind('fileuploadfail', function (e, data) {
+            error_handler(data.files[0].name);
+            error = true;
+    });
+    var error_count = 0;
+    var error_handler = function(file){
+        if(error_count < 1){
+            message.css('color', '#EB4242');
+            message.text("corrupted files: " + file);
+            message.fadeIn();
+        }else  message.text(message.text() + ", "+file);
+        error_count++
+    }
 });

@@ -48,15 +48,14 @@ public class XmlFileReader {
         }
     }
 
-    public Order convertFromXMLToObject(String xmlfile) throws IOException {
+    public Order convertFromXMLToObject(String xmlfile) throws Exception {
         Jaxb2Marshaller unmarshaller = (Jaxb2Marshaller) getUnmarshaller();
         try (InputStream fis = new FileInputStream(xmlfile)) {
             unmarshaller.afterPropertiesSet();
             return (Order) getUnmarshaller().unmarshal(new StreamSource(fis));
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return null;
+            throw e;
         }
     }
-
 }

@@ -1,3 +1,4 @@
+/*
 function getFileSizeandName(input) {
     var i = 0;
     for (; i < input.files.length; i++) {
@@ -14,4 +15,4 @@ function CloseAndRefresh()
 {
     opener.location.reload(true);
     self.close();
-}
+}*/
