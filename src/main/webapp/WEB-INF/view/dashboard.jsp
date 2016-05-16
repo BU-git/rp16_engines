@@ -105,26 +105,6 @@
                     <div class="button">Users</div>
                 </a>
             </div>
-            <form method="post" id="uploadForm" action="upload" enctype="multipart/form-data">
-                <table>
-                    <tr>
-                        <td colspan="3">
-                            <legend>Upload XML files</legend>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="file" name="files[]" id="files" multiple="multiple" onchange="getFileSizeandName(this);"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <button class="btn" type="submit" id="uploadButton" onClick="CloseAndRefresh();">Upload</button>
-                            <button class="btn" id="cancelButton">Cancel</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
         </div>
     </div>
 </body>
