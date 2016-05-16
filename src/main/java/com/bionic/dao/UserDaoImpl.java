@@ -53,7 +53,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void save(User u) {
-		em.persist(u);
+		if (u.getId() == 0) em.persist(u);
+		em.merge(u);
 	}
 
 	@Override

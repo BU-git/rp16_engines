@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,18 +21,28 @@ import com.bionic.util.PasswordEncoder;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
+	private MailSender mailSender;
+
+	@Autowired
 	private UserDao userDao;
 
-	/*@Autowired
-	private MailSender sender;
-*/
+	public static String fromAdress = "kvttest2016@gmail.com";
+	public static String userAddress = "fantom_9119@mail.ru";
+	public static String adminAddress = "fantom_9119@mail.ru";
+
+
 	public User adminLogin(String email, String password) {
 		User user = userDao.getUserByEmail(email);
 		if (user == null) return null;
 		if (user.getRole() != Role.ADMIN) return null;
 		String salt = user.getSalt();
+		System.err.println(salt);
 		String passwordHash = user.getPasswordHash();
+		System.err.println(password);
+		System.err.println(passwordHash);
 		String passwordHashFromPage = PasswordEncoder.getInstance().encode(password, salt);
+		System.err.println(passwordHashFromPage);
+		System.err.println("Almost!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		return (passwordHash.equals(passwordHashFromPage)) ? user : null;
 	}
 
@@ -51,7 +63,7 @@ public class UserServiceImpl implements UserService {
 		PasswordEncoder passwordEncoder = PasswordEncoder.getInstance();
 		if(user != null) {
 			String password = user.getPasswordHash();
-			String salt = PasswordEncoder.nextSALT();
+			String salt = passwordEncoder.nextSALT();
 			String passwordHash = passwordEncoder.encode(password, salt);
 			user.setPasswordHash(passwordHash);
 			user.setSalt(salt);
@@ -102,12 +114,6 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-	@Override
-	public void restorePassword(String email) {
-		String newPassword = PasswordEncoder.getInstance().createPassword(7);
-		//SimpleMailMessage message = new SimpleMailMessage();
-	}
-
 	private UserWrapper wrapMe(User u){
 		UserWrapper wrapper = new UserWrapper();
 		if(u == null) return wrapper;
@@ -117,5 +123,24 @@ public class UserServiceImpl implements UserService {
 		wrapper.setRole(u.getRole() == Role.ADMIN ? "admin" : "user");
 		wrapper.setNumber(u.getNumber());
 		return wrapper;
+	}
+
+	@Override
+	public void restorePassword(User user, String newPassword) {
+		String userText = "Login: " + user.getEmail() + ";\nNew password: " + newPassword + ".";
+		//sendMessage(userAddress, userText);
+
+		String adminText = "User: " + user.getName() + "(" + user.getEmail() + ")" + "restored his password. \n" +
+				"User's new password: " + newPassword;
+		//sendMessage(adminAddress, adminText);
+	}
+
+	private void sendMessage(String email, String text) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom(fromAdress);
+		message.setTo(userAddress);
+		message.setSubject("New Password!");
+		message.setText(text);
+		mailSender.send(message);
 	}
 }
