@@ -50,18 +50,28 @@ public class OrderUploadController {
         List<MultipartFile> files = request.getFiles("file");
 
         try {
-            File archive = new File(ROOT + number + ".zip");
+            File archive = new File(ROOT + "/" + number + ".zip");
             FileOutputStream fos = new FileOutputStream(archive);
             ZipOutputStream zos = new ZipOutputStream(fos);
             for (MultipartFile part : files) {
-                zos.putNextEntry(new ZipEntry(part.getName()));
+                zos = new ZipOutputStream(fos);
+                zos.putNextEntry(new ZipEntry(part.getOriginalFilename()));
 
-                FileCopyUtils.copy(part.getInputStream(), zos);
+                InputStream is = part.getInputStream();
+                BufferedInputStream bif = new BufferedInputStream(is);
+
+                int data = 0;
+                while ((data = bif.read()) != -1) {
+                    zos.write(data);
+                }
+                bif.close();
                 zos.closeEntry();
+                System.out.println("Finishing file: " + part.getOriginalFilename());
             }
             zos.close();
 
             String link = archive.getAbsolutePath();
+            System.out.println(link);
             Order order = orderService.findById(number);
             order.setPdfLink(link);
             orderService.save(order);
