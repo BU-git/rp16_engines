@@ -152,7 +152,7 @@ public class OrderController {
         if (exist) {
             File pdf = new File(order.getPdfLink());
             try {
-                response.setHeader("Content-Disposition", "inline;filename=\"" + id + "\"");
+                response.setHeader("Content-Disposition", "inline;filename=\"" + id + ".zip" +"\"");
                 OutputStream out = response.getOutputStream();
                 IOUtils.copy(new FileInputStream(pdf), out);
                 out.flush();

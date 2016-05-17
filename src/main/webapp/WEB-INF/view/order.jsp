@@ -150,7 +150,7 @@
                      </tr>
                 </table>
             </div>
-            <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
+            <c:if test="${order.orderStatus == 0}">
                   <table id="select-form">
                       <tr>
                       <td>
