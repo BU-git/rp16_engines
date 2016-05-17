@@ -23,7 +23,7 @@ import com.bionic.service.OrderService;
 @Controller
 @SessionAttributes("loggedInUser")
 public class UploadController {
-    LinkedList<FileMeta> files = new LinkedList<FileMeta>();
+    LinkedList<FileMeta> files;
     FileMeta fileMeta = null;
 
     @Autowired
@@ -35,6 +35,7 @@ public class UploadController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public @ResponseBody LinkedList<FileMeta> uploadReceipts(@RequestParam("files[]") List<MultipartFile> file, ModelMap model) throws Exception {
         if (!model.containsAttribute("loggedInUser")) return null;
+        files = new LinkedList<>();
         for (int i=0; i< file.size(); i++) {
             if (!file.get(i).isEmpty()) {
                 File convFile = new File(file.get(i).getOriginalFilename());
@@ -50,7 +51,6 @@ public class UploadController {
                     order.setImportDate(new Date());
                     orderService.save(order);
                 }
-                convFile.delete();
             }
         }
         return files;

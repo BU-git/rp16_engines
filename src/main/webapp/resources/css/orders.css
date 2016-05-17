@@ -136,12 +136,13 @@ input{
     color: white;
     height: 22px;
     width: 0;
-     background-color: #374670;
+    background-image: url("../images/progressbar.gif");
+     /*background-color: #374670;
      background-image: -moz-linear-gradient(top, #4972ae, #374670);
      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4972ae), to(#374670));
      background-image: -webkit-linear-gradient(top, #4972ae, #374670);
      background-image: -o-linear-gradient(top, #4972ae, #374670);
-     background-image: linear-gradient(to bottom, #4972ae, #374670);
+     background-image: linear-gradient(to bottom, #4972ae, #374670);*/
 }
 .progress {
     margin-top: 5px;
@@ -230,7 +231,9 @@ input{
 }
 #message{
     color: #939393;
-    font-size: 12px;
+}
+#message,#errors{
+    font-size: 13px;
     display: none;
 }
 .message{
@@ -239,4 +242,7 @@ input{
     padding: 0;
     margin: 0;
     overflow: hidden;
+}
+#errors{
+    color: #EB4242;
 }

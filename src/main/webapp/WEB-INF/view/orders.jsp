@@ -131,7 +131,7 @@
                     <div id="progress" class="progress">
                         <div class="progress-bar" id="progress-bar"></div>
                     </div>
-                    <p class="message"><span id="message"></span></p>
+                    <p class="message"><span id="message"></span><span id="errors"></span></p>
                     <!-- The container for the uploaded files -->
                     <div id="files" class="files"></div>
                 </div>

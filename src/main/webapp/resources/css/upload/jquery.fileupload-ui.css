@@ -17,7 +17,7 @@
 .progress-animated .progress-bar,
 .progress-animated .bar {
   width: 0%;
-  background: url("../../img/progressbar.gif") !important;
+  background: url("../../images/progressbar.gif") !important;
   filter: none;
 }
 .fileupload-process {
