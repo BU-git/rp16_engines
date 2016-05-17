@@ -48,13 +48,12 @@ public class OrderUploadController {
                                      MultipartHttpServletRequest request) {
         System.out.println("upload start!!!!!");
         List<MultipartFile> files = request.getFiles("file");
-
+        System.out.println("SIZE!!!! " + files.size());
         try {
             File archive = new File(ROOT + "/" + number + ".zip");
             FileOutputStream fos = new FileOutputStream(archive);
             ZipOutputStream zos = new ZipOutputStream(fos);
             for (MultipartFile part : files) {
-                zos = new ZipOutputStream(fos);
                 zos.putNextEntry(new ZipEntry(part.getOriginalFilename()));
 
                 InputStream is = part.getInputStream();
