@@ -50,7 +50,7 @@ public class OrderController {
 
     private static final int NOT_COMPLETED_ORDERS = 0;
     private static final int ALL_ORDERS = 1;
-    private static final int COMPLETED_ORDERS = 2;
+    private static final int COMPLETED_ORDERS = 3;
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAllOrders(ModelMap model) {

@@ -14,12 +14,15 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.Date;
+import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 @RestController
 //@MultipartConfig
 public class OrderUploadController {
 
-    private static final String ROOT = "pdf_reports";
+    private static final String ROOT = "reports";
 
     static {
         new File(ROOT).mkdir();
@@ -40,53 +43,44 @@ public class OrderUploadController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-/*
     @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, consumes = "multipart/form-data")
     public ResponseEntity uploadFile(@PathVariable("number") long number,
-                                     //@RequestParam("checksum") MultipartFile checksum,
-                                     @RequestBody MultipartFile fileData) {
+                                     MultipartHttpServletRequest request) {
         System.out.println("upload start!!!!!");
+        List<MultipartFile> files = request.getFiles("file");
+
         try {
-            if (fileData.isEmpty() || fileData == null) {
-                System.out.println("null!!!!!!!!!!!!!!!111");
-                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            File archive = new File(ROOT + number + ".zip");
+            FileOutputStream fos = new FileOutputStream(archive);
+            ZipOutputStream zos = new ZipOutputStream(fos);
+            for (MultipartFile part : files) {
+                zos.putNextEntry(new ZipEntry(part.getName()));
+
+                FileCopyUtils.copy(part.getInputStream(), zos);
+                zos.closeEntry();
             }
-            System.out.println();
-            File file = null;
-            if (!fileData.isEmpty()) {
-                try {
-                    file = new File(ROOT + "/" + number + ".pdf");
-                    BufferedOutputStream stream = new BufferedOutputStream(
-                            new FileOutputStream(file));
-                    FileCopyUtils.copy(fileData.getInputStream(), stream);
-                    stream.close();
-                    System.out.println("You successfully uploaded " + fileData.getName() + "!");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-                }
-            } else {
-                return new ResponseEntity(HttpStatus.BAD_REQUEST);
-            }
-            String link = file.getAbsolutePath();
+            zos.close();
+
+            String link = archive.getAbsolutePath();
             Order order = orderService.findById(number);
             order.setPdfLink(link);
-            orderService.saveOrder(order);
+            orderService.save(order);
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
-    }*/
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
-    @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, headers=("content-type=multipart/*"), consumes = "multipart/form-data")
+   /* @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, headers=("content-type=multipart*//*"), consumes = "multipart/form-data")
     public ResponseEntity uploadFile(@PathVariable("number") long number, MultipartHttpServletRequest request) {
         System.out.println("Starting upload method...");
+        File folderForOrder = new File("pdf_reports/" + number);
         MultipartFile fileData = request.getFile("file");
-        /*if (fileData == null || fileData.isEmpty()) {
+        *//*if (fileData == null || fileData.isEmpty()) {
             System.out.println("File is empty");
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }*/
+        }*//*
 
         File file = null;
         if (!fileData.isEmpty()) {
@@ -109,5 +103,6 @@ public class OrderUploadController {
         order.setPdfLink(link);
         orderService.save(order);
         return new ResponseEntity(HttpStatus.OK);
-    }
+    }*/
+
 }

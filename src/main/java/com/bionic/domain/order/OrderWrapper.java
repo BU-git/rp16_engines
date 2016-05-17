@@ -51,7 +51,7 @@ public class OrderWrapper {
 
     public void setOrderStatus(int orderStatus) {
         switch (orderStatus){
-            case 4: {
+            case 3: {
                 this.orderStatus = COMPLETED_STATUS;
                 break;
             }
