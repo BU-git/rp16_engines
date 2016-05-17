@@ -37,7 +37,9 @@
             $('.upload').css('border','dashed 3px #cccdce');
         }
         function leaveDrop(event){
-            $('.upload').css('border','dashed 1px #cccdce')
+            $('.upload').css('border','dashed 1px #cccdce');
+            $('span#message').text('');
+            $('#errors').text('');
         }
     </script>
 </head>

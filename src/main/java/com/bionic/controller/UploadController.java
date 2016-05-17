@@ -36,6 +36,7 @@ public class UploadController {
     public @ResponseBody LinkedList<FileMeta> uploadReceipts(@RequestParam("files[]") List<MultipartFile> file, ModelMap model) throws Exception {
         if (!model.containsAttribute("loggedInUser")) return null;
         files = new LinkedList<>();
+        System.err.println("");
         for (int i=0; i< file.size(); i++) {
             if (!file.get(i).isEmpty()) {
                 File convFile = new File(file.get(i).getOriginalFilename());

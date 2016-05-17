@@ -22,20 +22,34 @@ $(document).ready(function() {
         table_all.ajax.reload();
     });
     $("#not_comtleted").click(function(){
-        if(nc) table_not_completed.ajax.reload();
+        if(nc) {
+            table_not_completed.ajax.reload();
+            current_table = table_not_completed;
+        }
         else {
-            $.when(not_completed_init()).then(setAction('#not_completed_table'));
+            $.when(not_completed_init()).then(function(){
+                setTimeout(function(){
+                    current_table = table_not_completed;
+                },500);
+                setAction('#not_completed_table');
+            });
             nc = true;
         }
-        current_table = table_not_completed;
     });
     $('#completed').click(function(){
-        if(c) table_completed.ajax.reload();
+        if(c) {
+            table_completed.ajax.reload();
+            current_table = table_completed;
+        }
         else{
-            $.when(completed_init()).then((setAction('#completed_table')));
+            $.when(completed_init()).then(function(){
+                setTimeout(function(){
+                    current_table = table_completed;
+                },500);
+                setAction('#completed_table');
+            });
             c = true;
         }
-        current_table = table_completed;
     });
     $('.tabs').tabslet({
      animation:    true
@@ -91,7 +105,6 @@ $(document).ready(function() {
             } ],
             "order": [[1, 'asc' ]]
         });
-        current_table = table_all;
     };
     var completed_init = function(){
         setTimeout(function(){
@@ -170,7 +183,10 @@ $(document).ready(function() {
             }
         })
     };
-    $.when(all_init()).then(setAction('#table'));
+    $.when(all_init()).then(function(){
+        current_table = table_all;
+        setAction('#table')
+    });
     'use strict';
     popup_error.popup({
         opentransitionend: function(){
@@ -192,11 +208,14 @@ $(document).ready(function() {
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',
+        sequentialUploads: true,
         fail: function (e, data) {
             error_handler();
         },
         done: function (e, data) {
-            file_count++;
+            file_count+=1;
+            if(file_count > 1) message.text(file_count + files + info_message);
+            else message.text(file_count + (file_count != 1 ? files : file) + info_message);
             $.each(data.result.files, function (index, file) {
                 $('<p/>').text(file.name).appendTo('#files');
             });
@@ -204,43 +223,27 @@ $(document).ready(function() {
         dropZone: $('.upload'),
         progressall: function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
-            setTimeout(function(){
-                if(error_count < 1){
-                    errors.text("");
-                }
-                if(progress == 100) {
-                    if(error_count >= 1 || file_count > 1) message.text(file_count + files + info_message);
-                    else message.text(1 + file + info_message);
-                    message.fadeIn();
+            if(error_count < 1)  errors.text("");
+            if(progress == 100) {
+                message.fadeIn();
+                setTimeout(function(){
+                    bar.css('width', 0);
                     error_count = 0;
                     file_count = 0;
-                    setTimeout(function(){
-                        setTimeout(function(){
-                            $.when(function(){
-                                message.fadeOut();
-                                errors.fadeOut();
-                            })/*.then(setTimeout(function(){
-                               /!* message.text("");
-                                errors.text("");*!/
-                            },500))*/;
-                        }, 5500);
-                        bar.css('width', 0);
-                        bar.text("");
-                        table_all.ajax.reload();
-                        current_table.ajax.reload();
-                    },2000);
-                }
-                bar.css({'width':progress + '%'});
-                bar.text(progress + '%')
-            },500);
+                    bar.text("");
+                    current_table.ajax.reload();
+                },2000);
+            }
+            bar.css({'width':progress + '%'});
+            bar.text(progress + '%')
         }
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
     var error_handler = function(){
+        error_count+=1;
         if(error_count < 2){
-            errors.text(' 1' + file + error_message);
+            errors.text(' ' +error_count + file + error_message);
             errors.fadeIn();
         }else errors.text(' ' + error_count + files + error_message);
-        error_count++;
     }
 });
