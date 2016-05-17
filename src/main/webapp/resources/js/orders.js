@@ -193,6 +193,7 @@ $(document).ready(function() {
                     setTimeout(function(){
                         $.when(message.fadeOut()).then(setTimeout(function(){
                             message.text("");
+                            file_count = 0;
                             message.css('color', '#939393');
                         },500));
                         error = false;

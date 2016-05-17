@@ -184,7 +184,7 @@
                           <button class="edit_popup_open" value="<% out.print(a); %>" id="edit<% out.print(a); %>"></button>
                         </td>
                         <td>
-                          <label><span  id="fieldDescription<% out.print(a); %>">${f.description}</span>
+                          <label><span  id="fieldDescription<% out.print(a); %>">${f.description.replace("<","&lt;")}</span>
                             <input class="textField" placeholder="Text Field" readonly type="text"></label>
                           <span hidden id="fieldType<% out.print(a++); %>">text field</span>
                         </td>
@@ -198,7 +198,7 @@
                         </td>
                         <td>
                           <input class="checkBoxField" type="checkbox" checked onclick="return false">
-                          <label id="fieldDescription<% out.print(a); %>">${f.description}</label>
+                          <label id="fieldDescription<% out.print(a); %>">${f.description.replace("<","&lt;")}</label>
                           <span hidden id="fieldType<% out.print(a++); %>">check box</span>
                         </td>
                       </tr>
@@ -210,7 +210,7 @@
                           <button class="edit_popup_open" id="edit<% out.print(a); %>" value="<% out.print(a); %>"></button>
                         </td>
                         <td>
-                          <label><span  id="fieldDescription<% out.print(a); %>">${f.description}</span>
+                          <label><span  id="fieldDescription<% out.print(a); %>">${f.description.replace("<","&lt;")}</span>
                             <textarea rows="3" readonly class="textArea" placeholder="Text Area"></textarea></label>
                           <span hidden id="fieldType<% out.print(a++); %>">text area</span>
                         </td>
@@ -223,7 +223,7 @@
                           <button class="edit_popup_open" id="edit<% out.print(a); %>" value="<% out.print(a); %>"></button>
                         </td>
                         <td>
-                          <label id="fieldDescription<% out.print(a); %>">${f.description}</label>
+                          <label id="fieldDescription<% out.print(a); %>">${f.description.replace("<","&lt;")}</label>
                           <span hidden id="fieldType<% out.print(a++); %>">text area</span>
                         </td>
                       </tr>

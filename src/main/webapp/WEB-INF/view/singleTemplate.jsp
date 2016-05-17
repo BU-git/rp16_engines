@@ -15,6 +15,20 @@
               .click(function(){
                 $('body').toggleClass('menu-on');
               });
+      var name = $('#template_name').text();
+      var info = $('#info');
+      info.find('.action').on('click','.back', function(){
+        window.location.href='/templates';
+      });
+      info.find('.action').on('click','.edit', function(){
+        post2blank('/templates/new', name);
+      });
+      function post2blank(url, name)
+      {   var myform = '<form id="temporary_form" hidden action="' +url+ '" method="POST">' +
+              '<input type="text" name="name" value="'+name+'"></form>';
+        $(myform).appendTo('body').submit();
+        $('#temporary_form').remove();
+      }
     });
   </script>
   <title>${list.get(0).templateEntity.templateName.replace("<","&lt;")}</title>
@@ -91,11 +105,17 @@
     <div id="content_place">
       <table id="info">
         <tr>
-          <td><span>Template name:</span></td>
-          <td><p>${list.get(0).templateEntity.templateName.replace("<","&lt;")}</p></td>
+          <td class="action" rowspan="2">
+            <button class='back'></button>
+          </td>
+          <td class="border"><span>Template name:</span></td>
+          <td><p id="template_name">${list.get(0).templateEntity.templateName.replace("<","&lt;")}</p></td>
+          <td class="action" rowspan="2">
+            <button class='edit'></button>
+          </td>
         </tr>
         <tr>
-          <td><span>Date Created:</span></td>
+          <td class="border"><span>Date Created:</span></td>
           <td><p>${list.get(0).createDt}</p></td>
         </tr>
       </table>
