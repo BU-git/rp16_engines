@@ -204,16 +204,17 @@ input{
 .fileinput-button{
     text-align: right;
     color: white;
-    width: 150px;
+    width: 160px;
+    height: 15px;
     border-radius: 2px;
     padding: 11px;
     margin-bottom: 0;
-    background: url(../images/upload.svg) no-repeat 1px, linear-gradient(to bottom, #4972ae, #374670);
+    background: url(../images/upload.svg) no-repeat 4px, linear-gradient(to bottom, #4972ae, #374670);
 }
 .fileinput-button:hover{
     cursor: pointer;
     transition: 0.3s;
-    background: url(../images/upload.svg) no-repeat 1px, linear-gradient(to bottom, #6985a5, #4c6381);
+    background: url(../images/upload.svg) no-repeat 4px, linear-gradient(to bottom, #6985a5, #4c6381);
 }
 .upload{
     border: dashed 1px #cccdce;
