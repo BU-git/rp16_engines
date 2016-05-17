@@ -133,12 +133,12 @@ input{
     color: white;
     height: 22px;
     width: 0;
-    background-color: #374670;
-    background-image: -moz-linear-gradient(top, #4972ae, #374670);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4972ae), to(#374670));
-    background-image: -webkit-linear-gradient(top, #4972ae, #374670);
-    background-image: -o-linear-gradient(top, #4972ae, #374670);
-    background-image: linear-gradient(to bottom, #4972ae, #374670);
+     background-color: #374670;
+     background-image: -moz-linear-gradient(top, #4972ae, #374670);
+     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4972ae), to(#374670));
+     background-image: -webkit-linear-gradient(top, #4972ae, #374670);
+     background-image: -o-linear-gradient(top, #4972ae, #374670);
+     background-image: linear-gradient(to bottom, #4972ae, #374670);
 }
 .progress {
     margin-top: 5px;
@@ -202,16 +202,18 @@ input{
     animation: progress-bar-stripes 2s linear infinite;
 }
 .fileinput-button{
+    text-align: right;
     color: white;
+    width: 150px;
     border-radius: 2px;
-    padding: 9px;
+    padding: 11px;
     margin-bottom: 0;
-    background-image: linear-gradient(to bottom, #4972ae, #374670);
+    background: url(../images/upload.svg) no-repeat 1px, linear-gradient(to bottom, #4972ae, #374670);
 }
 .fileinput-button:hover{
     cursor: pointer;
     transition: 0.3s;
-    background-image: linear-gradient(to bottom, #6985a5, #4c6381);
+    background: url(../images/upload.svg) no-repeat 1px, linear-gradient(to bottom, #6985a5, #4c6381);
 }
 .upload{
     border: dashed 1px #cccdce;

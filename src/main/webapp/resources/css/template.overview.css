@@ -11,12 +11,14 @@
     padding: 0;
     margin: 0;
 }
+.info,.action,.edit,.del{
+    display: inline;
+}
 .edit,.del{
     outline: none;
     border: none;
     width: 32px;
     height: 32px;
-    display: inline;
 }
 .edit{
     background: transparent url("../images/templates/overview/add-template-icon-hover.svg") no-repeat 0;

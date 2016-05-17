@@ -50,7 +50,7 @@ th{
     margin-top: 10px;
     background-color: rgba(229, 188, 23, 0.71);
 }
-#info td:first-child{
+.border{
     border-right: 1px solid #707070;
 }
 td.element{
@@ -98,8 +98,34 @@ textarea{
 #content_place table input[type='checkbox']{
     float: left;
 }
-#content_place{
+#content_place {
     min-height: 600px;
     max-height: 600px;
     overflow: auto;
+}
+.action{
+    min-width: 50px;
+}
+.edit,.back{
+    outline: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+}
+.edit{
+    float: right;
+    background: transparent url("../images/templates/overview/single/add-template-icon.svg") no-repeat 0;
+}
+.edit:hover{
+    background: transparent url("../images/templates/overview/single/add-template-icon-hover.svg") no-repeat 0;
+}
+.back{
+    background: transparent url("../images/templates/overview/single/back-icon.svg") no-repeat 0;
+}
+.back:hover {
+    background: transparent url("../images/templates/overview/single/back-icon-hover.svg") no-repeat 0;
+}
+.back:hover,.edit:hover{
+    transition: ease-in-out .2s;
+    cursor: pointer;
 }
