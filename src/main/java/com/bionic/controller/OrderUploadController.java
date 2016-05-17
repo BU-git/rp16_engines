@@ -13,9 +13,14 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 @RestController
@@ -23,10 +28,14 @@ import java.util.zip.ZipOutputStream;
 public class OrderUploadController {
 
     private static final String ROOT = "reports";
+    private static final String ARCHIVE = "archive";
 
     static {
         new File(ROOT).mkdir();
+        new File(ARCHIVE).mkdir();
     }
+
+    private static final byte[] BUFFER = new byte[4096*1024];
 
     @Autowired
     private OrderService orderService;
@@ -39,41 +48,63 @@ public class OrderUploadController {
         if (order == null) return new ResponseEntity(HttpStatus.NOT_FOUND);
         order.setLastAndroidChangeDate(new Date(lastAndroidChangeDate));
         order.setOrderStatus(orderStatus);
+        if (orderStatus == 3) {
+            String link = createZipFile(number);
+            order.setPdfLink(link);
+        }
         orderService.save(order);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    private String createZipFile(long number) {
+        Path folder = Paths.get(ROOT + "/" + number);
+        Path zipFilePath = Paths.get(ARCHIVE + "/" + number + ".zip");
+        File zip = new File(zipFilePath.toString());
+        try {
+            pack(folder, zipFilePath);
+            //Files.delete(folder);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return zip.getAbsolutePath();
+    }
+
+    private void pack(final Path folder, final Path zipFilePath) throws IOException {
+        try (FileOutputStream fos = new FileOutputStream(zipFilePath.toFile());
+             ZipOutputStream zos = new ZipOutputStream(fos)) {
+
+            Files.walkFileTree(folder, new SimpleFileVisitor<Path>() {
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    zos.putNextEntry(new ZipEntry(folder.relativize(file).toString()));
+                    Files.copy(file, zos);
+                    zos.closeEntry();
+                    return FileVisitResult.CONTINUE;
+                }
+
+                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+                    zos.putNextEntry(new ZipEntry(folder.relativize(dir).toString() + "/"));
+                    zos.closeEntry();
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        }
     }
 
     @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, consumes = "multipart/form-data")
     public ResponseEntity uploadFile(@PathVariable("number") long number,
                                      MultipartHttpServletRequest request) {
+        Path reportFolder = Paths.get(ROOT + "/" + number);
+        new File(reportFolder.toString()).mkdir();
         System.out.println("upload start!!!!!");
         List<MultipartFile> files = request.getFiles("file");
-        System.out.println("SIZE!!!! " + files.size());
         try {
-            File archive = new File(ROOT + "/" + number + ".zip");
-            FileOutputStream fos = new FileOutputStream(archive);
-            ZipOutputStream zos = new ZipOutputStream(fos);
             for (MultipartFile part : files) {
-                zos.putNextEntry(new ZipEntry(part.getOriginalFilename()));
-
-                InputStream is = part.getInputStream();
-                BufferedInputStream bif = new BufferedInputStream(is);
-
-                int data = 0;
-                while ((data = bif.read()) != -1) {
-                    zos.write(data);
-                }
-                bif.close();
-                zos.closeEntry();
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(new File(reportFolder + "/" + part.getOriginalFilename())));
+                FileCopyUtils.copy(part.getInputStream(), stream);
+                stream.close();
                 System.out.println("Finishing file: " + part.getOriginalFilename());
             }
-            zos.close();
-
-            String link = archive.getAbsolutePath();
-            System.out.println(link);
-            Order order = orderService.findById(number);
-            order.setPdfLink(link);
-            orderService.save(order);
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,37 +112,10 @@ public class OrderUploadController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-   /* @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, headers=("content-type=multipart*//*"), consumes = "multipart/form-data")
-    public ResponseEntity uploadFile(@PathVariable("number") long number, MultipartHttpServletRequest request) {
-        System.out.println("Starting upload method...");
-        File folderForOrder = new File("pdf_reports/" + number);
-        MultipartFile fileData = request.getFile("file");
-        *//*if (fileData == null || fileData.isEmpty()) {
-            System.out.println("File is empty");
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }*//*
-
-        File file = null;
-        if (!fileData.isEmpty()) {
-            try {
-                file = new File(ROOT + "/" + number + ".pdf");
-                BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(file));
-                FileCopyUtils.copy(fileData.getInputStream(), stream);
-                stream.close();
-                System.out.println("You successfully uploaded " + fileData.getName() + "!");
-            } catch (Exception e) {
-                e.printStackTrace();
-                return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        } else {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    private void copy(InputStream input, OutputStream output) throws IOException {
+        int bytesRead;
+        while ((bytesRead = input.read(BUFFER))!= -1) {
+            output.write(BUFFER, 0, bytesRead);
         }
-        String link = file.getAbsolutePath();
-        Order order = orderService.findById(number);
-        order.setPdfLink(link);
-        orderService.save(order);
-        return new ResponseEntity(HttpStatus.OK);
-    }*/
-
+    }
 }
