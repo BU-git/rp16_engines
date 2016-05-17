@@ -8,6 +8,9 @@
     width: 22px;
     height: 22px;
 }
+.info_action{
+    margin-top: 5px;
+}
 .info_action, .pdf_action, .del {
     border: none;
     margin: 2px;
@@ -26,10 +29,10 @@
     background: url("../images/Info.svg") no-repeat;
 }
 .pdf_action{
-    background: url("../images/pdf-hover.svg") no-repeat;
+    background: url("../images/zip-icon.svg") no-repeat;
 }
 .pdf_action:hover{
-    background: url("../images/pdf.svg") no-repeat;
+    background: url("../images/zip-icon-hover.svg") no-repeat;
 }
 .del{
     background: url("../images/Delete.svg") no-repeat;
