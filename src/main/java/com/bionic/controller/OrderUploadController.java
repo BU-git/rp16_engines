@@ -35,8 +35,6 @@ public class OrderUploadController {
         new File(ARCHIVE).mkdir();
     }
 
-    private static final byte[] BUFFER = new byte[4096*1024];
-
     @Autowired
     private OrderService orderService;
 
@@ -110,12 +108,5 @@ public class OrderUploadController {
             e.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
-
-    private void copy(InputStream input, OutputStream output) throws IOException {
-        int bytesRead;
-        while ((bytesRead = input.read(BUFFER))!= -1) {
-            output.write(BUFFER, 0, bytesRead);
-        }
     }
 }
