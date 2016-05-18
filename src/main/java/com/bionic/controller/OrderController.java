@@ -49,7 +49,8 @@ public class OrderController {
     private OrderPaginationService orderPaginationService;
 
     private static final int NOT_COMPLETED_ORDERS = 0;
-    private static final int ALL_ORDERS = 1;
+    private static final int IN_PROGRESS_ORDERS = 1;
+    private static final int ALL_ORDERS = 2;
     private static final int COMPLETED_ORDERS = 3;
 
     @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
@@ -172,6 +173,7 @@ public class OrderController {
             String searchValue = allRequestParams.get("search[value]");
             String sortDir = allRequestParams.get("order[0][dir]");
             switch (target){
+                case IN_PROGRESS_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, NOT_COMPLETED_ORDERS);
                 case NOT_COMPLETED_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, NOT_COMPLETED_ORDERS);
                 case ALL_ORDERS: return orderPaginationService.getAllOrders(start/length, length, searchValue, sortDir, column, ALL_ORDERS);
                 case COMPLETED_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, COMPLETED_ORDERS);
