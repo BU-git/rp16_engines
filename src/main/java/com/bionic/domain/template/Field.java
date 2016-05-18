@@ -1,7 +1,6 @@
 
 package com.bionic.domain.template;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +16,6 @@ public class Field {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @JsonIgnore
-    @Column(name = "f_id")
     private int id;
 
     private String type;

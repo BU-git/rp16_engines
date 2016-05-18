@@ -77,9 +77,9 @@ DROP TABLE IF EXISTS `fields`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fields` (
-  `f_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`f_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -369,6 +369,37 @@ LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `templatefields`
+--
+
+DROP TABLE IF EXISTS `templatefields`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `templatefields` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `createDt` date NOT NULL,
+  `description` varchar(1024) NOT NULL,
+  `updateDt` date DEFAULT NULL,
+  `value` varchar(1024) DEFAULT NULL,
+  `field_id` int(11) DEFAULT NULL,
+  `templateEntity_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK8s9kbbg0btub0hocrbb2vsr9i` (`field_id`),
+  KEY `FKi3i54ygdsttdgqhfaisjw5atk` (`templateEntity_id`),
+  CONSTRAINT `FK8s9kbbg0btub0hocrbb2vsr9i` FOREIGN KEY (`field_id`) REFERENCES `fields` (`id`),
+  CONSTRAINT `FKi3i54ygdsttdgqhfaisjw5atk` FOREIGN KEY (`templateEntity_id`) REFERENCES `templates` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `templatefields`
+--
+
+LOCK TABLES `templatefields` WRITE;
+/*!40000 ALTER TABLE `templatefields` DISABLE KEYS */;
+/*!40000 ALTER TABLE `templatefields` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `templates`
@@ -378,7 +409,7 @@ DROP TABLE IF EXISTS `templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `templates` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `assigned` bit(1) NOT NULL,
   `templateName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
@@ -393,39 +424,6 @@ LOCK TABLES `templates` WRITE;
 /*!40000 ALTER TABLE `templates` DISABLE KEYS */;
 /*!40000 ALTER TABLE `templates` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `templatefields`
---
-
-DROP TABLE IF EXISTS `templatefields`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `templatefields` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `createDt` date NOT NULL,
-  `description` varchar(1024) NOT NULL,
-  `updateDt` date DEFAULT NULL,
-  `value` varchar(1024) DEFAULT NULL,
-  `field_id` int(11) DEFAULT NULL,
-  `templateEntity_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK8s9kbbg0btub0hocrbb2vsr9i` (`field_id`),
-  KEY `FKi3i54ygdsttdgqhfaisjw5atk` (`templateEntity_id`),
-  CONSTRAINT `FK8s9kbbg0btub0hocrbb2vsr9i` FOREIGN KEY (`field_id`) REFERENCES `fields` (`f_id`),
-  CONSTRAINT `FKi3i54ygdsttdgqhfaisjw5atk` FOREIGN KEY (`templateEntity_id`) REFERENCES `templates` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `templatefields`
---
-
-LOCK TABLES `templatefields` WRITE;
-/*!40000 ALTER TABLE `templatefields` DISABLE KEYS */;
-/*!40000 ALTER TABLE `templatefields` ENABLE KEYS */;
-UNLOCK TABLES;
-
 
 --
 -- Table structure for table `users`
@@ -455,6 +453,14 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'admin@kvt.nl','Bob',111223,'0ff7a384cd97cec0f2f9c7affcabd45b263b9c10b5c18a1f98811bd4371b6f7c',0,'rzsibU4J0umgNVXojujF26NTNilk5Wek'),(4,'rvrooy@kvt.nl','Rooij R. van',111223,'d13e4d49537a910a5b9f0a19be74ece86cd89ca0a2e2c492290ea203abe744df',1,'Gwbhsjki2BpE1AhGaCTqDnp286t9oUzJ'),(5,'sbesselink@kvt.nl','Besselink S.T.M.',111223,'6b1efebde99cb977e45a9939ae7ccf769773562f645401dadc0d8e758aaa15b3',1,'nhcQe6UBpzC7kxIA6HAAydLxrqnu0VKa'),(6,'rvdmeer@kvt.nl','Meer van der R.A.',111223,'ef1d8ec8ea1af3556a9b2d3d57bbc463ea2cd0b7f5bb3121f3291e1ca37cb98c',1,'jW5JoBZLSF79x7cAQERrEuLnBY0PmBUL'),(7,'rtgttr@gg.com','Test',234567,'ee0f816449319b0e7a34e523e798623b8d2c8dbbd6dffc326a2c1fdb65f00a01',1,'T4CG2IgAQcq2O84yygbxM9cYMiXipTNB');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'kvt_db'
+--
+
+--
+-- Dumping routines for database 'kvt_db'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -465,4 +471,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-18 15:10:37
+-- Dump completed on 2016-05-18 15:37:40
