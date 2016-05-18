@@ -381,6 +381,32 @@ INSERT INTO `tasks` VALUES (1,'SP01','Serviceonderhoud noodstroominstallatie','S
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+--
+-- Table structure for table `templates`
+--
+
+DROP TABLE IF EXISTS `templates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `templates` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `assigned` bit(1) NOT NULL,
+  `templateName` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `templates`
+--
+
+LOCK TABLES `templates` WRITE;
+/*!40000 ALTER TABLE `templates` DISABLE KEYS */;
+INSERT INTO `templates` VALUES (1,'\0','Template1');
+/*!40000 ALTER TABLE `templates` ENABLE KEYS */;
+UNLOCK TABLES;
+
 --
 -- Table structure for table `templatefields`
 --
@@ -414,30 +440,6 @@ INSERT INTO `templatefields` VALUES (1,'2016-05-18','Text field',NULL,NULL,1,1),
 /*!40000 ALTER TABLE `templatefields` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `templates`
---
-
-DROP TABLE IF EXISTS `templates`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `templates` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `assigned` bit(1) NOT NULL,
-  `templateName` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `templates`
---
-
-LOCK TABLES `templates` WRITE;
-/*!40000 ALTER TABLE `templates` DISABLE KEYS */;
-INSERT INTO `templates` VALUES (1,'\0','Template1');
-/*!40000 ALTER TABLE `templates` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
