@@ -1,7 +1,7 @@
 
 package com.bionic.domain.xml;
 
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,10 +47,9 @@ public class XmlFileReader {
             }
         }
     }
-
-    public Order convertFromXMLToObject(String xmlfile) throws Exception {
+    public Order convertFromXMLToObject(byte[] xmlfile) throws Exception {
         Jaxb2Marshaller unmarshaller = (Jaxb2Marshaller) getUnmarshaller();
-        try (InputStream fis = new FileInputStream(xmlfile)) {
+        try (InputStream fis = new ByteArrayInputStream(xmlfile)) {
             unmarshaller.afterPropertiesSet();
             return (Order) getUnmarshaller().unmarshal(new StreamSource(fis));
         } catch (Exception e) {

@@ -1,6 +1,5 @@
 package com.bionic.controller;
 
-import java.io.File;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,21 +35,20 @@ public class UploadController {
     public @ResponseBody LinkedList<FileMeta> uploadReceipts(@RequestParam("files[]") List<MultipartFile> file, ModelMap model) throws Exception {
         if (!model.containsAttribute("loggedInUser")) return null;
         files = new LinkedList<>();
-        System.err.println("");
-        for (int i=0; i< file.size(); i++) {
-            if (!file.get(i).isEmpty()) {
-                File convFile = new File(file.get(i).getOriginalFilename());
-                file.get(i).transferTo(convFile);
-                Order order = fileReader.convertFromXMLToObject(convFile.getAbsolutePath());
-                fileMeta = new FileMeta();
-                fileMeta.setFileName(file.get(i).getOriginalFilename());
-                fileMeta.setFileSize(file.get(i).getSize() / 1024 + " Kb");
-                fileMeta.setFileType(file.get(i).getContentType());
-                files.add(fileMeta);
-                if (order != null) {
-                    order.setLastServerChangeDate(new Date());
-                    order.setImportDate(new Date());
-                    orderService.save(order);
+        if(file != null && file.size() > 0){
+            for(MultipartFile m: file){
+                if(m.getBytes() != null){
+                    Order order = fileReader.convertFromXMLToObject(m.getBytes());
+                    if (order != null) {
+                        order.setLastServerChangeDate(new Date());
+                        order.setImportDate(new Date());
+                        orderService.save(order);
+                        fileMeta = new FileMeta();
+                        fileMeta.setFileName(m.getOriginalFilename());
+                        fileMeta.setFileSize(m.getSize() / 1024 + " Kb");
+                        fileMeta.setFileType(m.getContentType());
+                        files.add(fileMeta);
+                    }
                 }
             }
         }

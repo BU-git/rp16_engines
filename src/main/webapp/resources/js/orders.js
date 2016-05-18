@@ -9,7 +9,7 @@ $(document).ready(function() {
     var current_table;
     var files = ' files';
     var file = ' file';
-    var error_message = ' not uploaded =/';
+    var error_message = ' not uploaded ☹';
     var info_message = ' uploaded.';
     var url = '/upload';
     var file_count = 0;
@@ -208,7 +208,7 @@ $(document).ready(function() {
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',
-        sequentialUploads: true,
+        sequentialUploads: false,
         fail: function (e, data) {
             error_handler();
         },
