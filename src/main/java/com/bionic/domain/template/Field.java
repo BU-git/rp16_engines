@@ -16,11 +16,11 @@ public class Field {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @JsonIgnore
-    private int id;
+    private long id;
 
     private String type;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -28,7 +28,7 @@ public class Field {
         return type;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
