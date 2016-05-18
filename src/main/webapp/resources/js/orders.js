@@ -208,7 +208,7 @@ $(document).ready(function() {
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',
-        sequentialUploads: false,
+        sequentialUploads: true,
         fail: function (e, data) {
             error_handler();
         },
