@@ -175,7 +175,7 @@ public class OrderController {
             switch (target){
                 case IN_PROGRESS_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, NOT_COMPLETED_ORDERS);
                 case NOT_COMPLETED_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, NOT_COMPLETED_ORDERS);
-                case ALL_ORDERS: return orderPaginationService.getAllOrders(start/length, length, searchValue, sortDir, column, ALL_ORDERS);
+                case ALL_ORDERS: return orderPaginationService.getAllOrders(start/length, length, searchValue, sortDir, column, IN_PROGRESS_ORDERS);
                 case COMPLETED_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, COMPLETED_ORDERS);
                 default: return new OrderWrapperHolder();
             }
