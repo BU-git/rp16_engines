@@ -54,7 +54,7 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
 
     @Transient
     @JsonProperty("elementType")
-    public int getElementType() {
+    public long getElementType() {
         return field.getId();
     }
 
