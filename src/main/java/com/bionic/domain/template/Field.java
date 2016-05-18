@@ -17,7 +17,6 @@ public class Field {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @JsonIgnore
-    @Column(name = "f_id")
     private int id;
 
     private String type;
