@@ -26,7 +26,7 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @JsonIgnore
-    private long id;
+    private int id;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Field.class, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "field_id")
@@ -58,7 +58,7 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
         return field.getId();
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -86,7 +86,7 @@ public class TemplateField implements Serializable, Comparable<TemplateField> {
         return description;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

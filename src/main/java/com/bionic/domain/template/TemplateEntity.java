@@ -24,7 +24,7 @@ public class TemplateEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @JsonProperty("customTemplateID")
-    private long id;
+    private int id;
 
     @Column(nullable = false)
     @JsonProperty("customTemplateName")
@@ -49,7 +49,7 @@ public class TemplateEntity {
         return templateName;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -57,7 +57,7 @@ public class TemplateEntity {
         this.templateName = templateName;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

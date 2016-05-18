@@ -77,7 +77,7 @@ DROP TABLE IF EXISTS `fields`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fields` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -377,13 +377,13 @@ DROP TABLE IF EXISTS `templatefields`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `templatefields` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `createDt` date NOT NULL,
   `description` varchar(1024) NOT NULL,
   `updateDt` date DEFAULT NULL,
   `value` varchar(1024) DEFAULT NULL,
-  `field_id` bigint(20) DEFAULT NULL,
-  `templateEntity_id` bigint(20) DEFAULT NULL,
+  `field_id` int(11) DEFAULT NULL,
+  `templateEntity_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK8s9kbbg0btub0hocrbb2vsr9i` (`field_id`),
   KEY `FKi3i54ygdsttdgqhfaisjw5atk` (`templateEntity_id`),
@@ -409,7 +409,7 @@ DROP TABLE IF EXISTS `templates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `templates` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `assigned` bit(1) NOT NULL,
   `templateName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
@@ -471,4 +471,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-18 14:33:11
+-- Dump completed on 2016-05-18 14:48:18
