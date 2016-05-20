@@ -11,7 +11,6 @@ $(document).ready(function() {
     var input_email = $('#email');
     var input_name = $('#name');
     var input_number = $('#number');
-    var input_role = $('#role');
     var check1 = $('#check1');
     var check2 = $('#check2');
     var check3 = $('#check3');
@@ -44,8 +43,7 @@ $(document).ready(function() {
     };
     var check_all_input_not_empty = function(){
         if(!(input_email.val().length > 5) && !isEmail(input_email.val())) return false;
-        if(!(input_name.val().length > 2)) return false;
-        return input_number.val().length > 2;
+        return input_name.val().length > 2;
     };
     var enable_submit = function(){
         if(check_all_input_not_empty() && isEmail(input_email.val())) {
@@ -77,7 +75,6 @@ $(document).ready(function() {
     });
     var update = function(){
         var role = "user";
-        if(input_role.prop('checked')) role = "admin";
         var user = {'Id':current_id,'Email':input_email.val(),'Name':input_name.val(),'Number':parseInt(input_number.val()),'Role':role};
         user = JSON.stringify(user);
         $.ajax({
@@ -99,8 +96,8 @@ $(document).ready(function() {
     var row_update = function(){
         name_td.text(input_name.val());
         email_td.text(input_email.val());
-        number_td.text(input_number.val());
-        role_td.text(input_role.prop('checked') ? 'admin' :'user');
+        var number = input_number.val();
+        number_td.text(input_number.val().length > 0 ? number : 0);
     };
     accept.click(function(){
         update();
@@ -128,8 +125,8 @@ $(document).ready(function() {
         enable_submit();
     });
     input_number.bind('input propertychange', function(){
-        paint_info(input_number, label_for_number, check_input_not_empty(input_number),warn3,check3);
-        enable_submit();
+        var value = input_number.val();
+        input_number.val(value.replace(/[^0-9]/g,''));
     });
     function isEmail() {
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -146,9 +143,6 @@ $(document).ready(function() {
             input_name.val(name_td.text());
             input_email.val(email_td.text());
             input_number.val(number_td.text());
-            if(role_td.text() == "admin"){
-                input_role.prop("checked", true);
-            }else input_role.prop("checked", false);
         });
     };
     var setAction = function(){

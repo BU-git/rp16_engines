@@ -109,23 +109,16 @@
         <img class="check" id="check2" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
         <img class="warn" id="warn2" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
       </td>
-      <td>
+      <td colspan="2">
         <label class="inline" id="for_name" for="name">Name</label><input id="name" type="text">
-      </td>
-      <td id="inline">
-        <div class="role">
-          <input id='role' value="admin" type="checkbox">
-        </div>
-        <div id="label"><label id="for_role">Admin</label></div>
       </td>
     </tr>
     <tr>
       <td class="w">
-        <img class="warn" id="warn3" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
         <img class="check" id="check3" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
       </td>
       <td colspan="2">
-        <label class="inline" id="for_number" for="number">Number</label><input id="number" type="number">
+        <label class="inline" id="for_number" for="number">Number</label><input id="number" type="text">
       </td>
     </tr>
   </table>

@@ -246,3 +246,6 @@ input{
 #errors{
     color: #EB4242;
 }
+#loader{
+    background-image: url("../images/templates/pagination/loader.gif");
+}

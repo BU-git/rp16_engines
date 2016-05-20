@@ -147,7 +147,7 @@
             <td class="w">
             </td>
             <td colspan="2">
-              <label class="inline" id="for_number" for="number">Number</label><input id="number" type="number">
+              <label class="inline" id="for_number" for="number">Number</label><input id="number" type="text">
             </td>
           </tr>
           <tr>

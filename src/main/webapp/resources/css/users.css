@@ -142,9 +142,9 @@ ul li, .role, #label, #left_side, #right_side, #right_side_error, #left_side_err
 #role{
     margin-top: 22px;
 }
-#name{
+/*{
     width: 230px;
-}
+}*/
 input#role{
     width: auto;
     height: auto;
@@ -152,7 +152,7 @@ input#role{
 input, .role{
     height: 30px;
 }
-#popup_ok,p#info, input[type='number'], input[type='email']{
+#popup_ok,p#info, input[type='email'],input#name,input#number{
     min-width: 300px;
     max-width: 300px;
 }

@@ -85,6 +85,10 @@ $(document).ready(function() {
         table_all = $('#table').DataTable({
             serverSide: true,
             ajax: '/orders/all',
+            oLanguage: {
+                sProcessing: "<div id=loader></div>"
+            },
+            bProcessing : true,
             'columns': [
                 {'data':'Order number'},
                 {'data': 'Service date'},
