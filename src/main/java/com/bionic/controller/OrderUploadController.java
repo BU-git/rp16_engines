@@ -88,8 +88,8 @@ public class OrderUploadController {
         }
     }
 
-    @RequestMapping(value = "upload", method = RequestMethod.POST, consumes = "multipart/form-data")
-    public ResponseEntity uploadFile(@RequestParam("number") long number,
+    @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, consumes = "multipart/form-data")
+    public ResponseEntity uploadFile(@PathVariable("number") long number,
                                      MultipartHttpServletRequest request) {
         Path reportFolder = Paths.get(ROOT + "/" + number);
         new File(reportFolder.toString()).mkdir();
