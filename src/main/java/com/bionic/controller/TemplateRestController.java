@@ -15,7 +15,7 @@ public class TemplateRestController {
 
     @RequestMapping(value = "/templates/get", method = RequestMethod.POST,
             produces = "application/json")
-    public TemplateEntity getAllTemplates(@RequestParam("number") long id){
+    public TemplateEntity getAllTemplates(@RequestParam("customTemplateID") long id){
         return templateService.findByTemplateId(id);
     }
 }
