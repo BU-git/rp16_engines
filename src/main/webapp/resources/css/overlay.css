@@ -1,0 +1,127 @@
+#right_side{
+    text-align: center;
+}
+#yes{
+    background-color: #C97777;
+}
+#no{
+    background-color: #C9A377;
+}
+#yes:hover{
+    background-color: #AD5757;
+}
+#no:hover{
+    background-color: #CC904B;
+}
+#right_side button{
+    border-radius: 2px;
+    outline: none;
+    font-weight: 600;
+    color: white;
+    border: none;
+    padding: 4px 8px 4px 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 45px;
+    margin-top: 10px;
+}
+#error_message{
+    padding-top: 35px;
+}
+#spin{
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 45px;
+}
+#ok_message,#deleting_message{
+    padding-top: 43px;
+}
+#ok_message, #error_message, #deleting_message{
+    font-size: 18px;
+}
+#popup_ok{
+    box-shadow: 0 0 30px #4d4f3d;
+    background-color: #F7F7E6;
+    width: 300px;
+}
+#popup_ok, #popup_error {
+    border-radius: 4px;
+}
+#error, #warn, #ok{
+    margin-top: 25px;
+}
+#content, #popup_ok table, #popup_error{
+    margin-left: auto;
+    margin-right: auto;
+}
+#popup_error{
+    box-shadow: 0 0 30px #5C2F2F;
+}
+#right_side p{
+    color: #4F5C55;
+}
+#popup_message{
+    padding-top: 30px;
+}
+#popup_message, #popup_message p, #right_side_error p{
+    font-size: 16px;
+}
+#left_side, #left_side_error, #left_side_warn{
+    border-radius: 4px 0 0 4px;
+    width: 120px;
+    max-width: 120px;
+    float: left;
+    background-color: #F7FAED;
+}
+#left_side, #right_side, #right_side_error, #left_side_error,#popup_ok, #left_side_warn{
+    height: 150px;
+}
+#left_side, #right_side, #right_side_error, #left_side_error,.info_action, .pdf_action, .del, #left_side_warn {
+    display: inline;
+}
+#right_side_error p{
+    padding-top: 35px;
+}
+#right_side{
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f2f2e8;
+}
+#right_side_error{
+    color: #594040;
+    background-color: #F7EBEB;
+}
+.popup_message{
+    padding: 5px;
+}
+#right_side, #right_side_error{
+    border-radius: 0 4px 4px 0 ;
+    width: 180px;
+    float: right;
+}
+#error, #warn, #ok{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+}
+#right_side p, #right_side_error p{
+    text-align: center;
+}
+#popup_ok{
+    box-shadow: 0 0 30px #4d4f3d;
+    background-color: #F7F7E6;
+    width: 300px;
+}
+#popup_ok, #popup_error {
+    border-radius: 4px;
+}
+#error, #warn, #ok{
+    margin-top: 25px;
+}
+#content, #popup_ok table, #popup_error{
+    margin-left: auto;
+    margin-right: auto;
+}
+#yes:hover,#no:hover{
+    transition: 0.2s;
+    cursor: pointer;
+}

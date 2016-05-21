@@ -3,16 +3,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/dataTables.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/users.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/dataTables.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/users.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link href="<spring:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
-  <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
-  <script src="<spring:url value="/resources/js/modified.dataTables.min.js"/>"></script>
-  <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-  <script src="<spring:url value="/resources/js/users.js"/>"></script>
+  <link href="<c:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
+  <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <script src="<c:url value="/resources/js/users.js"/>"></script>
     <script>
         $(window).load(function() {
             $('#menu-toggle')
@@ -81,13 +82,25 @@
     </ul>
   </div>
 </div>
-<div id="popup_ok" style="display: none">
-  <div id="left_side"><img src="<spring:url value="/resources/images/templates/ok-icon.png"/>"></div>
-  <div id="right_side"><p>User deleted!</p></div>
-</div>
-<div id="popup_error" style="display: none">
-  <div id="left_side_error"><img src="<spring:url value="/resources/images/templates/error-icon.png"/>"></div>
-  <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
+<div id="popup_ok" >
+  <div id="left_side">
+    <img id="warn" src="../../resources/images/templates/warn-icon.svg">
+    <img id="ok" src="../../resources/images/templates/ok-icon.svg" style="display: none">
+    <img id="error" src="<c:url value="/resources/images/templates/error-icon.svg"/>" style="display: none">
+    <img id="spin" src="../../resources/images/templates/delete_spin.gif" style="display: none">
+  </div>
+  <div id="right_side">
+    <div class="popup_message">
+      <p id="popup_message">Are you sure you want to delete user</p>
+      <p id="ok_message" style="display: none">User deleted!</p>
+      <p id="error_message" style="display: none">Oops.. something wrong ☹</p>
+      <p id="deleting_message" style="display: none">Deleting...</p>
+    </div>
+    <div id="buttons_c">
+      <button id="no" class="confirm_popup_close">No</button>
+      <button id="yes">Yes</button>
+    </div>
+  </div>
 </div>
 <div id="edit_popup" style="background-color: white">
   <div class="hd">Edit User Info</div>

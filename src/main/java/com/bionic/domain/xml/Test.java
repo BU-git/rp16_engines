@@ -13,9 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.bionic.domain.Role;
+import com.bionic.domain.User;
 import com.bionic.domain.template.TemplateField;
 import com.bionic.domain.template.web.CustomTemplateFieldHolder;
 import com.bionic.service.TemplateService;
+import com.bionic.service.UserService;
 
 @Named
 public class Test {
@@ -26,10 +29,14 @@ public class Test {
     @Autowired
     private TemplateService templateService;
 
+    @Autowired
+    private UserService userService;
+
 
     public static void main(String[] args) throws IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         Test test = (Test) context.getBean("test");
+        test.fillUsers("User-test", 30);
         test.fillTemplates("Bionic important template long name", 15);
        /* test.xmlFileReader.convertFromXMLToObject("4014981.xml");*/
         /*test.testOrder("Template fucking test");*/
@@ -40,6 +47,17 @@ public class Test {
         Collections.sort(list);
         for(TemplateField f: list){
             System.out.println(f);
+        }
+    }
+    private void fillUsers(String name, int count){
+        for(int i = 0; i < count; i++){
+            User u = new User();
+            u.setEmail(name+i+"@gmail.com");
+            u.setName(name + " " +i);
+            u.setRole(Role.USER);
+            u.setNumber(i);
+            u.setPasswordHash("admin");
+            userService.save(u);
         }
     }
 

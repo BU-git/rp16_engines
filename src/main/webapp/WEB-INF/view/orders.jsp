@@ -17,7 +17,7 @@
     <script src="../../resources/js/jquery.fileupload.js"></script>
     <script src="<c:url value="/resources/js/orders.js"/>"></script>
     <script src="<c:url value="/resources/js/upload.js"/>"></script>
-    <link href="<c:url value="/resources/css/dashboard.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/tabslet.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/orders.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
@@ -132,10 +132,6 @@
                     </div>
                 </div>
             </div>
-            <%--<div id="popup_error" style="display: none">
-                <div id="left_side_error"></div>
-                <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
-            </div>--%>
             <div id="title_banner"><p>Orders</p></div>
             <div class="content-place">
                 <div class="upload" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="leaveDrop(event)">

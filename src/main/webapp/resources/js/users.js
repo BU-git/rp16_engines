@@ -3,7 +3,6 @@ $(document).ready(function() {
     var message = " Oops.. something wrong =/";
     var edit_popup = $('#edit_popup');
     var popup_ok = $('#popup_ok');
-    var popup_error = $('#popup_error');
     var accept = $('#accept');
     var label_for_mail = $('#for_mail');
     var label_for_name = $('#for_name');
@@ -24,6 +23,60 @@ $(document).ready(function() {
     var email_td;
     var number_td;
     var role_td;
+    var ok_img = $('#ok');
+    var warn_img = $('#warn');
+    var error_img = $('#error');
+    var right_side = $('#right_side');
+    var no_button = $('#no');
+    var yes_button = $('#yes');
+    var spin = $('#spin');
+    var deleting_message = $('#deleting_message');
+    var warn_message = $('#popup_message');
+    var ok_message = $('#ok_message');
+    var error_popup_message = $('#error_message');
+    var buttons_div = $('#buttons_c');
+    var current_user = 0;
+    var temp_user = 0;
+
+    var draw_info = function(success, init){
+        spin.hide();
+        deleting_message.hide();
+        if(success){
+            ok_img.show();
+            ok_message.show();
+            setTimeout(function(){
+                popup_ok.popup('hide');
+                table.ajax.reload(null,false);
+            },1000)
+        }else if(!success && !init){
+            error_img.show();
+            error_popup_message.show();
+            setTimeout(function(){
+                current_user = 0;
+                popup_ok.popup('hide')
+            },2000)
+        }else{
+            ok_img.hide();
+            ok_message.hide();
+            error_img.hide();
+            error_popup_message.hide();
+            warn_img.show();
+            buttons_div.show();
+            warn_message.show();
+        }
+    };
+    yes_button.click(function(){
+        warn_message.hide();
+        warn_img.hide();
+        buttons_div.hide();
+        deleting_message.show();
+        spin.show();
+        setTimeout(deleteUser(delete_id),800);
+    });
+    no_button.click(function(){
+        temp_user = 0;
+    });
+
     edit_popup.popup({
         onclose: function(){
             setTimeout(function(){
@@ -55,21 +108,8 @@ $(document).ready(function() {
             return true;
         }
     };
-    popup_error.popup({
-        opentransitionend: function(){
-            setTimeout(function(){
-                popup_error.popup('hide');
-            }, 2500);
-        },
-        blur : false,
-        transition: 'all 0.3s'
-    });
     popup_ok.popup({
-        opentransitionend: function(){
-            setTimeout(function() {
-                popup_ok.popup('hide');
-            }, 700);
-        },
+        closeelement: '.confirm_popup_close',
         blur : false,
         transition: 'all 0.3s'
     });
@@ -108,7 +148,6 @@ $(document).ready(function() {
             label.css('color','#FF4545');
             warn.css('display', 'inline');
             check.css('display','none');
-
         }else{
             input.css('color','black');
             label.css('color','#9FAAB5');
@@ -149,14 +188,15 @@ $(document).ready(function() {
         $('#example').find('tbody').on('click','.del', function(){
             var parent = $(this).parent().parent();
             delete_id = parseInt(parent.find("td:nth-child(1)").text());
-            $.when(deleteTemplate(delete_id)).then(function(){
-                setTimeout(function(){
-                    table.ajax.reload();
-                }, 500);
-            });
+            $.when(draw_info(false, true)).then(popup_ok.popup('show'));
         });
     };
-    var deleteTemplate = function(id){
+    var deleteUser = function(id){
+        if(id == current_user) {
+            draw_info(false, false);
+            return;
+        }
+        current_user = id;
         var url = '/users/remove/'+id;
         $.ajax({
             dataType: "html",
@@ -165,10 +205,11 @@ $(document).ready(function() {
             type: "POST",
             url:url,
             success: function(result){
-                popup_ok.popup('show')
+                draw_info(true, false);
+                current_user = 0;
             },
             error: function(result){
-                popup_error.popup('show')
+                draw_info(false, false);
             }
         })
     };
@@ -178,6 +219,10 @@ $(document).ready(function() {
                 'url': '/users/all/',
                 'type': 'POST'
             },
+            language: {
+                'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
+            },
+            "processing": true,
             'columns': [
                 {'data': 'Id'},
                 {'data': 'Name'},

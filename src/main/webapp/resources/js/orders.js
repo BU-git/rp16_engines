@@ -39,12 +39,13 @@ $(document).ready(function() {
             ok_message.show();
             setTimeout(function(){
                 popup_ok.popup('hide');
-                current_table.ajax.reload();
+                current_table.ajax.reload(null,false);
             },1000)
         }else if(!success && !init){
             error_img.show();
             error_popup_message.show();
             setTimeout(function(){
+                current_order = 0;
                 popup_ok.popup('hide')
             },2000)
         }else{
@@ -224,7 +225,10 @@ $(document).ready(function() {
         });
     };
     var deleteOrder = function(number){
-        if(current_order==number) return;
+        if(current_order == number) {
+            draw_info(false, false);
+            return;
+        }
         current_order = number;
         var url = '/orders/remove/'+number;
         $.ajax({
@@ -277,7 +281,7 @@ $(document).ready(function() {
                     error_count = 0;
                     file_count = 0;
                     bar.text("");
-                    current_table.ajax.reload();
+                    current_table.ajax.reload(null,false);
                 },2200);
             }
             bar.css({'width':progress + '%'});

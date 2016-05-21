@@ -3,16 +3,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
-  <script src="<spring:url value="/resources/js/modified.dataTables.min.js"/>"></script>
-  <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-  <script src="<spring:url value="/resources/js/template.overview.js"/>"></script>
-  <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/template.overview.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/modified.dataTables.min.css"/>" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="<spring:url value="/resources/images/logo.png"/>" type="image/png">
+  <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <script src="<c:url value="/resources/js/template.overview.js"/>"></script>
+  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/template.overview.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/dataTables.css"/>" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Template Overview</title>
-  <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <script>
     $(window).load(function() {
@@ -112,16 +112,6 @@
           </tr>
           </thead>
           <tbody>
-          <% int a = 1; %>
-          <c:forEach var ="t" items="${templates}">
-            <tr>
-              <td><% out.println(a++); %></td>
-              <td>
-                <c:if test="${!t.equals('NSA')}"><a href="/templates/overview/${t}"><p class="black" >${t}</p></a></c:if>
-                <c:if test="${t.equals('NSA')}">${t}</c:if>
-              </td>
-            </tr>
-          </c:forEach>
           </tbody>
         </table>
       </div>
