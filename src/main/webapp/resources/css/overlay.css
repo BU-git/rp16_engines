@@ -23,7 +23,6 @@
     margin-left: 10px;
     margin-right: 10px;
     width: 45px;
-    margin-top: 10px;
 }
 #error_message{
     padding-top: 35px;
@@ -48,7 +47,7 @@
     border-radius: 4px;
 }
 #error, #warn, #ok{
-    margin-top: 25px;
+    margin-top: 20px;
 }
 #content, #popup_ok table, #popup_error{
     margin-left: auto;
@@ -61,10 +60,13 @@
     color: #4F5C55;
 }
 #popup_message{
-    padding-top: 30px;
+    word-wrap: normal;
+    margin-top: 30px;
+    height: 60px;
+    max-height: 60px;
 }
 #popup_message, #popup_message p, #right_side_error p{
-    font-size: 16px;
+    font-size: 15px;
 }
 #left_side, #left_side_error, #left_side_warn{
     border-radius: 4px 0 0 4px;
@@ -124,4 +126,10 @@
 #yes:hover,#no:hover{
     transition: 0.2s;
     cursor: pointer;
+}
+#identifier{
+    margin-right: 2px;
+    text-decoration: underline;
+    font-style: italic;
+    color: #BF3D3D;
 }

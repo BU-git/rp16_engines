@@ -121,7 +121,7 @@
                 </div>
                 <div id="right_side">
                     <div class="popup_message">
-                        <p id="popup_message">Are you sure you want to delete this order?</p>
+                        <p id="popup_message">Are you sure you want to delete order number <span id="identifier"></span>?</p>
                         <p id="ok_message" style="display: none">Order deleted!</p>
                         <p id="error_message" style="display: none">Oops.. something wrong ☹</p>
                         <p id="deleting_message" style="display: none">Deleting...</p>

@@ -26,6 +26,7 @@ $(document).ready(function() {
     var ok_message = $('#ok_message');
     var error_popup_message = $('#error_message');
     var buttons_div = $('#buttons_c');
+    var order_number_span = $('#identifier');
     var file_count = 0;
     var error_count = 0;
     var current_order = 0;
@@ -55,6 +56,7 @@ $(document).ready(function() {
             error_popup_message.hide();
             warn_img.show();
             buttons_div.show();
+            order_number_span.text(temp_order_number);
             warn_message.show();
         }
     };

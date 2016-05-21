@@ -35,6 +35,8 @@ $(document).ready(function() {
     var ok_message = $('#ok_message');
     var error_popup_message = $('#error_message');
     var buttons_div = $('#buttons_c');
+    var delete_name;
+    var user_name = $('#identifier');
     var current_user = 0;
     var temp_user = 0;
 
@@ -62,6 +64,7 @@ $(document).ready(function() {
             error_popup_message.hide();
             warn_img.show();
             buttons_div.show();
+            user_name.text(delete_name);
             warn_message.show();
         }
     };
@@ -188,6 +191,7 @@ $(document).ready(function() {
         $('#example').find('tbody').on('click','.del', function(){
             var parent = $(this).parent().parent();
             delete_id = parseInt(parent.find("td:nth-child(1)").text());
+            delete_name = parent.find("td:nth-child(2)").text();
             $.when(draw_info(false, true)).then(popup_ok.popup('show'));
         });
     };
