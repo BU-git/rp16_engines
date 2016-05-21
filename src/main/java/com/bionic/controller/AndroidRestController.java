@@ -26,10 +26,8 @@ public class AndroidRestController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/user/{email:.+}",
-            method = RequestMethod.POST,
-            produces = "application/json")
-    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+    @RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<User> getUserByEmail(@RequestParam("email") String email) {
         User user = userService.getUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
