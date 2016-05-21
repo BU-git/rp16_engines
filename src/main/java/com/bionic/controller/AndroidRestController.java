@@ -40,11 +40,11 @@ public class AndroidRestController {
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/orders/get/{number}/{email:.+}",
+    @RequestMapping(value = "/orders/get",
             method = RequestMethod.POST,
             produces = "application/json")
-    public ResponseEntity<Order> getOrderForUser(@PathVariable("number") long number,
-                                 @PathVariable("email") String email) {
+    public ResponseEntity<Order> getOrderForUser(@RequestParam("number") long number,
+                                 @RequestParam("email") String email) {
         Order order = orderService.getOrderForUser(number, email);
         return order != null ? new ResponseEntity<>(order, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
