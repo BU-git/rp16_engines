@@ -2,10 +2,7 @@
 package com.bionic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.bionic.domain.template.TemplateEntity;
 import com.bionic.service.TemplateService;
@@ -16,9 +13,9 @@ public class TemplateRestController {
     @Autowired
     private TemplateService templateService;
 
-    @RequestMapping(value = "/templates/get/{number}", method = RequestMethod.POST,
+    @RequestMapping(value = "/templates/get", method = RequestMethod.POST,
             produces = "application/json")
-    public TemplateEntity getAllTemplates(@PathVariable("number") long id){
+    public TemplateEntity getAllTemplates(@RequestParam("customTemplateID") long id){
         return templateService.findByTemplateId(id);
     }
 }

@@ -26,27 +26,25 @@ public class AndroidRestController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/user/{email:.+}",
-            method = RequestMethod.POST,
-            produces = "application/json")
-    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+    @RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<User> getUserByEmail(@RequestParam("email") String email) {
         User user = userService.getUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/orders/brief/{email:.+}",
+    @RequestMapping(value="/orders/brief",
             method = RequestMethod.POST,
             produces = "application/json")
-    public ResponseEntity<List<OrderBrief>> getBriefOrders(@PathVariable("email") String email) {
+    public ResponseEntity<List<OrderBrief>> getBriefOrders(@RequestParam("email") String email) {
         List<OrderBrief> orders = orderService.getBriefOrdersForUser(email);
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/orders/get/{number}/{email:.+}",
+    @RequestMapping(value = "/orders/get",
             method = RequestMethod.POST,
             produces = "application/json")
-    public ResponseEntity<Order> getOrderForUser(@PathVariable("number") long number,
-                                 @PathVariable("email") String email) {
+    public ResponseEntity<Order> getOrderForUser(@RequestParam("number") long number,
+                                 @RequestParam("email") String email) {
         Order order = orderService.getOrderForUser(number, email);
         return order != null ? new ResponseEntity<>(order, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

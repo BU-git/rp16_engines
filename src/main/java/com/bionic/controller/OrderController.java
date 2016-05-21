@@ -107,15 +107,17 @@ public class OrderController {
     public String assignEmployee(@PathVariable("id") long id, @RequestParam("email")String email, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
-        List<User> list = userService.findByEmail(email);
-        if (!list.isEmpty()) {
-            Employee employee = new Employee();
-            employee.setName(list.get(0).getName());
-            employee.setEmail(list.get(0).getEmail());
-            employee.setNumber(list.get(0).getNumber());
-            order.setEmployee(employee);
+        if (order.getOrderStatus() == 0) {
+            List<User> list = userService.findByEmail(email);
+            if (!list.isEmpty()) {
+                Employee employee = new Employee();
+                employee.setName(list.get(0).getName());
+                employee.setEmail(list.get(0).getEmail());
+                employee.setNumber(list.get(0).getNumber());
+                order.setEmployee(employee);
+            }
+            orderService.save(order);
         }
-        orderService.save(order);
         return "redirect:/orders/{id}";
     }
 
@@ -123,20 +125,21 @@ public class OrderController {
     public String assignTemplate(@PathVariable("id") long id, @RequestParam("name")String name, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
-        if (name.equals("default")) {
-            order.setLastServerChangeDate(new Date());
-            order.setCustomTemplateID(0);
-            orderService.save(order);
-        }
-        else {
-            List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
-            if (!templateEntityList.isEmpty()) {
-                TemplateEntity template = templateEntityList.get(0);
-                template.setAssigned(true);
-                templateService.saveTemplate(template);
-                order.setCustomTemplateID(template.getId());
+        if (order.getOrderStatus() == 0) {
+            if (name.equals("default")) {
                 order.setLastServerChangeDate(new Date());
+                order.setCustomTemplateID(0);
                 orderService.save(order);
+            } else {
+                List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
+                if (!templateEntityList.isEmpty()) {
+                    TemplateEntity template = templateEntityList.get(0);
+                    template.setAssigned(true);
+                    templateService.saveTemplate(template);
+                    order.setCustomTemplateID(template.getId());
+                    order.setLastServerChangeDate(new Date());
+                    orderService.save(order);
+                }
             }
         }
         return "redirect:/orders/{id}";
