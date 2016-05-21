@@ -2,7 +2,6 @@ $(document).ready(function() {
     var nc = false;
     var c = false;
     var popup_ok = $('#popup_ok');
-    var popup_error = $('#popup_error');
     var table_all;
     var table_not_completed;
     var table_completed;
@@ -12,12 +11,63 @@ $(document).ready(function() {
     var error_message = ' not uploaded ☹';
     var info_message = ' uploaded.';
     var url = '/upload';
-    var file_count = 0;
     var bar = $('#progress-bar');
     var message = $('span#message');
     var errors = $('#errors');
+    var ok_img = $('#ok');
+    var warn_img = $('#warn');
+    var error_img = $('#error');
+    var right_side = $('#right_side');
+    var no_button = $('#no');
+    var yes_button = $('#yes');
+    var spin = $('#spin');
+    var deleting_message = $('#deleting_message');
+    var warn_message = $('#popup_message');
+    var ok_message = $('#ok_message');
+    var error_popup_message = $('#error_message');
+    var buttons_div = $('#buttons_c');
+    var file_count = 0;
     var error_count = 0;
     var current_order = 0;
+    var temp_order_number = 0;
+
+    var draw_info = function(success, init){
+        spin.hide();
+        deleting_message.hide();
+        if(success){
+            ok_img.show();
+            ok_message.show();
+            setTimeout(function(){
+                popup_ok.popup('hide');
+                current_table.ajax.reload();
+            },1000)
+        }else if(!success && !init){
+            error_img.show();
+            error_popup_message.show();
+            setTimeout(function(){
+                popup_ok.popup('hide')
+            },2000)
+        }else{
+            ok_img.hide();
+            ok_message.hide();
+            error_img.hide();
+            error_popup_message.hide();
+            warn_img.show();
+            buttons_div.show();
+            warn_message.show();
+        }
+    };
+    yes_button.click(function(){
+        warn_message.hide();
+        warn_img.hide();
+        buttons_div.hide();
+        deleting_message.show();
+        spin.show();
+        setTimeout(deleteOrder(temp_order_number),800);
+    });
+    no_button.click(function(){
+        temp_order_number = 0;
+    });
     $("#all").click(function(){
         table_all.ajax.reload();
     });
@@ -59,6 +109,10 @@ $(document).ready(function() {
             table_not_completed = $('#not_completed_table').DataTable({
                 serverSide: true,
                 ajax: '/orders/not-completed',
+                language: {
+                    'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
+                },
+                "processing": true,
                 'columns': [
                     {'data':'Order number'},
                     {'data': 'Service date'},
@@ -85,10 +139,10 @@ $(document).ready(function() {
         table_all = $('#table').DataTable({
             serverSide: true,
             ajax: '/orders/all',
-            oLanguage: {
-                sProcessing: "<div id=loader></div>"
+            language: {
+                'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
             },
-            bProcessing : true,
+            "processing": true,
             'columns': [
                 {'data':'Order number'},
                 {'data': 'Service date'},
@@ -115,6 +169,10 @@ $(document).ready(function() {
             table_completed = $('#completed_table').DataTable({
                 serverSide: true,
                 ajax: '/orders/completed',
+                language: {
+                    'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
+                },
+                "processing": true,
                 'columns': [
                     {'data':'Order number'},
                     {'data': 'Service date'},
@@ -161,11 +219,8 @@ $(document).ready(function() {
         });
         table.find('tbody').on('click','.del', function(){
             var parent = $(this).parent().parent();
-            $.when(deleteOrder(parent.find("td:nth-child(1)").text())).then(function(){
-                setTimeout(function(){
-                    reload.ajax.reload();
-                }, 600);
-            });
+            temp_order_number = parent.find("td:nth-child(1)").text();
+            $.when(draw_info(false, true)).then(popup_ok.popup('show'));
         });
     };
     var deleteOrder = function(number){
@@ -179,11 +234,11 @@ $(document).ready(function() {
             type: "POST",
             url: url,
             success: function(result){
-                popup_ok.popup('show');
+                draw_info(true, false);
                 current_order = 0;
             },
             error: function(result){
-                popup_error.popup('show')
+                draw_info(false, false);
             }
         })
     };
@@ -191,21 +246,8 @@ $(document).ready(function() {
         current_table = table_all;
         setAction('#table')
     });
-    'use strict';
-    popup_error.popup({
-        opentransitionend: function(){
-            setTimeout(function(){
-                popup_error.popup('hide');
-                current_table.ajax.reload();
-            }, 2500);
-        },
-        blur : false,
-        transition: 'all 0.3s'
-    });
     popup_ok.popup({
-        opentransitionend: function(){
-            $.when(current_table.ajax.reload()).then(setTimeout(function(){popup_ok.popup('hide')},1200));
-        },
+        closeelement: '.confirm_popup_close',
         blur : false,
         transition: 'all 0.3s'
     });
@@ -236,7 +278,7 @@ $(document).ready(function() {
                     file_count = 0;
                     bar.text("");
                     current_table.ajax.reload();
-                },2000);
+                },2200);
             }
             bar.css({'width':progress + '%'});
             bar.text(progress + '%')

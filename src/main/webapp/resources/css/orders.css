@@ -18,7 +18,7 @@
     height: 32px;
     outline: none;
 }
-.info_action:hover, .pdf_action:hover, .del:hover{
+.info_action:hover, .pdf_action:hover, .del:hover,#yes:hover,#no:hover,.fileinput-button:hover{
     transition: 0.2s;
     cursor: pointer;
 }
@@ -53,62 +53,68 @@ input{
     max-width: 90px;
 }
 #popup_ok{
-    box-shadow: 0 0 30px #3A4F43;
+    box-shadow: 0 0 30px #4d4f3d;
     background-color: #F7F7E6;
     width: 300px;
 }
 #popup_ok, #popup_error {
     border-radius: 4px;
 }
-#popup_ok table, #popup_error, #left_side img, #left_side_error img{
+#error, #warn, #ok{
     margin-top: 25px;
+}
+#content, #popup_ok table, #popup_error{
+    margin-left: auto;
+    margin-right: auto;
 }
 #popup_error{
     box-shadow: 0 0 30px #5C2F2F;
 }
 #right_side p{
     color: #4F5C55;
-    padding-top: 45px;
 }
-#right_side p, #right_side_error p{
-    font-size: 18px;
+#popup_message{
+    padding-top: 30px;
 }
-#left_side, #left_side_error{
+#popup_message p, #right_side_error p{
+    font-size: 16px;
+}
+#left_side, #left_side_error, #left_side_warn{
     border-radius: 4px 0 0 4px;
     width: 120px;
     max-width: 120px;
     float: left;
     background-color: #F7FAED;
 }
-#left_side, #right_side, #right_side_error, #left_side_error,#popup_ok{
+#left_side, #right_side, #right_side_error, #left_side_error,#popup_ok, #left_side_warn{
     height: 150px;
 }
-#left_side, #right_side, #right_side_error, #left_side_error,.info_action, .pdf_action, .del {
+#left_side, #right_side, #right_side_error, #left_side_error,.info_action, .pdf_action, .del, #left_side_warn {
     display: inline;
 }
 #right_side_error p{
     padding-top: 35px;
 }
 #right_side{
-    background-color: #EEF2DF;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f2f2e8;
 }
 #right_side_error{
     color: #594040;
     background-color: #F7EBEB;
+}
+.popup_message{
+    padding: 5px;
 }
 #right_side, #right_side_error{
     border-radius: 0 4px 4px 0 ;
     width: 180px;
     float: right;
 }
-#left_side img, #left_side_error img{
+#error, #warn, #ok{
     width: 100px;
     height: 100px;
     margin-left: 10px;
-}
-#content, #popup_ok table, #popup_error{
-    margin-left: auto;
-    margin-right: auto;
 }
 #right_side p, #right_side_error p,#title_banner{
     text-align: center;
@@ -137,12 +143,6 @@ input{
     height: 22px;
     width: 0;
     background-image: url("../images/progressbar.gif");
-     /*background-color: #374670;
-     background-image: -moz-linear-gradient(top, #4972ae, #374670);
-     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4972ae), to(#374670));
-     background-image: -webkit-linear-gradient(top, #4972ae, #374670);
-     background-image: -o-linear-gradient(top, #4972ae, #374670);
-     background-image: linear-gradient(to bottom, #4972ae, #374670);*/
 }
 .progress {
     margin-top: 5px;
@@ -173,13 +173,13 @@ input{
     color: #ffffff;
     text-align: center;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #0e90d2;
+   /* background-color: #0e90d2;
     background-image: -moz-linear-gradient(top, #149bdf, #0480be);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));
     background-image: -webkit-linear-gradient(top, #149bdf, #0480be);
     background-image: -o-linear-gradient(top, #149bdf, #0480be);
     background-image: linear-gradient(to bottom, #149bdf, #0480be);
-    background-repeat: repeat-x;
+    background-repeat: repeat-x;*/
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);
     -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
     -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
@@ -216,7 +216,6 @@ input{
     background: url(../images/upload.svg) no-repeat 4px, linear-gradient(to bottom, #4972ae, #374670);
 }
 .fileinput-button:hover{
-    cursor: pointer;
     transition: 0.3s;
     background: url(../images/upload.svg) no-repeat 4px, linear-gradient(to bottom, #6985a5, #4c6381);
 }
@@ -246,6 +245,44 @@ input{
 #errors{
     color: #EB4242;
 }
-#loader{
-    background-image: url("../images/templates/pagination/loader.gif");
+#right_side{
+    text-align: center;
+}
+#yes{
+    background-color: #C97777;
+}
+#no{
+    background-color: #C9A377;
+}
+#yes:hover{
+    background-color: #AD5757;
+}
+#no:hover{
+    background-color: #CC904B;
+}
+#right_side button{
+    border-radius: 2px;
+    outline: none;
+    font-weight: 600;
+    color: white;
+    border: none;
+    padding: 4px 8px 4px 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 45px;
+    margin-top: 10px;
+}
+#error_message{
+    padding-top: 35px;
+}
+#spin{
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 45px;
+}
+#ok_message,#deleting_message{
+    padding-top: 43px;
+}
+#ok_message, #error_message, #deleting_message{
+    font-size: 18px;
 }

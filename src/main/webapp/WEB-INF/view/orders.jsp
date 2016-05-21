@@ -7,6 +7,7 @@
 <head>
     <title>Orders</title>
     <meta charset="utf-8">
+    <spring:url value="/resources/images/templates/pagination/ajax-loader.gif" var="loader"/>
     <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
     <script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
     <script src="<c:url value="/resources/js/jquery.tabslet.min.js"/>"></script>
@@ -31,7 +32,6 @@
                     .click(function(){
                         $('body').toggleClass('menu-on');
                     });
-
         });
         function allowDrop(event){
             $('.upload').css('border','dashed 3px #cccdce');
@@ -70,17 +70,17 @@
     <div class="sitemap">
         <ul class="site-menu">
             <li class="menu-item">
-                <a href="<spring:url value="/dashboard"/>">
+                <a href="<c:url value="/dashboard"/>">
                     Dashboard
                 </a>
             </li>
             <li class="menu-item">
-                <a href="<spring:url value="/orders"/>">
+                <a href="<c:url value="/orders"/>">
                     Orders overview
                 </a>
             </li>
             <li class="menu-item">
-                <a href="<spring:url value="/templates/new"/>">
+                <a href="<c:url value="/templates/new"/>">
                     Create template
                 </a>
             </li>
@@ -112,14 +112,30 @@
                 </div>
                 <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
             </div>
-            <div id="popup_ok" style="display: none">
-                <div id="left_side"><img src="<spring:url value="/resources/images/templates/ok-icon.png"/>"></div>
-                <div id="right_side"><p>Order deleted!</p></div>
+            <div id="popup_ok" >
+                <div id="left_side">
+                    <img id="warn" src="../../resources/images/templates/warn-icon.svg">
+                    <img id="ok" src="../../resources/images/templates/ok-icon.svg" style="display: none">
+                    <img id="error" src="<c:url value="/resources/images/templates/error-icon.svg"/>" style="display: none">
+                    <img id="spin" src="../../resources/images/templates/delete_spin.gif" style="display: none">
+                </div>
+                <div id="right_side">
+                    <div class="popup_message">
+                        <p id="popup_message">Are you sure you want to delete this order?</p>
+                        <p id="ok_message" style="display: none">Order deleted!</p>
+                        <p id="error_message" style="display: none">Oops.. something wrong ☹</p>
+                        <p id="deleting_message" style="display: none">Deleting...</p>
+                    </div>
+                    <div id="buttons_c">
+                        <button id="no" class="confirm_popup_close">No</button>
+                        <button id="yes">Yes</button>
+                    </div>
+                </div>
             </div>
-            <div id="popup_error" style="display: none">
-                <div id="left_side_error"><img src="<spring:url value="/resources/images/templates/error-icon.png"/>"></div>
+            <%--<div id="popup_error" style="display: none">
+                <div id="left_side_error"></div>
                 <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
-            </div>
+            </div>--%>
             <div id="title_banner"><p>Orders</p></div>
             <div class="content-place">
                 <div class="upload" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="leaveDrop(event)">
