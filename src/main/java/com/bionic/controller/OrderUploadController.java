@@ -38,8 +38,8 @@ public class OrderUploadController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "orders/update/{number}/{email:.+}", method = RequestMethod.POST)
-    public ResponseEntity updateOrder(@PathVariable("number") long number, @PathVariable("email") String email,
+    @RequestMapping(value = "orders/update", method = RequestMethod.POST)
+    public ResponseEntity updateOrder(@RequestParam("number") long number, @RequestParam("email") String email,
                                       @RequestParam("lastAndroidChangeDate") long lastAndroidChangeDate,
                                       @RequestParam("orderStatus") int orderStatus) {
         Order order = orderService.getOrderForUser(number, email);
@@ -88,8 +88,8 @@ public class OrderUploadController {
         }
     }
 
-    @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, consumes = "multipart/form-data")
-    public ResponseEntity uploadFile(@PathVariable("number") long number,
+    @RequestMapping(value = "upload", method = RequestMethod.POST, consumes = "multipart/form-data")
+    public ResponseEntity uploadFile(@RequestParam("number") long number,
                                      MultipartHttpServletRequest request) {
         Path reportFolder = Paths.get(ROOT + "/" + number);
         new File(reportFolder.toString()).mkdir();
