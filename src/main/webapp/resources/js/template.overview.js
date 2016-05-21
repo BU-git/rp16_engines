@@ -1,23 +1,63 @@
 $(document).ready(function() {
     var table;
-    var delete_name;
     var popup_ok = $('#popup_ok');
-    var popup_error = $('#popup_error');
-    popup_error.popup({
-        opentransitionend: function(){
+    var ok_img = $('#ok');
+    var warn_img = $('#warn');
+    var error_img = $('#error');
+    var right_side = $('#right_side');
+    var no_button = $('#no');
+    var yes_button = $('#yes');
+    var spin = $('#spin');
+    var deleting_message = $('#deleting_message');
+    var warn_message = $('#popup_message');
+    var ok_message = $('#ok_message');
+    var error_popup_message = $('#error_message');
+    var buttons_div = $('#buttons_c');
+    var template_name = $('#identifier');
+    var current_delete_name;
+    var temp_delete_name;
+
+    var draw_info = function(success, init){
+        spin.hide();
+        deleting_message.hide();
+        if(success){
+            ok_img.show();
+            ok_message.show();
             setTimeout(function(){
-                popup_error.popup('hide');
-            }, 2500);
-        },
-        blur : false,
-        transition: 'all 0.3s'
+                popup_ok.popup('hide');
+                table.ajax.reload(null,false);
+            },1000)
+        }else if(!success && !init){
+            error_img.show();
+            error_popup_message.show();
+            setTimeout(function(){
+                current_delete_name = '';
+                popup_ok.popup('hide')
+            },2000)
+        }else{
+            ok_img.hide();
+            ok_message.hide();
+            error_img.hide();
+            error_popup_message.hide();
+            warn_img.show();
+            buttons_div.show();
+            template_name.text(temp_delete_name);
+            warn_message.show();
+        }
+    };
+    yes_button.click(function(){
+        warn_message.hide();
+        warn_img.hide();
+        buttons_div.hide();
+        deleting_message.show();
+        spin.show();
+        setTimeout(deleteTemplate(temp_delete_name),800);
+    });
+    no_button.click(function(){
+        temp_delete_name = '';
     });
     popup_ok.popup({
-        opentransitionend: function(){
-            setTimeout(function() {
-                popup_ok.popup('hide');
-            }, 950);
-        },
+        closeelement: '.confirm_popup_close',
         blur : false,
         transition: 'all 0.3s'
     });
@@ -25,12 +65,8 @@ $(document).ready(function() {
         var ex = $('#example');
         ex.find('tbody').on('click','.del', function(){
             var parent = $(this).parent().parent();
-            delete_name = parent.find('td:nth-child(2)').text();
-            $.when(deleteTemplate(delete_name)).then(function(){
-                setTimeout(function(){
-                    table.ajax.reload();
-                }, 600);
-            });
+            temp_delete_name = parent.find('td:nth-child(2)').text();
+            $.when(draw_info(false, true)).then(popup_ok.popup('show'));
         });
         ex.find('tbody').on('click','.edit', function(){
             var parent = $(this).parent().parent();
@@ -43,6 +79,10 @@ $(document).ready(function() {
                 'url': '/templates',
                 'type': 'POST'
             },
+            language: {
+                'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
+            },
+            "processing": true,
             'columns': [
                 {'data':'#'},
                 {'data': 'Name'},
@@ -60,6 +100,11 @@ $(document).ready(function() {
         });
     };
     var deleteTemplate = function(name){
+        if(name == current_delete_name){
+            draw_info(false, false);
+            return;
+        }
+        current_delete_name = name;
         var url = '/templates/remove/'+name;
         $.ajax({
             dataType: "html",
@@ -68,10 +113,12 @@ $(document).ready(function() {
             type: 'POST',
             url:url,
             success: function(result){
-                popup_ok.popup('show')
+                draw_info(true, false);
+                current_delete_name = "";
+                temp_delete_name = "";
             },
             error: function(result){
-                popup_error.popup('show')
+                draw_info(false, false);
             }
         })
     };

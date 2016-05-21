@@ -23,9 +23,10 @@
     margin-left: 10px;
     margin-right: 10px;
     width: 45px;
+    margin-top: 16px;
 }
-#error_message{
-    padding-top: 35px;
+#error_message, #right_side_error p{
+    margin-top: 50px;
 }
 #spin{
     padding-right: 30px;
@@ -35,7 +36,7 @@
 #ok_message,#deleting_message{
     padding-top: 43px;
 }
-#ok_message, #error_message, #deleting_message{
+#ok_message, #error_message, #deleting_message, #right_side_error p,  #right_ok{
     font-size: 18px;
 }
 #popup_ok{
@@ -49,7 +50,7 @@
 #error, #warn, #ok{
     margin-top: 20px;
 }
-#content, #popup_ok table, #popup_error{
+#content, #popup_ok table, #popup_error, #content, #popup_ok table, #popup_error{
     margin-left: auto;
     margin-right: auto;
 }
@@ -61,14 +62,14 @@
 }
 #popup_message{
     word-wrap: normal;
-    margin-top: 30px;
+    margin-top: 15px;
     height: 60px;
     max-height: 60px;
 }
-#popup_message, #popup_message p, #right_side_error p{
+#popup_message, #popup_message p{
     font-size: 15px;
 }
-#left_side, #left_side_error, #left_side_warn{
+#left_side, #left_side_warn, #left_side_error{
     border-radius: 4px 0 0 4px;
     width: 120px;
     max-width: 120px;
@@ -80,9 +81,6 @@
 }
 #left_side, #right_side, #right_side_error, #left_side_error,.info_action, .pdf_action, .del, #left_side_warn {
     display: inline;
-}
-#right_side_error p{
-    padding-top: 35px;
 }
 #right_side{
     font-family: 'Helvetica Neue', sans-serif;
@@ -116,12 +114,8 @@
 #popup_ok, #popup_error {
     border-radius: 4px;
 }
-#error, #warn, #ok{
+#error, #warn, #ok, #popup_error{
     margin-top: 25px;
-}
-#content, #popup_ok table, #popup_error{
-    margin-left: auto;
-    margin-right: auto;
 }
 #yes:hover,#no:hover{
     transition: 0.2s;

@@ -1,5 +1,5 @@
 #template_overview{
-    width: 550px;
+    width: 500px;
     max-height: 90%;
     margin-top: 25px;
     margin-bottom: 10px;
@@ -64,57 +64,4 @@ tbody, #title_banner, #content, #right_side p, #right_side_error p{
     margin: 0 8px;
     padding: 4px;
     box-shadow: 0 0 2px #4F4F4F;
-}
-#popup_ok{
-    box-shadow: 0 0 30px #3A4F43;
-    background-color: #F7F7E6;
-    height: 150px;
-    width: 300px;
-}
-#popup_ok, #popup_error, input, input:focus {
-    border-radius: 4px;
-}
-#popup_ok table, #popup_error, #left_side img, #left_side_error img{
-    margin-top: 25px;
-}
-#popup_error{
-    box-shadow: 0 0 30px #5C2F2F;
-}
-#right_side p{
-    color: #4F5C55;
-    padding-top: 45px;
-}
-#right_side p, #right_side_error p{
-    font-size: 18px;
-}
-#left_side, #left_side_error{
-    border-radius: 4px 0 0 4px;
-    width: 120px;
-    max-width: 120px;
-    float: left;
-    background-color: #F7FAED;
-}
-#left_side, #right_side, #right_side_error, #left_side_error{
-    height: 150px;
-    display: inline;
-}
-#right_side_error p{
-    padding-top: 35px;
-}
-#right_side{
-    background-color: #EEF2DF;
-}
-#right_side_error{
-    color: #594040;
-    background-color: #F7EBEB;
-}
-#right_side, #right_side_error{
-    border-radius: 0 4px 4px 0 ;
-    width: 180px;
-    float: right;
-}
-#left_side img, #left_side_error img{
-    width: 100px;
-    height: 100px;
-    margin-left: 10px;
 }
