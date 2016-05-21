@@ -3,13 +3,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
-  <script src="<spring:url value="/resources/js/templates.js"/>"></script>
-  <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-  <link href="<spring:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
-  <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/templates.js"/>"></script>
+  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <link href="<c:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
+  <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <script>
     $(window).load(function() {
@@ -111,12 +112,12 @@
       </ul>
     </div>
     <div id="popup_ok" style="background-color: white; display: none">
-      <div id="left_side"><img src="<spring:url value="/resources/images/templates/ok-icon.png"/>"></div>
-      <div id="right_side"><p>Template added!</p></div>
+      <div id="left_side"><img src="<c:url value="/resources/images/templates/ok-icon.svg"/>"></div>
+      <div id="right_side"><p id="right_ok">Template added!</p></div>
     </div>
     <div id="popup_error" style="background-color: white; display: none">
-      <div id="left_side_error"><img src="<spring:url value="/resources/images/templates/error-icon.png"/>"></div>
-      <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
+      <div id="left_side_error"><img src="<c:url value="/resources/images/templates/error-icon.svg"/>"></div>
+      <div id="right_side_error"><p>Oops.. something wrong ☹</p></div>
     </div>
     <div id="container">
       <input type="hidden" id="count" value="${count}">

@@ -142,9 +142,9 @@ ul li, .role, #label, #left_side, #right_side, #right_side_error, #left_side_err
 #role{
     margin-top: 22px;
 }
-#name{
+/*{
     width: 230px;
-}
+}*/
 input#role{
     width: auto;
     height: auto;
@@ -152,7 +152,7 @@ input#role{
 input, .role{
     height: 30px;
 }
-#popup_ok,p#info, input[type='number'], input[type='email']{
+#popup_ok,p#info, input[type='email'],input#name,input#number{
     min-width: 300px;
     max-width: 300px;
 }
@@ -164,56 +164,9 @@ input {
 label{
     text-align: left;
 }
-#popup_ok{
-    box-shadow: 0 0 30px #3A4F43;
-    background-color: #F7F7E6;
-}
+
 input, input:focus {
     border-radius: 2px;
-}
-#popup_ok, #popup_error{
-    border-radius: 4px;
-}
-#popup_ok table, #popup_error, #left_side img, #left_side_error img{
-    margin-top: 25px;
-}
-#popup_error{
-    box-shadow: 0 0 30px #5C2F2F;
-}
-#right_side p{
-    color: #4F5C55;
-    padding-top: 45px;
-}
-#right_side p, #right_side_error p,.hd{
-    font-size: 18px;
-}
-#left_side, #left_side_error{
-    border-radius: 4px 0 0 4px;
-    width: 120px;
-    max-width: 120px;
-    background-color: #F7FAED;
-}
-#left_side, #right_side, #right_side_error, #left_side_error,#popup_ok{
-    height: 150px;
-}
-#right_side_error p{
-    padding-top: 35px;
-}
-#right_side{
-    background-color: #EEF2DF;
-}
-#right_side_error{
-    color: #594040;
-    background-color: #F7EBEB;
-}
-#right_side, #right_side_error{
-    border-radius: 0 4px 4px 0 ;
-    width: 180px;
-}
-#left_side img, #left_side_error img{
-    width: 100px;
-    height: 100px;
-    margin-left: 10px;
 }
 td.info,p#info{
     min-height: 35px;

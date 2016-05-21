@@ -3,14 +3,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
-  <script src="<spring:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-  <script src="<spring:url value="/resources/js/registration.js"/>"></script>
-  <link href="<spring:url value="/resources/css/registration.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="<spring:url value="/resources/images/logo.png"/>" type="image/png">
+  <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+  <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <script src="<c:url value="/resources/js/registration.js"/>"></script>
+  <link href="<c:url value="/resources/css/registration.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
   <title>Registration</title>
-  <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
   <script>
     $(window).load(function() {
       $('#menu-toggle')
@@ -87,13 +88,19 @@
       </div>
       <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
     </div>
-    <div id="popup_ok">
-      <div id="left_side"><img src="<spring:url value="/resources/images/templates/ok-icon.png"/>"></div>
-      <div id="right_side"><p>User registered!!!</p></div>
+    <div id="popup_ok" >
+      <div id="left_side">
+        <img id="ok" src="../../resources/images/templates/ok-icon.svg">
+      </div>
+      <div id="right_side">
+        <div class="popup_message">
+          <p id="ok_message">User registered!</p>
+        </div>
+      </div>
     </div>
     <div id="popup_error">
-      <div id="left_side_error"><img src="<spring:url value="/resources/images/templates/error-icon.png"/>"></div>
-      <div id="right_side_error"><p>Oops.. something wrong=/</p></div>
+      <div id="left_side_error"><img src="<c:url value="/resources/images/templates/error-icon.svg"/>"></div>
+      <div id="right_side_error"><p>Oops.. something wrong ☹</p></div>
     </div>
     <div id="content">
     <div id="register_form">
@@ -102,8 +109,8 @@
         <table>
           <tr>
             <td class="w">
-              <img class="check" id="check1" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
-              <img class="warn" id="warn1" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
+              <img class="check" id="check1" src="<c:url value="/resources/images/templates/check-icon.png"/>">
+              <img class="warn" id="warn1" src="<c:url value="/resources/images/templates/warn-icon.png"/>">
             </td>
             <td colspan="2">
               <label class="inline" id="for_mail" for="email">Email</label><input id="email" type="email">
@@ -111,8 +118,8 @@
           </tr>
           <tr>
             <td class="w">
-              <img class="check" id="check2" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
-              <img class="warn" id="warn2" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
+              <img class="check" id="check2" src="<c:url value="/resources/images/templates/check-icon.png"/>">
+              <img class="warn" id="warn2" src="<c:url value="/resources/images/templates/warn-icon.png"/>">
             </td>
             <td>
               <label class="inline" id="for_name" for="name">Name</label><input id="name" type="text">
@@ -126,8 +133,8 @@
           </tr>
           <tr>
             <td class="w">
-              <img class="warn" id="warn3" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
-              <img class="check" id="check3" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
+              <img class="warn" id="warn3" src="<c:url value="/resources/images/templates/warn-icon.png"/>">
+              <img class="check" id="check3" src="<c:url value="/resources/images/templates/check-icon.png"/>">
             </td>
             <td colspan="2">
               <label class="inline" id="for_password" for="password">Password</label><input id="password" type="password">
@@ -135,8 +142,8 @@
           </tr>
           <tr>
             <td class="w">
-              <img class="warn" id="warn4" src="<spring:url value="/resources/images/templates/warn-icon.png"/>">
-              <img class="check" id="check4" src="<spring:url value="/resources/images/templates/check-icon.png"/>">
+              <img class="warn" id="warn4" src="<c:url value="/resources/images/templates/warn-icon.png"/>">
+              <img class="check" id="check4" src="<c:url value="/resources/images/templates/check-icon.png"/>">
             </td>
             <td colspan="2">
               <label class="inline" id="for_password_confirmation" for="password_confirmation">Confirm password</label>
@@ -147,7 +154,7 @@
             <td class="w">
             </td>
             <td colspan="2">
-              <label class="inline" id="for_number" for="number">Number</label><input id="number" type="number">
+              <label class="inline" id="for_number" for="number">Number</label><input id="number" type="text">
             </td>
           </tr>
           <tr>

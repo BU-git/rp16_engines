@@ -73,6 +73,10 @@ $(function(){
         input_password_confirmation.prop('disabled', !not_empty);
         enable_submit();
     });
+    input_number.bind('input propertychange', function(){
+        var value = input_number.val();
+        input_number.val(value.replace(/[^0-9]/g,''));
+    });
     input_password_confirmation.bind('input propertychange', function(){
         paint_info(input_password_confirmation, label_for_password_confirmation, check_input_not_empty(input_password_confirmation) &&
         check_password_matched(), warn4, check4);
