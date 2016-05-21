@@ -32,10 +32,10 @@ public class AndroidRestController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value="/orders/brief/{email:.+}",
+    @RequestMapping(value="/orders/brief",
             method = RequestMethod.POST,
             produces = "application/json")
-    public ResponseEntity<List<OrderBrief>> getBriefOrders(@PathVariable("email") String email) {
+    public ResponseEntity<List<OrderBrief>> getBriefOrders(@RequestParam("email") String email) {
         List<OrderBrief> orders = orderService.getBriefOrdersForUser(email);
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
