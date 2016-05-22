@@ -91,10 +91,10 @@
                 <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
             </div>
             <p id="image">
-                <c:if test="${order.orderStatus == 2 || order.orderStatus == 3}">
+                <c:if test="${order.orderStatus == 3}">
                     <img src="../../resources/images/yes.svg">
                 </c:if>
-                <c:if test="${order.orderStatus == 0 || order.orderStatus == 1}">
+                <c:if test="${order.orderStatus != 3}">
                     <img src="../../resources/images/no.svg">
                 </c:if>
                 Order №${order.number} information
@@ -178,6 +178,9 @@
                       </td>
                       </tr>
                   </table>
+            </c:if>
+            <c:if test="${order.orderStatus != 0}">
+                <p align="center" style="color: red">${warning}</p>
             </c:if>
         </div>
     </div>

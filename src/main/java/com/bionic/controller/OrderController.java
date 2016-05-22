@@ -17,12 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import com.bionic.domain.Order;
 import com.bionic.domain.User;
@@ -92,7 +87,7 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
-    public String showOrder(@PathVariable("id") long id, ModelMap model) {
+    public String showOrder(@PathVariable("id") long id, @ModelAttribute("warning")String warning, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
         model.addAttribute("order",order);
@@ -115,8 +110,21 @@ public class OrderController {
                 employee.setEmail(list.get(0).getEmail());
                 employee.setNumber(list.get(0).getNumber());
                 order.setEmployee(employee);
+                orderService.save(order);
             }
-            orderService.save(order);
+        }
+        else {
+            String message = "";
+            if (order.getOrderStatus() == 1) {
+                message = "Order is in progress!";
+            }
+            else if (order.getOrderStatus() == 2) {
+                message = "Order is completed but not yet uploaded!";
+            }
+            else if (order.getOrderStatus() == 3) {
+                message = "Order is completed!";
+            }
+            model.addAttribute("warning", message);
         }
         return "redirect:/orders/{id}";
     }
@@ -141,6 +149,19 @@ public class OrderController {
                     orderService.save(order);
                 }
             }
+        }
+        else {
+            String message = "";
+            if (order.getOrderStatus() == 1) {
+                message = "Order is in progress!";
+            }
+            else if (order.getOrderStatus() == 2) {
+                message = "Order is completed but not yet uploaded!";
+            }
+            else if (order.getOrderStatus() == 3) {
+                message = "Order is completed!";
+            }
+            model.addAttribute("warning", message);
         }
         return "redirect:/orders/{id}";
     }
