@@ -84,6 +84,7 @@ tbody, #title_banner, #content,.hd, ul, #edit_popup ul, #right_side p, #right_si
     height: 40px;
     border-bottom: solid 1px #D7D7DB;
     padding-bottom: 10px;
+    font-size: 18px;
     background-color: #023672;
 }
 button.edit_popup_close{
@@ -100,6 +101,7 @@ button.edit_popup_close:hover{
     margin-left: 15px;
 }
 button.edit_popup_close, button#accept{
+    font-weight: 600;
     width: 85px;
     font-size: 16px;
 }
