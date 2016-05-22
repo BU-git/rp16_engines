@@ -135,16 +135,18 @@
                      </tr>
                      <tr>
                          <td>Template name:</td>
-                         <c:if test="${order.customTemplateID == 0}">
-                             <td>Default template</td>
-                         </c:if>
-                         <c:if test="${order.customTemplateID != 0}">
-                             <c:forEach var="temp" items="${allTemplates}">
-                                 <c:if test="${order.customTemplateID == temp.id}">
-                                     <td>${temp.templateName}</td>
-                                 </c:if>
-                             </c:forEach>
-                         </c:if>
+                         <td>
+                            <c:if test="${order.customTemplateID == 0}">
+                                 Default template
+                            </c:if>
+                            <c:if test="${order.customTemplateID != 0}">
+                                <c:forEach var="temp" items="${allTemplates}">
+                                    <c:if test="${order.customTemplateID == temp.id}">
+                                        ${temp.templateName}
+                                    </c:if>
+                                </c:forEach>
+                            </c:if>
+                         </td>
                          <td>Template ID:</td>
                          <td>${order.customTemplateID}</td>
                      </tr>
@@ -161,7 +163,7 @@
                                   <option value="${user.email}">${user.name} (${user.email})</option>
                               </c:forEach>
                           </select>
-                          <input type="submit" value="Change" />
+                          <input type="submit" value="Set" />
                       </form>
                       </td>
                       <td>
@@ -173,7 +175,7 @@
                                    <option value="${temp.templateName}">${temp.templateName}</option>
                                </c:forEach>
                           </select>
-                          <input type="submit" value="Change" />
+                          <input type="submit" value="Set" />
                       </form>
                       </td>
                       </tr>
