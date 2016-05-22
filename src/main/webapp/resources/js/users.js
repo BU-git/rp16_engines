@@ -117,7 +117,7 @@ $(document).ready(function() {
         transition: 'all 0.3s'
     });
     var update = function(){
-        var role = "user";
+        var role = role_td.text();
         var user = {'Id':current_id,'Email':input_email.val(),'Name':input_name.val(),'Number':parseInt(input_number.val()),'Role':role};
         user = JSON.stringify(user);
         $.ajax({

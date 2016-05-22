@@ -3,11 +3,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/single.template.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
-  <link href="<spring:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
-  <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
+  <link href="<с:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
+  <link href="<с:url value="/resources/css/single.template.css"/>" rel="stylesheet" type="text/css">
+  <link href="<с:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
+  <link href="<с:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
+  <script src="<с:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <script>
     $(window).load(function() {
