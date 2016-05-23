@@ -113,6 +113,7 @@ public class OrderController {
                 employee.setEmail(list.get(0).getEmail());
                 employee.setNumber(list.get(0).getNumber());
                 order.setEmployee(employee);
+                order.setLastServerChangeDate(new Date());
                 orderService.save(order);
             }
         }
