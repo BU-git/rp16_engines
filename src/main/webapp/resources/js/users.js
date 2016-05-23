@@ -129,6 +129,7 @@ $(document).ready(function() {
             data: user,
             success: function(result){
                 row_update();
+                accept.prop('disabled', false);
                 edit_popup.popup('hide');
             },
             error: function(result){
@@ -143,6 +144,7 @@ $(document).ready(function() {
         number_td.text(input_number.val().length > 0 ? number : 0);
     };
     accept.click(function(){
+        accept.prop('disabled', true);
         update();
     });
     var paint_info = function(input, label, red, warn, check){
@@ -254,6 +256,7 @@ $(document).ready(function() {
             $.when(info.fadeOut('slow')).then(setTimeout(function(){
                 info.css('color', '#838585');
                 info.text("Click 'Accept' to save the changes for the current user.");
+                accept.prop('disabled', false);
                 info.css('text-align','justify');
             },500)).then(info.fadeIn('fast'));
         }, 3500);
