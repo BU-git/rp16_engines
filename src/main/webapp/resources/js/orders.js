@@ -41,7 +41,7 @@ $(document).ready(function() {
             setTimeout(function(){
                 popup_ok.popup('hide');
                 current_table.ajax.reload(null,false);
-            },1000)
+            },1300)
         }else if(!success && !init){
             error_img.show();
             error_popup_message.show();
