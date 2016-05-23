@@ -1,7 +1,10 @@
 
 package com.bionic.controller;
 
+import java.util.LinkedList;
 import java.util.List;
+
+import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,7 +41,12 @@ public class TemplateController {
     @RequestMapping(value = "/templates/new", method = RequestMethod.POST)
     public String editTemplatePage(@RequestParam String name, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
-        List<TemplateField> list = templateService.findFieldsByTemplateName(name);
+        List<TemplateField> list;
+        try{
+            list = templateService.findFieldsByTemplateName(name);
+        }catch (NoResultException e){
+            list = new LinkedList<>();
+        }
         model.addAttribute("fields", list);
         model.addAttribute("count", list.size());
         return "/templates";

@@ -1,7 +1,6 @@
 package com.bionic.domain.order;
 
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -64,8 +63,7 @@ public class OrderWrapper {
     }
 
     public void setServiceDate(Date serviceDate) {
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        this.serviceDate = df.format(serviceDate);
+        this.serviceDate = new SimpleDateFormat("dd-MM-yyyy").format(serviceDate);
     }
 
     public String getInstallation() {

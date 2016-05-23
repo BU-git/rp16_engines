@@ -35,7 +35,18 @@ public class TemplateEntity {
     private List<TemplateField> fields;
 
     @JsonIgnore
-    private boolean assigned;
+    private boolean assigned = false;
+
+    @JsonIgnore
+    private boolean active = true;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.active = isActive;
+    }
 
     public boolean isAssigned() {
         return assigned;

@@ -18,8 +18,6 @@ public interface TemplateService {
 
     List<TemplateField> findFieldsByTemplateName(String name);
 
-    List<String> findAll();
-
     List<CustomTemplateNameFront> findUniqueTemplateNames();
 
     void removeTemplateByName(String name);

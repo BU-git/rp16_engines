@@ -42,6 +42,4 @@ public class FileMeta {
     public void setBytes(byte[] bytes) {
         this.bytes = bytes;
     }
-
-    //setters & getters
 }

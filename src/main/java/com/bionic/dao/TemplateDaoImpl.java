@@ -56,13 +56,13 @@ public class TemplateDaoImpl implements TemplateDao{
 
     @Override
     public List<String> findAllTemplateNames() {
-        TypedQuery<String> query = em.createQuery("SELECT DISTINCT te.templateName FROM TemplateEntity te", String.class);
+        TypedQuery<String> query = em.createQuery("SELECT DISTINCT te.templateName FROM TemplateEntity te WHERE te.active = true", String.class);
         return query.getResultList();
     }
 
     @Override
     public List<TemplateEntity> findAll() {
-        TypedQuery<TemplateEntity> query = em.createQuery("SELECT te FROM TemplateEntity te", TemplateEntity.class);
+        TypedQuery<TemplateEntity> query = em.createQuery("SELECT te FROM TemplateEntity te WHERE te.active = true", TemplateEntity.class);
         return query.getResultList();
     }
 }

@@ -52,11 +52,6 @@ public class TemplateServiceImpl implements TemplateService{
     }
 
     @Override
-    public List<String> findAll(){
-        return templateDao.findAllTemplateNames();
-    }
-
-    @Override
     public List<CustomTemplateNameFront> findUniqueTemplateNames(){
         int i = 1;
         List<CustomTemplateNameFront> list = new ArrayList<>();
@@ -75,7 +70,10 @@ public class TemplateServiceImpl implements TemplateService{
     public void removeTemplateByName(String name) {
         if(name == null) throw new IllegalArgumentException("Template name equals null =/");
         List<TemplateEntity> entities = templateDao.findTemplateByName(name);
-        entities.forEach(templateDao::removeTemplate);
+        for(TemplateEntity e: entities){
+            if(e.isAssigned()) e.setIsActive(false);
+            else templateDao.removeTemplate(e);
+        }
     }
 
     @Override
