@@ -41,7 +41,7 @@ $(document).ready(function() {
             setTimeout(function(){
                 popup_ok.popup('hide');
                 current_table.ajax.reload(null,false);
-            },1300)
+            },1000)
         }else if(!success && !init){
             error_img.show();
             error_popup_message.show();
@@ -72,11 +72,12 @@ $(document).ready(function() {
         temp_order_number = 0;
     });
     $("#all").click(function(){
+        current_table = table_all;
         table_all.ajax.reload();
     });
     $("#not_comtleted").click(function(){
         if(nc) {
-            table_not_completed.ajax.reload();
+            table_not_completed.ajax.reload();0
             current_table = table_not_completed;
         }
         else {
