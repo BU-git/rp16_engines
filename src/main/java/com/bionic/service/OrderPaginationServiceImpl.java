@@ -1,10 +1,9 @@
 package com.bionic.service;
 
 
-import com.bionic.dao.OrderPaginationDao;
-import com.bionic.domain.Order;
-import com.bionic.domain.order.OrderWrapper;
-import com.bionic.domain.order.OrderWrapperHolder;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,15 +11,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.bionic.dao.OrderPaginationDao;
+import com.bionic.domain.Order;
+import com.bionic.domain.order.OrderStatus;
+import com.bionic.domain.order.OrderWrapper;
+import com.bionic.domain.order.OrderWrapperHolder;
 
 @Service
 @Transactional
 public class OrderPaginationServiceImpl implements OrderPaginationService {
 
     private static long total;
-    private static final int ALL_ORDERS = 1;
 
     @Autowired
     private OrderPaginationDao orderPaginationDao;
@@ -38,18 +39,23 @@ public class OrderPaginationServiceImpl implements OrderPaginationService {
             long number = parseString(search);
             if(number >= 0){
                 switch (status){
-                    case ALL_ORDERS: return orderPaginationDao.findByNumberLike(number, request);
-                    default: return orderPaginationDao.findByNumberAndOrderStatusLike(number, status, request);
+                    case OrderStatus.ALL: return orderPaginationDao.findAllByNumberLike(number, request);
+                    case OrderStatus.COMPLETED: return orderPaginationDao.findAllCompletedByNumberLike(number, request);
+                    default: return orderPaginationDao.findAllNotCompletedByNumberLike(number, request);
                 }
             }
         }
         Page<Order> page;
         switch (status){
-            case ALL_ORDERS: {
+            case OrderStatus.ALL: {
                 page = orderPaginationDao.findAll(request);
                 break;
             }
-            default: page = orderPaginationDao.findByOrderStatus(status, request);
+            case OrderStatus.COMPLETED: {
+                page = orderPaginationDao.findAllCompleted(request);
+                break;
+            }
+            default: page = orderPaginationDao.findAllNotCompleted(request);
         }
         total = page.getTotalElements();
         return page;

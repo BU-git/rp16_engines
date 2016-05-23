@@ -17,11 +17,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bionic.domain.Order;
 import com.bionic.domain.User;
 import com.bionic.domain.component.Employee;
+import com.bionic.domain.order.OrderStatus;
 import com.bionic.domain.order.OrderWrapperHolder;
 import com.bionic.domain.template.TemplateEntity;
 import com.bionic.service.OrderPaginationService;
@@ -43,11 +50,7 @@ public class OrderController {
     @Autowired
     private OrderPaginationService orderPaginationService;
 
-    private static final int NOT_COMPLETED_ORDERS = 0;
-    private static final int ALL_ORDERS = 1;
-    private static final int COMPLETED_ORDERS = 3;
-
-    @RequestMapping(value = "/orders", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
     public String showAllOrders(ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         return "orders";
@@ -57,14 +60,14 @@ public class OrderController {
     @ResponseBody
     public ResponseEntity<OrderWrapperHolder> showAll(@RequestParam Map<String,String> allRequestParams, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, ALL_ORDERS));
+        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, OrderStatus.ALL));
     }
 
     @RequestMapping(value = "/orders/not-completed")
     @ResponseBody
     public ResponseEntity<OrderWrapperHolder> showNotCompleted(@RequestParam Map<String,String> allRequestParams, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, NOT_COMPLETED_ORDERS));
+        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, OrderStatus.NOT_COMPLETED));
     }
 
     @RequestMapping(value = "/orders/remove/{number}", method = RequestMethod.POST)
@@ -83,7 +86,7 @@ public class OrderController {
     @ResponseBody
     public ResponseEntity<OrderWrapperHolder> showCompleted(@RequestParam Map<String,String> allRequestParams, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, COMPLETED_ORDERS));
+        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, OrderStatus.COMPLETED));
     }
 
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
@@ -196,9 +199,9 @@ public class OrderController {
             String searchValue = allRequestParams.get("search[value]");
             String sortDir = allRequestParams.get("order[0][dir]");
             switch (target){
-                case NOT_COMPLETED_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, NOT_COMPLETED_ORDERS);
-                case ALL_ORDERS: return orderPaginationService.getAllOrders(start/length, length, searchValue, sortDir, column, ALL_ORDERS);
-                case COMPLETED_ORDERS: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, COMPLETED_ORDERS);
+                case OrderStatus.ALL: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, OrderStatus.ALL);
+                case OrderStatus.COMPLETED: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, OrderStatus.COMPLETED);
+                case OrderStatus.NOT_COMPLETED: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, OrderStatus.NOT_COMPLETED);
                 default: return new OrderWrapperHolder();
             }
         }catch (Exception e){

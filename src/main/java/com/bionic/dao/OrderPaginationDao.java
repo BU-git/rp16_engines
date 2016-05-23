@@ -14,12 +14,18 @@ import org.springframework.stereotype.Repository;
 public interface OrderPaginationDao extends PagingAndSortingRepository<Order, Long> {
 
     @Query(value = "SELECT o FROM Order o WHERE o.number LIKE CONCAT(?1, '%')")
-    Page<Order> findByNumberLike(long number, Pageable pageable);
+    Page<Order> findAllByNumberLike(long number, Pageable pageable);
 
-    @Query(value = "SELECT o FROM Order o WHERE o.orderStatus = ?1")
-    Page<Order> findByOrderStatus(int orderStatus, Pageable pageable);
+    @Query(value = "SELECT o FROM Order o WHERE o.orderStatus = 3")
+    Page<Order> findAllCompleted(Pageable pageable);
 
-    @Query(value = "SELECT o FROM Order o WHERE o.number LIKE CONCAT(?1, '%') AND o.orderStatus =?2")
-    Page<Order> findByNumberAndOrderStatusLike(long number, int orderStatus, Pageable pageable);
+    @Query(value = "SELECT o FROM Order o WHERE o.number LIKE CONCAT(?1, '%') AND o.orderStatus = 3")
+    Page<Order> findAllCompletedByNumberLike(long number, Pageable pageable);
+
+    @Query(value = "SELECT o FROM Order o WHERE o.orderStatus = 0 OR o.orderStatus = 1")
+    Page<Order> findAllNotCompleted(Pageable pageable);
+
+    @Query(value = "SELECT o FROM Order o WHERE o.number LIKE CONCAT(?1, '%') AND (o.orderStatus = 0 OR o.orderStatus = 1)")
+    Page<Order> findAllNotCompletedByNumberLike(long number, Pageable pageable);
 
 }
