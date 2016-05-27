@@ -5,16 +5,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Orders</title>
+    <title><spring:message code="orders.title"/></title>
     <meta charset="utf-8">
     <spring:url value="/resources/images/templates/pagination/ajax-loader.gif" var="loader"/>
     <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
     <script src="<c:url value="/resources/js/jquery.dataTables.min.js"/>"></script>
     <script src="<c:url value="/resources/js/jquery.tabslet.min.js"/>"></script>
     <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
-    <script src="../../resources/js/jquery.ui.widget.js"></script>
-    <script src="../../resources/js/jquery.iframe-transport.js"></script>
-    <script src="../../resources/js/jquery.fileupload.js"></script>
+    <script src="<c:url value="/resources/js/jquery.ui.widget.js"/>"></script>
+    <script src="<c:url value="/resources/js/jquery.iframe-transport.js"/>"></script>
+    <script src="<c:url value="/resources/js/jquery.fileupload.js"/>"></script>
     <script src="<c:url value="/resources/js/orders.js"/>"></script>
     <script src="<c:url value="/resources/js/upload.js"/>"></script>
     <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">
@@ -44,73 +44,89 @@
     </script>
 </head>
 <body>
-<div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
-    <span class='bar bar-1'></span>
-    <span class='bar bar-2'></span>
-    <span class='bar bar-3'></span>
-</div>
-
-<div id="left-menu">
-    <div class="logo">
-        <a href="http://www.kvt.nl/">
-            <img src="<c:url value="/resources/images/logo_kvt.png"/>">
-        </a>
+    <span id="locale" style="display: none"></span>
+    <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
+        <span class='bar bar-1'></span>
+        <span class='bar bar-2'></span>
+        <span class='bar bar-3'></span>
     </div>
-    <div class="left-part-container">
-        <div class="left-part">
-            <a href="<c:url value="/logout"/>">
-                <div class="button">
-                    Logout
-                </div>
+    <div id="left-menu">
+        <div class="logo">
+            <a href="http://www.kvt.nl/">
+                <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
             </a>
         </div>
+        <div class="left-part-container">
+            <div class="left-part">
+                <a href="<spring:url value="/logout"/>">
+                    <div class="button">
+                        <spring:message code="label.logout"/>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
-</div>
-<div id="right-menu">
-    <div class="sitemap">
-        <ul class="site-menu">
-            <li class="menu-item">
-                <a href="<c:url value="/dashboard"/>">
-                    Dashboard
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<c:url value="/orders"/>">
-                    Orders overview
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<c:url value="/templates/new"/>">
-                    Create template
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<spring:url value="/templates"/>">
-                    Templates overview
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<spring:url value="/users/new"/>">
-                    New User
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="<spring:url value="/users/all"/>">
-                    Users
-                </a>
-            </li>
-        </ul>
+    <div id="right-menu">
+        <div class="sitemap">
+            <ul class="site-menu">
+                <li class="menu-item">
+                    <a href="<spring:url value="/dashboard"/>">
+                        <spring:message code="label.dashboard"/>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<spring:url value="/orders"/>">
+                        <spring:message code="label.orders"/>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<spring:url value="/templates/new"/>">
+                        <spring:message code="label.template"/>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<spring:url value="/templates"/>">
+                        <spring:message code="label.templates"/>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<spring:url value="/users/new"/>">
+                        <spring:message code="label.user"/>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<spring:url value="/users/all"/>">
+                        <spring:message code="label.users"/>
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <span>
+                        <a href="<spring:url value="?lang=en"/>">EN</a>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a href="<spring:url value="?lang=nl"/>">NL</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
     <div id="content-wrapper" style="text-align: center; align-content: center">
         <div id="content" style="text-align: center">
             <div id="header">
                 <div style="position: fixed; top: 0; left: 10px;">
                     <a href="<spring:url value="/"/>" id="logo">
-                        <img src="<spring:url value="/resources/images/logo.png"/>">
+                        <img src="../../resources/images/logo.png">
                     </a>
                 </div>
-                <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
+                <span style="text-align: center;">
+                    <h2>
+                        <spring:message code="label.title"/> ${loggedInUser.name}
+                    </h2>
+                </span>
             </div>
             <div id="popup_ok" >
                 <div id="left_side">
@@ -121,23 +137,23 @@
                 </div>
                 <div id="right_side">
                     <div class="popup_message">
-                        <p id="popup_message">Are you sure you want to delete order number <span id="identifier"></span>?</p>
-                        <p id="ok_message" style="display: none">Order deleted!</p>
-                        <p id="error_message" style="display: none">Oops.. something wrong ☹</p>
-                        <p id="deleting_message" style="display: none">Deleting...</p>
+                        <p id="popup_message"><spring:message code="message.orders.confirmdelete"/> <span id="identifier"></span>?</p>
+                        <p id="ok_message" style="display: none"><spring:message code="message.orders.orderDeleted"/></p>
+                        <p id="error_message" style="display: none"><spring:message code="message.orders.deleteError"/></p>
+                        <p id="deleting_message" style="display: none"><spring:message code="message.orders.deleting"/></p>
                     </div>
                     <div id="buttons_c">
-                        <button id="no" class="confirm_popup_close">No</button>
-                        <button id="yes">Yes</button>
+                        <button id="no" class="confirm_popup_close"><spring:message code="label.no"/></button>
+                        <button id="yes"><spring:message code="label.yes"/></button>
                     </div>
                 </div>
             </div>
-            <div id="title_banner"><p>Orders</p></div>
+            <div id="title_banner"><p><spring:message code="orders.title"/></p></div>
             <div class="content-place">
                 <div class="upload" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="leaveDrop(event)">
                     <span class="btn btn-success fileinput-button">
                         <i class="glyphicon glyphicon-plus"></i>
-                        <span>Upload XML orders..</span>
+                        <span><spring:message code="label.orders.upload"/></span>
                         <input id="fileupload" type="file" name="files[]" multiple accept="application/xml">
                     </span>
                     <br>
@@ -151,22 +167,22 @@
                 </div>
                 <div class='tabs'>
                     <ul>
-                        <li><a id="all" href="#tab-1">All Orders</a></li>
-                        <li><a id="not_comtleted" href="#tab-2">Not Completed</a></li>
-                        <li><a id="completed" href="#tab-3">Completed</a></li>
+                        <li><a id="all" href="#tab-1"><spring:message code="label.orders.allOrders"/></a></li>
+                        <li><a id="not_comtleted" href="#tab-2"><spring:message code="label.orders.notCompleted"/></a></li>
+                        <li><a id="completed" href="#tab-3"><spring:message code="label.orders.completed"/></a></li>
                     </ul>
                     <div id='tab-1'>
                         <table id="table" align="center" class="display" cellspacing="0">
                             <thead>
-                            <tr>
-                                <th>Order number</th>
-                                <th>Service date</th>
-                                <th>Status</th>
-                                <th>Installation</th>
-                                <th>Task</th>
-                                <th>Address</th>
-                                <th class="action">Action</th>
-                            </tr>
+                                <tr>
+                                    <th><spring:message code="orders.table.number"/></th>
+                                    <th><spring:message code="orders.table.date"/></th>
+                                    <th><spring:message code="orders.table.status"/></th>
+                                    <th><spring:message code="orders.table.installation"/></th>
+                                    <th><spring:message code="orders.table.task"/></th>
+                                    <th><spring:message code="orders.table.address"/></th>
+                                    <th class="action"><spring:message code="orders.table.action"/></th>
+                                </tr>
                             </thead>
                             <tbody align="center">
                             </tbody>
@@ -175,15 +191,15 @@
                     <div id='tab-2'>
                         <table align="center" id="not_completed_table" class="display" cellspacing="0">
                             <thead>
-                            <tr>
-                                <th>Order number</th>
-                                <th>Service date</th>
-                                <th>Status</th>
-                                <th>Installation</th>
-                                <th>Task</th>
-                                <th>Address</th>
-                                <th class="action">Action</th>
-                            </tr>
+                                <tr>
+                                    <th><spring:message code="orders.table.number"/></th>
+                                    <th><spring:message code="orders.table.date"/></th>
+                                    <th><spring:message code="orders.table.status"/></th>
+                                    <th><spring:message code="orders.table.installation"/></th>
+                                    <th><spring:message code="orders.table.task"/></th>
+                                    <th><spring:message code="orders.table.address"/></th>
+                                    <th class="action"><spring:message code="orders.table.action"/></th>
+                                </tr>
                             </thead>
                             <tbody align="center">
                             </tbody>
@@ -192,15 +208,15 @@
                     <div id='tab-3'>
                         <table align="center" id="completed_table" class="display" cellspacing="0">
                             <thead>
-                            <tr>
-                                <th>Order number</th>
-                                <th>Service date</th>
-                                <th>Status</th>
-                                <th>Installation</th>
-                                <th>Task</th>
-                                <th>Address</th>
-                                <th class="action">Action</th>
-                            </tr>
+                                <tr>
+                                    <th><spring:message code="orders.table.number"/></th>
+                                    <th><spring:message code="orders.table.date"/></th>
+                                    <th><spring:message code="orders.table.status"/></th>
+                                    <th><spring:message code="orders.table.installation"/></th>
+                                    <th><spring:message code="orders.table.task"/></th>
+                                    <th><spring:message code="orders.table.address"/></th>
+                                    <th class="action"><spring:message code="orders.table.action"/></th>
+                                </tr>
                             </thead>
                             <tbody align="center">
                             </tbody>

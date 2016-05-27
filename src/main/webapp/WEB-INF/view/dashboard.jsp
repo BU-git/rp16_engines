@@ -18,9 +18,10 @@
                     });
         });
     </script>
-    <title>Welcome</title>
+    <title><spring:message code="label.title"/></title>
 </head>
 <body>
+    <span id="locale" style="display: none"></span>
     <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
         <span class='bar bar-1'></span>
         <span class='bar bar-2'></span>
@@ -36,7 +37,7 @@
             <div class="left-part">
                 <a href="<spring:url value="/logout"/>">
                     <div class="button">
-                        Logout
+                        <spring:message code="label.logout"/>
                     </div>
                 </a>
             </div>
@@ -47,33 +48,45 @@
             <ul class="site-menu">
                 <li class="menu-item">
                     <a href="<spring:url value="/dashboard"/>">
-                        Dashboard
+                        <spring:message code="label.dashboard"/>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="<spring:url value="/orders"/>">
-                        Orders overview
+                        <spring:message code="label.orders"/>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="<spring:url value="/templates/new"/>">
-                        Create template
+                        <spring:message code="label.template"/>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="<spring:url value="/templates"/>">
-                        Templates overview
+                        <spring:message code="label.templates"/>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="<spring:url value="/users/new"/>">
-                        New User
+                        <spring:message code="label.user"/>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="<spring:url value="/users/all"/>">
-                        Users
+                        <spring:message code="label.users"/>
                     </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <span>
+                        <a href="<spring:url value="?lang=en"/>">EN</a>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a href="<spring:url value="?lang=nl"/>">NL</a>
+                    </span>
                 </li>
             </ul>
         </div>
@@ -86,23 +99,37 @@
                         <img src="../../resources/images/logo.png">
                     </a>
                 </div>
-                <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
+                <span style="text-align: center;">
+                    <h2>
+                        <spring:message code="label.title"/> ${loggedInUser.name}
+                    </h2>
+                </span>
             </div>
             <div id="buttons">
                 <a href="<spring:url value="/orders"/>" style="text-align: center; display: block">
-                    <div class="button">Order overview</div>
+                    <div class="button">
+                        <spring:message code="label.orders"/>
+                    </div>
                 </a>
                 <a href="<spring:url value="/templates/new"/>" style="text-align: center; display: block">
-                    <div class="button">Create template</div>
+                    <div class="button">
+                        <spring:message code="label.template"/>
+                    </div>
                 </a>
                 <a href="<spring:url value="/templates"/>" style="text-align: center; display: block">
-                    <div class="button">Template overview</div>
+                    <div class="button">
+                        <spring:message code="label.templates"/>
+                    </div>
                 </a>
                 <a href="<spring:url value="/users/new"/>" style="text-align: center; display: block">
-                    <div class="button">New user</div>
+                    <div class="button">
+                        <spring:message code="label.user"/>
+                    </div>
                 </a>
                 <a href="<spring:url value="/users/all"/>" style="text-align: center; display: block">
-                    <div class="button">Users</div>
+                    <div class="button">
+                        <spring:message code="label.users"/>
+                    </div>
                 </a>
             </div>
         </div>
