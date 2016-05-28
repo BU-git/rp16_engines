@@ -53,7 +53,6 @@ public class XmlFileReader {
             unmarshaller.afterPropertiesSet();
             return (Order) getUnmarshaller().unmarshal(new StreamSource(fis));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw e;
         }
     }

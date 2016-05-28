@@ -36,8 +36,8 @@ public class Test {
     public static void main(String[] args) throws IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring/application-config.xml");
         Test test = (Test) context.getBean("test");
-        /*test.fillUsers("Johny", 30);
-        test.fillTemplates("Template", 15);*/
+        test.fillUsers("Johny", 13);
+        test.fillTemplates("Template", 10);
        /* test.xmlFileReader.convertFromXMLToObject("4014981.xml");*/
         /*test.testOrder("Template fucking test");*/
     }

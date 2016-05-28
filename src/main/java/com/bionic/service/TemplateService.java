@@ -26,4 +26,6 @@ public interface TemplateService {
 
     List<TemplateEntity> findAllTemplates();
 
+    void resolveTemplateIsAssigned(long id);
+
 }

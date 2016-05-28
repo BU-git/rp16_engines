@@ -14,12 +14,12 @@
 }
 
 #rawtable {
+    border-radius: 2px;
     background: #023672;
-    /*border-radius: 20px;*/
     width:800px;
-    margin:auto;
+    margin: auto;
     border: 1px solid black;
-    padding: 20px 5px 20px 5px;
+    padding: 0px 5px 0px 5px;
 }
 
 #rawtable table {
@@ -29,11 +29,13 @@
 
 #order td{
     border-right: 1px solid black;
-    padding: 10px 20px 20px 5px;
+    padding: 15px 8px 22px 5px;
     font-size: 14px;
     color: white;
 }
-
+#order td:nth-child(2),#order td:nth-child(4){
+    background-color: #334e72;
+}
 #order td:last-child {
     border-right: none;
 }
@@ -41,10 +43,93 @@
 #select-form {
     margin-left: auto;
     margin-right: auto;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 5px;
 }
 
-#select-form td:last-child {
+#left {
     padding-left: 40px;
+}
+select{
+    height: 25px;
+}
+#select td{
+    padding-bottom: 6px;
+}
+hr {
+    margin-left: auto;
+    margin-right: auto;
+    border: 0; height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(77, 77, 89, 0.75), rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(77, 77, 89, 0.75), rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(77, 77, 89, 0.75), rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(77, 77, 89, 0.75), rgba(0,0,0,0));
+    background-image: linear-gradient(left, rgba(0,0,0,0), rgba(77, 77, 89, 0.75), rgba(0,0,0,0));
+    width:100%;
+}
+#hr td{
+    float: none;
+    padding: 0;
+}
+#set td{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+#set td input:hover, #set td button:hover{
+    transition: ease-in-out .2s;
+    cursor: pointer;
+}
+#set td input:hover{
+    background-color: #73808C;
+}
+#set td button:hover{
+    background-color: #C97777;
+}
+#set td button{
+    float: left;
+    text-align: right;
+    background: #994343 url("../images/orders/back-icon.svg") no-repeat 3px;
+    color: white;
+}
+#set td input{
+    text-align: right;
+    background: #34495e url("../images/orders/save-icon.svg") no-repeat 1px;
+    float: right;
+    color: white;
+}
+#set td input, #set td button{
+    font-weight: bold;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    width: 80px;
+    padding: 8px;
+}
+select, label{
+    display: block;
+}
+#title_banner{
+    text-align: center;
+}
+#title_banner p{
+    font-size: 24px;
+    margin: 5px;
+    color: #ACADAD;
+    font-weight: bold;
+}
+#title_banner{
+    box-shadow: 0 0 2px #4F4F4F;
+}
+.content-place{
+    min-height: 600px;
+    box-shadow: 0 1px 2px #4F4F4F;
+}
+.content-place, #title_banner{
+    margin: 0 8px;
+    padding: 4px;
+}
+label{
+    font-size: 13px;
+    color: #9FAAB5;
 }

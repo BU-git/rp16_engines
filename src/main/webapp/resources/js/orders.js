@@ -77,7 +77,7 @@ $(document).ready(function() {
     });
     $("#not_comtleted").click(function(){
         if(nc) {
-            table_not_completed.ajax.reload();0
+            table_not_completed.ajax.reload();
             current_table = table_not_completed;
         }
         else {

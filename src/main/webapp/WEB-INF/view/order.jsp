@@ -90,100 +90,124 @@
                 </div>
                 <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
             </div>
-            <p id="image">
-                <c:if test="${order.orderStatus == 3}">
-                    <img src="../../resources/images/yes.svg">
+            <div id="title_banner"><p>Order</p></div>
+            <div class="content-place">
+                <p id="image">
+                    <c:if test="${order.orderStatus == 3}">
+                        <img src="../../resources/images/yes.svg">
+                    </c:if>
+                    <c:if test="${order.orderStatus != 3}">
+                        <img src="../../resources/images/no.svg">
+                    </c:if>
+                    Order №${order.number} information
+                </p>
+                <div id="rawtable">
+                    <table align="center" id="order">
+                        <tr>
+                            <td>Number:</td>
+                            <td>${order.number}</td>
+                            <td>Date:</td>
+                            <td>
+                                <fmt:formatDate value="${order.date}" pattern="dd-MM-yyyy" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Contact person:</td>
+                            <td>${order.relation.contactPerson}</td>
+                            <td>Town:</td>
+                            <td>${order.relation.town}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone number:</td>
+                            <td>${order.relation.telephone}</td>
+                            <td>Installation name:</td>
+                            <td>${order.installation.name}</td>
+                        </tr>
+                        <tr>
+                            <td>Installation address:</td>
+                            <td>${order.installation.address}</td>
+                            <td>Reference:</td>
+                            <td>${order.reference}</td>
+                        </tr>
+                        <tr>
+                            <td>Employee:</td>
+                            <td>${order.employee.name}</td>
+                            <td>Email:</td>
+                            <td>${order.employee.email}</td>
+                        </tr>
+                        <tr>
+                            <td>Template name:</td>
+                            <td>
+                                <c:if test="${order.customTemplateID == 0}">
+                                    Default template
+                                </c:if>
+                                <input form="form" type="hidden" name="oldName" value="default">
+                                <c:if test="${order.customTemplateID != 0}">
+                                    <c:forEach var="temp" items="${allTemplates}">
+                                        <c:if test="${order.customTemplateID == temp.id}">
+                                            <input form="form" type="hidden" name="oldName" value="${temp.templateName}">
+                                            ${temp.templateName}
+                                        </c:if>
+                                    </c:forEach>
+                                </c:if>
+                            </td>
+                            <td>Template ID:</td>
+                            <td>${order.customTemplateID}</td>
+                        </tr>
+                    </table>
+                </div>
+                <c:if test="${order.orderStatus == 0}">
+                    <table id="select-form" cellspacing="0" cellpadding="0">
+                        <tr id="select">
+                            <td>
+                                <label>Employee
+                                    <select form="form" name="email">
+                                        <c:forEach var="user" items="${allUsers}">
+                                            <option
+                                            <c:if test="${order.employee.email.equals(user.email)}">selected</c:if>
+                                            value="${user.email}" >${user.name} (${user.email})
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </label>
+                            </td>
+                            <td id="left">
+                                <label>Template
+                                    <select name="name" form="form">
+                                        <option selected value="default">Default template</option>
+                                        <c:forEach var="temp" items="${allTemplates}">
+                                            <c:if test="${temp.active == true}">
+                                                <option
+                                                <c:if test="${temp.id == order.customTemplateID}">selected</c:if>
+                                                value="${temp.templateName}" >${temp.templateName}
+                                                </option>
+                                            </c:if>
+                                        </c:forEach>
+                                    </select>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr id="hr">
+                            <td colspan="2"><hr></td>
+                        </tr>
+                        <tr id="set">
+                            <td>
+                                <button onclick="window.location.href='/orders/'">Back</button>
+                            </td>
+                            <td>
+                                <input form="form" type="submit" value="Accept"/>
+                            </td>
+                        </tr>
+                    </table>
                 </c:if>
-                <c:if test="${order.orderStatus != 3}">
-                    <img src="../../resources/images/no.svg">
+                <c:if test="${order.orderStatus != 0}">
+                    <p align="center" style="color: red">${warning}</p>
                 </c:if>
-                Order №${order.number} information
-            </p>
-            <div id="rawtable">
-                 <table align="center" id="order">
-                     <tr>
-                        <td>Number:</td>
-                        <td>${order.number}</td>
-                        <td>Date:</td>
-                        <td>
-                            <fmt:formatDate value="${order.date}" pattern="dd-MM-yyyy" />
-                        </td>
-                     </tr>
-                     <tr>
-                         <td>Contact person:</td>
-                         <td>${order.relation.contactPerson}</td>
-                         <td>Town:</td>
-                         <td>${order.relation.town}</td>
-                     </tr>
-                     <tr>
-                         <td>Phone number:</td>
-                         <td>${order.relation.telephone}</td>
-                         <td>Installation name:</td>
-                         <td>${order.installation.name}</td>
-                     </tr>
-                     <tr>
-                         <td>Installation address:</td>
-                         <td>${order.installation.address}</td>
-                         <td>Reference:</td>
-                         <td>${order.reference}</td>
-                     </tr>
-                     <tr>
-                         <td>Employee:</td>
-                         <td>${order.employee.name}</td>
-                         <td>Email:</td>
-                         <td>${order.employee.email}</td>
-                     </tr>
-                     <tr>
-                         <td>Template name:</td>
-                         <td>
-                            <c:if test="${order.customTemplateID == 0}">
-                                 Default template
-                            </c:if>
-                            <c:if test="${order.customTemplateID != 0}">
-                                <c:forEach var="temp" items="${allTemplates}">
-                                    <c:if test="${order.customTemplateID == temp.id}">
-                                        ${temp.templateName}
-                                    </c:if>
-                                </c:forEach>
-                            </c:if>
-                         </td>
-                         <td>Template ID:</td>
-                         <td>${order.customTemplateID}</td>
-                     </tr>
-                </table>
+                <form id="form" method="post" action="<spring:url value="/order/assign"/>">
+                    <input type="hidden" name="oldEmail" value="${order.employee.email}">
+                    <input type="hidden" name="id" value="${order.number}">
+                </form>
             </div>
-            <c:if test="${order.orderStatus == 0}">
-                  <table id="select-form">
-                      <tr>
-                      <td>
-                      <form method="post" action="/assignEmployee/${order.number}">
-                          <select name="email" required>
-                              <option value="" disabled selected>Select employee</option>
-                              <c:forEach var="user" items="${allUsers}">
-                                  <option value="${user.email}">${user.name} (${user.email})</option>
-                              </c:forEach>
-                          </select>
-                          <input type="submit" value="Set" />
-                      </form>
-                      </td>
-                      <td>
-                      <form method="post" action="/assignTemplate/${order.number}">
-                          <select name="name" required>
-                               <option value="" disabled selected>Select template</option>
-                               <option value="default">Default template</option>
-                               <c:forEach var="temp" items="${allTemplates}">
-                                   <option value="${temp.templateName}">${temp.templateName}</option>
-                               </c:forEach>
-                          </select>
-                          <input type="submit" value="Set" />
-                      </form>
-                      </td>
-                      </tr>
-                  </table>
-            </c:if>
-            <c:if test="${order.orderStatus != 0}">
-                <p align="center" style="color: red">${warning}</p>
-            </c:if>
         </div>
     </div>
 </body>

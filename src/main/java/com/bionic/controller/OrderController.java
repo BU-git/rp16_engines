@@ -5,8 +5,6 @@ import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -26,11 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bionic.domain.Order;
-import com.bionic.domain.User;
-import com.bionic.domain.component.Employee;
 import com.bionic.domain.order.OrderStatus;
 import com.bionic.domain.order.OrderWrapperHolder;
-import com.bionic.domain.template.TemplateEntity;
 import com.bionic.service.OrderPaginationService;
 import com.bionic.service.OrderService;
 import com.bionic.service.TemplateService;
@@ -60,14 +55,14 @@ public class OrderController {
     @ResponseBody
     public ResponseEntity<OrderWrapperHolder> showAll(@RequestParam Map<String,String> allRequestParams, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, OrderStatus.ALL));
+        return ResponseEntity.ok(orderPaginationService.getAllOrders(allRequestParams, OrderStatus.ALL));
     }
 
     @RequestMapping(value = "/orders/not-completed")
     @ResponseBody
     public ResponseEntity<OrderWrapperHolder> showNotCompleted(@RequestParam Map<String,String> allRequestParams, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, OrderStatus.NOT_COMPLETED));
+        return ResponseEntity.ok(orderPaginationService.getAllOrders(allRequestParams, OrderStatus.NOT_COMPLETED));
     }
 
     @RequestMapping(value = "/orders/remove/{number}", method = RequestMethod.POST)
@@ -86,88 +81,30 @@ public class OrderController {
     @ResponseBody
     public ResponseEntity<OrderWrapperHolder> showCompleted(@RequestParam Map<String,String> allRequestParams, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-        return ResponseEntity.ok(getOrderWrapperHolder(allRequestParams, OrderStatus.COMPLETED));
+        return ResponseEntity.ok(orderPaginationService.getAllOrders(allRequestParams, OrderStatus.COMPLETED));
     }
 
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
     public String showOrder(@PathVariable("id") long id, @ModelAttribute("warning")String warning, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
-        Order order = orderService.findById(id);
-        model.addAttribute("order",order);
-        List<User> userList = userService.getAllUsers();
-        model.addAttribute("allUsers", userList);
-        List<TemplateEntity> templateList = templateService.findAllTemplates();
-        model.addAttribute("allTemplates", templateList);
+        model.addAttribute("order",orderService.findById(id));
+        model.addAttribute("allUsers", userService.getAllUsers());
+        model.addAttribute("allTemplates", templateService.findAllTemplates());
         return "order";
     }
 
-    @RequestMapping(value = "/assignEmployee/{id}", method = RequestMethod.POST)
-    public String assignEmployee(@PathVariable("id") long id, @RequestParam("email")String email, ModelMap model) {
+    @RequestMapping(value = "/order/assign", method = RequestMethod.POST)
+    public String assign(@RequestParam long id, @RequestParam String email,@RequestParam String name,
+                         @RequestParam String oldEmail, @RequestParam String oldName, ModelMap model){
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
-        Order order = orderService.findById(id);
-        if (order.getOrderStatus() == 0) {
-            List<User> list = userService.findByEmail(email);
-            if (!list.isEmpty()) {
-                Employee employee = new Employee();
-                employee.setName(list.get(0).getName());
-                employee.setEmail(list.get(0).getEmail());
-                employee.setNumber(list.get(0).getNumber());
-                order.setEmployee(employee);
-                order.setLastServerChangeDate(new Date());
-                orderService.save(order);
-            }
+        if(oldEmail.equals(email) && oldName.equals(name)) return "redirect:/orders/"+id;
+        try{
+            System.err.println("Old email: " + oldEmail +", email: " + email);
+            orderService.assign(id, name, email, oldName, oldEmail);
+        }catch (Exception e){
+            model.addAttribute("warning", e.getMessage());
         }
-        else {
-            String message = "";
-            if (order.getOrderStatus() == 1) {
-                message = "Order is in progress!";
-            }
-            else if (order.getOrderStatus() == 2) {
-                message = "Order is completed but not yet uploaded!";
-            }
-            else if (order.getOrderStatus() == 3) {
-                message = "Order is completed!";
-            }
-            model.addAttribute("warning", message);
-        }
-        return "redirect:/orders/{id}";
-    }
-
-    @RequestMapping(value = "/assignTemplate/{id}", method = RequestMethod.POST)
-    public String assignTemplate(@PathVariable("id") long id, @RequestParam("name")String name, ModelMap model) {
-        if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
-        Order order = orderService.findById(id);
-        if (order.getOrderStatus() == 0) {
-            if (name.equals("default")) {
-                order.setLastServerChangeDate(new Date());
-                order.setCustomTemplateID(0);
-                orderService.save(order);
-            } else {
-                List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
-                if (!templateEntityList.isEmpty()) {
-                    TemplateEntity template = templateEntityList.get(0);
-                    template.setAssigned(true);
-                    templateService.saveTemplate(template);
-                    order.setCustomTemplateID(template.getId());
-                    order.setLastServerChangeDate(new Date());
-                    orderService.save(order);
-                }
-            }
-        }
-        else {
-            String message = "";
-            if (order.getOrderStatus() == 1) {
-                message = "Order is in progress!";
-            }
-            else if (order.getOrderStatus() == 2) {
-                message = "Order is completed but not yet uploaded!";
-            }
-            else if (order.getOrderStatus() == 3) {
-                message = "Order is completed!";
-            }
-            model.addAttribute("warning", message);
-        }
-        return "redirect:/orders/{id}";
+        return "redirect:/orders/" + id;
     }
 
     @RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
@@ -190,23 +127,5 @@ public class OrderController {
             }
         }
         return null;
-    }
-
-    private OrderWrapperHolder getOrderWrapperHolder(Map<String, String> allRequestParams, int target){
-        try{
-            int start = Integer.parseInt(allRequestParams.get("start"));
-            int length = Integer.parseInt(allRequestParams.get("length"));
-            int column = Integer.parseInt(allRequestParams.get("order[0][column]"));
-            String searchValue = allRequestParams.get("search[value]");
-            String sortDir = allRequestParams.get("order[0][dir]");
-            switch (target){
-                case OrderStatus.ALL: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, OrderStatus.ALL);
-                case OrderStatus.COMPLETED: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, OrderStatus.COMPLETED);
-                case OrderStatus.NOT_COMPLETED: return orderPaginationService.getAllOrders(start / length, length, searchValue, sortDir, column, OrderStatus.NOT_COMPLETED);
-                default: return new OrderWrapperHolder();
-            }
-        }catch (Exception e){
-            return new OrderWrapperHolder();
-        }
     }
 }

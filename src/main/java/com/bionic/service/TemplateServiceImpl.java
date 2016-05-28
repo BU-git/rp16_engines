@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bionic.dao.FieldDao;
+import com.bionic.dao.OrderDao;
 import com.bionic.dao.TemplateDao;
 import com.bionic.domain.template.web.CustomTemplateNameFront;
 import com.bionic.domain.template.Field;
@@ -29,6 +30,9 @@ public class TemplateServiceImpl implements TemplateService{
 
     @Autowired
     private FieldDao fieldDao;
+
+    @Autowired
+    private OrderDao orderDao;
 
     @Override
     @Transactional
@@ -108,5 +112,17 @@ public class TemplateServiceImpl implements TemplateService{
     @Override
     public List<TemplateEntity> findAllTemplates() {
        return templateDao.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void resolveTemplateIsAssigned(long id){
+        if(orderDao.findAllWithTemplateId(id).size() > 1) return;
+        TemplateEntity template = templateDao.findByTemplateId(id);
+        if(!template.isActive()) {
+            templateDao.removeTemplate(template);
+            return;
+        }
+        template.setAssigned(false);
     }
 }

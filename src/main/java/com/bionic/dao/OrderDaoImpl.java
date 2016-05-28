@@ -74,12 +74,24 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public void saveOrder(Order order) {
+    public void update(Order order){
         em.merge(order);
+    }
+
+    @Override
+    public void save(Order order) {
+        em.persist(order);
     }
 
     @Override
     public void remove(Order order) {
         em.remove(order);
+    }
+
+    @Override
+    public List<Order> findAllWithTemplateId(long id){
+        return  em.createQuery("SELECT o FROM Order o WHERE o.customTemplateID =:id", Order.class)
+                .setParameter("id", id)
+                .getResultList();
     }
 }

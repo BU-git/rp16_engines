@@ -95,6 +95,7 @@ button.edit_popup_open:hover{
     background: transparent url("../images/templates/edit-icon-hover.svg") no-repeat 0;
 }
 button#save_button,button#add_to_form, button#accept{
+    font-weight: bold;
     background-color: #34495e;
 }
 button#save_button:disabled, button#save_button:disabled:hover,button#edit_button:disabled, button#edit_button:disabled:hover{
@@ -108,6 +109,7 @@ button#save_button,button#edit_button{
     margin-left: 10px;
 }
 button#edit_button{
+    font-weight: bold;
     background: #806E59;
 }
 button#edit_button:disabled, button#edit_button:disabled:hover{
@@ -166,6 +168,7 @@ button.my_popup_close,button.edit_popup_close,#my_popup button,#edit_popup butto
     width: 115px;
 }
 button.my_popup_close, button.edit_popup_close{
+    font-weight: bold;
     border-radius: 8px;
     min-width: 60px;
     margin-left: 35px;

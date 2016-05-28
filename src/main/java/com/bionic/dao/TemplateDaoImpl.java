@@ -62,7 +62,6 @@ public class TemplateDaoImpl implements TemplateDao{
 
     @Override
     public List<TemplateEntity> findAll() {
-        TypedQuery<TemplateEntity> query = em.createQuery("SELECT te FROM TemplateEntity te WHERE te.active = true", TemplateEntity.class);
-        return query.getResultList();
+        return em.createQuery("SELECT te FROM TemplateEntity te", TemplateEntity.class).getResultList();
     }
 }

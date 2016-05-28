@@ -1,8 +1,8 @@
 package com.bionic.service;
 
 import java.sql.Blob;
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -14,13 +14,19 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bionic.dao.OrderDao;
 import com.bionic.domain.Order;
 import com.bionic.domain.OrderBrief;
-import com.bionic.domain.order.OrderWrapper;
+import com.bionic.domain.User;
+import com.bionic.domain.component.Employee;
+import com.bionic.domain.template.TemplateEntity;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderDao orderDao;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private TemplateService templateService;
 
     @Override
     public Order findById(long id) {
@@ -35,45 +41,81 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public List<OrderWrapper> findAllForDataTables(){
-        List<Order> list = findAllOrders();
-        List<OrderWrapper> result = new ArrayList<>();
-        for(Order o: list){
-            OrderWrapper wrapper = new OrderWrapper(o);
-            result.add(wrapper);
-        }
-        return result;
-    }
-
-    @Override
     public Blob createBlob(MultipartFile file) {
         return orderDao.createBlob(file);
     }
 
     @Override
     public List<OrderBrief> getBriefOrdersForUser(String email) {
-        String emailTemp = email.toLowerCase().trim();
-        return orderDao.getBriefOrdersForUser(emailTemp);
+        return orderDao.getBriefOrdersForUser(email.toLowerCase().trim());
     }
 
     @Override
     public Order getOrderForUser(long number, String email) {
-        String emailTemp = email.toLowerCase().trim();
-        return orderDao.getOrderForUser(number, emailTemp);
+        return orderDao.getOrderForUser(number, email.toLowerCase().trim());
+    }
+
+    @Override
+    @Transactional
+    public void update(Order order) {
+        orderDao.update(order);
     }
 
     @Override
     @Transactional
     public void save(Order order){
-        orderDao.saveOrder(order);
+        if(order == null || findById(order.getNumber()) != null) throw new IllegalArgumentException();
+        orderDao.save(order);
     }
 
     @Override
     @Transactional
     public void remove(long number) {
-        if(number < 0) throw new IllegalArgumentException();
+        if(number < 1) throw new IllegalArgumentException();
         Order order = orderDao.findById(number);
         if(order == null) throw new NoSuchElementException();
         orderDao.remove(order);
+    }
+
+    @Override
+    @Transactional
+    public void assign(long id, String name, String email, String oldName, String oldEmail) {
+        Order o = findById(id);
+        if(o==null||name==null||email==null||oldEmail==null||oldName==null) throw new IllegalArgumentException("Order can't be null");
+        else if (o.getOrderStatus() != 0) {
+            switch (o.getOrderStatus()) {
+                case 1: throw new IllegalStateException("Order is in progress!");
+                case 2: throw new IllegalStateException("Order is completed but not yet uploaded!");
+                case 3: throw new IllegalStateException("Order is completed!");
+            }
+        }
+        if(!email.equals(oldEmail)) assignEmployee(email, o);
+        if(!oldName.equals(name))   assignTemplate(name, o);
+    }
+
+    private void assignEmployee(String email, Order o) {
+        List<User> list = userService.findByEmail(email);
+        if (list.isEmpty()) return;
+        User user = list.get(0);
+        Employee employee = new Employee();
+        employee.setName(user.getName());
+        employee.setEmail(user.getEmail());
+        employee.setNumber(user.getNumber());
+        o.setEmployee(employee);
+        o.setLastServerChangeDate(new Date());
+    }
+
+    private void assignTemplate(String name, Order o) {
+        templateService.resolveTemplateIsAssigned(o.getCustomTemplateID());
+        if (name.equals("default")) o.setCustomTemplateID(0);
+        else {
+            List<TemplateEntity> templateEntityList = templateService.findTemplatesListByName(name);
+            if (templateEntityList.isEmpty()) return;
+            TemplateEntity template = templateEntityList.get(0);
+            template.setAssigned(true);
+            templateService.saveTemplate(template);
+            o.setCustomTemplateID(template.getId());
+        }
+        o.setLastServerChangeDate(new Date());
     }
 }

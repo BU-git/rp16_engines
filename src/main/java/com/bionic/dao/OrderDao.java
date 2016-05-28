@@ -14,7 +14,9 @@ public interface OrderDao {
     List<Order> findAllOrders();
     Blob createBlob(MultipartFile file);
     List<OrderBrief> getBriefOrdersForUser(String email);
-    void saveOrder(Order order);
+    void save(Order order);
+    void update(Order order);
     void remove(Order order);
     Order getOrderForUser(Long number, String email);
+    List<Order> findAllWithTemplateId(long id);
 }
