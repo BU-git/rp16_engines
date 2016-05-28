@@ -10,11 +10,12 @@
 	<link href="<spring:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">
 	<link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-	<title>Login</title>
+	<title><spring:message code="label.login.button"/></title>
 </head>
 <body>
+	<span id="locale" style="display: none"></span>
 	<div id="login-form">
-		<h1>Authorization form</h1>
+		<h1><spring:message code="label.login.form"/></h1>
 		<fieldset>
 			<c:choose>
 				<c:when test="${message != null}">
@@ -25,9 +26,13 @@
 				</c:otherwise>
 			</c:choose>
 			<cf:form id="loginForm" method="post" action="/dashboard" modelAttribute="user">
-				<cf:label path="email"><p>Please enter your email</p></cf:label>
+				<cf:label path="email">
+					<p><spring:message code="label.login.email"/></p>
+				</cf:label>
 				<cf:input id="mail" name="email" path="email" /><br>
-				<cf:label path="passwordHash"><p>Password</p></cf:label>
+				<cf:label path="passwordHash">
+					<p><spring:message code="label.login.password"/></p>
+				</cf:label>
 				<cf:password id="passwordHash" name="passwordHash" path="passwordHash" /><br>
 				<input type="submit" value="Login" />
 			</cf:form>

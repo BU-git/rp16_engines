@@ -10,7 +10,7 @@
   <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="<c:url value="/resources/images/logo.png"/>" type="image/png">
-  <title>Registration</title>
+  <title><spring:message code="reg.title"/></title>
   <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
   <script>
     $(window).load(function() {
@@ -22,89 +22,106 @@
   </script>
 </head>
 <body>
-<div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
-  <span class='bar bar-1'></span>
-  <span class='bar bar-2'></span>
-  <span class='bar bar-3'></span>
-</div>
-<div id="left-menu">
-  <div class="logo">
-    <a href="http://www.kvt.nl/">
-      <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
-    </a>
+  <span id="locale" style="display: none"></span>
+  <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
+    <span class='bar bar-1'></span>
+    <span class='bar bar-2'></span>
+    <span class='bar bar-3'></span>
   </div>
-  <div class="left-part-container">
-    <div class="left-part">
-      <a href="<spring:url value="/logout"/>">
-        <div class="button">
-          Logout
-        </div>
+  <div id="left-menu">
+    <div class="logo">
+      <a href="http://www.kvt.nl/">
+        <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
       </a>
     </div>
-  </div>
-</div>
-<div id="right-menu">
-  <div class="sitemap">
-    <ul class="site-menu">
-      <li class="menu-item">
-        <a href="<spring:url value="/dashboard"/>">
-          Dashboard
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/orders"/>">
-          Orders overview
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/templates/new"/>">
-          Create template
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/templates"/>">
-          Templates overview
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/users/new"/>">
-          New User
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/users/all"/>">
-          Users
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-  <div id="content-wrapper" style="text-align: center; align-content: center">
-    <div id="header">
-      <div style="position: fixed; top: 0; left: 10px;">
-        <a href="<spring:url value="/"/>" id="logo">
-          <img src="<spring:url value="/resources/images/logo.png"/>">
+    <div class="left-part-container">
+      <div class="left-part">
+        <a href="<spring:url value="/logout"/>">
+          <div class="button">
+            <spring:message code="label.logout"/>
+          </div>
         </a>
       </div>
-      <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
     </div>
+  </div>
+  <div id="right-menu">
+    <div class="sitemap">
+      <ul class="site-menu">
+        <li class="menu-item">
+          <a href="<spring:url value="/dashboard"/>">
+            <spring:message code="label.dashboard"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/orders"/>">
+            <spring:message code="label.orders"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/templates/new"/>">
+            <spring:message code="label.template"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/templates"/>">
+            <spring:message code="label.templates"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/users/new"/>">
+            <spring:message code="label.user"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/users/all"/>">
+            <spring:message code="label.users"/>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <span>
+              <a href="<spring:url value="?lang=en"/>">EN</a>
+          </span>
+        </li>
+        <li>
+          <span>
+              <a href="<spring:url value="?lang=nl"/>">NL</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="content-wrapper" style="text-align: center; align-content: center">
+      <div id="header">
+        <div style="position: fixed; top: 0; left: 10px;">
+          <a href="<spring:url value="/"/>" id="logo">
+            <img src="../../resources/images/logo.png">
+          </a>
+        </div>
+          <span style="text-align: center;">
+              <h2>
+                <spring:message code="label.title"/> ${loggedInUser.name}
+              </h2>
+          </span>
+      </div>
     <div id="popup_ok" >
       <div id="left_side">
         <img id="ok" src="../../resources/images/templates/ok-icon.svg">
       </div>
       <div id="right_side">
         <div class="popup_message">
-          <p id="ok_message">User registered!</p>
+          <p id="ok_message"><spring:message code="reg.registered"/></p>
         </div>
       </div>
     </div>
     <div id="popup_error">
       <div id="left_side_error"><img src="<c:url value="/resources/images/templates/error-icon.svg"/>"></div>
-      <div id="right_side_error"><p>Oops.. something wrong ☹</p></div>
+      <div id="right_side_error"><p><spring:message code="message.orders.deleteError"/></p></div>
     </div>
     <div id="content">
     <div id="register_form">
-      <div id="title_banner"><p>New User</p></div>
+      <div id="title_banner"><p><spring:message code="reg.newUser"/></p></div>
       <div id="reg">
         <table>
           <tr>
@@ -113,7 +130,7 @@
               <img class="warn" id="warn1" src="<c:url value="/resources/images/templates/warn-icon.png"/>">
             </td>
             <td colspan="2">
-              <label class="inline" id="for_mail" for="email">Email</label><input id="email" type="email">
+              <label class="inline" id="for_mail" for="email"><spring:message code="reg.email"/></label><input id="email" type="email">
             </td>
           </tr>
           <tr>
@@ -122,13 +139,13 @@
               <img class="warn" id="warn2" src="<c:url value="/resources/images/templates/warn-icon.png"/>">
             </td>
             <td>
-              <label class="inline" id="for_name" for="name">Name</label><input id="name" type="text">
+              <label class="inline" id="for_name" for="name"><spring:message code="reg.name"/></label><input id="name" type="text">
             </td>
             <td id="inline">
               <div class="role">
                 <input id='role' value="admin" type="checkbox">
               </div>
-              <div id="label"><label id="for_role">Admin</label></div>
+              <div id="label"><label id="for_role"><spring:message code="reg.admin"/></label></div>
             </td>
           </tr>
           <tr>
@@ -137,7 +154,7 @@
               <img class="check" id="check3" src="<c:url value="/resources/images/templates/check-icon.png"/>">
             </td>
             <td colspan="2">
-              <label class="inline" id="for_password" for="password">Password</label><input id="password" type="password">
+              <label class="inline" id="for_password" for="password"><spring:message code="label.login.password"/></label><input id="password" type="password">
             </td>
           </tr>
           <tr>
@@ -146,7 +163,7 @@
               <img class="check" id="check4" src="<c:url value="/resources/images/templates/check-icon.png"/>">
             </td>
             <td colspan="2">
-              <label class="inline" id="for_password_confirmation" for="password_confirmation">Confirm password</label>
+              <label class="inline" id="for_password_confirmation" for="password_confirmation"><spring:message code="reg.confirmPassword"/></label>
               <input id="password_confirmation" type="password" disabled>
             </td>
           </tr>
@@ -154,12 +171,12 @@
             <td class="w">
             </td>
             <td colspan="2">
-              <label class="inline" id="for_number" for="number">Number</label><input id="number" type="text">
+              <label class="inline" id="for_number" for="number"><spring:message code="reg.number"/></label><input id="number" type="text">
             </td>
           </tr>
           <tr>
             <td colspan="3" class="center">
-              <button id="register" disabled="disabled">Submit</button>
+              <button id="register" disabled="disabled"><spring:message code="reg.submit"/></button>
             </td>
           </tr>
         </table>

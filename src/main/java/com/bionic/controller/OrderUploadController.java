@@ -51,6 +51,7 @@ public class OrderUploadController {
                                       @RequestParam("orderStatus") int orderStatus) {
         Order order = orderService.getOrderForUser(number, email);
         if (order == null) return new ResponseEntity(HttpStatus.NOT_FOUND);
+        if (order.getOrderStatus() == 3) return new ResponseEntity(HttpStatus.BAD_REQUEST);
         order.setLastAndroidChangeDate(new Date(lastAndroidChangeDate));
         order.setOrderStatus(orderStatus);
         if (orderStatus == 3) {

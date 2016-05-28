@@ -35,109 +35,126 @@
   <title>${list.get(0).templateEntity.templateName.replace("<","&lt;")}</title>
 </head>
 <body>
-<div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
-  <span class='bar bar-1'></span>
-  <span class='bar bar-2'></span>
-  <span class='bar bar-3'></span>
-</div>
-<div id="left-menu">
-  <div class="logo">
-    <a href="http://www.kvt.nl/">
-      <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
-    </a>
+  <span id="locale" style="display: none"></span>
+  <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
+    <span class='bar bar-1'></span>
+    <span class='bar bar-2'></span>
+    <span class='bar bar-3'></span>
   </div>
-  <div class="left-part-container">
-    <div class="left-part">
-      <a href="<spring:url value="/logout"/>">
-        <div class="button">
-          Logout
-        </div>
+  <div id="left-menu">
+    <div class="logo">
+      <a href="http://www.kvt.nl/">
+        <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
       </a>
     </div>
-  </div>
-</div>
-<div id="right-menu">
-  <div class="sitemap">
-    <ul class="site-menu">
-      <li class="menu-item">
-        <a href="<spring:url value="/dashboard"/>">
-          Dashboard
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/orders"/>">
-          Orders overview
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/templates/new"/>">
-          Create template
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/templates"/>">
-          Templates overview
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/users/new"/>">
-          New User
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/users/all"/>">
-          Users
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div id="content-wrapper" style="text-align: center; align-content: center">
-  <div id="content" style="text-align: center">
-    <div id="header">
-      <div style="position: fixed; top: 0; left: 10px;">
-        <a href="<spring:url value="/"/>" id="logo">
-          <img src="<spring:url value="/resources/images/logo.png"/>">
+    <div class="left-part-container">
+      <div class="left-part">
+        <a href="<spring:url value="/logout"/>">
+          <div class="button">
+            <spring:message code="label.logout"/>
+          </div>
         </a>
       </div>
-      <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
-    </div>
-    <div id="title_banner"><p>Template</p></div>
-    <div id="content_place">
-      <table id="info">
-        <tr>
-          <td class="action" rowspan="2">
-            <button class='back'></button>
-          </td>
-          <td class="border"><span>Template name:</span></td>
-          <td><p id="template_name">${list.get(0).templateEntity.templateName.replace("<","&lt;")}</p></td>
-          <td class="action" rowspan="2">
-            <button class='edit'></button>
-          </td>
-        </tr>
-        <tr>
-          <td class="border"><span>Date Created:</span></td>
-          <td><p>${list.get(0).createDt}</p></td>
-        </tr>
-      </table>
-      <table id="template">
-        <% int a = 1; %>
-        <tr>
-          <th>#</th>
-          <th>Fields</th>
-        </tr>
-        <c:forEach var="f" items="${list}">
-          <tr><td class="number"><% out.println(a++); %></td>
-            <td class="element">
-              <c:if test="${f.field.id == 1}"><label>${f.description.replace("<","&lt;")}<input placeholder="Text Field" readonly type="text"></label></c:if>
-              <c:if test="${f.field.id == 2}"><input type="checkbox" checked onclick="return false"><label>${f.description.replace("<","&lt;")}</label></c:if>
-              <c:if test="${f.field.id == 3}"><label>${f.description.replace("<","&lt;")}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
-              <c:if test="${f.field.id == 4}"><label>${f.description.replace("<","&lt;")}</label></c:if>
-            </td></tr>
-        </c:forEach>
-      </table>
     </div>
   </div>
-</div>
+  <div id="right-menu">
+    <div class="sitemap">
+      <ul class="site-menu">
+        <li class="menu-item">
+          <a href="<spring:url value="/dashboard"/>">
+            <spring:message code="label.dashboard"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/orders"/>">
+            <spring:message code="label.orders"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/templates/new"/>">
+            <spring:message code="label.template"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/templates"/>">
+            <spring:message code="label.templates"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/users/new"/>">
+            <spring:message code="label.user"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/users/all"/>">
+            <spring:message code="label.users"/>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <span>
+              <a href="<spring:url value="?lang=en"/>">EN</a>
+          </span>
+        </li>
+        <li>
+          <span>
+              <a href="<spring:url value="?lang=nl"/>">NL</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="content-wrapper" style="text-align: center; align-content: center">
+    <div id="content" style="text-align: center">
+      <div id="header">
+        <div style="position: fixed; top: 0; left: 10px;">
+          <a href="<spring:url value="/"/>" id="logo">
+            <img src="../../resources/images/logo.png">
+          </a>
+        </div>
+          <span style="text-align: center;">
+            <h2>
+              <spring:message code="label.title"/> ${loggedInUser.name}
+            </h2>
+          </span>
+      </div>
+      <div id="title_banner"><p><spring:message code="template.title"/></p></div>
+      <div id="content_place">
+        <table id="info">
+          <tr>
+            <td class="action" rowspan="2">
+              <button class='back'></button>
+            </td>
+            <td class="border"><span><spring:message code="template.name"/></span></td>
+            <td><p id="template_name">${list.get(0).templateEntity.templateName.replace("<","&lt;")}</p></td>
+            <td class="action" rowspan="2">
+              <button class='edit'></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="border"><span><spring:message code="template.date"/></span></td>
+            <td><p>${list.get(0).createDt}</p></td>
+          </tr>
+        </table>
+        <table id="template">
+          <% int a = 1; %>
+          <tr>
+            <th>#</th>
+            <th><spring:message code="template.fields"/></th>
+          </tr>
+          <c:forEach var="f" items="${list}">
+            <tr><td class="number"><% out.println(a++); %></td>
+              <td class="element">
+                <c:if test="${f.field.id == 1}"><label>${f.description.replace("<","&lt;")}<input placeholder="Text Field" readonly type="text"></label></c:if>
+                <c:if test="${f.field.id == 2}"><input type="checkbox" checked onclick="return false"><label>${f.description.replace("<","&lt;")}</label></c:if>
+                <c:if test="${f.field.id == 3}"><label>${f.description.replace("<","&lt;")}<textarea placeholder="Text Area" readonly rows="5"></textarea></label></c:if>
+                <c:if test="${f.field.id == 4}"><label>${f.description.replace("<","&lt;")}</label></c:if>
+              </td></tr>
+          </c:forEach>
+        </table>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

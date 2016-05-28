@@ -20,104 +20,130 @@
               });
     });
   </script>
-  <title>Make Template</title>
+  <title><spring:message code="template.make"/></title>
 </head>
 <body>
-<div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
-  <span class='bar bar-1'></span>
-  <span class='bar bar-2'></span>
-  <span class='bar bar-3'></span>
-</div>
-<div id="left-menu">
-  <div class="logo">
-    <a href="http://www.kvt.nl/">
-      <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
-    </a>
+  <span id="locale" style="display: none"></span>
+  <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
+    <span class='bar bar-1'></span>
+    <span class='bar bar-2'></span>
+    <span class='bar bar-3'></span>
   </div>
-  <div class="left-part-container">
-    <div class="left-part">
-      <a href="<spring:url value="/logout"/>">
-        <div class="button">
-          Logout
-        </div>
+  <div id="left-menu">
+    <div class="logo">
+      <a href="http://www.kvt.nl/">
+        <img src="<spring:url value="/resources/images/logo_kvt.png"/>">
       </a>
     </div>
-  </div>
-</div>
-<div id="right-menu">
-  <div class="sitemap">
-    <ul class="site-menu">
-      <li class="menu-item">
-        <a href="<spring:url value="/dashboard"/>">
-          Dashboard
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/orders"/>">
-          Orders overview
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/templates/new"/>">
-          Create template
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/templates"/>">
-          Templates overview
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/users/new"/>">
-          New User
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="<spring:url value="/users/all"/>">
-          Users
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div id="content-wrapper" style="text-align: center; align-content: center">
-  <div id="content" style="text-align: center">
-    <div id="header">
-      <div style="position: fixed; top: 0; left: 10px;">
-        <a href="<spring:url value="/"/>" id="logo">
-          <img src="<spring:url value="/resources/images/logo.png"/>">
+    <div class="left-part-container">
+      <div class="left-part">
+        <a href="<spring:url value="/logout"/>">
+          <div class="button">
+            <spring:message code="label.logout"/>
+          </div>
         </a>
       </div>
-      <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
     </div>
+  </div>
+  <div id="right-menu">
+    <div class="sitemap">
+      <ul class="site-menu">
+        <li class="menu-item">
+          <a href="<spring:url value="/dashboard"/>">
+            <spring:message code="label.dashboard"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/orders"/>">
+            <spring:message code="label.orders"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/templates/new"/>">
+            <spring:message code="label.template"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/templates"/>">
+            <spring:message code="label.templates"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/users/new"/>">
+            <spring:message code="label.user"/>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="<spring:url value="/users/all"/>">
+            <spring:message code="label.users"/>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <span>
+              <a href="<spring:url value="?lang=en"/>">EN</a>
+          </span>
+        </li>
+        <li>
+          <span>
+              <a href="<spring:url value="?lang=nl"/>">NL</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="content-wrapper" style="text-align: center; align-content: center">
+    <div id="content" style="text-align: center">
+      <div id="header">
+        <div style="position: fixed; top: 0; left: 10px;">
+          <a href="<spring:url value="/"/>" id="logo">
+            <img src="../../resources/images/logo.png">
+          </a>
+        </div>
+          <span style="text-align: center;">
+            <h2>
+              <spring:message code="label.title"/> ${loggedInUser.name}
+            </h2>
+          </span>
+      </div>
     <div id="my_popup" style="background-color: white; display: none">
       <div class="hd">
       </div>
       <table class="inputTable">
-        <tr><td><p class="info">Click "Add to Form" to add a field with description to the template form.</p></td></tr>
-        <tr><td><textarea id="popup_area" class="popup_area" rows="8"  placeholder="Field description"></textarea></td></tr></table>
+        <tr>
+          <td>
+            <p class="info"><spring:message code="template.create.info"/></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <textarea id="popup_area" class="popup_area" rows="8" placeholder="Field description"></textarea>
+          </td>
+        </tr>
+      </table>
       <ul>
         <li><button class="my_popup_close">Close</button></li>
-        <li class="right_li"><button class="my_popup_close" id="add_to_form">Add to Form</button></li>
+        <li class="right_li"><button class="my_popup_close" id="add_to_form"><spring:message code="template.addToForm"/></button></li>
       </ul>
     </div>
     <div id="edit_popup" style="background-color: white; display: none">
-      <div class="hd">Edit Element</div>
+      <div class="hd"><spring:message code="template.edit"/></div>
       <table class="inputTable">
-        <tr><td><p class="info">Click on the "Accept" button to save the changes to the form.</p></td></tr>
+        <tr><td><p class="info"><spring:message code="template.info.accept"/></p></td></tr>
         <tr><td><textarea id="edit_area" rows="8" placeholder="Field description"></textarea></td></tr></table>
       <ul>
-        <li><button class="edit_popup_close">Close</button></li>
-        <li class="right_li"><button class="edit_popup_close" id="accept">Accept</button></li>
+        <li><button class="edit_popup_close"><spring:message code="label.close"/></button></li>
+        <li class="right_li"><button class="edit_popup_close" id="accept"><spring:message code="label.accept"/></button></li>
       </ul>
     </div>
     <div id="popup_ok" style="background-color: white; display: none">
       <div id="left_side"><img src="<c:url value="/resources/images/templates/ok-icon.svg"/>"></div>
-      <div id="right_side"><p id="right_ok">Template added!</p></div>
+      <div id="right_side"><p id="right_ok"><spring:message code="template.added"/></p></div>
     </div>
     <div id="popup_error" style="background-color: white; display: none">
       <div id="left_side_error"><img src="<c:url value="/resources/images/templates/error-icon.svg"/>"></div>
-      <div id="right_side_error"><p>Oops.. something wrong ☹</p></div>
+      <div id="right_side_error"><p><spring:message code="message.orders.deleteError"/></p></div>
     </div>
     <div id="container">
       <input type="hidden" id="count" value="${count}">
@@ -129,12 +155,15 @@
               <tr><td><input id="template_name" placeholder="Template name" type="text"></td></tr>
             </table>
           </div></td> </tr>
-          <tr><th id="first_th">Form Controls</th><th id="second_th">Form Preview Area</th></tr>
+          <tr>
+            <th id="first_th"><spring:message code="template.form"/></th>
+            <th id="second_th"><spring:message code="template.preview"/></th>
+          </tr>
           <tr>
             <td id="left">
               <table>
                 <tr>
-                  <td colspan="2"><p>Click (+) to add a field to your template form.</p></td>
+                  <td colspan="2"><p><spring:message code="template.info.add"/></p></td>
                 </tr>
                 <tr>
                   <td>
@@ -146,7 +175,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <label id="check_box_field_label">Check Box
+                    <label id="check_box_field_label"><spring:message code="template.checkBox"/>
                       <input class="form_controls" type="checkbox" checked onclick="return false">
                     </label>
                   </td>
@@ -164,7 +193,7 @@
                 </tr>
                 <tr>
                 <td>
-                  <label id="label_form_controls">Text Label</label>
+                  <label id="label_form_controls"><spring:message code="template.label"/></label>
                 </td>
                 <td>
                   <button id="label" class="my_popup_open"></button>
@@ -237,8 +266,8 @@
           </tr>
           <tr><td></td><td id="footer">
             <ul id="footer_list">
-              <li><button id="edit_button" disabled>Edit Form</button></li>
-              <li><button id="save_button" disabled>Save Form</button></li></ul></td></tr>
+              <li><button id="edit_button" disabled><spring:message code="template.editForm"/></button></li>
+              <li><button id="save_button" disabled><spring:message code="template.saveForm"/></button></li></ul></td></tr>
         </table>
       </div>
     </div>

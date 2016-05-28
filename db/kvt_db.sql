@@ -410,6 +410,7 @@ DROP TABLE IF EXISTS `templates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `templates` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `active` bit(1) NOT NULL,
   `assigned` bit(1) NOT NULL,
   `templateName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
@@ -471,4 +472,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-18 16:47:03
+-- Dump completed on 2016-05-25  8:40:22
