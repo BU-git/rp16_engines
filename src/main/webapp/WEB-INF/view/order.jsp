@@ -239,7 +239,7 @@
                         </td>
                         <c:if test="${order.orderStatus == 0}">
                             <td>
-                                <input form="form" type="submit" value="<spring:message code="label.accept"/>"/>
+                                <input form="form" type="submit" value="<spring:message code="order.refresh"/>"/>
                             </td>
                         </c:if>
                     </tr>

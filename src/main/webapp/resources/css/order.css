@@ -11,14 +11,14 @@
 #rawtable {
     border-radius: 2px;
     background: #023672;
-    width:800px;
+    max-width:800px;
     margin: auto;
     border: 1px solid black;
     padding: 0 5px 0 5px;
 }
 #rawtable table {
     border-collapse: collapse;
-    width: 600px;
+    min-width: 600px;
 }
 #order td{
     border-right: 1px solid black;
@@ -99,15 +99,16 @@ hr {
 }
 #set td input{
     text-align: right;
-    background: #34495e url("../images/orders/save-icon.svg") no-repeat 1px;
+    background: #34495e url("../images/orders/sync.svg") no-repeat 3px;
     color: white;
 }
+
 #set td input, #set td button{
     font-weight: bold;
     border-radius: 2px;
+    width: 95px;
     border: none;
     outline: none;
-    width: 80px;
     padding: 8px;
 }
 select, label{

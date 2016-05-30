@@ -25,6 +25,8 @@ var upload_info_msg_en = ' uploaded.';
 var user_duplicate_email_msg_en = 'User with this email already exist..';
 var error_msg_global_en = ' Oops.. something wrong =/';
 var user_info_msg_en = "Click 'Accept' to save the changes for the current user.";
+var add_new_en = 'Add New';
+var edit_element_en = 'Edit Element';
 
 var generateDataTables_nl = function(){
     return {
@@ -49,9 +51,11 @@ var files_nl = ' bestanden';
 var file_nl = ' bestand';
 var upload_error_msg_nl = '  niet geupload ☹';
 var upload_info_msg_nl = ' geupload.';
-var user_duplicate_email_msg_nl = 'User with this email already exist..';
-var error_msg_global_nl = ' Oops.. iets verkeerd =/';
+var user_duplicate_email_msg_nl = 'Gebruiker met deze e-mail bestaat al..';
+var error_msg_global_nl = ' Oeps, er is iets mis gegaan ☹';
 var user_info_msg_nl = "Klik 'Accepteren'  om wijzigingen aan gebruiker op te slaan.";
+var add_new_nl = 'Nieuwe Toevoegen';
+var edit_element_nl = 'Element bewerken';
 
 var getLocale = function(locale, custom_entries){
     if(custom_entries != undefined && custom_entries.length > 0) entries = custom_entries;

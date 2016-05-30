@@ -1,4 +1,6 @@
 $(function(){
+    var locale = $.cookie("myAppLocaleCookie");
+    var isEn = locale == 'en';
     var field_to_be_inserted = "";
     var edit_opened = 0;
     var removed = [];
@@ -64,22 +66,22 @@ $(function(){
     });
 
     text_field.click(function(){
-        hd.text("Add New Text Field");
+        hd.text((isEn ? add_new_en : add_new_nl)+" Text Field");
         field_to_be_inserted = "text field";
         edit_delete_feature(777);
     });
     check_box.click(function(){
-        hd.text("Add New CheckBox");
+        hd.text((isEn ? add_new_en : add_new_nl)+" CheckBox");
         field_to_be_inserted = "check box";
         edit_delete_feature(777);
     });
     label.click(function(){
-        hd.text("Add New Text Label");
+        hd.text((isEn ? add_new_en : add_new_nl)+" Text Label");
         field_to_be_inserted = "label";
         edit_delete_feature(777);
     });
     text_area.click(function(){
-        hd.text("Add New Text Area");
+        hd.text((isEn ? add_new_en : add_new_nl)+" Text Area");
         field_to_be_inserted = "text area";
         edit_delete_feature(777);
     });
@@ -164,7 +166,7 @@ $(function(){
     };
     var edit_on_click = function(number, selector){
         $(selector).click(function(){
-            hd.text("Edit Element");
+            hd.text(isEn ? edit_element_en : edit_element_nl);
             selector = '#fieldDescription' + number;
             edit_opened = number;
             edit_area.val($(selector).text());

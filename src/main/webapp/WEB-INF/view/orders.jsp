@@ -138,7 +138,7 @@
                     </h2>
                 </span>
             </div>
-            <div id="popup_ok" >
+            <div id="popup_ok" style="display: none">
                 <div id="left_side">
                     <img id="warn" src="../../resources/images/templates/warn-icon.svg">
                     <img id="ok" src="../../resources/images/templates/ok-icon.svg" style="display: none">

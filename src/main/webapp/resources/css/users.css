@@ -101,16 +101,16 @@ button.edit_popup_close:hover{
     margin-left: 15px;
 }
 button.edit_popup_close, button#accept{
-    font-weight: 600;
-    width: 85px;
-    font-size: 16px;
+    font-weight: bold;
+    width: 95px;
+    font-size: 15px;
 }
 button#accept{
     margin-left: 10px;
-    background: rgba(23, 85, 133, 0.85);
+    background-color: #34495e;
 }
 button#accept:hover, button#accept:disabled, button#accept:disabled:hover{
-    background-color: rgba(21, 71, 114, 0.62);
+    background-color: #73808C;
 }
 ul li, .role, #label, #left_side, #right_side, #right_side_error, #left_side_error{
     display: inline;
@@ -144,9 +144,6 @@ ul li, .role, #label, #left_side, #right_side, #right_side_error, #left_side_err
 #role{
     margin-top: 22px;
 }
-/*{
-    width: 230px;
-}*/
 input#role{
     width: auto;
     height: auto;

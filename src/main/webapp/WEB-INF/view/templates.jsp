@@ -4,8 +4,10 @@
 <html>
 <head>
   <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
-  <script src="<c:url value="/resources/js/templates.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <script src="<c:url value="/resources/js/jquery.cookie.js"/>"></script>
+  <script src="<c:url value="/resources/js/locale.js"/>"></script>
+  <script src="<c:url value="/resources/js/templates.js"/>"></script>
   <link href="<c:url value="/resources/css/templates.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
@@ -127,12 +129,12 @@
         </tr>
         <tr>
           <td>
-            <textarea id="popup_area" class="popup_area" rows="8" placeholder="Field description"></textarea>
+            <textarea id="popup_area" class="popup_area" rows="8" placeholder="<spring:message code="label.fieldDescription"/>"></textarea>
           </td>
         </tr>
       </table>
       <ul>
-        <li><button class="my_popup_close">Close</button></li>
+        <li><button class="my_popup_close"><spring:message code="label.close"/></button></li>
         <li class="right_li"><button class="my_popup_close" id="add_to_form"><spring:message code="template.addToForm"/></button></li>
       </ul>
     </div>
@@ -140,7 +142,7 @@
       <div class="hd"><spring:message code="template.edit"/></div>
       <table class="inputTable">
         <tr><td><p class="info"><spring:message code="template.info.accept"/></p></td></tr>
-        <tr><td><textarea id="edit_area" rows="8" placeholder="Field description"></textarea></td></tr></table>
+        <tr><td><textarea id="edit_area" rows="8" placeholder="<spring:message code="label.fieldDescription"/>"></textarea></td></tr></table>
       <ul>
         <li><button class="edit_popup_close"><spring:message code="label.close"/></button></li>
         <li class="right_li"><button class="edit_popup_close" id="accept"><spring:message code="label.accept"/></button></li>
@@ -161,7 +163,7 @@
           <tr><td colspan="2">
             <div class="hd_main">
             <table class="middle" id="title">
-              <tr><td><input id="template_name" placeholder="Template name" type="text"></td></tr>
+              <tr><td><input id="template_name" placeholder="<spring:message code="templates.name"/>" type="text"></td></tr>
             </table>
           </div></td> </tr>
           <tr>

@@ -37,17 +37,17 @@ button#register, table#register_form, #content{
 button#register{
     outline: none;
     font-size: 16px;
-    background-color: #596E80;
+    background-color: #34495e;
     border: none;
     padding: 10px 15px;;
 }
 button#register:disabled, button#register:disabled:hover{
-    background-color: #8795A1;
+    background-color: #73808C;
     color: #EBEEF0;
     box-shadow: 0 0 0;
 }
 button#register:hover{
-    background-color: #8795A1;
+    background-color: #73808C;
     transition:.2s ease-in-out;
 }
 #label, #role{
