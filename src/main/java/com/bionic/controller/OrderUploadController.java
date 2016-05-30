@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.bionic.domain.Order;
+import com.bionic.domain.order.Order;
 import com.bionic.service.OrderService;
 
 @RestController

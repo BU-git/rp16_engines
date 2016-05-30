@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.bionic.domain.Order;
+import com.bionic.domain.order.Order;
 import com.bionic.domain.order.OrderStatus;
 import com.bionic.domain.order.OrderWrapperHolder;
 import com.bionic.service.OrderPaginationService;

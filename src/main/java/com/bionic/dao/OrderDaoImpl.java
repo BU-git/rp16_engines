@@ -1,7 +1,7 @@
 package com.bionic.dao;
 
-import com.bionic.domain.Order;
-import com.bionic.domain.OrderBrief;
+import com.bionic.domain.order.Order;
+import com.bionic.domain.order.OrderBrief;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;

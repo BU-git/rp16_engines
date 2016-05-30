@@ -2,7 +2,7 @@ package com.bionic.dao;
 
 import java.util.List;
 
-import com.bionic.domain.User;
+import com.bionic.domain.user.User;
 
 public interface UserDao {
 	List<User> getAllUsers();

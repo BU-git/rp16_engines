@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.bionic.domain.Role;
-import com.bionic.domain.User;
+import com.bionic.domain.user.Role;
+import com.bionic.domain.user.User;
 import com.bionic.domain.user.UserWrapper;
 import com.bionic.domain.user.UserWrapperHolder;
 import com.bionic.service.UserService;

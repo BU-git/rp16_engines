@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bionic.domain.Order;
+import com.bionic.domain.order.Order;
 import com.bionic.domain.order.FileMeta;
 import com.bionic.domain.xml.XmlFileReader;
 import com.bionic.service.OrderService;

@@ -1,4 +1,4 @@
-package com.bionic.domain;
+package com.bionic.domain.order;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;

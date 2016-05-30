@@ -13,7 +13,7 @@ import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.Unmarshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
-import com.bionic.domain.Order;
+import com.bionic.domain.order.Order;
 
 public class XmlFileReader {
 

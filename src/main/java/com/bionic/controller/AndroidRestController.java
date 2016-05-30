@@ -1,8 +1,8 @@
 package com.bionic.controller;
 
-import com.bionic.domain.Order;
-import com.bionic.domain.OrderBrief;
-import com.bionic.domain.User;
+import com.bionic.domain.order.Order;
+import com.bionic.domain.order.OrderBrief;
+import com.bionic.domain.user.User;
 import com.bionic.service.OrderService;
 import com.bionic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

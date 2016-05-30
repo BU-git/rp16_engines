@@ -12,9 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bionic.dao.OrderDao;
-import com.bionic.domain.Order;
-import com.bionic.domain.OrderBrief;
-import com.bionic.domain.User;
+import com.bionic.domain.order.Order;
+import com.bionic.domain.order.OrderBrief;
+import com.bionic.domain.user.User;
 import com.bionic.domain.component.Employee;
 import com.bionic.domain.template.TemplateEntity;
 

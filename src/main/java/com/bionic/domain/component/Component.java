@@ -1,8 +1,6 @@
 
 package com.bionic.domain.component;
 
-import com.bionic.domain.Order;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,9 +18,6 @@ public class Component {
     private String herst = "";
     private String typbz = "";
     private String sernr;
-
-   /* @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Order order;*/
 
     @XmlElement(name = "EQART")
     public String getEqart() {
@@ -43,6 +38,7 @@ public class Component {
     public String getTypbz() {
         return typbz;
     }
+
     @XmlElement(name = "SERNR")
     public String getSernr() {
         return sernr;
@@ -76,14 +72,6 @@ public class Component {
         this.id = id;
     }
 
-   /* public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }*/
-
     @Override
     public String toString() {
         return "Component{" +
@@ -93,7 +81,6 @@ public class Component {
                 ", herst='" + herst + '\'' +
                 ", typbz='" + typbz + '\'' +
                 ", sernr='" + sernr + '\'' +
-                //", order=" + order +
                 '}';
     }
 }

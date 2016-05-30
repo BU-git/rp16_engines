@@ -1,17 +1,16 @@
 package com.bionic.controller;
 
 import javax.inject.Inject;
-import com.bionic.domain.Role;
+import com.bionic.domain.user.Role;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.bionic.domain.User;
+import com.bionic.domain.user.User;
 import com.bionic.service.UserService;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import java.util.List;
 
 @Controller
 @SessionAttributes("loggedInUser")

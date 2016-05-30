@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.bionic.domain.Role;
-import com.bionic.domain.User;
+import com.bionic.domain.user.Role;
+import com.bionic.domain.user.User;
 import com.bionic.domain.template.TemplateField;
 import com.bionic.domain.template.web.CustomTemplateFieldHolder;
 import com.bionic.service.TemplateService;

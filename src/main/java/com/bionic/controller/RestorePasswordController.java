@@ -1,6 +1,6 @@
 package com.bionic.controller;
 
-import com.bionic.domain.User;
+import com.bionic.domain.user.User;
 import com.bionic.service.UserService;
 import com.bionic.util.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;

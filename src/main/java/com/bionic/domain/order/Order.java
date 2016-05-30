@@ -1,4 +1,4 @@
-package com.bionic.domain;
+package com.bionic.domain.order;
 
 import java.io.Serializable;
 import java.util.Date;

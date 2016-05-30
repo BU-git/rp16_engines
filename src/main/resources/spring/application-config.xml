@@ -39,7 +39,7 @@
     <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="classesToBeBound">
             <list>
-                <value>com.bionic.domain.Order</value>
+                <value>com.bionic.domain.order.Order</value>
             </list>
         </property>
         <property name="schema" value="classpath:test.xsd" />

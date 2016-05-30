@@ -2,7 +2,7 @@ package com.bionic.service;
 
 import java.util.List;
 
-import com.bionic.domain.User;
+import com.bionic.domain.user.User;
 import com.bionic.domain.user.UserWrapper;
 
 public interface UserService {

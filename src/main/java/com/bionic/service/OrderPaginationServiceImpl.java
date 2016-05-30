@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bionic.dao.OrderPaginationDao;
-import com.bionic.domain.Order;
+import com.bionic.domain.order.Order;
 import com.bionic.domain.order.OrderStatus;
 import com.bionic.domain.order.OrderWrapper;
 import com.bionic.domain.order.OrderWrapperHolder;

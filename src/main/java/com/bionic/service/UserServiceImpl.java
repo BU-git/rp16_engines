@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bionic.dao.UserDao;
-import com.bionic.domain.Role;
-import com.bionic.domain.User;
+import com.bionic.domain.user.Role;
+import com.bionic.domain.user.User;
 import com.bionic.domain.user.UserWrapper;
 import com.bionic.util.PasswordEncoder;
 

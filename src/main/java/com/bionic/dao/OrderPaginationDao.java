@@ -1,7 +1,7 @@
 package com.bionic.dao;
 
 
-import com.bionic.domain.Order;
+import com.bionic.domain.order.Order;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

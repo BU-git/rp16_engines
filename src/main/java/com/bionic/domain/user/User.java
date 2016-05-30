@@ -1,4 +1,4 @@
-package com.bionic.domain;
+package com.bionic.domain.user;
 
 import java.io.Serializable;
 

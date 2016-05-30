@@ -4,7 +4,6 @@ package com.bionic.domain.order;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.bionic.domain.Order;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OrderWrapper {
