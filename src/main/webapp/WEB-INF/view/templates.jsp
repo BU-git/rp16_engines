@@ -54,9 +54,15 @@
           </a>
         </li>
         <li class="menu-item">
+          <hr>
+        </li>
+        <li class="menu-item">
           <a href="<spring:url value="/orders"/>">
             <spring:message code="label.orders"/>
           </a>
+        </li>
+        <li class="menu-item">
+          <hr>
         </li>
         <li class="menu-item">
           <a href="<spring:url value="/templates/new"/>">
@@ -69,6 +75,9 @@
           </a>
         </li>
         <li class="menu-item">
+          <hr>
+        </li>
+        <li class="menu-item">
           <a href="<spring:url value="/users/new"/>">
             <spring:message code="label.user"/>
           </a>
@@ -78,15 +87,15 @@
             <spring:message code="label.users"/>
           </a>
         </li>
-      </ul>
-      <ul>
-        <li>
-          <span>
+        <li class="menu-item">
+          <hr>
+        </li>
+        <li class="menu-item">
+          <span style="color: white">
               <a href="<spring:url value="?lang=en"/>">EN</a>
           </span>
-        </li>
-        <li>
-          <span>
+          <span style="color: white"><strong>&nbsp;|&nbsp;</strong></span>
+          <span style="color: white">
               <a href="<spring:url value="?lang=nl"/>">NL</a>
           </span>
         </li>
