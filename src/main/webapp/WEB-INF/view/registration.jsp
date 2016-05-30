@@ -54,9 +54,15 @@
           </a>
         </li>
         <li class="menu-item">
+          <hr>
+        </li>
+        <li class="menu-item">
           <a href="<spring:url value="/orders"/>">
             <spring:message code="label.orders"/>
           </a>
+        </li>
+        <li class="menu-item">
+          <hr>
         </li>
         <li class="menu-item">
           <a href="<spring:url value="/templates/new"/>">
@@ -69,6 +75,9 @@
           </a>
         </li>
         <li class="menu-item">
+          <hr>
+        </li>
+        <li class="menu-item">
           <a href="<spring:url value="/users/new"/>">
             <spring:message code="label.user"/>
           </a>
@@ -78,15 +87,15 @@
             <spring:message code="label.users"/>
           </a>
         </li>
-      </ul>
-      <ul>
-        <li>
-          <span>
+        <li class="menu-item">
+          <hr>
+        </li>
+        <li class="menu-item">
+          <span style="color: white">
               <a href="<spring:url value="?lang=en"/>">EN</a>
           </span>
-        </li>
-        <li>
-          <span>
+          <span style="color: white"><strong>&nbsp;|&nbsp;</strong></span>
+          <span style="color: white">
               <a href="<spring:url value="?lang=nl"/>">NL</a>
           </span>
         </li>
@@ -94,6 +103,7 @@
     </div>
   </div>
   <div id="content-wrapper" style="text-align: center; align-content: center">
+    <div id="content">
       <div id="header">
         <div style="position: fixed; top: 0; left: 10px;">
           <a href="<spring:url value="/"/>" id="logo">
@@ -120,7 +130,7 @@
       <div id="left_side_error"><img src="<c:url value="/resources/images/templates/error-icon.svg"/>"></div>
       <div id="right_side_error"><p><spring:message code="message.orders.deleteError"/></p></div>
     </div>
-    <div id="content">
+
     <div id="register_form">
       <div id="title_banner"><p><spring:message code="reg.newUser"/></p></div>
       <div id="reg">

@@ -58,6 +58,6 @@ var getLocale = function(locale, custom_entries){
     switch (locale){
         case 'en': return generateDataTables_en();
         case 'nl': return generateDataTables_nl();
-        default : return generateDataTables_en();
+        default : return generateDataTables_nl();
     }
 };

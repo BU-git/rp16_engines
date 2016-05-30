@@ -34,7 +34,7 @@
 					<p><spring:message code="label.login.password"/></p>
 				</cf:label>
 				<cf:password id="passwordHash" name="passwordHash" path="passwordHash" /><br>
-				<input type="submit" value="Login" />
+				<input type="submit" value="<spring:message code="label.login.button"/>" />
 			</cf:form>
 		</fieldset>
 	</div>
