@@ -2,6 +2,7 @@ package com.bionic.controller;
 
 import javax.inject.Inject;
 import com.bionic.domain.user.Role;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +12,8 @@ import com.bionic.domain.user.User;
 import com.bionic.service.UserService;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+
+import java.util.Locale;
 
 @Controller
 @SessionAttributes("loggedInUser")
@@ -40,7 +43,13 @@ public class LoginController {
 			model.addAttribute("loggedInUser", userTemp);
 			return "dashboard";
 		} else {
-			String message = "Invalid credentials!";
+			Locale locale = LocaleContextHolder.getLocale();
+			String message = null;
+			if (locale.toString().equals("nl")) {
+				message = "Onjuiste gegevens!";
+			} else {
+				message ="Invalid credentials!";
+			}
 			model.addAttribute("message", message);
 			return "login";
 		}
