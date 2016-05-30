@@ -7,6 +7,8 @@
   <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
   <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <script src="<c:url value="/resources/js/jquery.cookie.js"/>"></script>
+  <script src="<c:url value="/resources/js/locale.js"/>"></script>
   <script src="<c:url value="/resources/js/template.overview.js"/>"></script>
   <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
   <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">

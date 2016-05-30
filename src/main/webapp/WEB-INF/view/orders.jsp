@@ -15,8 +15,9 @@
     <script src="<c:url value="/resources/js/jquery.ui.widget.js"/>"></script>
     <script src="<c:url value="/resources/js/jquery.iframe-transport.js"/>"></script>
     <script src="<c:url value="/resources/js/jquery.fileupload.js"/>"></script>
+    <script src="<c:url value="/resources/js/jquery.cookie.js"/>"></script>
+    <script src="<c:url value="/resources/js/locale.js"/>"></script>
     <script src="<c:url value="/resources/js/orders.js"/>"></script>
-    <script src="<c:url value="/resources/js/upload.js"/>"></script>
     <link href="<c:url value="/resources/css/overlay.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/tabslet.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/orders.css"/>" rel="stylesheet" type="text/css">

@@ -6,7 +6,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="<spring:url value="/resources/images/logo.png"/>" rel="shortcut icon" type="image/png">
     <script src="<spring:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
-    <script src="<spring:url value="/resources/js/upload.js"/>"></script>
     <link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
     <link href="<spring:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>

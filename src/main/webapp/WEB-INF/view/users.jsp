@@ -13,6 +13,8 @@
   <script src="<c:url value="/resources/js/jquery-1.12.3.min.js"/>"></script>
   <script src="<c:url value="/resources/js/modified.dataTables.min.js"/>"></script>
   <script src="<c:url value="/resources/js/jquery.popupoverlay.js"/>"></script>
+  <script src="<c:url value="/resources/js/jquery.cookie.js"/>"></script>
+  <script src="<c:url value="/resources/js/locale.js"/>"></script>
   <script src="<c:url value="/resources/js/users.js"/>"></script>
     <script>
         $(window).load(function() {

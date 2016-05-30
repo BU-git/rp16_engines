@@ -22,12 +22,12 @@
     </script>
 </head>
 <body>
+<span id="locale" style="display: none"></span>
 <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
     <span class='bar bar-1'></span>
     <span class='bar bar-2'></span>
     <span class='bar bar-3'></span>
 </div>
-
 <div id="left-menu">
     <div class="logo">
         <a href="http://www.kvt.nl/">
@@ -38,7 +38,7 @@
         <div class="left-part">
             <a href="<spring:url value="/logout"/>">
                 <div class="button">
-                    Logout
+                    <spring:message code="label.logout"/>
                 </div>
             </a>
         </div>
@@ -49,33 +49,45 @@
         <ul class="site-menu">
             <li class="menu-item">
                 <a href="<spring:url value="/dashboard"/>">
-                    Dashboard
+                    <spring:message code="label.dashboard"/>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/orders"/>">
-                    Orders overview
+                    <spring:message code="label.orders"/>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/templates/new"/>">
-                    Create template
+                    <spring:message code="label.template"/>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/templates"/>">
-                    Templates overview
+                    <spring:message code="label.templates"/>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/users/new"/>">
-                    New User
+                    <spring:message code="label.user"/>
                 </a>
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/users/all"/>">
-                    Users
+                    <spring:message code="label.users"/>
                 </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <span>
+                    <a href="<spring:url value="?lang=en"/>">EN</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <a href="<spring:url value="?lang=nl"/>">NL</a>
+                </span>
             </li>
         </ul>
     </div>
@@ -90,7 +102,7 @@
                 </div>
                 <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
             </div>
-            <div id="title_banner"><p>Order</p></div>
+            <div id="title_banner"><p><spring:message code="order.title"/></p></div>
             <div class="content-place">
                 <p id="image">
                     <c:if test="${order.orderStatus == 3}">
@@ -99,47 +111,47 @@
                     <c:if test="${order.orderStatus != 3}">
                         <img src="../../resources/images/no.svg">
                     </c:if>
-                    Order №${order.number} information
+                    Order №${order.number} <spring:message code="order.information"/>
                 </p>
                 <div id="rawtable">
                     <table align="center" id="order">
                         <tr>
-                            <td>Number:</td>
+                            <td><spring:message code="order.number"/></td>
                             <td>${order.number}</td>
-                            <td>Date:</td>
+                            <td><spring:message code="order.date"/></td>
                             <td>
                                 <fmt:formatDate value="${order.date}" pattern="dd-MM-yyyy" />
                             </td>
                         </tr>
                         <tr>
-                            <td>Contact person:</td>
+                            <td><spring:message code="order.person"/></td>
                             <td>${order.relation.contactPerson}</td>
-                            <td>Town:</td>
+                            <td><spring:message code="order.town"/></td>
                             <td>${order.relation.town}</td>
                         </tr>
                         <tr>
-                            <td>Phone number:</td>
+                            <td><spring:message code="order.phone"/></td>
                             <td>${order.relation.telephone}</td>
-                            <td>Installation name:</td>
+                            <td><spring:message code="order.installation"/></td>
                             <td>${order.installation.name}</td>
                         </tr>
                         <tr>
-                            <td>Installation address:</td>
+                            <td><spring:message code="order.installation.address"/></td>
                             <td>${order.installation.address}</td>
-                            <td>Reference:</td>
+                            <td><spring:message code="order.reference"/></td>
                             <td>${order.reference}</td>
                         </tr>
                         <tr>
-                            <td>Employee:</td>
+                            <td><spring:message code="order.employee"/></td>
                             <td>${order.employee.name}</td>
-                            <td>Email:</td>
+                            <td><spring:message code="order.email"/></td>
                             <td>${order.employee.email}</td>
                         </tr>
                         <tr>
-                            <td>Template name:</td>
+                            <td><spring:message code="order.templateName"/></td>
                             <td>
                                 <c:if test="${order.customTemplateID == 0}">
-                                    Default template
+                                    <spring:message code="order.defaultTemplate"/>
                                 </c:if>
                                 <input form="form" type="hidden" name="oldName" value="default">
                                 <c:if test="${order.customTemplateID != 0}">
@@ -151,7 +163,7 @@
                                     </c:forEach>
                                 </c:if>
                             </td>
-                            <td>Template ID:</td>
+                            <td> <spring:message code="order.templateID"/></td>
                             <td>${order.customTemplateID}</td>
                         </tr>
                     </table>
@@ -160,7 +172,7 @@
                     <table id="select-form" cellspacing="0" cellpadding="0">
                         <tr id="select">
                             <td>
-                                <label>Employee
+                                <label><spring:message code="order.selectEmploee"/>
                                     <select form="form" name="email">
                                         <c:forEach var="user" items="${allUsers}">
                                             <option
@@ -172,9 +184,9 @@
                                 </label>
                             </td>
                             <td id="left">
-                                <label>Template
+                                <label><spring:message code="order.selectTemplate"/>
                                     <select name="name" form="form">
-                                        <option selected value="default">Default template</option>
+                                        <option selected value="default"><spring:message code="order.defaultTemplate"/></option>
                                         <c:forEach var="temp" items="${allTemplates}">
                                             <c:if test="${temp.active == true}">
                                                 <option
@@ -192,10 +204,10 @@
                         </tr>
                         <tr id="set">
                             <td>
-                                <button onclick="window.location.href='/orders/'">Back</button>
+                                <button onclick="window.location.href='/orders/'"><spring:message code="label.back"/></button>
                             </td>
                             <td>
-                                <input form="form" type="submit" value="Accept"/>
+                                <input form="form" type="submit" value="<spring:message code="label.accept"/>"/>
                             </td>
                         </tr>
                     </table>

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var locale = $.cookie("myAppLocaleCookie");
+    var isEn = locale == 'en';
     var table;
     var popup_ok = $('#popup_ok');
     var ok_img = $('#ok');
@@ -79,23 +81,21 @@ $(document).ready(function() {
                 'url': '/templates',
                 'type': 'POST'
             },
-            language: {
-                'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
-            },
-            "processing": true,
+            language: getLocale(locale),
+            'processing': true,
             'columns': [
                 {'data':'#'},
                 {'data': 'Name'},
                 {'data': 'Action'}
             ],
-            "columnDefs": [ {
-                "targets": -1,
-                "data": 'Action',
-                "defaultContent": "<button class='edit'></button><button class='del'></button>"
+            'columnDefs': [ {
+                'targets': -1,
+                'data': 'Action',
+                'defaultContent': "<button class='edit'></button><button class='del'></button>"
             }, {
-            "searchable": false,
-            "orderable": false,
-            "targets": [2]
+            'searchable': false,
+            'orderable': false,
+            'targets': [2]
         }]
         });
     };

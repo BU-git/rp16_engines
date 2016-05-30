@@ -1,4 +1,7 @@
 $(function(){
+    var locale = $.cookie("myAppLocaleCookie");
+    var isEn = locale == 'en';
+    var message = isEn ? " Oops.. something wrong =/" : ' Oops.. iets verkeerd =/';
     var popup_ok = $('#popup_ok');
     var popup_error = $('#popup_error');
     var submit = $('#register');
@@ -20,7 +23,6 @@ $(function(){
     var warn2 = $('#warn2');
     var warn3 = $('#warn3');
     var warn4 = $('#warn4');
-    var message = "Oops.. something wrong =/";
     var errorMessage = $('#right_side_error').find('p');
 
     var check_input_not_empty = function(input){

@@ -1,6 +1,8 @@
 $(document).ready(function() {
     var table;
-    var message = " Oops.. something wrong =/";
+    var locale = $.cookie("myAppLocaleCookie");
+    var isEn = locale == 'en';
+    var message = isEn ? error_msg_global_en : error_msg_global_nl;
     var edit_popup = $('#edit_popup');
     var popup_ok = $('#popup_ok');
     var accept = $('#accept');
@@ -225,10 +227,8 @@ $(document).ready(function() {
                 'url': '/users/all/',
                 'type': 'POST'
             },
-            language: {
-                'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
-            },
-            "processing": true,
+            language: getLocale(locale),
+            'processing': true,
             'columns': [
                 {'data': 'Id'},
                 {'data': 'Name'},
@@ -237,14 +237,14 @@ $(document).ready(function() {
                 {'data': 'Role'},
                 {'data': 'Action'}
             ],
-            "columnDefs": [ {
-                "targets": -1,
-                "data": 'Action',
-                "defaultContent": "<button class='edit'></button><button class='del'></button>"
+            'columnDefs': [ {
+                'targets': -1,
+                'data': 'Action',
+                'defaultContent': "<button class='edit'></button><button class='del'></button>"
             }, {
-                    "searchable": false,
-                    "orderable": false,
-                    "targets": [5]
+                    'searchable': false,
+                    'orderable': false,
+                    'targets': [5]
             }]
         });
     };
@@ -255,7 +255,7 @@ $(document).ready(function() {
         setTimeout(function(){
             $.when(info.fadeOut('slow')).then(setTimeout(function(){
                 info.css('color', '#838585');
-                info.text("Click 'Accept' to save the changes for the current user.");
+                info.text(isEn ? user_info_msg_en : user_info_msg_nl);
                 accept.prop('disabled', false);
                 info.css('text-align','justify');
             },500)).then(info.fadeIn('fast'));
@@ -264,7 +264,7 @@ $(document).ready(function() {
     var errorHandler = function(status){
         switch(status){
             case 400:{
-                display_error_message('User with this email already exist..');
+                display_error_message(isEn ? user_duplicate_email_msg_en : user_duplicate_email_msg_nl);
                 paint_info(input_email, label_for_mail, false, warn1,check1);
                 break;
             }

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var locale = $.cookie("myAppLocaleCookie");
+    var isEn = locale == 'en';
     var nc = false;
     var c = false;
     var popup_ok = $('#popup_ok');
@@ -6,10 +8,10 @@ $(document).ready(function() {
     var table_not_completed;
     var table_completed;
     var current_table;
-    var files = ' files';
-    var file = ' file';
-    var error_message = ' not uploaded ☹';
-    var info_message = ' uploaded.';
+    var files = isEn ? files_en : files_nl;
+    var file = isEn ? file_en : file_nl;
+    var error_message = isEn ? upload_error_msg_en : upload_error_msg_nl;
+    var info_message = isEn ? upload_info_msg_en : upload_info_msg_nl;
     var url = '/upload';
     var bar = $('#progress-bar');
     var message = $('span#message');
@@ -113,9 +115,7 @@ $(document).ready(function() {
             table_not_completed = $('#not_completed_table').DataTable({
                 serverSide: true,
                 ajax: '/orders/not-completed',
-                language: {
-                    'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
-                },
+                language: getLocale(locale),
                 "processing": true,
                 'columns': [
                     {'data':'Order number'},
@@ -143,9 +143,7 @@ $(document).ready(function() {
         table_all = $('#table').DataTable({
             serverSide: true,
             ajax: '/orders/all',
-            language: {
-                'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
-            },
+            language: getLocale(locale),
             "processing": true,
             'columns': [
                 {'data':'Order number'},
@@ -173,9 +171,7 @@ $(document).ready(function() {
             table_completed = $('#completed_table').DataTable({
                 serverSide: true,
                 ajax: '/orders/completed',
-                language: {
-                    'processing': "<img src='/resources/images/templates/pagination/ajax-loader.gif'>"
-                },
+                language: getLocale(locale),
                 "processing": true,
                 'columns': [
                     {'data':'Order number'},
