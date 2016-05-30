@@ -105,7 +105,6 @@
     </div>
   </div>
   <div id="content-wrapper" style="text-align: center; align-content: center">
-    <div id="content" style="text-align: center">
       <div id="header">
         <div style="position: fixed; top: 0; left: 10px;">
           <a href="<spring:url value="/"/>" id="logo">

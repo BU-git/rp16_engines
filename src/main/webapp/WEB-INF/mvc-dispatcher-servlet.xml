@@ -21,7 +21,7 @@
 
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property value="classpath:messages" name="basename"  />
+        <property value="classpath:messages" name="basename" />
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
 
