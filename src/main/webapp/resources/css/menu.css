@@ -207,6 +207,10 @@ body.menu-on .menu-toggle .bar {
         color: #FFFFFF;
     }
 
+    .menu-item a:hover {
+        text-shadow: 1px 0 10px #0475f9;
+    }
+
     .menu-toggle {
         margin-right: 30px;
     }
