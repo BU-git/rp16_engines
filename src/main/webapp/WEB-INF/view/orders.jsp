@@ -45,7 +45,6 @@
     </script>
 </head>
 <body>
-    <span id="locale" style="display: none"></span>
     <div id='menu-toggle' class='menu-toggle' style="cursor: pointer;">
         <span class='bar bar-1'></span>
         <span class='bar bar-2'></span>

@@ -10,10 +10,10 @@
 	<link href="<spring:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css">
 	<link href="<spring:url value="/resources/css/main.css"/>" rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<script src="<c:url value="/resources/js/jquery.cookie.js"/>"></script>
 	<title><spring:message code="label.login.button"/></title>
 </head>
 <body>
-	<span id="locale" style="display: none"></span>
 	<div id="login-form">
 		<h1><spring:message code="label.login.form"/></h1>
 		<fieldset>
