@@ -81,7 +81,7 @@ $(document).ready(function() {
                 'url': '/templates',
                 'type': 'POST'
             },
-            language: getLocale(locale),
+            language: getLocale(locale, 'templates'),
             'processing': true,
             'columns': [
                 {'data':'#'},

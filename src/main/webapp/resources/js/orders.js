@@ -115,7 +115,7 @@ $(document).ready(function() {
             table_not_completed = $('#not_completed_table').DataTable({
                 serverSide: true,
                 ajax: '/orders/not-completed',
-                language: getLocale(locale),
+                language: getLocale(locale, 'orders'),
                 "processing": true,
                 'columns': [
                     {'data':'Order number'},
@@ -143,7 +143,7 @@ $(document).ready(function() {
         table_all = $('#table').DataTable({
             serverSide: true,
             ajax: '/orders/all',
-            language: getLocale(locale),
+            language: getLocale(locale, 'orders'),
             "processing": true,
             'columns': [
                 {'data':'Order number'},
@@ -171,7 +171,7 @@ $(document).ready(function() {
             table_completed = $('#completed_table').DataTable({
                 serverSide: true,
                 ajax: '/orders/completed',
-                language: getLocale(locale),
+                language: getLocale(locale, 'orders'),
                 "processing": true,
                 'columns': [
                     {'data':'Order number'},

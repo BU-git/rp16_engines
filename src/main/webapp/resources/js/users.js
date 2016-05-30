@@ -227,7 +227,7 @@ $(document).ready(function() {
                 'url': '/users/all/',
                 'type': 'POST'
             },
-            language: getLocale(locale),
+            language: getLocale(locale, 'users'),
             'processing': true,
             'columns': [
                 {'data': 'Id'},
