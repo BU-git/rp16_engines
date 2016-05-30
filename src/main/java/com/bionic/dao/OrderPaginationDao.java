@@ -25,7 +25,7 @@ public interface OrderPaginationDao extends PagingAndSortingRepository<Order, Lo
     @Query(value = "SELECT o FROM Order o WHERE o.orderStatus = 0 OR o.orderStatus = 1")
     Page<Order> findAllNotCompleted(Pageable pageable);
 
-    @Query(value = "SELECT o FROM Order o WHERE o.number LIKE CONCAT(?1, '%') AND (o.orderStatus = 0 OR o.orderStatus = 1)")
+    @Query(value = "SELECT o FROM Order o WHERE o.number LIKE CONCAT(?1, '%') AND o.orderStatus < 3")
     Page<Order> findAllNotCompletedByNumberLike(long number, Pageable pageable);
 
 }
