@@ -130,7 +130,7 @@ $(function(){
     var errorHandler = function(status){
         switch(status){
             case 400:{
-                errorMessage.text('User with this email already exist..');
+                errorMessage.text(isEn ? user_duplicate_email_msg_en : user_duplicate_email_msg_nl);
                 break;
             }
             default: errorMessage.text(status+" "+message);
