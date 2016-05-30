@@ -4,7 +4,7 @@
     box-shadow: 0 0 30px #0d1857;
 }
 #my_popup, #edit_popup, button#edit_button, button#save_button, #my_popup button, #edit_popup button, ul button{
-    border-radius: 3px;
+    border-radius: 2px;
 }
 textarea#edit_area,#popup_area{
     min-width: 345px;
@@ -28,7 +28,7 @@ textarea#edit_area,#popup_area{
 }
 
 #footer_list button, .textField, input.form_controls[type = "text"],.popup_area, #text_area_form_controls, .prev_element textarea, #edit_area, .textArea,#my_popup button, #edit_popup button{
-    padding: 10px;
+    padding: 10px 6px;
 }
 #footer{
     padding: 15px;

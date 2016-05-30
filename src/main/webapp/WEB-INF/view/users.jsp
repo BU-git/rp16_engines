@@ -193,7 +193,7 @@
   </table>
   <br><br>
   <ul>
-    <li><button class="edit_popup_close"><spring:message code="label.close"/></button></li>
+    <li><button class="edit_popup_close"><spring:message code="label.back"/></button></li>
     <li class="right_li"><button id="accept"><spring:message code="label.accept"/> </button></li>
   </ul>
 </div>

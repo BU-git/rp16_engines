@@ -51,7 +51,7 @@ tbody, #title_banner, #content,.hd, ul, #edit_popup ul, #right_side p, #right_si
     background: transparent url("../images/users/edit-icon-new-orange.svg") no-repeat 0;
 }
 #edit_popup, ul button{
-    border-radius: 3px;
+    border-radius: 2px;
 }
 #edit_popup{
     width: 400px;
@@ -71,7 +71,7 @@ tbody, #title_banner, #content,.hd, ul, #edit_popup ul, #right_side p, #right_si
 }
 #edit_popup button{
     margin-top: 4%;
-    padding: 10px;
+    padding: 10px 5px;
 }
 .hd, #edit_popup button{
     color: white;

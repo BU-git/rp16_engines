@@ -134,7 +134,7 @@
         </tr>
       </table>
       <ul>
-        <li><button class="my_popup_close"><spring:message code="label.close"/></button></li>
+        <li><button class="my_popup_close"><spring:message code="label.back"/></button></li>
         <li class="right_li"><button class="my_popup_close" id="add_to_form"><spring:message code="template.addToForm"/></button></li>
       </ul>
     </div>
@@ -144,7 +144,7 @@
         <tr><td><p class="info"><spring:message code="template.info.accept"/></p></td></tr>
         <tr><td><textarea id="edit_area" rows="8" placeholder="<spring:message code="label.fieldDescription"/>"></textarea></td></tr></table>
       <ul>
-        <li><button class="edit_popup_close"><spring:message code="label.close"/></button></li>
+        <li><button class="edit_popup_close"><spring:message code="label.back"/></button></li>
         <li class="right_li"><button class="edit_popup_close" id="accept"><spring:message code="label.accept"/></button></li>
       </ul>
     </div>
