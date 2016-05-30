@@ -71,12 +71,18 @@ public class TemplateServiceImpl implements TemplateService{
 
     @Override
     @Transactional
+    public void remove(TemplateEntity t){
+        templateDao.remove(t);
+    }
+
+    @Override
+    @Transactional
     public void removeTemplateByName(String name) {
         if(name == null) throw new IllegalArgumentException("Template name equals null =/");
         List<TemplateEntity> entities = templateDao.findTemplateByName(name);
         for(TemplateEntity e: entities){
             if(e.isAssigned()) e.setIsActive(false);
-            else templateDao.removeTemplate(e);
+            else templateDao.remove(e);
         }
     }
 
@@ -120,7 +126,7 @@ public class TemplateServiceImpl implements TemplateService{
         if(orderDao.findAllWithTemplateId(id).size() > 1) return;
         TemplateEntity template = templateDao.findByTemplateId(id);
         if(!template.isActive()) {
-            templateDao.removeTemplate(template);
+            templateDao.remove(template);
             return;
         }
         template.setAssigned(false);

@@ -45,7 +45,7 @@ public class TemplateDaoImpl implements TemplateDao{
     }
 
     @Override
-    public void removeTemplate(TemplateEntity template) {
+    public void remove(TemplateEntity template) {
         em.remove(template);
     }
 

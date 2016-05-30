@@ -74,7 +74,15 @@ public class OrderServiceImpl implements OrderService {
         if(number < 1) throw new IllegalArgumentException();
         Order order = orderDao.findById(number);
         if(order == null) throw new NoSuchElementException();
+        if(order.getCustomTemplateID() > 0) resolveTemplateBind(order.getCustomTemplateID());
         orderDao.remove(order);
+    }
+
+    private void resolveTemplateBind(long id){
+        TemplateEntity t = templateService.findByTemplateId(id);
+        if(t == null || orderDao.findAllWithTemplateId(id).size() > 1) return;
+        if(t.isActive()) t.setAssigned(false);
+        else templateService.remove(t);
     }
 
     @Override

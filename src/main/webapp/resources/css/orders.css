@@ -40,12 +40,12 @@
 .del:hover{
     background: url("../images/Delete-hover.svg") no-repeat;
 }
-input,input:focus, select {
+.tabs input,.tabs input:focus, select {
     height: 25px;
     padding: 5px 10px 5px 10px;
     border: 1px solid #AAAAB3;
 }
-input{
+.tabs input{
     font-size: 14px;
 }
 .action{
@@ -132,17 +132,18 @@ input{
     -o-animation: progress-bar-stripes 2s linear infinite;
     animation: progress-bar-stripes 2s linear infinite;
 }
-.fileinput-button{
-    text-align: right;
+#btn-upload{
+    border: none;
+    padding: 11px 0 11px 30px;
+    font-size: 15px;
     color: white;
-    width: 160px;
-    height: 15px;
+    width: 200px;
     border-radius: 2px;
-    padding: 11px;
     margin-bottom: 0;
     background: url(../images/upload.svg) no-repeat 4px, linear-gradient(to bottom, #4972ae, #374670);
 }
-.fileinput-button:hover{
+#btn-upload:hover{
+    cursor: pointer;
     transition: 0.3s;
     background: url(../images/upload.svg) no-repeat 4px, linear-gradient(to bottom, #6985a5, #4c6381);
 }

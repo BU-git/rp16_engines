@@ -33,6 +33,11 @@ $(document).ready(function() {
     var error_count = 0;
     var current_order = 0;
     var temp_order_number = 0;
+    var upload = $('#fileupload');
+
+    $('#btn-upload').click(function(){
+        upload.click();
+    });
 
     var draw_info = function(success, init){
         spin.hide();
@@ -254,7 +259,7 @@ $(document).ready(function() {
         blur : false,
         transition: 'all 0.3s'
     });
-    $('#fileupload').fileupload({
+    upload.fileupload({
         url: url,
         dataType: 'json',
         sequentialUploads: true,

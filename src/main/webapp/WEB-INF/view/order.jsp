@@ -219,7 +219,7 @@
                     <c:if test="${order.orderStatus == 1 || order.orderStatus == 2}">
                         <tr>
                             <td>
-                                <p>Order in progress..</p>
+                                <p><spring:message code="order.inProgress"/></p>
                                 <hr>
                             </td>
                         </tr>
@@ -227,7 +227,7 @@
                     <c:if test="${order.orderStatus == 3}">
                         <tr>
                             <td>
-                                <p>Download order:</p><a href="/orders/download/${order.number}" target="_blank"><button id="zip"></button></a>
+                                <p><spring:message code="order.download"/></p><a href="/orders/download/${order.number}" target="_blank"><button id="zip"></button></a>
                                 <hr>
                             </td>
                         </tr>

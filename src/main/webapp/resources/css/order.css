@@ -52,7 +52,7 @@ select{
 #select td{
     padding-bottom: 6px;
 }
-hr {
+.content-place hr {
     border: 0; height: 1px;
     background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(77, 77, 89, 0.75), rgba(0,0,0,0));
     background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(77, 77, 89, 0.75), rgba(0,0,0,0));
@@ -93,23 +93,21 @@ hr {
     background-color: #C97777;
 }
 #set td button{
-    text-align: right;
+    padding: 8px 8px 8px 13px;
     background: #994343 url("../images/orders/back-icon.svg") no-repeat 3px;
     color: white;
 }
 #set td input{
-    text-align: right;
+    padding: 8px 8px 8px 22px;
     background: #34495e url("../images/orders/sync.svg") no-repeat 3px;
     color: white;
 }
-
 #set td input, #set td button{
     font-weight: bold;
     border-radius: 2px;
     width: 95px;
     border: none;
     outline: none;
-    padding: 8px;
 }
 select, label{
     display: block;

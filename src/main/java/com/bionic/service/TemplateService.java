@@ -22,6 +22,8 @@ public interface TemplateService {
 
     void removeTemplateByName(String name);
 
+    void remove(TemplateEntity t);
+
     List<TemplateEntity> findTemplatesListByName(String name);
 
     List<TemplateEntity> findAllTemplates();

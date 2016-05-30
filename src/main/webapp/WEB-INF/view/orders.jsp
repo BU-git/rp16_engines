@@ -26,7 +26,6 @@
     <link href="<c:url value="/resources/css/menu.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/dataTables.css"/>" rel="stylesheet" type="text/css">
     <link href="<c:url value="/resources/css/upload/jquery.fileupload.css"/>" rel="stylesheet" type="text/css">
-    <link href="<c:url value="/resources/css/upload/jquery.fileupload-ui.css"/>" rel="stylesheet" type="text/css">
     <script>
         $(window).load(function() {
             $('#menu-toggle')
@@ -161,8 +160,7 @@
             <div class="content-place">
                 <div class="upload" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="leaveDrop(event)">
                     <span class="btn btn-success fileinput-button">
-                        <i class="glyphicon glyphicon-plus"></i>
-                        <span><spring:message code="label.orders.upload"/></span>
+                        <button id="btn-upload" ><spring:message code="label.orders.upload"/></button>
                         <input id="fileupload" type="file" name="files[]" multiple accept="application/xml">
                     </span>
                     <br>

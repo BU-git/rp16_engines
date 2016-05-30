@@ -19,7 +19,7 @@ public interface TemplateDao {
 
     List<TemplateField> findFieldsByTemplateName(String name);
 
-    void removeTemplate(TemplateEntity template);
+    void remove(TemplateEntity template);
 
     List<TemplateEntity> findTemplateByName(String name);
 
