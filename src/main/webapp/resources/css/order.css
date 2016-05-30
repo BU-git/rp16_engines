@@ -8,9 +8,6 @@
     height:18px;
     margin-right: 5px;
 }
-#image {
-    text-align:center;
-}
 #rawtable {
     border-radius: 2px;
     background: #023672;
@@ -38,7 +35,7 @@
 #order td:last-child {
     border-right: none;
 }
-#select-form, hr {
+#select-form, hr, .content-place table {
     margin-left: auto;
     margin-right: auto;
 }
@@ -68,11 +65,24 @@ hr {
     float: none;
     padding: 0;
 }
-#set td{
-    padding-top: 15px;
-    padding-bottom: 10px;
+.set p, #zip, .set a{
+    vertical-align: middle;
+    display: inline;
 }
-#set td input:hover, #set td button:hover{
+.set a{
+    margin-left: 15px;
+}
+#zip{
+    border: none;
+    width: 32px;
+    height: 32px;
+    outline: none;
+    background: url("../images/zip-icon.svg") no-repeat;
+}
+#zip:hover{
+    background: url("../images/zip-icon-hover.svg") no-repeat;
+}
+#set td input:hover, #set td button:hover,#zip:hover{
     transition: ease-in-out .2s;
     cursor: pointer;
 }
@@ -83,7 +93,6 @@ hr {
     background-color: #C97777;
 }
 #set td button{
-    float: left;
     text-align: right;
     background: #994343 url("../images/orders/back-icon.svg") no-repeat 3px;
     color: white;
@@ -91,7 +100,6 @@ hr {
 #set td input{
     text-align: right;
     background: #34495e url("../images/orders/save-icon.svg") no-repeat 1px;
-    float: right;
     color: white;
 }
 #set td input, #set td button{
@@ -105,7 +113,7 @@ hr {
 select, label{
     display: block;
 }
-#title_banner, #set td{
+#title_banner, #set td, .set td, #image{
     text-align: center;
 }
 #title_banner p{
@@ -124,6 +132,15 @@ select, label{
 .content-place, #title_banner{
     margin: 0 8px;
     padding: 4px;
+}
+.set td{
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.set p{
+    font-size: 14px;
+    color: #6c676f;
 }
 label{
     font-size: 13px;

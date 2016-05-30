@@ -99,7 +99,6 @@ public class OrderController {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         if(oldEmail.equals(email) && oldName.equals(name)) return "redirect:/orders/"+id;
         try{
-            System.err.println("Old email: " + oldEmail +", email: " + email);
             orderService.assign(id, name, email, oldName, oldEmail);
         }catch (Exception e){
             model.addAttribute("warning", e.getMessage());

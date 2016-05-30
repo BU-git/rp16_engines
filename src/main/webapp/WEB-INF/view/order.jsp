@@ -202,19 +202,39 @@
                         <tr id="hr">
                             <td colspan="2"><hr></td>
                         </tr>
-                        <tr id="set">
-                            <td>
-                                <button onclick="window.location.href='/orders/'"><spring:message code="label.back"/></button>
-                            </td>
-                            <td>
-                                <input form="form" type="submit" value="<spring:message code="label.accept"/>"/>
-                            </td>
-                        </tr>
                     </table>
                 </c:if>
                 <c:if test="${order.orderStatus != 0}">
                     <p align="center" style="color: red">${warning}</p>
                 </c:if>
+                <table class="set">
+                    <c:if test="${order.orderStatus == 1 || order.orderStatus == 2}">
+                        <tr>
+                            <td>
+                                <p>Order in progress..</p>
+                                <hr>
+                            </td>
+                        </tr>
+                    </c:if>
+                    <c:if test="${order.orderStatus == 3}">
+                        <tr>
+                            <td>
+                                <p>Download order:</p><a href="/orders/download/${order.number}" target="_blank"><button id="zip"></button></a>
+                                <hr>
+                            </td>
+                        </tr>
+                    </c:if>
+                    <tr id="set">
+                        <td>
+                            <button onclick="window.location.href='/orders/'"><spring:message code="label.back"/></button>
+                        </td>
+                        <c:if test="${order.orderStatus == 0}">
+                            <td>
+                                <input form="form" type="submit" value="<spring:message code="label.accept"/>"/>
+                            </td>
+                        </c:if>
+                    </tr>
+                </table>
                 <form id="form" method="post" action="<spring:url value="/order/assign"/>">
                     <input type="hidden" name="oldEmail" value="${order.employee.email}">
                     <input type="hidden" name="id" value="${order.number}">
