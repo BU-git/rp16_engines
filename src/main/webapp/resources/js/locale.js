@@ -29,19 +29,19 @@ var user_info_msg_en = "Click 'Accept' to save the changes for the current user.
 var generateDataTables_nl = function(){
     return {
         processing: "<img src='/resources/images/templates/pagination/ajax-loader.gif'>",
-        search: "NL_Search:",
-        lengthMenu:     "NL_Show _MENU_ "+entries,
-        info:           "NL_Showing _START_ to _END_ of _TOTAL_ " + entries,
-        infoEmpty:      "NL_Showing 0 to 0 of 0 " + entries,
-        infoFiltered:   "NL_(filtered from _MAX_ total "+ entries +")",
+        search: "Zoeken:",
+        lengthMenu:     "Toon _MENU_ "+entries,
+        info:           "Toont _START_ tot _END_ van _TOTAL_ " + entries,
+        infoEmpty:      "Toont 0 tot 0 van 0 " + entries,
+        infoFiltered:   "(Gefilterd van _MAX_ totaal "+ entries +")",
         infoPostFix: "",
-        zeroRecords: "NL_No matching records found",
-        emptyTable: "NL_No data available in table",
+        zeroRecords: "Geen overeenkomende records gevonden",
+        emptyTable: "Geen data beschikbaar in tabel",
         paginate: {
-            first: "NL_First",
-            previous: "NL_Previous",
-            next: "NL_Next",
-            last: "NL_Last"
+            first: "Eerste",
+            previous: "Vorige",
+            next: "Volgende",
+            last: "Laatste"
         }
     };
 };
