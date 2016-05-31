@@ -11,8 +11,6 @@ import com.bionic.domain.order.OrderBrief;
 public interface OrderDao {
 
     Order findById(long id);
-    List<Order> findAllOrders();
-    Blob createBlob(MultipartFile file);
     List<OrderBrief> getBriefOrdersForUser(String email);
     void save(Order order);
     void update(Order order);

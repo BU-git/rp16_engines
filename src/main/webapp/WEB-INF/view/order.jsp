@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <hr>
+                <hr style="color: white; border: 1px;">
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/orders"/>">
@@ -60,7 +60,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <hr>
+                <hr style="color: white; border: 1px;">
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/templates/new"/>">
@@ -73,7 +73,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <hr>
+                <hr style="color: white; border: 1px;">
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/users/new"/>">
@@ -86,16 +86,16 @@
                 </a>
             </li>
             <li class="menu-item">
-                <hr>
+                <hr style="color: white; border: 1px;">
             </li>
             <li class="menu-item">
-                    <span style="color: white">
-                        <a href="<spring:url value="?lang=en"/>">EN</a>
-                    </span>
+                <span style="color: white">
+                    <a href="<spring:url value="?lang=en"/>">EN</a>
+                </span>
                 <span style="color: white"><strong>&nbsp;|&nbsp;</strong></span>
-                    <span style="color: white">
-                        <a href="<spring:url value="?lang=nl"/>">NL</a>
-                    </span>
+                <span style="color: white">
+                    <a href="<spring:url value="?lang=nl"/>">NL</a>
+                </span>
             </li>
         </ul>
     </div>
@@ -108,7 +108,7 @@
                         <img src="../../resources/images/logo.png">
                     </a>
                 </div>
-                <span style="text-align: center;"><h2>Welcome ${loggedInUser.name}</h2></span>
+                <span style="text-align: center;"><h2><spring:message code="label.title"/> ${loggedInUser.name}</h2></span>
             </div>
             <div id="title_banner"><p><spring:message code="order.title"/></p></div>
             <div class="content-place">
@@ -227,7 +227,7 @@
                     <c:if test="${order.orderStatus == 3}">
                         <tr>
                             <td>
-                                <p><spring:message code="order.download"/></p><a href="/orders/download/${order.number}" target="_blank"><button id="zip"></button></a>
+                                <p><spring:message code="order.download"/></p><a href="/orders/download/zip/${order.number}" target="_blank"><button id="zip"></button></a>
                                 <hr>
                             </td>
                         </tr>

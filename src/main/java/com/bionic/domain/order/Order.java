@@ -119,6 +119,9 @@ public class Order implements Serializable, Comparable<Order>{
     @JsonIgnore
     private String pdfLink;
 
+    @JsonIgnore
+    private String zipLink;
+
     private long customTemplateID;
 
     @XmlElementWrapper(name = "ExtraInfo")
@@ -279,6 +282,14 @@ public class Order implements Serializable, Comparable<Order>{
 
     public void setCustomTemplateID(long customTemplateID) {
         this.customTemplateID = customTemplateID;
+    }
+
+    public String getZipLink() {
+        return zipLink;
+    }
+
+    public void setZipLink(String zipLink) {
+        this.zipLink = zipLink;
     }
 
     @Override

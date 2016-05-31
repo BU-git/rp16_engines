@@ -14,6 +14,15 @@
 	<title><spring:message code="label.login.button"/></title>
 </head>
 <body>
+	<div>
+		<span style="color: black">
+			<a href="<spring:url value="?lang=en"/>">EN</a>
+		</span>
+		<span style="color: black"><strong>&nbsp;|&nbsp;</strong></span>
+        <span style="color: black">
+            <a href="<spring:url value="?lang=nl"/>">NL</a>
+        </span>
+	</div>
 	<div id="login-form">
 		<h1><spring:message code="label.login.form"/></h1>
 		<fieldset>

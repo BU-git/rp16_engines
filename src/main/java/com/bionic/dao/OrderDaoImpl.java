@@ -26,24 +26,6 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public List<Order> findAllOrders() {
-        TypedQuery<Order> query = em.createQuery("SELECT order FROM Order order", Order.class);
-        return query.getResultList();
-    }
-
-    @Override
-    public Blob createBlob(MultipartFile file) {
-        Blob blob = null;
-        Session session = em.unwrap(Session.class);
-        try {
-            blob = Hibernate.getLobCreator(session).createBlob(file.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return blob;
-    }
-
-    @Override
     public List<OrderBrief> getBriefOrdersForUser(String email) {
         TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o WHERE LOWER(o.employee.email) LIKE :email", Order.class);
         query.setParameter("email", email);
@@ -64,13 +46,6 @@ public class OrderDaoImpl implements OrderDao {
             }
         }
         return null;
-
-        /*TypedQuery<Order> query = em.createQuery("SELECT o FROM Order o " +
-                "WHERE LOWER(o.employee.email) LIKE :email " +
-                "AND o.number = :num", Order.class);
-        query.setParameter("email", Util.emailTransformation(email.toLowerCase()));
-        query.setParameter("num", number);
-        return query.getSingleResult();*/
     }
 
     @Override

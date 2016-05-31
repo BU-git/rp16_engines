@@ -220,7 +220,7 @@ $(document).ready(function() {
         });
         table.find('tbody').on('click','.pdf_action', function(){
             var parent = $(this).parent().parent();
-            window.location.href='/orders/download/' + parent.find("td:nth-child(1)").text();
+            window.location.href='/orders/download/pdf/' + parent.find("td:nth-child(1)").text();
         });
         table.find('tbody').on('click','.del', function(){
             var parent = $(this).parent().parent();

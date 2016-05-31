@@ -165,6 +165,7 @@ CREATE TABLE `orders` (
   `orderType` varchar(255) DEFAULT NULL,
   `pdfLink` varchar(255) DEFAULT NULL,
   `reference` varchar(255) DEFAULT NULL,
+  `zipLink` varchar(255) DEFAULT NULL,
   `employee_id` bigint(20) DEFAULT NULL,
   `installation_id` bigint(20) DEFAULT NULL,
   `relation_id` bigint(20) DEFAULT NULL,
@@ -472,4 +473,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-25  8:40:22
+-- Dump completed on 2016-05-31 21:53:11

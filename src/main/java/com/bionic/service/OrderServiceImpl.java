@@ -1,11 +1,13 @@
 package com.bionic.service;
 
+import java.io.File;
 import java.sql.Blob;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import com.bionic.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,18 +33,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order findById(long id) {
         return orderDao.findById(id);
-    }
-
-    @Override
-    public List<Order> findAllOrders() {
-        List<Order> list = orderDao.findAllOrders();
-        Collections.sort(list);
-        return list;
-    }
-
-    @Override
-    public Blob createBlob(MultipartFile file) {
-        return orderDao.createBlob(file);
     }
 
     @Override
@@ -76,6 +66,8 @@ public class OrderServiceImpl implements OrderService {
         if(order == null) throw new NoSuchElementException();
         if(order.getCustomTemplateID() > 0) resolveTemplateBind(order.getCustomTemplateID());
         orderDao.remove(order);
+        Util.deleteFolder(new File("temp/" + number));
+        Util.removeFiles(number);
     }
 
     private void resolveTemplateBind(long id){

@@ -3,22 +3,17 @@ package com.bionic.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Date;
-import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+import java.util.Map;
 
+import com.bionic.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import com.bionic.domain.order.Order;
 import com.bionic.service.OrderService;
 
@@ -34,12 +28,14 @@ import com.bionic.service.OrderService;
 //@MultipartConfig
 public class OrderUploadController {
 
-    private static final String ROOT = "reports";
-    private static final String ARCHIVE = "archive";
+    private static final String ROOT = "temp";
+    private static final String ARCHIVE = "archives";
+    private static final String PDF = "pdfs";
 
     static {
         new File(ROOT).mkdir();
         new File(ARCHIVE).mkdir();
+        new File(PDF).mkdir();
     }
 
     @Autowired
@@ -55,45 +51,14 @@ public class OrderUploadController {
         order.setLastAndroidChangeDate(new Date(lastAndroidChangeDate));
         order.setOrderStatus(orderStatus);
         if (orderStatus == 3) {
-            String link = createZipFile(number);
-            order.setPdfLink(link);
+            String folder = ROOT + "/" + number;
+            String zip = ARCHIVE + "/" + number;
+            String link = Util.createZipFile(folder, zip);
+            order.setPdfLink(PDF + "/Report_" + number + ".pdf");
+            order.setZipLink(link);
         }
         orderService.update(order);
         return new ResponseEntity(HttpStatus.OK);
-    }
-
-    private String createZipFile(long number) {
-        Path folder = Paths.get(ROOT + "/" + number);
-        Path zipFilePath = Paths.get(ARCHIVE + "/" + number + ".zip");
-        File zip = new File(zipFilePath.toString());
-        try {
-            pack(folder, zipFilePath);
-            //Files.delete(folder);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return zip.getAbsolutePath();
-    }
-
-    private void pack(final Path folder, final Path zipFilePath) throws IOException {
-        try (FileOutputStream fos = new FileOutputStream(zipFilePath.toFile());
-             ZipOutputStream zos = new ZipOutputStream(fos)) {
-
-            Files.walkFileTree(folder, new SimpleFileVisitor<Path>() {
-                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                    zos.putNextEntry(new ZipEntry(folder.relativize(file).toString()));
-                    Files.copy(file, zos);
-                    zos.closeEntry();
-                    return FileVisitResult.CONTINUE;
-                }
-
-                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-                    zos.putNextEntry(new ZipEntry(folder.relativize(dir).toString() + "/"));
-                    zos.closeEntry();
-                    return FileVisitResult.CONTINUE;
-                }
-            });
-        }
     }
 
     @RequestMapping(value = "upload/{number}", method = RequestMethod.POST, consumes = "multipart/form-data")
@@ -102,15 +67,30 @@ public class OrderUploadController {
         Path reportFolder = Paths.get(ROOT + "/" + number);
         new File(reportFolder.toString()).mkdir();
         System.out.println("upload start!!!!!");
-        List<MultipartFile> files = request.getFiles("file");
+       /* System.out.println(request.getMultiFileMap());
+        MultiValueMap<String, MultipartFile> map = request.getMultiFileMap();
+        for (Map.Entry entry : map.entrySet()) {
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }*/
         try {
-            for (MultipartFile part : files) {
-                BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(new File(reportFolder + "/" + part.getOriginalFilename())));
-                FileCopyUtils.copy(part.getInputStream(), stream);
-                stream.close();
-                System.out.println("Finishing file: " + part.getOriginalFilename());
+            MultipartFile part = request.getFile("file");
+            String fileName = part.getOriginalFilename();
+            File file = new File(reportFolder + "/" + fileName);
+
+            BufferedOutputStream stream = new BufferedOutputStream(
+                    new FileOutputStream(file));
+            FileCopyUtils.copy(part.getInputStream(), stream);
+            stream.close();
+            if (fileName.contains("pdf")) {
+                File pdf = new File(PDF + "/" + fileName);
+                BufferedOutputStream stream2 = new BufferedOutputStream(
+                        new FileOutputStream(pdf));
+                FileCopyUtils.copy(part.getInputStream(), stream2);
+                stream2.close();
             }
+
+            System.out.println("Finishing file: " + part.getOriginalFilename());
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

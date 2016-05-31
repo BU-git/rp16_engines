@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.bionic.util.Util;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -106,19 +107,29 @@ public class OrderController {
         return "redirect:/orders/" + id;
     }
 
-    @RequestMapping(value = "/orders/download/{id}", method = RequestMethod.GET)
-    public String downloadOrder(@PathVariable long id, HttpServletResponse response, ModelMap model) {
+    @RequestMapping(value = "/orders/download/{type}/{id}", method = RequestMethod.GET)
+    public String downloadOrder(@PathVariable long id, @PathVariable String type,
+                                HttpServletResponse response, ModelMap model) {
         if (!model.containsAttribute("loggedInUser")) return "redirect:/login";
         Order order = orderService.findById(id);
-        String link = order.getPdfLink();
-        if (link == null) return "orders";
+        String link = null;
+        String ending = null;
+        if (type.trim().equals("pdf")) {
+            link = order.getPdfLink();
+            ending = ".pdf";
+        } else if (type.trim().equals("zip")) {
+            link = order.getZipLink();
+            ending = ".zip";
+        }
+        if (link == null) return "redirect:/orders";
+
         boolean exist = Files.exists(Paths.get(link));
         if (exist) {
-            File pdf = new File(order.getPdfLink());
+            File file = new File(link);
             try {
-                response.setHeader("Content-Disposition", "inline;filename=\"" + id + ".zip" +"\"");
+                response.setHeader("Content-Disposition", "inline;filename=\"" + id + ending +"\"");
                 OutputStream out = response.getOutputStream();
-                IOUtils.copy(new FileInputStream(pdf), out);
+                IOUtils.copy(new FileInputStream(file), out);
                 out.flush();
                 out.close();
             } catch (Exception e) {
