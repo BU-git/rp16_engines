@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <hr style="color: white; border: 1px;">
+                <hr>
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/orders"/>">
@@ -60,7 +60,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <hr style="color: white; border: 1px;">
+                <hr>
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/templates/new"/>">
@@ -73,7 +73,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <hr style="color: white; border: 1px;">
+                <hr>
             </li>
             <li class="menu-item">
                 <a href="<spring:url value="/users/new"/>">
@@ -86,7 +86,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <hr style="color: white; border: 1px;">
+                <hr>
             </li>
             <li class="menu-item">
                 <span style="color: white">
